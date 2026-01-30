@@ -5,26 +5,36 @@
 		<meta name="viewport" content="width=device-width" />
 		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 		
-		<link rel="modulepreload" href="./_app/immutable/entry/start.C3nxmOQH.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/entry.Cbw6aY1B.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.CMwTfNyh.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/entry.NeCy-Qsp.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.D4WuhzBw.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.D8jzovuw.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.DZOp5KgR.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.DjxOomT0.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.BrheVP-q.js">
+		<!-- Font awesome is required for the chalkboard plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Custom controls plugin is used to for opening and closing annotation modes. -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/customcontrols/plugin.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/customcontrols/style.css">
+<!-- Chalkboard plugin -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/plugin.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/style.css">
+
 	</head>
 	<body>
 		<div style="display: contents">
 			<script>
 				{
-					__sveltekit_1ovn4yi = {
+					__sveltekit_1wdxwan = {
 						base: new URL(".", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("./_app/immutable/entry/start.C3nxmOQH.js"),
-						import("./_app/immutable/entry/app.DZOp5KgR.js")
+						import("./_app/immutable/entry/start.CMwTfNyh.js"),
+						import("./_app/immutable/entry/app.DjxOomT0.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
