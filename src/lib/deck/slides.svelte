@@ -9,7 +9,6 @@
 	import plantumlEncoder from 'plantuml-encoder'
 	import Reveal from 'reveal.js'
 	import 'reveal.js/dist/reveal.css'
-	
 	import 'reveal.js/dist/theme/black.css'
 	import Highlight from 'reveal.js/plugin/highlight/highlight'
 	import 'reveal.js/plugin/highlight/monokai.css'
@@ -18,17 +17,54 @@
 	import ExternalCode from '@edc4it/reveal.js-external-code'
 	onMount(() => {
 		const deck = new Reveal({
-			plugins: [ExternalCode, Markdown, Highlight, Notes],
+			
+		})
+		// expose the initialized Reveal instance globally so action strings like "Reveal.toggleOverview()" resolve
+	
+		window.addEventListener('resize', () => {
+			deck.layout(); // recalcul des dimensions
+		});
+		registerPlantUml(deck)
+		deck.initialize({
+			plugins: [ExternalCode, Markdown, Highlight, Notes
+			,RevealChalkboard, RevealCustomControls],
+			customcontrols: {
+				controls: [
+					
+					{ icon: '<i class="fa fa-question-circle"></i>',
+						title: 'Toggle help (O)',
+						action: 'deck.toggleHelp();'
+					},
+				{ icon: '<i class="fa fa-pen-square"></i>',
+					title: 'Toggle chalkboard (B)',
+					action: 'RevealChalkboard.toggleChalkboard();'
+				},
+				{ icon: '<i class="fa fa-pen"></i>',
+					title: 'Toggle notes canvas (C)',
+					action: 'RevealChalkboard.toggleNotesCanvas();'
+				}
+				]
+			},
+			chalkboard: {
+				boardmarkerWidth: 15,
+					chalkWidth: 15,
+					chalkEffect: 1.0,
+					storage: null,
+					src: null,
+					readOnly: undefined,
+					transition: 800,
+					theme: "chalkboard",
+			},
 			autoAnimateEasing: 'ease',
 			autoAnimateDuration: 1,
 			autoAnimateUnmatched: true,
 			controlsTutorial: true,
 			slideNumber: 'c/t',
-
+disableLayout: false,
 			hash: true,
-			showNotes: true,
+			showNotes: false,
 			mouseWheel: false,
-			transition: 'zoom',
+			// transition: 'zoom',
 			highlight: {
 				highlightOnLoad: true
 			},
@@ -36,15 +72,12 @@
 			maxScale: 1.0,
 			width: 1920,
 			height: 1080,
-			pdfSeparateFragments: false
-			// controls: false,
-			// progress: false,
-		})
-		window.addEventListener('resize', () => {
-			deck.layout(); // recalcul des dimensions
-		});
-		registerPlantUml(deck)
-		deck.initialize({
+			pdfSeparateFragments: false,
+			controls: true,
+			progress: true,
+			viewDistance: 2,
+			transition: 'none',
+			autoSlide: 0,
 			dependencies: [
 				// ...
 				{ src: new URL('$lib/plugin/jquery-3.1.1.min.js', import.meta.url).href },
