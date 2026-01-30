@@ -7,7 +7,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"deploy": "gh-pages -d build -t --nojekyll -p 5 --cname %npm_package_cname%",
+		"deploy": "gh-pages -d build -t --nojekyll -p 5 --cname 3ics-2026.alexispicot.fr",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
