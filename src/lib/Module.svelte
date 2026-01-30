@@ -29,11 +29,11 @@
 
 	<Slide>
 		<h2>Ce que vous saurez faire à la fin</h2>
-		<div class="grid grid-cols-2 gap-8 mt-8">
+		<div class="flex justify-center gap-8 mt-8">
 			<div class="text-left">
 				<h4 class="text-red-400 mb-4">❌ Avant ce module</h4>
 				<ul class="text-xl">
-					<li class="fragment">Code qui "marche" pour le TP</li>
+					<li class="fragment">Code qui "marche" pour des TPs CPE</li>
 					<li class="fragment">Difficile à reprendre 6 mois plus tard</li>
 					<li class="fragment">Impossible à faire évoluer</li>
 					<li class="fragment">Personne d'autre ne comprend</li>
@@ -197,7 +197,7 @@
 	</Slide>
 	<Slide>
 		<h2>Découpage du module</h2>
-		<div style="display: flex; gap: 2rem; align-items: center;">
+		<div style="display: flex; gap: 2rem; align-items: center; justify-content: center;">
 			<svg
 				width="1000"
 				height="500"
