@@ -2,165 +2,427 @@
 	import Code from '$lib/deck/code.svelte'
 	import PlantUml from '$lib/deck/plantUml.svelte'
 	import Slide from '$lib/deck/slide.svelte'
-	</script>
+</script>
 <Slide>
 	<h3>La composition</h3>
+
+	<!-- TRANSITION DEPUIS L'HÉRITAGE -->
 	<Slide>
-		<p>
-			La composition permet de créer des objets complexes en combinant des objets plus simples.
-			C'est comme assembler des briques Lego pour construire une structure plus grande.
-		</p>
-		<p>
-			En POO, la composition consiste à avoir des instances de classes en tant qu'attributs d'une autre classe.
-			Cela rappelle la notion de clé étrangère en base de données.
+		<h3>Et si on ne veut pas hériter ?</h3>
+		<p>L'héritage, c'est puissant... mais pas toujours adapté.</p>
+		<div class="fragment mt-8">
+			<p class="text-2xl">🤔 Une Voiture <b>est un</b> Moteur ?</p>
+			<p class="text-red-400 text-3xl fragment">❌ Non !</p>
+		</div>
+		<div class="fragment mt-4">
+			<p class="text-2xl">🤔 Une Voiture <b>a un</b> Moteur ?</p>
+			<p class="text-green-400 text-3xl fragment">✅ Oui !</p>
+		</div>
+		<p class="fragment mt-8 text-accent-200 font-bold">
+			C'est la <span class="text-important">composition</span> !
 		</p>
 	</Slide>
+
 	<Slide>
+		<h3>Qu'est-ce que la composition ?</h3>
 		<p>
-			Par exemple, une voiture est composée de plusieurs parties : un moteur, des roues, un châssis, etc.
-			Chaque partie peut être une instance d'une classe.
+			La composition permet de créer des objets complexes en combinant des objets plus simples.
 		</p>
+		<p class="fragment mt-4">
+			C'est comme assembler des <b>briques Lego</b> pour construire une structure plus grande.
+		</p>
+		<p class="fragment mt-4">
+			En POO, la composition consiste à avoir des <span class="text-important">instances de classes en tant qu'attributs</span> d'une autre classe.
+		</p>
+		<aside class="notes">
+			Si vous connaissez les bases de données, c'est comme une clé étrangère.
+			Un objet "possède" un autre objet.
+		</aside>
+	</Slide>
+
+	<!-- ARBRE DE DÉCISION -->
+	<Slide>
+		<h3>Comment choisir : Héritage ou Composition ?</h3>
+		<div class="text-2xl mt-8">
+			<div class="p-6 bg-accent-950 rounded-lg">
+				<p class="fragment">🤔 "Est-ce qu'un X <b class="text-important">est un</b> Y ?"</p>
+				<p class="fragment text-green-400 ml-8">→ OUI : <b>Héritage</b> (extends)</p>
+				<p class="fragment text-red-400 ml-8">→ NON : ↓</p>
+				<p class="fragment mt-4">🤔 "Est-ce qu'un X <b class="text-important">a un</b> Y ?"</p>
+				<p class="fragment text-blue-400 ml-8">→ OUI : <b>Composition</b> (attribut)</p>
+			</div>
+		</div>
+		<aside class="notes">
+			C'est LA règle d'or. Apprenez-la par cœur. 
+			Si "X est un Y" sonne faux, n'héritez pas, composez.
+		</aside>
+	</Slide>
+
+	<Slide>
+		<h3>Exemples concrets</h3>
+		<table class="text-xl mt-6">
+			<thead>
+				<tr>
+					<th class="p-3">Question</th>
+					<th class="p-3">Réponse</th>
+					<th class="p-3">Relation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="fragment">
+					<td class="p-3">Un Chien <b>est un</b> Animal ?</td>
+					<td class="p-3 text-green-400">✅ Oui</td>
+					<td class="p-3">Héritage</td>
+				</tr>
+				<tr class="fragment">
+					<td class="p-3">Une Voiture <b>est un</b> Moteur ?</td>
+					<td class="p-3 text-red-400">❌ Non</td>
+					<td class="p-3">-</td>
+				</tr>
+				<tr class="fragment">
+					<td class="p-3">Une Voiture <b>a un</b> Moteur ?</td>
+					<td class="p-3 text-green-400">✅ Oui</td>
+					<td class="p-3">Composition</td>
+				</tr>
+				<tr class="fragment">
+					<td class="p-3">Un Maître <b>a un</b> Animal ?</td>
+					<td class="p-3 text-green-400">✅ Oui</td>
+					<td class="p-3">Composition</td>
+				</tr>
+			</tbody>
+		</table>
+	</Slide>
+
+	<!-- EXEMPLE VOITURE/MOTEUR -->
+	<Slide>
+		<h3>Exemple : Voiture et Moteur</h3>
 		<PlantUml>
-			{`
-	class Moteur {
-	  +demarrer()
-	}
+{`
+@startuml
+class Moteur {
+  - puissance: int
+  + demarrer()
+  + arreter()
+}
 
-	class Roue {
-	  +tourner()
-	}
+class Roue {
+  - taille: int
+  + tourner()
+}
 
-	class Voiture {
-	  -moteur: Moteur
-	  -roues: Roue[]
-	  +conduire()
-	}
-	`}
+class Voiture {
+  - moteur: Moteur
+  - roues: Roue[4]
+  + conduire()
+}
+
+Voiture *-- Moteur
+Voiture *-- "4" Roue
+@enduml
+`}
 		</PlantUml>
-		<p>
-			La composition favorise la réutilisation du code et rend le système plus flexible. Par exemple, on peut remplacer le moteur d'une voiture sans modifier la classe Voiture.
+		<p class="fragment">
+			Le losange plein (◆) indique une <span class="text-important">composition</span> : 
+			la Voiture <b>possède</b> le Moteur.
 		</p>
+	</Slide>
+
+	<Slide>
+		<h3>En code Java</h3>
+		<Code lines="1-8|10-20|22-25">
+{`
+class Moteur {
+    private int puissance;
+    
+    void demarrer() {
+        System.out.println("Vrooom !");
+    }
+}
+
+class Voiture {
+    private Moteur moteur;      // Composition !
+    private Roue[] roues;
+    
+    Voiture() {
+        this.moteur = new Moteur();  // La Voiture CRÉE son Moteur
+        this.roues = new Roue[4];
+    }
+    
+    void conduire() {
+        moteur.demarrer();  // Délègue au moteur
+        System.out.println("La voiture roule");
+    }
+}
+
+// Utilisation
+Voiture maVoiture = new Voiture();
+maVoiture.conduire();  // "Vrooom !" puis "La voiture roule"
+`}
+		</Code>
+	</Slide>
+
+	<Slide>
+		<h3>Avantage : flexibilité</h3>
+		<p>La composition favorise la <b>réutilisation</b> et la <b>flexibilité</b>.</p>
+		<Code>
+{`
+class MoteurElectrique extends Moteur {
+    @Override
+    void demarrer() {
+        System.out.println("... (silence)");
+    }
+}
+
+class VoitureElectrique {
+    private Moteur moteur = new MoteurElectrique();
+    // Le reste est identique !
+}
+`}
+		</Code>
+		<p class="fragment text-accent-200">
+			On peut changer le moteur sans modifier la classe Voiture !
+		</p>
+	</Slide>
+
+	<!-- LES DEUX RELATIONS -->
+	<Slide data_background_color="#1a1a2e">
+		<h2 class="text-5xl">Les deux relations fondamentales</h2>
+		<p class="text-2xl text-gray-400">Le cœur de l'architecture objet</p>
 	</Slide>
 
 	<Slide>
 		<div class="">
 			<p>
-				L'un des intérêts de la programmation orientée objet réside dans les relations que les objets entretiennent entre eux.
-				Ces relations, construites par les développeurs, constituent l'architecture d'une application.
-				Il existe deux relations fondamentales en programmation objet :
+				L'un des intérêts de la POO réside dans les <b>relations</b> entre les objets.
+				Ces relations constituent l'<span class="text-important">architecture</span> de votre application.
 			</p>
-			<dl class="smaller"> 
-				<dt><strong>est un</strong> (<em>is-a</em>)</dt>
-				<dd>
+			<dl class="mt-6 text-xl"> 
+				<dt class="fragment"><strong class="text-important">"est un"</strong> (<em>is-a</em>)</dt>
+				<dd class="fragment ml-8">
 					<p>
-						Cette relation permet d'exprimer qu'une classe peut être assimilée à une autre classe, représentant une notion plus abstraite ou plus générale.
-						On parle d'<span class="text-important">héritage</span> pour désigner ce mécanisme.
+						Une classe peut être assimilée à une autre, plus générale.
+						→ <span class="text-important">Héritage</span>
 					</p>
 				</dd>
-				<dt><strong>a un</strong> (<em>has-a</em>)</dt>
-				<dd>
+				<dt class="fragment mt-4"><strong class="text-important">"a un"</strong> (<em>has-a</em>)</dt>
+				<dd class="fragment ml-8">
 					<p>
-						Cette relation permet d'exprimer qu'une classe dépend des services d'une autre.
-						On parle également de relation de <span class="text-important">composition</span> pour désigner ce type de relation.
+						Une classe dépend des services d'une autre.
+						→ <span class="text-important">Composition</span>
 					</p>
 				</dd>
 			</dl>
 		</div>
 	</Slide>
+
+	<!-- EXEMPLE MAÎTRE/ANIMAL -->
 	<Slide>
-		<div class="flex flex-row items-center">
-			<PlantUml>
-				{`
-		abstract class Animal {
-		  +crier()
-		}
+		<h3>Exemple : Maître et Animal</h3>
+		<p>Un Maître <b>a un</b> Animal (composition), et l'Animal peut être un Chien ou un Chat (héritage).</p>
+		<PlantUml>
+{`
+@startuml
+abstract class Animal {
+  + crier()
+}
 
-		class Chien extends Animal {
-		  +crier()
-		}
+class Chien extends Animal {
+  + crier()
+}
 
-		class Chat extends Animal {
-		  +crier()
-		}
+class Chat extends Animal {
+  + crier()
+}
 
-		class Maitre {
-		  -animal: Animal
-		  +promenerAnimal()
-		}
-		  Maitre *-- Animal
-		`}
-			</PlantUml>
+class Maitre {
+  - animal: Animal
+  + presenterAnimal()
+}
+
+Maitre *-- Animal : possède
+@enduml
+`}
+		</PlantUml>
+	</Slide>
+
+	<Slide>
+		<h3>En code Java</h3>
+		<div class="flex flex-row items-start gap-4">
 			<Code class="language-java">
-				{`
-		abstract class Animal {
-			abstract void crier();
-		}
-		class Maitre {
-			Animal animal;
-			void presenterAnimal() {
-				System.out.println("Voici le cri de votre animal");
-				animal.crier();
-			}
-		}
-		class Chien extends Animal {
-			void crier() {
-				System.out.println("Wouaf wouaf");
-			}
-		}
+{`
+abstract class Animal {
+    abstract void crier();
+}
 
-		class Chat extends Animal {
-			void crier() {
-				System.out.println("Miaou miaou");
-			}
-		}
+class Chien extends Animal {
+    @Override
+    void crier() {
+        System.out.println("Wouaf !");
+    }
+}
 
-		
-		`}
+class Chat extends Animal {
+    @Override
+    void crier() {
+        System.out.println("Miaou !");
+    }
+}
+`}
+			</Code>
+			<Code class="language-java">
+{`
+class Maitre {
+    private Animal animal;  // Composition
+    
+    Maitre(Animal animal) {
+        this.animal = animal;
+    }
+    
+    void presenterAnimal() {
+        System.out.println("Mon animal fait :");
+        animal.crier();
+    }
+}
+
+// Utilisation
+Maitre jean = new Maitre(new Chien());
+jean.presenterAnimal();
+// "Mon animal fait :" puis "Wouaf !"
+`}
 			</Code>
 		</div>
 	</Slide>
+
 	<Slide>
-		<p>
-			Normalement, le maître n'est pas censé adopter le comportement propre à un animal.
-			Il possède un animal, mais il n'est pas possible de déterminer de quel type d'animal il s'agit.
-			Chaque langage propose un moyen de tester le type d'un objet.
-		</p>
-	</Slide>
-	<Slide>
-		<p>Par exemple, on souhaite promener l'animal uniquement s'il s'agit d'un chien.</p>
-		<p>
-			Si l'on veut faire cela de manière propre, on devrait créer un attribut <code>animalPromenable</code> dans la classe Animal.
-		</p>
-		<p>Toutefois, la POO est un concept, pas une règle absolue.</p>
-		<p>Il est possible de tester si un Animal est un Chien depuis la classe maître</p>
-	</Slide>
-	<Slide className="scale-90">
-		<h3>Cast et instanceof</h3>
-		<p>
-			En Java, on peut utiliser l'opérateur <code>instanceof</code> pour vérifier si un objet est une
-			instance d'une classe spécifique.
-			Pour convertir un objet en une instance de classe spécifique, on utilise un <code>(cast)</code>.
-		</p>
-		<Code class="language-java">
-			{`
-				class Maitre {
-					Animal animal;
-					void promenerAnimal() {
-						if (animal instanceof Chien) {
-							System.out.println("On va promener le chien");
-							((Chien) animal).crier();
-						} else {
-							System.out.println("Cet animal ne peut pas être promené");
-						}
-					}
-				}
-				`}
+		<h3>La puissance de la combinaison</h3>
+		<p>Le Maître ne sait pas quel type d'animal il a... et c'est <b>voulu</b> !</p>
+		<Code>
+{`
+Maitre jean = new Maitre(new Chien());
+Maitre marie = new Maitre(new Chat());
+
+jean.presenterAnimal();   // "Wouaf !"
+marie.presenterAnimal();  // "Miaou !"
+
+// On peut changer d'animal sans modifier la classe Maitre !
+`}
 		</Code>
-		<p>
-			Dans cet exemple, on vérifie si l'animal est une instance de la classe <code>Chien</code>
-			avant de le promener. Si c'est le cas, on effectue un cast pour appeler la méthode
-			<code>crier</code>
-			spécifique à la classe <code>Chien</code>.
+		<p class="fragment text-accent-200 font-bold">
+			C'est le <span class="text-important">polymorphisme</span> en action !<br/>
+			(on le verra en détail plus tard)
 		</p>
+	</Slide>
+
+	<!-- COMPOSITION VS AGRÉGATION -->
+	<Slide>
+		<h3>Composition vs Agrégation</h3>
+		<p>Il existe une nuance importante :</p>
+		<div class="grid grid-cols-2 gap-8 mt-6">
+			<div class="fragment p-4 bg-accent-950 rounded-lg">
+				<h4 class="text-important">◆ Composition</h4>
+				<p class="text-xl mt-2">L'objet contenu <b>appartient</b> à l'objet conteneur.</p>
+				<p class="text-sm text-gray-400 mt-2">Si la Voiture est détruite, le Moteur aussi.</p>
+			</div>
+			<div class="fragment p-4 bg-accent-950 rounded-lg">
+				<h4 class="text-important">◇ Agrégation</h4>
+				<p class="text-xl mt-2">L'objet contenu <b>existe indépendamment</b>.</p>
+				<p class="text-sm text-gray-400 mt-2">Si l'Équipe est dissoute, les Joueurs existent toujours.</p>
+			</div>
+		</div>
+	</Slide>
+
+	<Slide>
+		<h3>En UML</h3>
+		<PlantUml>
+{`
+@startuml
+class Voiture
+class Moteur
+class Equipe
+class Joueur
+
+Voiture *-- Moteur : composition
+Equipe o-- Joueur : agrégation
+@enduml
+`}
+		</PlantUml>
+		<p class="mt-4">
+			◆ = Composition (losange plein) | ◇ = Agrégation (losange vide)
+		</p>
+		<aside class="notes">
+			En pratique, la différence est subtile. L'important c'est de comprendre qui "possède" quoi.
+			En composition, le conteneur crée l'objet. En agrégation, on le reçoit de l'extérieur.
+		</aside>
+	</Slide>
+
+	<Slide>
+		<h3>En code : qui crée quoi ?</h3>
+		<div class="grid grid-cols-2 gap-4">
+			<div>
+				<h4 class="text-important">◆ Composition</h4>
+				<Code class="language-java">
+{`
+class Voiture {
+    // Le moteur est CRÉÉ par la voiture
+    private Moteur moteur = new Moteur();
+    
+    // Si Voiture est garbage collecté,
+    // Moteur l'est aussi
+}
+`}
+				</Code>
+			</div>
+			<div>
+				<h4 class="text-important">◇ Agrégation</h4>
+				<Code class="language-java">
+{`
+class Equipe {
+    // Les joueurs sont REÇUS de l'extérieur
+    private List<Joueur> joueurs;
+    
+    void ajouterJoueur(Joueur j) {
+        joueurs.add(j);
+    }
+    // Les joueurs existent avant/après
+}
+`}
+				</Code>
+			</div>
+		</div>
+	</Slide>
+
+	<!-- RÉCAPITULATIF -->
+	<Slide>
+		<h3>Récapitulatif</h3>
+		<table class="text-xl">
+			<thead>
+				<tr>
+					<th class="p-3">Relation</th>
+					<th class="p-3">Question</th>
+					<th class="p-3">Implémentation</th>
+					<th class="p-3">UML</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="fragment">
+					<td class="p-3 text-important">Héritage</td>
+					<td class="p-3">"X est un Y"</td>
+					<td class="p-3"><code>extends</code></td>
+					<td class="p-3">Flèche △</td>
+				</tr>
+				<tr class="fragment">
+					<td class="p-3 text-important">Composition</td>
+					<td class="p-3">"X a un Y" (possède)</td>
+					<td class="p-3">Attribut (créé)</td>
+					<td class="p-3">Losange ◆</td>
+				</tr>
+				<tr class="fragment">
+					<td class="p-3 text-important">Agrégation</td>
+					<td class="p-3">"X a un Y" (référence)</td>
+					<td class="p-3">Attribut (reçu)</td>
+					<td class="p-3">Losange ◇</td>
+				</tr>
+			</tbody>
+		</table>
 	</Slide>
 </Slide>
