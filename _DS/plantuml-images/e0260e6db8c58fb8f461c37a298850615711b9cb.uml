@@ -1,0 +1,56 @@
+@startuml
+
+@startuml
+
+interface Juger {
+  + juger(Plat plat): int
+}
+
+interface Cuisiner {
+  + preparerPlat(): Plat
+}
+
+interface IMangeGratuit #yellow{
+  + mangerGratuitement(): void
+}
+
+abstract class Participant {
+  - nom: String
+  + Personne(nom: String)
+}
+
+
+class Visiteur extends Participant implements Juger {
+  - nombreDeVisites: int
+  + Amateur(nom: String)
+}
+
+abstract class Intervenant extends Participant implements Juger {
+  # horaireIntervention: String
+  + Intervenant(nom: String, horaireIntervention: String)
+}
+
+class Chef extends Intervenant implements Cuisiner {
+  - restaurant: String
+  + Chef(nom: String, restaurant: String)
+}
+
+class Journaliste extends Intervenant  {
+  - media: String
+  + Journaliste(nom: String, media: String)
+}
+
+class CommisDeCuisine extends Participant implements Cuisiner {
+  + préparerPoste(): void
+  + CommisDeCuisine(nom: String)
+  
+  
+}
+
+CommisDeCuisine .[#purple]down-|>  IMangeGratuit
+Journaliste ..[#purple]down-|>  IMangeGratuit
+
+@enduml
+
+
+@enduml

@@ -1,0 +1,55 @@
+@startuml
+
+@startuml
+
+interface IMultilingue {
+    +getLanguesDisponibles(): List<String>
+}
+
+interface IBesoinDeReserver {
+    +estDisponible(date: Date, nbPersonnes: int): boolean
+}
+
+abstract class Activite {
+    # Activite(titre, prix)
+    -titre: String
+    -prix: double
+}
+
+class ActiviteSportive extends Activite implements IMultilingue {
+    -adapteeEnfant: boolean
+    + ActiviteSportive(adapteeEnfants);
+    +getLanguesDisponibles(): List<String>
+}
+
+
+abstract class Visite extends Activite implements IBesoinDeReserver {
+    -guide: String
+    -duree: int
+    +estDisponible(date: Date, nbPersonnes: int): boolean
+}
+
+class VisiteCulinaire extends Visite {
+    - boolean vege
+    +VisiteCulinaire(titre,prix,végé)
+    +estDisponible(date: Date, nbPersonnes: int): boolean
+}
+
+class VisiteCulturelle extends Visite implements IMultilingue {
+    - int dureeEnMinutes
+    +VisiteCulturelle(titre,prix,duree)
+    +getLanguesDisponibles(): List<String>
+    +estDisponible(date: Date, nbPersonnes: int): boolean
+}
+
+class Festival extends Activite implements IBesoinDeReserver {
+    - Date dateDébut
+    - Date dateFin
+    + Festival(titre, dateDébut, dateFin)
+    +estDisponible(date: Date, nbPersonnes: int): boolean
+}
+
+@enduml
+
+
+@enduml

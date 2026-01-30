@@ -1,0 +1,17 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface IInterface1 {
+    + method1()
+}
+abstract class ClasseAbstraite {
+    # attributProtected: String
+    - attributPrivate: int
+    + attributPublic: double
+    + method2()
+}
+class ClasseConcrete1 extends ClasseAbstraite implements IInterface1 {
+    + method1()
+    + method2()
+}
+@enduml

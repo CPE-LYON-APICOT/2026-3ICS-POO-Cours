@@ -1,0 +1,75 @@
+@startuml
+
+class Utilisateur {
+    + UUID id
+    + List<Reservation> reservations
+    - String langue
+    - ITarificationStrategy strategy
+}
+interface ITarificationStrategy {
+    + double calculerPrix(Activite a, Utilisateur u)
+}
+
+Utilisateur *-- ITarificationStrategy
+
+class TarificationStandard implements ITarificationStrategy
+class TarificationPremiumPlus implements ITarificationStrategy
+
+interface IAvantagePremium {
+    + String getAvantage()
+}
+
+interface IMultilingue {
+    +getLanguesDisponibles(): List<String>
+}
+
+interface IBesoinDeReserver {
+    +estDisponible(date: Date, nbPersonnes: int): boolean
+}
+
+abstract class Activite {
+    # Activite(titre, prix)
+    -titre: String
+    -prix: double
+}
+
+class ActiviteSportive extends Activite implements IMultilingue, IAvantagePremium  {
+    -adapteeEnfant: boolean
+    + ActiviteSportive(adapteeEnfants);
+    +getLanguesDisponibles(): List<String>
+    + String getAvantage()
+}
+
+
+abstract class Visite extends Activite implements IBesoinDeReserver, IAvantagePremium {
+    -guide: String
+    -duree: int
+    # String getAvantage()
+    +estDisponible(date: Date, nbPersonnes: int): boolean
+}
+
+class VisiteCulinaire extends Visite {
+    - boolean vege
+    +VisiteCulinaire(titre,prix,végé)
+    +estDisponible(date: Date, nbPersonnes: int): boolean
+    + String getAvantage()
+}
+
+class VisiteCulturelle extends Visite implements IMultilingue {
+    - int dureeEnMinutes
+    +VisiteCulturelle(titre,prix,duree)
+    +getLanguesDisponibles(): List<String>
+    +estDisponible(date: Date, nbPersonnes: int): boolean
+    + String getAvantage()
+}
+
+class Festival extends Activite implements IBesoinDeReserver {
+    - Date dateDébut
+    - Date dateFin
+    + Festival(titre, dateDébut, dateFin)
+    +estDisponible(date: Date, nbPersonnes: int): boolean
+}
+
+@enduml
+
+@enduml
