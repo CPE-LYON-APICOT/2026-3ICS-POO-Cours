@@ -8,6 +8,7 @@ export default defineConfig({
 	plugins: [sveltekit()], 
 	assetsInclude:["**/*.puml","**/*.pdf"],
 	server: {
+		allowedHosts: true,
 		fs: {
 			allow: ['public']
 		}

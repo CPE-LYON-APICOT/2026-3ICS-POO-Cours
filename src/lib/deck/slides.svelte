@@ -59,7 +59,9 @@
 				disableLayout: false,
 				hash: true,
 				showNotes: false,
-				mouseWheel: false,
+				mouseWheel: true,
+				previewLinks: true,
+				postMessageEvents: true,
 				// transition: 'zoom',
 				highlight: {
 					highlightOnLoad: true
@@ -68,12 +70,14 @@
 				maxScale: 1.0,
 				width: 1920,
 				height: 1080,
+				pdfMaxPagesPerSlide: 1,
 				pdfSeparateFragments: false,
 				controls: true,
 				progress: true,
 				viewDistance: 2,
 				transition: 'none',
 				autoSlide: 0,
+				touch: true,
 				dependencies: [
 					// ...
 					{ src: new URL('$lib/plugin/jquery-3.1.1.min.js', import.meta.url).href },
@@ -86,9 +90,12 @@
 						window.print()
 					}, 2000)
 				}
+				
 			})
 		window.deck = deck
 	})
+
+	
 	function registerPlantUml(deck: Reveal.Api) {
 		deck.registerPlugin({
 			id: 'plantuml',

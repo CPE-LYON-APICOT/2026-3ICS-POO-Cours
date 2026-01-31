@@ -5,7 +5,7 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build",
 		"deploy": "gh-pages -d build -t --nojekyll -p 5 --cname 3ics-2026.alexispicot.fr",
 		"preview": "vite preview",
