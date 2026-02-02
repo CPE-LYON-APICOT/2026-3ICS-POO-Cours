@@ -29,10 +29,10 @@
 
 	<Slide>
 		<h2>Ce que vous saurez faire à la fin</h2>
-		<div class="flex justify-center gap-8 mt-8">
+		<div class="flex justify-center gap-8 mt-8  ">
 			<div class="text-left">
-				<h4 class="text-red-400 mb-4">❌ Avant ce module</h4>
-				<ul class="text-xl">
+				<h4 class="text-red-400 mb-4 text-3xl">❌ Avant ce module</h4>
+				<ul class="text-2xl">
 					<li class="fragment">Code qui "marche" pour des TPs CPE</li>
 					<li class="fragment">Difficile à reprendre 6 mois plus tard</li>
 					<li class="fragment">Impossible à faire évoluer</li>
@@ -40,8 +40,8 @@
 				</ul>
 			</div>
 			<div class="text-left">
-				<h4 class="text-green-400 mb-4">✅ Après ce module</h4>
-				<ul class="text-xl">
+				<h4 class="text-green-400 mb-4 text-3xl">✅ Après ce module</h4>
+				<ul class="text-2xl">
 					<li class="fragment">Code qui dure des années</li>
 					<li class="fragment">Maintenable par une équipe</li>
 					<li class="fragment">Évolutif sans tout casser</li>

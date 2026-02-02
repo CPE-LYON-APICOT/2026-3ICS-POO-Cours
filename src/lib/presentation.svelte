@@ -18,12 +18,14 @@
 	import DP from './Chapitres/DP.svelte'
 	import AI from '$lib/UsageIA.svelte'
 	import Mo from '$lib/Module.svelte'
+	import ExercicesSeance1 from '$lib/Exercices/Seance1.svelte'
+	import Exceptions from '$lib/Chapitres/Exceptions.svelte'
 </script>
 
 <Slide animate={true}>
 	<h1 class="capitalize">{import.meta.env.VITE_PAGE_TITLE}</h1>
-	<!-- <a class="print:hidden" href="/?print-pdf" target="_blank">Version imprimable 🖨</a><br />
-	<a class="print:hidden" href="/?view=scroll" target="_blank">Version défilable</a><br /> -->
+	<a class="print:hidden" href="/?print-pdf" target="_blank">Version imprimable 🖨</a><br /> 
+	<a class="print:hidden" href="/?view=scroll" target="_blank">Version défilable</a><br />
 	<a class="print:hidden" href="#/exercices">Lien vers les TP/TD</a><br />
 	<!-- <a class="print:hidden" href="#/annexes">Annexes</a>
 	<br />
@@ -47,18 +49,19 @@
 	<h3>Les concepts de la POO</h3>
 	<ol>
 		<li>Généralités</li>
+		<li>L'encapsulation</li>
 		<li>L'héritage</li>
 		<li>La composition</li>
 		<li>Les interfaces</li>
-		<li>L'encapsulation</li>
 		<li>Le polymorphisme</li>
 	</ol>
 </Slide>
 <Gnralits />
+<Encapsulation />
 <Heritage />
 <Composition />
 <Interfaces />
-<Encapsulation />
+<ExercicesSeance1 />
 <Slide id="seance2">
 	<h3>Séance 2</h3>
 </Slide>
@@ -293,6 +296,7 @@
 		</div>
 	</Slide>
 </Slide>
+<Exceptions />
 <Polymorphisme />
 <Statique />
 <Gnricit />

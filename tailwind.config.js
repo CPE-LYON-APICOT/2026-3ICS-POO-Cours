@@ -5,6 +5,7 @@ const config = {
 	theme: {
 		
 		extend: {
+			
 			colors: {
 			'primary': {
 				'50': '#eafffe',

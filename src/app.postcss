@@ -9,7 +9,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.reveal h3 {
+html{
+	font-size: 32px;
+}
+/* .reveal h3 {
 	font-size: 1em;
 }
 .reveal h4 {
@@ -17,6 +20,10 @@
 }
 .reveal h5 {
 	font-size: 0.6em;
+} */
+
+ul li {
+	@apply text-xl;
 }
 
 .gpt::before {
@@ -86,7 +93,7 @@ section.present:has(>h3+section){
 	>h3{
 		@apply border-b border-accent-400;
 		/* @apply !-mt-3 sm:-mt-16; */
-		@apply -mt-[8vh];
+		@apply -mt-[3vh];
 	}
 	
 	

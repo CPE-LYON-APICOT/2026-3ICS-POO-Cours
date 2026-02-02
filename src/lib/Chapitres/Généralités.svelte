@@ -8,6 +8,34 @@
 
 	<!-- INTRODUCTION -->
 	<Slide>
+		<h3>Représenter le monde réel</h3>
+		<p>La POO vise à <span class="text-important">modéliser des concepts du monde réel</span> dans notre code.</p>
+		<div class="grid grid-cols-2 gap-6 mt-8">
+			<div class="fragment">
+				<h4 class="text-accent-200">🏢 En entreprise</h4>
+				<ul class="text-xl">
+					<li>Un <b>Client</b></li>
+					<li>Une <b>Facture</b></li>
+					<li>Une <b>Transaction</b></li>
+					<li>Un <b>Produit</b></li>
+				</ul>
+			</div>
+			<div class="fragment">
+				<h4 class="text-accent-200">🎮 Dans un jeu</h4>
+				<ul class="text-xl">
+					<li>Un <b>Joueur</b></li>
+					<li>Un <b>Ennemi</b></li>
+					<li>Une <b>Arme</b></li>
+					<li>Un <b>Niveau</b></li>
+				</ul>
+			</div>
+		</div>
+		<p class="fragment mt-8 text-important font-bold">
+			Chaque concept devient une <b>classe</b>, chaque instance concrète devient un <b>objet</b>.
+		</p>
+	</Slide>
+
+	<Slide>
 		<h3>Qu'est-ce qu'un objet ?</h3>
 		<p>
 			Un <span class="text-important">objet</span> est une entité qui regroupe :
@@ -23,6 +51,42 @@
 			La classe c'est le plan, l'objet c'est la maison construite à partir du plan.
 			On peut construire plusieurs maisons à partir du même plan.
 		</aside>
+	</Slide>
+
+	<Slide>
+		<h3>Exemple concret : un Client</h3>
+		<div class="flex flex-row gap-8 items-center">
+			<div class="flex-1">
+				<h4 class="text-accent-200">Dans le monde réel</h4>
+				<ul class="text-xl">
+					<li>Nom, prénom</li>
+					<li>Email, téléphone</li>
+					<li>Historique d'achats</li>
+					<li>Peut passer commande</li>
+					<li>Peut consulter ses factures</li>
+				</ul>
+			</div>
+			<div class="flex-1 fragment">
+				<h4 class="text-accent-200">En POO</h4>
+				<Code>
+{`
+class Client {
+    // Attributs (données)
+    String nom;
+    String email;
+    List<Commande> commandes;
+    
+    // Méthodes (comportements)
+    void passerCommande() {...}
+    void consulterFactures() {...}
+}
+`}
+				</Code>
+			</div>
+		</div>
+		<p class="fragment mt-6 text-important">
+			💡 La classe modélise le <b>concept</b>, l'objet représente une <b>instance concrète</b>.
+		</p>
 	</Slide>
 
 	<Slide>
@@ -182,204 +246,18 @@ public class Personne {
 		</p>
 	</Slide>
 
-	<!-- MODIFICATEURS D'ACCÈS -->
-	<Slide data_background_color="#1a1a2e">
-		<h2 class="text-5xl">Modificateurs d'accès</h2>
-		<p class="text-2xl text-gray-400">Qui peut voir quoi ?</p>
-	</Slide>
-
-	<Slide>
-		<h3>Les 4 niveaux de visibilité</h3>
-		<p>Les modificateurs d'accès contrôlent la <b>visibilité</b> des attributs et méthodes.</p>
-		<table class="text-xl mt-6">
-			<thead>
-				<tr>
-					<th class="p-3">Modificateur</th>
-					<th class="p-3">Classe</th>
-					<th class="p-3">Package</th>
-					<th class="p-3">Sous-classe</th>
-					<th class="p-3">Partout</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="fragment">
-					<td class="p-3"><code class="text-important">public</code></td>
-					<td class="p-3 text-green-400">✅</td>
-					<td class="p-3 text-green-400">✅</td>
-					<td class="p-3 text-green-400">✅</td>
-					<td class="p-3 text-green-400">✅</td>
-				</tr>
-				<tr class="fragment">
-					<td class="p-3"><code class="text-important">protected</code></td>
-					<td class="p-3 text-green-400">✅</td>
-					<td class="p-3 text-green-400">✅</td>
-					<td class="p-3 text-green-400">✅</td>
-					<td class="p-3 text-red-400">❌</td>
-				</tr>
-				<tr class="fragment">
-					<td class="p-3"><code class="text-gray-400">(default)</code></td>
-					<td class="p-3 text-green-400">✅</td>
-					<td class="p-3 text-green-400">✅</td>
-					<td class="p-3 text-red-400">❌</td>
-					<td class="p-3 text-red-400">❌</td>
-				</tr>
-				<tr class="fragment">
-					<td class="p-3"><code class="text-important">private</code></td>
-					<td class="p-3 text-green-400">✅</td>
-					<td class="p-3 text-red-400">❌</td>
-					<td class="p-3 text-red-400">❌</td>
-					<td class="p-3 text-red-400">❌</td>
-				</tr>
-			</tbody>
-		</table>
-	</Slide>
-
-	<Slide>
-		<h3>En pratique</h3>
-		<Code>
-{`
-public class Personne {
-    public String nom;       // Accessible partout
-    protected int age;       // Accessible dans le package et sous-classes
-    String prenom;           // (default) Accessible dans le package
-    private String motDePasse; // Accessible uniquement dans Personne
-}
-`}
-		</Code>
-		<p class="fragment mt-6 text-accent-200 font-bold">
-			🔮 Nous verrons l'intérêt de ces modificateurs dans le chapitre sur l'<span class="text-important">encapsulation</span>.
-		</p>
-		<aside class="notes">
-			Pour l'instant, retenez juste que ça existe. On verra pourquoi c'est important quand on parlera d'encapsulation.
-		</aside>
-	</Slide>
-
-	<Slide>
-		<h3>Règle générale</h3>
-		<div class="grid grid-cols-2 gap-8 mt-6">
-			<div class="fragment p-4 bg-green-950 rounded-lg">
-				<h4 class="text-green-400">✅ Bonne pratique</h4>
-				<ul class="text-xl mt-2">
-					<li>Attributs → <code>private</code></li>
-					<li>Méthodes utiles → <code>public</code></li>
-					<li>Méthodes internes → <code>private</code></li>
-				</ul>
-			</div>
-			<div class="fragment p-4 bg-red-950 rounded-lg">
-				<h4 class="text-red-400">❌ À éviter</h4>
-				<ul class="text-xl mt-2">
-					<li>Tout mettre en <code>public</code></li>
-					<li>Ne pas réfléchir à la visibilité</li>
-				</ul>
-			</div>
-		</div>
-		<p class="fragment mt-6 text-xl">
-			💡 En cas de doute, commencez par <code>private</code> et élargissez si nécessaire.
-		</p>
-	</Slide>
-
-	<!-- GESTION DES EXCEPTIONS -->
-	<Slide data_background_color="#1a1a2e">
-		<h2 class="text-5xl">Gestion des erreurs</h2>
-		<p class="text-2xl text-gray-400">Les exceptions en Java</p>
-	</Slide>
-
-	<Slide>
-		<h3>Qu'est-ce qu'une exception ?</h3>
-		<p>Une <span class="text-important">exception</span> est une erreur qui survient pendant l'exécution.</p>
-		<Code>
-{`
-int a = 10 / 0;  // ArithmeticException !
-
-String s = null;
-s.length();      // NullPointerException !
-
-int[] tab = new int[5];
-tab[10] = 42;    // ArrayIndexOutOfBoundsException !
-`}
-		</Code>
-		<p class="fragment mt-4 text-red-400">
-			Sans gestion, ces erreurs <b>crashent</b> votre programme !
-		</p>
-	</Slide>
-
-	<Slide>
-		<h3>try / catch / finally</h3>
-		<p>On utilise des blocs pour <b>capturer</b> et <b>gérer</b> les exceptions.</p>
-		<Code lines="1-4|5-8|9-11">
-{`
-try {
-    // Code qui peut générer une exception
-    int resultat = 10 / 0;
-    System.out.println(resultat);
-} catch (ArithmeticException e) {
-    // Code exécuté SI une exception se produit
-    System.out.println("Erreur : " + e.getMessage());
-}
-finally {
-    // Code exécuté TOUJOURS (avec ou sans exception)
-    System.out.println("Fin du bloc");
-}
-`}
-		</Code>
-	</Slide>
-
-	<Slide>
-		<h3>Lancer une exception</h3>
-		<p>On peut aussi <b>créer</b> et <b>lancer</b> nos propres exceptions.</p>
-		<Code>
-{`
-public void setAge(int age) {
-    if (age < 0) {
-        throw new IllegalArgumentException("L'âge ne peut pas être négatif !");
-    }
-    this.age = age;
-}
-
-// Utilisation
-try {
-    personne.setAge(-5);
-} catch (IllegalArgumentException e) {
-    System.out.println("Erreur : " + e.getMessage());
-}
-`}
-		</Code>
-		<aside class="notes">
-			C'est une bonne pratique de vérifier les paramètres et de lancer des exceptions explicites.
-			Ça aide au debug.
-		</aside>
-	</Slide>
-
-	<Slide>
-		<h3>Exceptions courantes</h3>
-		<table class="text-xl">
-			<tr class="fragment">
-				<td class="p-3"><code>NullPointerException</code></td>
-				<td class="p-3">Accès à un objet null</td>
-			</tr>
-			<tr class="fragment">
-				<td class="p-3"><code>ArrayIndexOutOfBoundsException</code></td>
-				<td class="p-3">Index hors limites d'un tableau</td>
-			</tr>
-			<tr class="fragment">
-				<td class="p-3"><code>ArithmeticException</code></td>
-				<td class="p-3">Division par zéro</td>
-			</tr>
-			<tr class="fragment">
-				<td class="p-3"><code>IllegalArgumentException</code></td>
-				<td class="p-3">Argument invalide</td>
-			</tr>
-			<tr class="fragment">
-				<td class="p-3"><code>IOException</code></td>
-				<td class="p-3">Erreur d'entrée/sortie (fichiers)</td>
-			</tr>
-		</table>
-	</Slide>
-
 	<!-- RÉCAPITULATIF -->
 	<Slide>
 		<h3>Récapitulatif</h3>
-		<div class="grid grid-cols-3 gap-4 mt-6">
+		<div class="grid grid-cols-2 gap-8 mt-6">
+			<div class="fragment p-4 bg-accent-950 rounded-lg">
+				<h4 class="text-important">📐 Classes et Objets</h4>
+				<ul class="text-sm mt-2">
+					<li>Une classe = un plan</li>
+					<li>Un objet = une instance</li>
+					<li>Attributs + méthodes</li>
+				</ul>
+			</div>
 			<div class="fragment p-4 bg-accent-950 rounded-lg">
 				<h4 class="text-important">🏗️ Création</h4>
 				<ul class="text-sm mt-2">
@@ -388,22 +266,9 @@ try {
 					<li><code>this</code> = objet courant</li>
 				</ul>
 			</div>
-			<div class="fragment p-4 bg-accent-950 rounded-lg">
-				<h4 class="text-important">🔒 Visibilité</h4>
-				<ul class="text-sm mt-2">
-					<li><code>public</code> = partout</li>
-					<li><code>private</code> = classe</li>
-					<li><code>protected</code> = héritage</li>
-				</ul>
-			</div>
-			<div class="fragment p-4 bg-accent-950 rounded-lg">
-				<h4 class="text-important">⚠️ Exceptions</h4>
-				<ul class="text-sm mt-2">
-					<li><code>try/catch</code> = gérer</li>
-					<li><code>throw</code> = lancer</li>
-					<li><code>finally</code> = toujours</li>
-				</ul>
-			</div>
 		</div>
+		<p class="fragment mt-8 text-accent-200 text-xl">
+			🔮 Maintenant, voyons comment <b>protéger</b> nos données avec l'encapsulation !
+		</p>
 	</Slide>
 </Slide>

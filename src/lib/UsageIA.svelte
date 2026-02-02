@@ -20,34 +20,15 @@
 		<h2>Pourquoi l’IA pose problème à ce stade</h2>
 
 		<ul>
-			<li>
-				<b>1. La “dette cognitive”</b><br />
-				L’apprentissage repose sur la pratique, l’erreur et la métacognition.<br />
-				Déléguer ces étapes à l’IA court-circuite l’apprentissage :<br />
-				on obtient une réponse correcte, mais on ne progresse plus.
-			</li>
-
-			<li>
-				<b>2. Accélérateur pour les experts, béquille pour les débutants</b><br />
-				L’IA amplifie ceux qui maîtrisent déjà.<br />
-				Pour un débutant, elle empêche l’acquisition des bases.
-			</li>
-
-			<li>
-				<b>3. Même problème que les révolutions précédentes</b><br />
-				Comme la calculatrice ou Internet, l’IA n’est pas mauvaise en soi.<br />
-				C’est l’usage passif qui entraîne une perte de compétence.
-			</li>
-
-			<li>
-				<b>4. L’illusion de la facilité</b><br />
-				L’IA donne l’impression d’être plus rapide et plus efficace,<br />
-				mais masque le fait qu’on ne réfléchit plus aux étapes.
-			</li>
+			<li><b>1. Dette cognitive</b> — L'IA empêche d'apprendre par la pratique et l'erreur.</li>
+			<li><b>2. Béquille pour débutants</b> — Elle favorise ceux qui maîtrisent déjà.</li>
+			<li><b>3. Usage passif</b> — Risque de perte de compétences.</li>
+			<li><b>4. Illusion de facilité</b> — On réfléchit moins aux étapes.</li>
 		</ul>
-		<a href="https://youtu.be/4xq6bVbS-Pw?si=bhTuVdU7iN5ijJzg&t=653" target="_blank"
-			><p>Vidéo expliquant mieux que moi ces concepts</p></a
-		>
+
+		<a href="https://youtu.be/4xq6bVbS-Pw?si=bhTuVdU7iN5ijJzg&t=653" target="_blank">
+			<p>Vidéo explicative</p>
+		</a>
 	</Slide>
 	<Slide>
 		<h2>Constat côté entreprise</h2>

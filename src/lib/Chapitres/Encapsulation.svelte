@@ -2,6 +2,7 @@
 	import Code from '$lib/deck/code.svelte'
 	import Slide from '$lib/deck/slide.svelte'
 	import Composition from './Composition.svelte'
+	import PlantUml from '$lib/deck/plantuml.svelte'
 </script>
 
 <Slide>
@@ -200,4 +201,105 @@
     `}
     </Code>
     </Slide>
+
+	<!-- TRANSITION VERS L'HÉRITAGE -->
+	<Slide data_background_color="#1a1a2e">
+		<h2 class="text-5xl">Et maintenant ?</h2>
+		<p class="text-2xl text-gray-400">Vers la généralisation et l'héritage</p>
+	</Slide>
+
+	<Slide>
+		<h3>Le problème de la duplication</h3>
+		<p>Imaginez que vous devez modéliser plusieurs types de comptes bancaires :</p>
+		<div class="grid grid-cols-2 gap-4 mt-6">
+			<Code class="language-java">
+{`
+class CompteCourant {
+    private String numero;
+    private double solde;
+    private String titulaire;
+    
+    void deposer(double m) {...}
+    void retirer(double m) {...}
+    void calculerInterets() {...}
+}
+`}
+			</Code>
+			<Code class="language-java">
+{`
+class CompteEpargne {
+    private String numero;
+    private double solde;
+    private String titulaire;
+    
+    void deposer(double m) {...}
+    void retirer(double m) {...}
+    void calculerInterets() {...}
+}
+`}
+			</Code>
+		</div>
+		<p class="fragment text-red-400 mt-4 font-bold">
+			😱 Beaucoup de code dupliqué !
+		</p>
+	</Slide>
+
+	<Slide>
+		<h3>Généraliser les concepts</h3>
+		<p>En observant les classes, on remarque des <span class="text-important">points communs</span> :</p>
+		<ul class="text-xl mt-6">
+			<li class="fragment">Tous les comptes ont un numéro, un solde, un titulaire</li>
+			<li class="fragment">Tous peuvent déposer et retirer de l'argent</li>
+			<li class="fragment">Seul le calcul des intérêts diffère</li>
+		</ul>
+		<p class="fragment mt-8 text-accent-200 font-bold">
+			💡 On peut extraire un concept <span class="text-important">plus général</span> : <code>CompteBancaire</code>
+		</p>
+		<p class="fragment text-important">
+			C'est la <b>généralisation</b> qui mène naturellement à l'<b>héritage</b> !
+		</p>
+	</Slide>
+
+	<Slide>
+		<h3>Visualiser la généralisation</h3>
+		<PlantUml>
+{`
+@startuml
+class CompteBancaire {
+  - numero: String
+  - solde: double
+  - titulaire: String
+  + deposer(montant)
+  + retirer(montant)
+  {abstract} + calculerInterets()
+}
+
+class CompteCourant extends CompteBancaire {
+  + calculerInterets()
+}
+
+class CompteEpargne extends CompteBancaire {
+  - tauxInteret: double
+  + calculerInterets()
+}
+@enduml
+`}
+		</PlantUml>
+		<p class="fragment mt-4">
+			Les éléments <span class="text-important">communs</span> sont dans la classe générale,<br/>
+			les <span class="text-important">spécificités</span> dans les classes dérivées.
+		</p>
+	</Slide>
+
+	<Slide>
+		<h3>Récapitulatif</h3>
+		<div class="text-xl">
+			<p class="fragment">✅ L'<span class="text-important">encapsulation</span> protège vos données</p>
+			<p class="fragment mt-4">✅ La <span class="text-important">généralisation</span> évite la duplication</p>
+			<p class="fragment mt-4">✅ L'<span class="text-important">héritage</span> structure votre code</p>
+		</div>
+		<p class="fragment mt-8 text-accent-200 text-2xl font-bold">
+			🔮 Voyons maintenant comment implémenter cela en Java !
+		</p>
+	</Slide>
 </Slide>
