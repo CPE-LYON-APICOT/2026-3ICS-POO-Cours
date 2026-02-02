@@ -16,6 +16,11 @@
 			Elles sont souvent utilisées pour implémenter des interfaces fonctionnelles, c'est-à-dire des
 			interfaces qui ne contiennent qu'une seule méthode abstraite.
 		</p>
+		<aside class="notes">
+			Les lambdas sont arrivées en Java 8 (2014). C'est la plus grosse évolution du langage depuis les génériques.
+			Elles viennent de la programmation fonctionnelle (Haskell, Scala, JavaScript...).
+			Aujourd'hui, impossible de coder en Java moderne sans connaître les lambdas. C'est partout.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Syntaxe des lambdas</h3>
@@ -34,6 +39,11 @@
             (String s) -> { System.out.println(s); }
             `}
 		</Code>
+		<aside class="notes">
+			La flèche -> est le symbole clé. À gauche les paramètres, à droite le corps.
+			Si une seule expression, pas besoin d'accolades ni de return. Java le fait pour vous.
+			Si plusieurs instructions, accolades obligatoires et return explicite si nécessaire.
+		</aside>
 	</Slide>
     <Slide>
         <h3>Utilisation de la notation ::</h3>
@@ -54,6 +64,11 @@
                 }
             `}
         </Code>
+		<aside class="notes">
+			C'est une "method reference". System.out::println est équivalent à x -> System.out.println(x).
+			Plus court, plus lisible. L'IDE vous proposera souvent de convertir une lambda en method reference.
+			On peut aussi référencer des constructeurs : ArrayList::new crée une nouvelle instance.
+		</aside>
     </Slide>
 	<Slide>
 		<h3>Exemple d'utilisation</h3>
@@ -90,6 +105,11 @@
             }
             `}
 		</Code>
+		<aside class="notes">
+			Les Streams changent complètement la façon de traiter les données en Java.
+			Plus de boucles for explicites, on décrit CE qu'on veut, pas COMMENT le faire.
+			Bonus : avec parallelStream(), Java peut paralléliser automatiquement le traitement !
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>La bibliothèque Stream</h3>
@@ -100,6 +120,11 @@
 			<li><code>reduce</code> : réduit les éléments d'un <code>stream</code></li>
 			<li><code>collect</code> : collecte les éléments d'un <code>stream</code></li>
 		</ul>
+		<aside class="notes">
+			Retenez filter-map-reduce, c'est le trio magique. Vient de la programmation fonctionnelle.
+			Google MapReduce pour le Big Data est basé sur ces concepts.
+			Très utile pour traiter des listes d'objets métier en entreprise.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>La bibliothèque Stream</h3>
@@ -144,7 +169,13 @@
                 `}
 				</Code>
 			</div>
-		</div></Slide
+		</div>
+		<aside class="notes">
+			Montrez bien la différence : à gauche on dit COMMENT faire, à droite CE QU'ON VEUT.
+			Le code Stream est plus déclaratif, plus facile à lire une fois qu'on maîtrise.
+			En entretien d'embauche, savoir écrire ce type de code est souvent demandé.
+		</aside>
+	</Slide
 	>
 	<Slide>
 		<h3>Généralitées sur les Lambda</h3>
@@ -156,6 +187,11 @@
 			</li>
 			<li>La bibliothèque Stream permet de manipuler des collections de manière fonctionnelle</li>
 		</ul>
+		<aside class="notes">
+			Résumé important. Les interfaces fonctionnelles : Runnable, Comparator, Consumer, Function...
+			Java fournit plein d'interfaces dans java.util.function prêtes à l'emploi.
+			C'est le bridge entre la POO classique et la programmation fonctionnelle.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Portée des variables</h3>
@@ -188,6 +224,11 @@
                 }
                 `}
 		</Code>
+		<aside class="notes">
+			C'est la règle "effectively final". La variable doit être comme si elle était déclarée final.
+			Pourquoi ? Pour éviter les problèmes de concurrence. La lambda peut s'exécuter plus tard.
+			Si on veut modifier une valeur, utiliser un AtomicInteger ou un tableau d'un élément.
+		</aside>
 	</Slide>
     <Slide>
         <h3>Les collecteurs</h3>
@@ -200,6 +241,11 @@
             <li><code>groupingBy</code> : groupe les éléments par une clé</li>
             <li><code>partitioningBy</code> : partitionne les éléments en deux groupes</li>
         </ul>
+		<aside class="notes">
+			Les Collectors sont le bout de la chaîne Stream. Ils transforment le stream en résultat concret.
+			groupingBy est très puissant pour faire des analyses : grouper des commandes par client, des employés par département...
+			En entreprise, c'est souvent utilisé pour préparer des données pour des rapports.
+		</aside>
     </Slide>
     <Slide>
         <h3>Exemples de collecteurs</h3>

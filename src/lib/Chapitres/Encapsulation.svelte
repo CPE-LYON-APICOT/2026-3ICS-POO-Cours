@@ -11,11 +11,21 @@
 		<p>
 			L'encapsulation est un concept fondamental de la programmation orientée objet. Elle consiste à cacher les détails internes d'une classe et à ne fournir qu'une interface publique pour interagir avec cette classe.
 		</p>
+		<aside class="notes">
+			L'encapsulation, c'est comme une voiture : vous appuyez sur l'accélérateur, vous n'avez pas besoin de savoir comment fonctionne le moteur.
+			C'est un principe de "boîte noire" : on expose ce qu'il faut, on cache le reste.
+			Historiquement, ce concept vient de la modularité en génie logiciel des années 70.
+		</aside>
 	</Slide>
 	<Slide>
 		<p>
 			L'encapsulation permet de protéger les données et de contrôler leur accès. Elle rend également le code plus modulaire et plus facile à maintenir.
 		</p>
+		<aside class="notes">
+			En entreprise, c'est crucial. Imaginez une équipe de 20 développeurs : si tout le monde peut modifier n'importe quel attribut, c'est le chaos.
+			L'encapsulation impose des "contrats" entre les développeurs. On définit ce qui peut être utilisé et comment.
+			Anecdote : beaucoup de bugs critiques en production viennent de données modifiées "par accident" car non protégées.
+		</aside>
 	</Slide>
 	<Slide>
 		<p>
@@ -26,6 +36,11 @@
 			<li><code>private</code> : accessible uniquement depuis la classe elle-même</li>
 			<li><code>protected</code> : accessible depuis la classe et ses sous-classes</li>
 		</ul>
+		<aside class="notes">
+			Il existe aussi le niveau "package-private" (sans modificateur) : accessible uniquement dans le même package.
+			En pratique, 90% du temps vous utiliserez private pour les attributs et public pour les méthodes d'interface.
+			Le protected est surtout utile dans les bibliothèques/frameworks où on veut permettre l'extension par héritage.
+		</aside>
 	</Slide>
 	<Slide>
 		<p>Voici un exemple d'encapsulation en Java :</p>
@@ -53,6 +68,11 @@
     }
     `}
 		</Code>
+		<aside class="notes">
+			C'est le pattern classique JavaBean. Vous le verrez partout dans les frameworks Java (Spring, Hibernate...).
+			Les IDE génèrent ces getters/setters automatiquement : clic droit → Generate → Getters and Setters.
+			Important : même si c'est "juste" un getter/setter, passez par ces méthodes. Ça vous permettra d'ajouter de la logique plus tard.
+		</aside>
 	</Slide>
 	<Slide>
 		<p>
@@ -77,13 +97,23 @@
     }
     `}
 		</Code>
+		<aside class="notes">
+			En pratique, vous pouvez aller plus loin : lever une exception, logger l'erreur, notifier l'utilisateur...
+			Ce pattern s'appelle "defensive programming" - on se protège des mauvaises utilisations.
+			Dans les frameworks modernes, on utilise souvent des annotations de validation (@NotNull, @Min, @Max) au lieu de coder à la main.
+		</aside>
 	</Slide>
 	<Slide>
 		<p>
 			L'utilisation du modificateur <code>protected</code> permet aux classes dérivées d'accéder aux attributs et méthodes de la classe parente.
 			Cela est utile lorsque l'on souhaite permettre à des sous-classes d'utiliser ou de modifier des données tout en les protégeant de l'accès direct extérieur.
 		</p>
-		</Slide>
+		<aside class="notes">
+			Attention : protected ne veut pas dire "accessible seulement aux sous-classes". 
+			En Java, protected est aussi accessible depuis le même package ! C'est une subtilité souvent oubliée.
+			Bonne pratique : préférez private + getter protected si vous voulez vraiment contrôler l'accès.
+		</aside>
+	</Slide>
 		<Slide>
 		<Code>
 			{`
@@ -138,6 +168,11 @@
 		<p class="smaller">
 			Dans cet exemple, le solde du compte est privé et ne peut être modifié que par les méthodes <code>deposer</code> et <code>retirer</code>, lesquelles effectuent des vérifications.
 		</p>
+		<aside class="notes">
+			C'est l'exemple classique ! Imaginez si le solde était public : compte.solde = -1000000. Catastrophe.
+			Dans la vraie vie, les banques ajoutent aussi : logging, audit trail, notifications, limites de retrait...
+			L'encapsulation permet d'ajouter tout ça sans changer l'interface publique.
+		</aside>
 	</Slide>
 	<Slide data_background_color="#00353F">
 		<h3>Verbosité</h3>
@@ -147,6 +182,12 @@
 		<p>
 			Vous devez écrire environ 7 lignes pour déclarer un simple attribut avec ses accesseurs et mutateurs.
 		</p>
+		<aside class="notes">
+			C'est le principal reproche fait à Java. Python ou Kotlin font ça en 1 ligne.
+			Mais Java 14+ a introduit les Records qui réduisent beaucoup ce boilerplate.
+			Et les IDE modernes génèrent tout ça en 2 clics. En pratique, ce n'est plus vraiment un problème.
+			Lombok est aussi très populaire : @Data génère tous les getters/setters automatiquement.
+		</aside>
 	</Slide>
 	<Slide data_background_color="#00353F">
 		<p>
@@ -200,6 +241,11 @@
     }
     `}
     </Code>
+		<aside class="notes">
+			C'est le principe Open/Closed : ouvert à l'extension, fermé à la modification.
+			Dans les gros projets, c'est vital. J'ai vu des équipes passer des semaines à refactorer du code parce qu'un attribut était public.
+			Avec un setter, on ajoute la logique à UN endroit. C'est le Single Point of Change.
+		</aside>
     </Slide>
 
 	<!-- TRANSITION VERS L'HÉRITAGE -->

@@ -15,6 +15,11 @@
 			parcourir les éléments d'une collection. <br />Les collections en Java sont regroupées dans le
 			paquetage <code>java.util</code>.
 		</p>
+		<aside class="notes">
+			Les collections, c'est ce qui remplace les tableaux classiques. Plus flexibles, plus puissantes.
+			En entreprise, vous utiliserez des List, Map, Set tous les jours. C'est le pain quotidien du développeur Java.
+			Le framework Collections date de Java 1.2 et a été amélioré avec la généricité en Java 5.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Les différentes collections</h3>
@@ -27,6 +32,11 @@
 			<li>Cartes : <code>HashMap</code>, <code>LinkedHashMap</code>, <code>TreeMap</code></li>
 			<li>Files d'attente : <code>PriorityQueue</code></li>
 		</ul>
+		<aside class="notes">
+			En pratique, vous utiliserez surtout ArrayList et HashMap. Ce sont les plus courantes.
+			LinkedList est rarement utile en pratique malgré ce qu'on apprend en algorithmique.
+			HashSet pour les doublons, TreeSet si vous avez besoin d'un ordre trié.
+		</aside>
 	</Slide>
 	<Slide>
 		<div class="flex mt-10 justify-center">
@@ -87,6 +97,11 @@ Vector <|-- Stack
 			<code>iterator()</code> qui permet de parcourir les éléments d'une collection. <br />Elle est
 			implémentée par toutes les classes qui représentent des collections d'objets.
 		</p>
+		<aside class="notes">
+			Iterable, c'est ce qui permet d'utiliser la boucle for-each : for (String s : maListe).
+			Si une classe implémente Iterable, vous pouvez itérer dessus avec for-each.
+			C'est la base du pattern Iterator qu'on verra peut-être dans les Design Patterns.
+		</aside>
 	</Slide><Slide>
 		<h2>Les collections en Java</h2>
 		<h3>L'interface <code>Collection</code></h3>
@@ -224,5 +239,10 @@ Set <|-- TreeSet
 		arrayList.get(0);
 		`}
 		</Code>
+		<aside class="notes">
+			Notez la déclaration : List au lieu d'ArrayList. C'est une bonne pratique !
+			On programme contre l'interface, pas l'implémentation. Si demain on change pour LinkedList, rien ne casse.
+			Chaque collection a ses méthodes spécifiques, mais le code générique fonctionne pour toutes.
+		</aside>
 	</Slide>
 </Slide>

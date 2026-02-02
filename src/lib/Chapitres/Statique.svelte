@@ -14,6 +14,11 @@
 		<p>
 			Cela signifie que vous pouvez accéder à un membre statique sans créer d'instance de la classe.
 		</p>
+		<aside class="notes">
+			Le mot "static" vient du fait que la mémoire est allouée une seule fois, au chargement de la classe.
+			Contrairement aux attributs d'instance qui sont créés à chaque "new".
+			C'est utile pour les constantes (Math.PI), les compteurs partagés, les méthodes utilitaires...
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Attributs statiques</h3>
@@ -79,6 +84,11 @@
 		<p>
 			Remarquez que vous utilisez <code>System.out.println()</code> sans créer d'instance de la classe, il s'agit 		d'une méthode statique.
 		</p>
+		<aside class="notes">
+			Les classes utilitaires sont souvent pleines de méthodes statiques : Math, Arrays, Collections...
+			C'est aussi le cas de System.out qui est un attribut statique de la classe System.
+			En règle générale, si une méthode n'utilise pas "this", elle devrait probablement être statique.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Limitation des méthodes statiques</h3>
@@ -102,6 +112,11 @@
 			Une méthode statique ne peut pas accéder directement aux attributs ou méthodes non statiques de la classe. 
 			Cela est dû au fait que les méthodes statiques n'ont pas de référence à une instance spécifique de la classe.
 		</p>
+		<aside class="notes">
+			C'est logique : une méthode statique n'a pas de "this". Elle ne sait pas à quelle instance elle appartient.
+			Si vous avez besoin d'accéder à des attributs d'instance, la méthode ne doit pas être statique.
+			Ou alors, passez l'instance en paramètre de la méthode statique.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Avantages des membres et méthodes statiques</h3>
@@ -111,5 +126,10 @@
 			<li>Performance : L'accès aux membres statiques peut être plus rapide car il n'y a pas besoin de créer et de gérer des instances d'objets.</li>
 			<li>Organisation du code : Les méthodes statiques peuvent regrouper des fonctions utilitaires ou des opérations liées à la classe, améliorant ainsi la lisibilité et la maintenance du code.</li>
 		</ul>
+		<aside class="notes">
+			Attention : trop de static peut être un "code smell". Si tout est statique, vous écrivez du procédural, pas de l'objet.
+			Le static casse aussi le polymorphisme : on ne peut pas redéfinir une méthode statique dans une classe fille.
+			Utilisez static pour les utilitaires, les constantes, les factories. Pas pour le code métier principal.
+		</aside>
 	</Slide>
 </Slide>

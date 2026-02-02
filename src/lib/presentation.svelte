@@ -55,6 +55,11 @@
 		<li>Les interfaces</li>
 		<li>Le polymorphisme</li>
 	</ol>
+	<aside class="notes">
+		Voici le fil rouge du cours. On va voir ces 6 concepts dans l'ordre.
+		Chaque concept s'appuie sur le précédent. À la fin, vous saurez concevoir une architecture objet complète.
+		Prenez des notes sur ce qui vous semble flou, on fera des pauses pour les questions.
+	</aside>
 </Slide>
 <Gnralits />
 <Encapsulation />
@@ -62,6 +67,7 @@
 <Composition />
 <Interfaces />
 <ExercicesSeance1 />
+<!--  
 <Slide id="seance2">
 	<h3>Séance 2</h3>
 </Slide>
@@ -349,4 +355,5 @@
 		<h1>Annexes</h1></Slide
 	>
 	<LangageJava />
-</Slide>
+	-->
+<!-- </Slide> -->
