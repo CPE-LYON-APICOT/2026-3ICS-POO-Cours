@@ -3,6 +3,7 @@
 	import PlantUml from '$lib/deck/plantUml.svelte'
 	import Slide from '$lib/deck/slide.svelte'
 </script>
+
 <Slide>
 	<h3>La composition</h3>
 
@@ -25,18 +26,18 @@
 
 	<Slide>
 		<h3>Qu'est-ce que la composition ?</h3>
-		<p>
-			La composition permet de créer des objets complexes en combinant des objets plus simples.
-		</p>
+		<p>La composition permet de créer des objets complexes en combinant des objets plus simples.</p>
 		<p class="fragment mt-4">
 			C'est comme assembler des <b>briques Lego</b> pour construire une structure plus grande.
 		</p>
 		<p class="fragment mt-4">
-			En POO, la composition consiste à avoir des <span class="text-important">instances de classes en tant qu'attributs</span> d'une autre classe.
+			En POO, la composition consiste à avoir des <span class="text-important"
+				>instances de classes en tant qu'attributs</span
+			> d'une autre classe.
 		</p>
 		<aside class="notes">
-			Si vous connaissez les bases de données, c'est comme une clé étrangère.
-			Un objet "possède" un autre objet.
+			Si vous connaissez les bases de données, c'est comme une clé étrangère. Un objet "possède" un
+			autre objet.
 		</aside>
 	</Slide>
 
@@ -53,8 +54,8 @@
 			</div>
 		</div>
 		<aside class="notes">
-			C'est LA règle d'or. Apprenez-la par cœur. 
-			Si "X est un Y" sonne faux, n'héritez pas, composez.
+			C'est LA règle d'or. Apprenez-la par cœur. Si "X est un Y" sonne faux, n'héritez pas,
+			composez.
 		</aside>
 	</Slide>
 
@@ -92,9 +93,10 @@
 			</tbody>
 		</table>
 		<aside class="notes">
-			Faites cet exercice mental à chaque fois que vous modélisez. C'est automatique avec l'expérience.
-			En entretien d'embauche, on vous demande souvent : "Pourquoi avoir choisi héritage ou composition ici ?"
-			Réponse : "Parce que dire 'Une Voiture est un Moteur' n'a pas de sens."
+			Faites cet exercice mental à chaque fois que vous modélisez. C'est automatique avec
+			l'expérience. En entretien d'embauche, on vous demande souvent : "Pourquoi avoir choisi
+			héritage ou composition ici ?" Réponse : "Parce que dire 'Une Voiture est un Moteur' n'a pas
+			de sens."
 		</aside>
 	</Slide>
 
@@ -102,7 +104,7 @@
 	<Slide>
 		<h3>Exemple : Voiture et Moteur</h3>
 		<PlantUml>
-{`
+			{`
 @startuml
 class Moteur {
   - puissance: int
@@ -127,15 +129,15 @@ Voiture *-- "4" Roue
 `}
 		</PlantUml>
 		<p class="fragment">
-			Le losange plein (◆) indique une <span class="text-important">composition</span> : 
-			la Voiture <b>possède</b> le Moteur.
+			Le losange plein (◆) indique une <span class="text-important">composition</span> : la Voiture
+			<b>possède</b> le Moteur.
 		</p>
 	</Slide>
 
 	<Slide>
 		<h3>En code Java</h3>
 		<Code lines="1-8|10-20|22-25">
-{`
+			{`
 class Moteur {
     private int puissance;
     
@@ -170,7 +172,7 @@ maVoiture.conduire();  // "Vrooom !" puis "La voiture roule"
 		<h3>Avantage : flexibilité</h3>
 		<p>La composition favorise la <b>réutilisation</b> et la <b>flexibilité</b>.</p>
 		<Code>
-{`
+			{`
 class MoteurElectrique extends Moteur {
     @Override
     void demarrer() {
@@ -188,9 +190,9 @@ class VoitureElectrique {
 			On peut changer le moteur sans modifier la classe Voiture !
 		</p>
 		<aside class="notes">
-			C'est le principe "Composition over Inheritance" du Gang of Four. Préférez composer plutôt qu'hériter.
-			L'héritage crée un couplage fort. La composition permet de changer de stratégie à l'exécution.
-			C'est la base de nombreux Design Patterns : Strategy, Decorator, Adapter...
+			C'est le principe "Composition over Inheritance" du Gang of Four. Préférez composer plutôt
+			qu'hériter. L'héritage crée un couplage fort. La composition permet de changer de stratégie à
+			l'exécution. C'est la base de nombreux Design Patterns : Strategy, Decorator, Adapter...
 		</aside>
 	</Slide>
 
@@ -199,47 +201,54 @@ class VoitureElectrique {
 		<h2 class="text-5xl">Les deux relations fondamentales</h2>
 		<p class="text-2xl text-gray-400">Le cœur de l'architecture objet</p>
 		<aside class="notes">
-			Tout le reste de la POO découle de ces deux relations. Maîtrisez-les et vous maîtrisez 80% de l'architecture objet.
-			Quand vous lisez du code, cherchez ces relations. Quand vous concevez, posez-vous ces questions.
+			Tout le reste de la POO découle de ces deux relations. Maîtrisez-les et vous maîtrisez 80% de
+			l'architecture objet. Quand vous lisez du code, cherchez ces relations. Quand vous concevez,
+			posez-vous ces questions.
 		</aside>
 	</Slide>
 
 	<Slide>
 		<div class="">
 			<p>
-				L'un des intérêts de la POO réside dans les <b>relations</b> entre les objets.
-				Ces relations constituent l'<span class="text-important">architecture</span> de votre application.
+				L'un des intérêts de la POO réside dans les <b>relations</b> entre les objets. Ces relations
+				constituent l'<span class="text-important">architecture</span> de votre application.
 			</p>
-			<dl class="mt-6 text-xl"> 
+			<dl class="mt-6 text-xl">
 				<dt class="fragment"><strong class="text-important">"est un"</strong> (<em>is-a</em>)</dt>
 				<dd class="fragment ml-8">
 					<p>
-						Une classe peut être assimilée à une autre, plus générale.
-						→ <span class="text-important">Héritage</span>
+						Une classe peut être assimilée à une autre, plus générale. → <span
+							class="text-important">Héritage</span
+						>
 					</p>
 				</dd>
-				<dt class="fragment mt-4"><strong class="text-important">"a un"</strong> (<em>has-a</em>)</dt>
+				<dt class="fragment mt-4">
+					<strong class="text-important">"a un"</strong> (<em>has-a</em>)
+				</dt>
 				<dd class="fragment ml-8">
 					<p>
-						Une classe dépend des services d'une autre.
-						→ <span class="text-important">Composition</span>
+						Une classe dépend des services d'une autre. → <span class="text-important"
+							>Composition</span
+						>
 					</p>
 				</dd>
 			</dl>
 		</div>
 		<aside class="notes">
 			Ces termes viennent de l'anglais et sont utilisés mondialement. Apprenez "is-a" et "has-a".
-			Quand vous modélisez, reformulez toujours en français : "Un X est-il un Y ?" "Un X a-t-il un Y ?"
-			La réponse vous dit quelle relation utiliser. C'est mécanique.
+			Quand vous modélisez, reformulez toujours en français : "Un X est-il un Y ?" "Un X a-t-il un Y
+			?" La réponse vous dit quelle relation utiliser. C'est mécanique.
 		</aside>
 	</Slide>
 
 	<!-- EXEMPLE MAÎTRE/ANIMAL -->
 	<Slide>
 		<h3>Exemple : Maître et Animal</h3>
-		<p>Un Maître <b>a un</b> Animal (composition), et l'Animal peut être un Chien ou un Chat (héritage).</p>
+		<p>
+			Un Maître <b>a un</b> Animal (composition), et l'Animal peut être un Chien ou un Chat (héritage).
+		</p>
 		<PlantUml>
-{`
+			{`
 @startuml
 abstract class Animal {
   + crier()
@@ -263,9 +272,9 @@ Maitre *-- Animal : possède
 `}
 		</PlantUml>
 		<aside class="notes">
-			Cet exemple combine les deux concepts. C'est typique d'une architecture réelle.
-			Le Maître ne connaît pas le type exact de son animal. Il sait juste que c'est un Animal.
-			C'est de l'injection de dépendance avant l'heure ! Les frameworks comme Spring font exactement ça.
+			Cet exemple combine les deux concepts. C'est typique d'une architecture réelle. Le Maître ne
+			connaît pas le type exact de son animal. Il sait juste que c'est un Animal. C'est de
+			l'injection de dépendance avant l'heure ! Les frameworks comme Spring font exactement ça.
 		</aside>
 	</Slide>
 
@@ -273,7 +282,7 @@ Maitre *-- Animal : possède
 		<h3>En code Java</h3>
 		<div class="flex flex-row items-start gap-4">
 			<Code class="language-java">
-{`
+				{`
 abstract class Animal {
     abstract void crier();
 }
@@ -294,7 +303,7 @@ class Chat extends Animal {
 `}
 			</Code>
 			<Code class="language-java">
-{`
+				{`
 class Maitre {
     private Animal animal;  // Composition
     
@@ -321,7 +330,7 @@ jean.presenterAnimal();
 		<h3>La puissance de la combinaison</h3>
 		<p>Le Maître ne sait pas quel type d'animal il a... et c'est <b>voulu</b> !</p>
 		<Code>
-{`
+			{`
 Maitre jean = new Maitre(new Chien());
 Maitre marie = new Maitre(new Chat());
 
@@ -332,13 +341,14 @@ marie.presenterAnimal();  // "Miaou !"
 `}
 		</Code>
 		<p class="fragment text-accent-200 font-bold">
-			C'est le <span class="text-important">polymorphisme</span> en action !<br/>
+			C'est le <span class="text-important">polymorphisme</span> en action !<br />
 			(on le verra en détail plus tard)
 		</p>
 		<aside class="notes">
-			C'est là que tout prend son sens. Composition + héritage + polymorphisme = architecture flexible.
-			Si demain on ajoute un Perroquet, le code du Maître ne change pas. Zéro modification.
-			C'est le principe Open/Closed en action : ouvert à l'extension, fermé à la modification.
+			C'est là que tout prend son sens. Composition + héritage + polymorphisme = architecture
+			flexible. Si demain on ajoute un Perroquet, le code du Maître ne change pas. Zéro
+			modification. C'est le principe Open/Closed en action : ouvert à l'extension, fermé à la
+			modification.
 		</aside>
 	</Slide>
 
@@ -355,20 +365,22 @@ marie.presenterAnimal();  // "Miaou !"
 			<div class="fragment p-4 bg-accent-950 rounded-lg">
 				<h4 class="text-important">◇ Agrégation</h4>
 				<p class="text-xl mt-2">L'objet contenu <b>existe indépendamment</b>.</p>
-				<p class="text-sm text-gray-400 mt-2">Si l'Équipe est dissoute, les Joueurs existent toujours.</p>
+				<p class="text-sm text-gray-400 mt-2">
+					Si l'Équipe est dissoute, les Joueurs existent toujours.
+				</p>
 			</div>
 		</div>
 		<aside class="notes">
-			En pratique, beaucoup de développeurs confondent les deux, et ce n'est pas grave.
-			L'important c'est de se poser la question : "Si je supprime le conteneur, le contenu a-t-il encore un sens ?"
-			Une roue sans voiture = bizarre. Un joueur sans équipe = normal (il peut changer d'équipe).
+			En pratique, beaucoup de développeurs confondent les deux, et ce n'est pas grave. L'important
+			c'est de se poser la question : "Si je supprime le conteneur, le contenu a-t-il encore un sens
+			?" Une roue sans voiture = bizarre. Un joueur sans équipe = normal (il peut changer d'équipe).
 		</aside>
 	</Slide>
 
 	<Slide>
 		<h3>En UML</h3>
 		<PlantUml>
-{`
+			{`
 @startuml
 class Voiture
 class Moteur
@@ -380,12 +392,10 @@ Equipe o-- Joueur : agrégation
 @enduml
 `}
 		</PlantUml>
-		<p class="mt-4">
-			◆ = Composition (losange plein) | ◇ = Agrégation (losange vide)
-		</p>
+		<p class="mt-4">◆ = Composition (losange plein) | ◇ = Agrégation (losange vide)</p>
 		<aside class="notes">
-			En pratique, la différence est subtile. L'important c'est de comprendre qui "possède" quoi.
-			En composition, le conteneur crée l'objet. En agrégation, on le reçoit de l'extérieur.
+			En pratique, la différence est subtile. L'important c'est de comprendre qui "possède" quoi. En
+			composition, le conteneur crée l'objet. En agrégation, on le reçoit de l'extérieur.
 		</aside>
 	</Slide>
 
@@ -395,7 +405,7 @@ Equipe o-- Joueur : agrégation
 			<div>
 				<h4 class="text-important">◆ Composition</h4>
 				<Code class="language-java">
-{`
+					{`
 class Voiture {
     // Le moteur est CRÉÉ par la voiture
     private Moteur moteur = new Moteur();
@@ -409,7 +419,7 @@ class Voiture {
 			<div>
 				<h4 class="text-important">◇ Agrégation</h4>
 				<Code class="language-java">
-{`
+					{`
 class Equipe {
     // Les joueurs sont REÇUS de l'extérieur
     private List<Joueur> joueurs;
@@ -459,9 +469,9 @@ class Equipe {
 			</tbody>
 		</table>
 		<aside class="notes">
-			Gardez ce tableau en tête. C'est la base de toute modélisation objet.
-			En UML, on utilise ces symboles. En entretien, on vous demandera de dessiner ces diagrammes.
-			Prochaine étape : les interfaces, pour aller encore plus loin dans l'abstraction.
+			Gardez ce tableau en tête. C'est la base de toute modélisation objet. En UML, on utilise ces
+			symboles. En entretien, on vous demandera de dessiner ces diagrammes. Prochaine étape : les
+			interfaces, pour aller encore plus loin dans l'abstraction.
 		</aside>
 	</Slide>
 </Slide>

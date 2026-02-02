@@ -6,14 +6,13 @@ Malheureusement, la réunion de lancement a eu lieu avant votre arrivée et vous
 
 Voici les notes de la réunion, elles ne sont pas synthétisées, alors prenez le temps de bien lire l'énoncé avant de vous lancer.
 
-> * L'application gère des participants à des événements culinaires, il n'est pas nécessaire de gérer les événements eux-mêmes.
-> * Tous les **participants** ont un **nom**.
-> * Les **visiteurs** sont des *participants* qui peuvent **juger** des plats, ils ont un **nombre de visites effectuées**.
-> * Il y a les **intervenants**, qui sont des *participants* qui peuvent aussi **juger** des plats, un intervenant est un professionnel qui vient sur le festival pour son travail, ils ont un **horaire d'intervention** et peuvent être de deux types :
->    * Les **chefs** sont des *intervenants* qui peuvent **cuisiner** des plats, ils ont un **restaurant**.
->    * Les **journalistes** sont des *intervenants* et ils ont un **média**.
-> * Un dernier type de *participant* est le **commis de cuisine**, qui peut aussi **cuisiner** des plats, mais il n'est pas un intervenant, il est là pour aider les chefs.
-
+> - L'application gère des participants à des événements culinaires, il n'est pas nécessaire de gérer les événements eux-mêmes.
+> - Tous les **participants** ont un **nom**.
+> - Les **visiteurs** sont des _participants_ qui peuvent **juger** des plats, ils ont un **nombre de visites effectuées**.
+> - Il y a les **intervenants**, qui sont des _participants_ qui peuvent aussi **juger** des plats, un intervenant est un professionnel qui vient sur le festival pour son travail, ils ont un **horaire d'intervention** et peuvent être de deux types :
+>   - Les **chefs** sont des _intervenants_ qui peuvent **cuisiner** des plats, ils ont un **restaurant**.
+>   - Les **journalistes** sont des _intervenants_ et ils ont un **média**.
+> - Un dernier type de _participant_ est le **commis de cuisine**, qui peut aussi **cuisiner** des plats, mais il n'est pas un intervenant, il est là pour aider les chefs.
 
 ---
 
@@ -43,7 +42,6 @@ class ClasseConcrete1 extends ClasseAbstraite implements IInterface1 {
 
 ```
 
-
 ## 2. Réflexions sur l'implémentation (2 pts par question)
 
 Voici le code de la classe `Participant`.
@@ -55,7 +53,7 @@ public class Participant {
     public final UUID numeroBadgeRFID;
     public Participant(String nom) {
         this.nom = nom;
-        this.numeroBadgeRFID = [...]; 
+        this.numeroBadgeRFID = [...];
     }
     // Autres méthodes et attributs...
 }
@@ -63,28 +61,19 @@ public class Participant {
 ```
 
 1. Le champ `numeroBadgeRFID` de la classe `Participant` est déclaré `public final`.
-    - Quels avantages cela peut-il avoir dans ce contexte ?
-    - Devrait-on ajouter un _accesseur_ pour ce champ ? Pourquoi ou pourquoi pas ?
-    - Devrait-on ajouter un _mutateur_ pour ce champ ? Pourquoi ou pourquoi pas ?
-
-
-
+   - Quels avantages cela peut-il avoir dans ce contexte ?
+   - Devrait-on ajouter un _accesseur_ pour ce champ ? Pourquoi ou pourquoi pas ?
+   - Devrait-on ajouter un _mutateur_ pour ce champ ? Pourquoi ou pourquoi pas ?
 
 2. L'équipe de développement souhaite ajouter des fonctionnalités supplémentaires à la gestion des participants :
-    - **Repas gratuits** : les journalistes et les commis de cuisine peuvent manger gratuitement. 
-    - **Plurilinguisme** : les chefs et les commis de cuisine doivent pouvoir indiquer leur langue de travail afin de faciliter la préparation des plats.
-    - **Spécialisation culinaire** : les journalistes et les chefs doivent pouvoir indiquer leur spécialisation culinaire (par exemple, pâtisserie, cuisine italienne, etc.).
+   - **Repas gratuits** : les journalistes et les commis de cuisine peuvent manger gratuitement.
+   - **Plurilinguisme** : les chefs et les commis de cuisine doivent pouvoir indiquer leur langue de travail afin de faciliter la préparation des plats.
+   - **Spécialisation culinaire** : les journalistes et les chefs doivent pouvoir indiquer leur spécialisation culinaire (par exemple, pâtisserie, cuisine italienne, etc.).
 
-
-    Comment implémenteriez-vous ces fonctionnalités en modifiant le moins possible votre code ? 
+   Comment implémenteriez-vous ces fonctionnalités en modifiant le moins possible votre code ?
 
 3. Dans une autre classe, on souhaite coder une méthode qui permet à un participant de juger un plat ; la méthode prend en paramètre un participant et un plat, et retourne un entier représentant la note donnée au plat.  
-    Donnez un exemple de code pour cette méthode. (Souvenez-vous que tous les participants ne peuvent pas juger de plats)
-
-
-
-
-
+   Donnez un exemple de code pour cette méthode. (Souvenez-vous que tous les participants ne peuvent pas juger de plats)
 
 ## 3. Questions de cours (2 pts par question)
 
@@ -108,7 +97,7 @@ public class FeuTricolore {
 
 Expliquez pourquoi l’utilisation d’une **énumération (`enum`)** serait préférable ici, et réécrivez le code avec `enum`.
 
---- 
+---
 
 <!-- pagebreak -->
 
@@ -161,8 +150,8 @@ class Journaliste extends Intervenant  {
 class CommisDeCuisine extends Participant implements Cuisiner {
   + préparerPoste(): void
   + CommisDeCuisine(nom: String)
-  
-  
+
+
 }
 
 CommisDeCuisine .[#purple]down-|>  IMangeGratuit
@@ -173,15 +162,15 @@ Journaliste ..[#purple]down-|>  IMangeGratuit
 
 ```
 
-## Question 2 
+## Question 2
 
-- **Avantages du champ `public final`** :  
-    - Le mot-clé `final` garantit que la valeur de `numeroBadgeRFID` ne pourra pas être modifiée après l'initialisation dansle constructeur, ce qui est important pour un identifiant unique.  
-    - Le fait qu'il soit `public` permet un accès direct, ce qui peut simplifier l'accès à cet identifiant dans le code.
-- **Ajouter un accesseur ?**  
-    - Ce n'est pas strictement nécessaire car le champ est déjà accessible publiquement. Cependant, il est recommandéd'utiliser un accesseur (`getNumeroBadgeRFID()`) pour respecter l'encapsulation et permettre de modifierl'implémentation interne sans impacter le reste du code. Toutefois, comme il s'agit d'un UUID, il n'y a pas trop de raisons de l'altérer.
-- **Ajouter un mutateur ?**  
-    - Non, il ne faut pas ajouter de mutateur (`setNumeroBadgeRFID`) car le champ est `final` et ne doit pas être modifié après l'initialisation. Cela garantit l'intégrité de l'identifiant du participant.
+- **Avantages du champ `public final`** :
+  - Le mot-clé `final` garantit que la valeur de `numeroBadgeRFID` ne pourra pas être modifiée après l'initialisation dansle constructeur, ce qui est important pour un identifiant unique.
+  - Le fait qu'il soit `public` permet un accès direct, ce qui peut simplifier l'accès à cet identifiant dans le code.
+- **Ajouter un accesseur ?**
+  - Ce n'est pas strictement nécessaire car le champ est déjà accessible publiquement. Cependant, il est recommandéd'utiliser un accesseur (`getNumeroBadgeRFID()`) pour respecter l'encapsulation et permettre de modifierl'implémentation interne sans impacter le reste du code. Toutefois, comme il s'agit d'un UUID, il n'y a pas trop de raisons de l'altérer.
+- **Ajouter un mutateur ?**
+  - Non, il ne faut pas ajouter de mutateur (`setNumeroBadgeRFID`) car le champ est `final` et ne doit pas être modifié après l'initialisation. Cela garantit l'intégrité de l'identifiant du participant.
 
 Pour implémenter ces fonctionnalités tout en minimisant les modifications du code existant, il est pertinent d'utiliser des interfaces :
 
@@ -203,8 +192,9 @@ public int jugerPlat(Participant participant, Plat plat) {
 ```
 
 ## Question 3
+
 4. **Différence entre une interface et une classe abstraite** :
-   - **Interface** : 
+   - **Interface** :
      - Ne peut contenir que des méthodes abstraites (Java 8 et versions ultérieures permettent les méthodes par défaut).
      - Ne peut pas avoir d'attributs d'instance (seulement des constantes).
      - Permet l'implémentation multiple, c'est-à-dire qu'une classe peut implémenter plusieurs interfaces.
@@ -220,8 +210,9 @@ public int jugerPlat(Participant participant, Plat plat) {
    - Utiliser une classe abstraite lorsque vous avez une base commune avec des implémentations partagées (par exemple, une classe `Animal` avec des méthodes communes comme `manger()`).
 
 5. **Utilisation d'une énumération (`enum`)** :
-    - L'utilisation d'une énumération permet de restreindre les valeurs possibles de `couleur` à un ensemble prédéfini, ce qui améliore la sécurité du type et la lisibilité du code.
-    - Cela permet également d'éviter les erreurs de saisie et de garantir que seules les couleurs valides sont utilisées.
+   - L'utilisation d'une énumération permet de restreindre les valeurs possibles de `couleur` à un ensemble prédéfini, ce qui améliore la sécurité du type et la lisibilité du code.
+   - Cela permet également d'éviter les erreurs de saisie et de garantir que seules les couleurs valides sont utilisées.
+
 ```java
 public enum CouleurFeu {
     ROUGE, VERT, ORANGE
@@ -238,4 +229,3 @@ public class FeuTricolore {
     }
 }
 ```
-

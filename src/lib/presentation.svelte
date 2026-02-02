@@ -24,7 +24,7 @@
 
 <Slide animate={true}>
 	<h1 class="capitalize">{import.meta.env.VITE_PAGE_TITLE}</h1>
-	<a class="print:hidden" href="/?print-pdf" target="_blank">Version imprimable 🖨</a><br /> 
+	<a class="print:hidden" href="/?print-pdf" target="_blank">Version imprimable 🖨</a><br />
 	<a class="print:hidden" href="/?view=scroll" target="_blank">Version défilable</a><br />
 	<a class="print:hidden" href="#/exercices">Lien vers les TP/TD</a><br />
 	<!-- <a class="print:hidden" href="#/annexes">Annexes</a>
@@ -56,9 +56,9 @@
 		<li>Le polymorphisme</li>
 	</ol>
 	<aside class="notes">
-		Voici le fil rouge du cours. On va voir ces 6 concepts dans l'ordre.
-		Chaque concept s'appuie sur le précédent. À la fin, vous saurez concevoir une architecture objet complète.
-		Prenez des notes sur ce qui vous semble flou, on fera des pauses pour les questions.
+		Voici le fil rouge du cours. On va voir ces 6 concepts dans l'ordre. Chaque concept s'appuie sur
+		le précédent. À la fin, vous saurez concevoir une architecture objet complète. Prenez des notes
+		sur ce qui vous semble flou, on fera des pauses pour les questions.
 	</aside>
 </Slide>
 <Gnralits />

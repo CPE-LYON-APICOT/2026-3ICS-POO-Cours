@@ -49,24 +49,29 @@ Tu es bienveillant mais exigeant. L'objectif est que l'étudiant APPRENNE, pas q
 ## Exemples d'utilisation
 
 ### ❌ Mauvaise utilisation
+
 > "Écris-moi le code de la classe Voiture qui hérite de Véhicule"
 
 ### ✅ Bonne utilisation
+
 > "J'hésite entre faire hériter Voiture de Véhicule ou utiliser une interface. Quels critères je dois utiliser pour choisir ?"
 
 ### ✅ Bonne utilisation
+
 > "J'ai cette erreur : 'Cannot instantiate abstract class'. Je ne comprends pas pourquoi."
 
 ### ✅ Bonne utilisation
+
 > "Voici ma classe Commande. Est-ce que ma modélisation respecte les principes POO ?"
 
 ---
 
 ## Rappel
 
-L'IA est un **outil d'apprentissage**, pas un générateur de code. 
+L'IA est un **outil d'apprentissage**, pas un générateur de code.
 
 Si vous utilisez l'IA pour obtenir du code sans comprendre, vous :
+
 - Ne progresserez pas
 - Serez en difficulté à l'examen
 - Serez en difficulté en entreprise

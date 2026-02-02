@@ -1,101 +1,99 @@
 <svg width="320" height="300" xmlns="http://www.w3.org/2000/svg">
-    <g>
-        <title>Layer 1</title>
-        <g id="svg_11">
-            <rect fill="#FFDFB8" stroke="none" x="170" y="0" width="150" height="300" id="svg_1" />
-            <text
-                fill="black"
-                stroke="black"
-                x="205"
-                y="150"
-                id="svg_2"
-                font-size="24"
-                font-family="Noto Sans JP"
-                text-anchor="start"
-                xml:space="preserve">Données</text
-            >
-            <text
-                class="fill-current"
-                stroke="none"
-                x="0"
-                y="50"
-                id="svg_3"
-                font-size="24"
-                font-family="Noto Sans JP"
-                text-anchor="start"
-                xml:space="preserve">FonctionA</text
-            >
-            <text
-                class="fill-current"
-                stroke="none"
-                x="0"
-                y="109.99901"
-                id="svg_4"
-                font-size="24"
-                font-family="Noto Sans JP"
-                text-anchor="start"
-                xml:space="preserve">FonctionB</text
-            >
-            <text
-                class="fill-current"
-                stroke="none"
-                x="0"
-                y="170"
-                id="svg_5"
-                font-size="24"
-                font-family="Noto Sans JP"
-                text-anchor="start"
-                xml:space="preserve">FonctionC</text
-            >
-            <text
-                class="fill-current"
-                stroke="none"
-                x="0"
-                y="230"
-                id="svg_6"
-                font-size="24"
-                font-family="Noto Sans JP"
-                text-anchor="start"
-                xml:space="preserve">FonctionD</text
-            >
-            <line
-                stroke-width="5" class="stroke-current"
-                
-                x1="113.53031"
-                y1="222.00012"
-                x2="158.37456"
-                y2="222.00012"
-                id="svg_7"
-            />
-            <line
-                stroke-width="5" class="stroke-current"
-                
-                x1="113.53031"
-                y1="162.00012"
-                x2="158.37456"
-                y2="162.00012"
-                id="svg_8"
-            />
-            <line
-                
-                stroke-width="5" class="stroke-current"
-                
-                x1="113.53031"
-                y1="101.99914"
-                x2="158.37456"
-                y2="101.99914"
-                id="svg_9"
-            />
-            <line
-                
-                stroke-width="5" class="stroke-current"
-                
-                x1="113.53031"
-                y1="42.00012"
-                x2="158.37455"
-                y2="42.00012"
-                id="svg_10"
-            />
-        </g>
-    </g>
+	<g>
+		<title>Layer 1</title>
+		<g id="svg_11">
+			<rect fill="#FFDFB8" stroke="none" x="170" y="0" width="150" height="300" id="svg_1" />
+			<text
+				fill="black"
+				stroke="black"
+				x="205"
+				y="150"
+				id="svg_2"
+				font-size="24"
+				font-family="Noto Sans JP"
+				text-anchor="start"
+				xml:space="preserve">Données</text
+			>
+			<text
+				class="fill-current"
+				stroke="none"
+				x="0"
+				y="50"
+				id="svg_3"
+				font-size="24"
+				font-family="Noto Sans JP"
+				text-anchor="start"
+				xml:space="preserve">FonctionA</text
+			>
+			<text
+				class="fill-current"
+				stroke="none"
+				x="0"
+				y="109.99901"
+				id="svg_4"
+				font-size="24"
+				font-family="Noto Sans JP"
+				text-anchor="start"
+				xml:space="preserve">FonctionB</text
+			>
+			<text
+				class="fill-current"
+				stroke="none"
+				x="0"
+				y="170"
+				id="svg_5"
+				font-size="24"
+				font-family="Noto Sans JP"
+				text-anchor="start"
+				xml:space="preserve">FonctionC</text
+			>
+			<text
+				class="fill-current"
+				stroke="none"
+				x="0"
+				y="230"
+				id="svg_6"
+				font-size="24"
+				font-family="Noto Sans JP"
+				text-anchor="start"
+				xml:space="preserve">FonctionD</text
+			>
+			<line
+				stroke-width="5"
+				class="stroke-current"
+				x1="113.53031"
+				y1="222.00012"
+				x2="158.37456"
+				y2="222.00012"
+				id="svg_7"
+			/>
+			<line
+				stroke-width="5"
+				class="stroke-current"
+				x1="113.53031"
+				y1="162.00012"
+				x2="158.37456"
+				y2="162.00012"
+				id="svg_8"
+			/>
+			<line
+				stroke-width="5"
+				class="stroke-current"
+				x1="113.53031"
+				y1="101.99914"
+				x2="158.37456"
+				y2="101.99914"
+				id="svg_9"
+			/>
+			<line
+				stroke-width="5"
+				class="stroke-current"
+				x1="113.53031"
+				y1="42.00012"
+				x2="158.37455"
+				y2="42.00012"
+				id="svg_10"
+			/>
+		</g>
+	</g>
 </svg>

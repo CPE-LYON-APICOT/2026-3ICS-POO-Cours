@@ -1,129 +1,125 @@
 <svg width="320" height="300" xmlns="http://www.w3.org/2000/svg">
-    <g>
-        <title>Layer 1</title>
-        <g id="svg_12">
-            <path
-                id="svg_1"
-                d="m170,2.75867l150,0l0,116l-150,0l0,-116z"
-                opacity="undefined"
-                stroke="none"
-                fill="#FFDFB8"
-            />
-            <text 
-                stroke="black"
-                fill="black"
-                x="208"
-                y="70"
-                id="svg_2"
-                font-size="24"
-                font-family="Noto Sans JP"
-                text-anchor="start"
-                xml:space="preserve">Données</text
-            >
-            <text
-                class="fill-current"
-                stroke="none"
-                x="0"
-                y="40"
-                id="svg_3"
-                font-size="24"
-                font-family="Noto Sans JP"
-                text-anchor="start"
-                xml:space="preserve">MéthodeA</text
-            >
-            <text
-                class="fill-current"
-                stroke="none"
-                x="0"
-                y="100"
-                id="svg_4"
-                font-size="24"
-                font-family="Noto Sans JP"
-                text-anchor="start"
-                xml:space="preserve">MéthodeB</text
-            >
-            <line
-                
-                stroke-width="5" class="stroke-current"
-                
-                x1="113.53031"
-                y1="91.75781"
-                x2="158.37456"
-                y2="91.75781"
-                id="svg_9"
-            />
-            <line
-                
-                stroke-width="5" class="stroke-current"
-                
-                x1="113.53031"
-                y1="31.75879"
-                x2="158.37455"
-                y2="31.75879"
-                id="svg_10"
-            />
-        </g>
-        <g id="svg_19">
-            <path
-                id="svg_13"
-                d="m170,182.07234l150,0l0,116l-150,0l0,-116z"
-                opacity="undefined"
-                stroke="none"
-                fill="#FFDFB8"
-            />
-            <text
-                stroke="black"
-                fill="black"
-                x="208"
-                y="250"
-                id="svg_14"
-                font-size="24"
-                font-family="Noto Sans JP"
-                text-anchor="start"
-                xml:space="preserve">Données</text
-            >
-            <text
-                class="fill-current"
-                stroke="none"
-                x="0"
-                y="220"
-                id="svg_15"
-                font-size="24"
-                font-family="Noto Sans JP"
-                text-anchor="start"
-                xml:space="preserve">MéthodeA</text
-            >
-            <text
-                class="fill-current"
-                stroke="none"
-                x="0"
-                y="280"
-                id="svg_16"
-                font-size="24"
-                font-family="Noto Sans JP"
-                text-anchor="start"
-                xml:space="preserve">MéthodeB</text
-            >
-            <line
-                
-                stroke-width="5" class="stroke-current"
-                
-                x1="113.53031"
-                y1="271.07148"
-                x2="158.37456"
-                y2="271.07148"
-                id="svg_17"
-            />
-            <line
-                
-                stroke-width="5" class="stroke-current"
-                
-                x1="113.53031"
-                y1="211.07246"
-                x2="158.37455"
-                y2="211.07246"
-                id="svg_18"
-            />
-        </g>
-    </g>
+	<g>
+		<title>Layer 1</title>
+		<g id="svg_12">
+			<path
+				id="svg_1"
+				d="m170,2.75867l150,0l0,116l-150,0l0,-116z"
+				opacity="undefined"
+				stroke="none"
+				fill="#FFDFB8"
+			/>
+			<text
+				stroke="black"
+				fill="black"
+				x="208"
+				y="70"
+				id="svg_2"
+				font-size="24"
+				font-family="Noto Sans JP"
+				text-anchor="start"
+				xml:space="preserve">Données</text
+			>
+			<text
+				class="fill-current"
+				stroke="none"
+				x="0"
+				y="40"
+				id="svg_3"
+				font-size="24"
+				font-family="Noto Sans JP"
+				text-anchor="start"
+				xml:space="preserve">MéthodeA</text
+			>
+			<text
+				class="fill-current"
+				stroke="none"
+				x="0"
+				y="100"
+				id="svg_4"
+				font-size="24"
+				font-family="Noto Sans JP"
+				text-anchor="start"
+				xml:space="preserve">MéthodeB</text
+			>
+			<line
+				stroke-width="5"
+				class="stroke-current"
+				x1="113.53031"
+				y1="91.75781"
+				x2="158.37456"
+				y2="91.75781"
+				id="svg_9"
+			/>
+			<line
+				stroke-width="5"
+				class="stroke-current"
+				x1="113.53031"
+				y1="31.75879"
+				x2="158.37455"
+				y2="31.75879"
+				id="svg_10"
+			/>
+		</g>
+		<g id="svg_19">
+			<path
+				id="svg_13"
+				d="m170,182.07234l150,0l0,116l-150,0l0,-116z"
+				opacity="undefined"
+				stroke="none"
+				fill="#FFDFB8"
+			/>
+			<text
+				stroke="black"
+				fill="black"
+				x="208"
+				y="250"
+				id="svg_14"
+				font-size="24"
+				font-family="Noto Sans JP"
+				text-anchor="start"
+				xml:space="preserve">Données</text
+			>
+			<text
+				class="fill-current"
+				stroke="none"
+				x="0"
+				y="220"
+				id="svg_15"
+				font-size="24"
+				font-family="Noto Sans JP"
+				text-anchor="start"
+				xml:space="preserve">MéthodeA</text
+			>
+			<text
+				class="fill-current"
+				stroke="none"
+				x="0"
+				y="280"
+				id="svg_16"
+				font-size="24"
+				font-family="Noto Sans JP"
+				text-anchor="start"
+				xml:space="preserve">MéthodeB</text
+			>
+			<line
+				stroke-width="5"
+				class="stroke-current"
+				x1="113.53031"
+				y1="271.07148"
+				x2="158.37456"
+				y2="271.07148"
+				id="svg_17"
+			/>
+			<line
+				stroke-width="5"
+				class="stroke-current"
+				x1="113.53031"
+				y1="211.07246"
+				x2="158.37455"
+				y2="211.07246"
+				id="svg_18"
+			/>
+		</g>
+	</g>
 </svg>

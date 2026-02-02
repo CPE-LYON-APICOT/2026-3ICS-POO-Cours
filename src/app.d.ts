@@ -1,6 +1,6 @@
 // See https://kit.svelte.dev/docs/types#app
 
-import type Reveal from "reveal.js"
+import type Reveal from 'reveal.js'
 // for information about these interfaces
 declare global {
 	namespace App {
@@ -8,13 +8,12 @@ declare global {
 		// interface Locals {}
 		// interface PageData {}
 		// interface Platform {}
-		
 	}
-	declare interface Window{
-		deck:Reveal.Api
+	declare interface Window {
+		deck: Reveal.Api
 	}
-	declare interface UserProps{
-		repoUrl:string
+	declare interface UserProps {
+		repoUrl: string
 	}
 }
 

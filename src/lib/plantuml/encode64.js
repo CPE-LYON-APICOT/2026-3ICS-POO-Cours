@@ -49,7 +49,7 @@ function append3bytes(b1, b2, b3) {
 	return r
 }
 
-export function encode (/** @type {string} */ data) {
+export function encode(/** @type {string} */ data) {
 	let r = ''
 	for (let i = 0; i < data.length; i += 3) {
 		if (i + 2 === data.length) {

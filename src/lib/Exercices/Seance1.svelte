@@ -19,20 +19,25 @@
 		<div class="text-left text-xl">
 			<p class="font-bold text-accent-200">Objectif :</p>
 			<p class="mb-4">Créer une classe <code>CompteBancaire</code> avec encapsulation correcte.</p>
-			
+
 			<p class="font-bold text-accent-200 mt-6">Consignes :</p>
 			<ol class="space-y-2">
-				<li>Créer une classe avec les attributs <code>numero</code>, <code>solde</code>, <code>titulaire</code></li>
+				<li>
+					Créer une classe avec les attributs <code>numero</code>, <code>solde</code>,
+					<code>titulaire</code>
+				</li>
 				<li>Tous les attributs doivent être <code>private</code></li>
 				<li>Créer un constructeur pour initialiser le compte</li>
 				<li>Créer des getters pour tous les attributs</li>
-				<li>Créer une méthode <code>deposer(double montant)</code> qui :
+				<li>
+					Créer une méthode <code>deposer(double montant)</code> qui :
 					<ul class="ml-6">
 						<li>Vérifie que le montant est positif</li>
 						<li>Ajoute le montant au solde</li>
 					</ul>
 				</li>
-				<li>Créer une méthode <code>retirer(double montant)</code> qui :
+				<li>
+					Créer une méthode <code>retirer(double montant)</code> qui :
 					<ul class="ml-6">
 						<li>Vérifie que le montant est positif</li>
 						<li>Vérifie que le solde est suffisant</li>
@@ -46,7 +51,7 @@
 	<Slide>
 		<h3>💡 Indice</h3>
 		<Code>
-{`
+			{`
 public class CompteBancaire {
     private String numero;
     private double solde;
@@ -73,7 +78,7 @@ public class CompteBancaire {
 	<Slide>
 		<h3>✅ Solution</h3>
 		<Code class="language-java h-[70vh]">
-{`
+			{`
 public class CompteBancaire {
     private String numero;
     private double solde;
@@ -144,10 +149,11 @@ public class CompteBancaire {
 		<div class="text-left text-xl">
 			<p class="font-bold text-accent-200">Objectif :</p>
 			<p class="mb-4">Modéliser une hiérarchie de véhicules avec héritage.</p>
-			
+
 			<p class="font-bold text-accent-200 mt-6">Consignes :</p>
 			<ol class="space-y-2">
-				<li>Créer une classe abstraite <code>Vehicule</code> avec :
+				<li>
+					Créer une classe abstraite <code>Vehicule</code> avec :
 					<ul class="ml-6">
 						<li>Attributs : <code>marque</code>, <code>modele</code>, <code>vitesseMax</code></li>
 						<li>Constructeur</li>
@@ -155,13 +161,15 @@ public class CompteBancaire {
 						<li>Méthode abstraite : <code>klaxonner()</code></li>
 					</ul>
 				</li>
-				<li>Créer une classe <code>Voiture</code> qui hérite de <code>Vehicule</code> avec :
+				<li>
+					Créer une classe <code>Voiture</code> qui hérite de <code>Vehicule</code> avec :
 					<ul class="ml-6">
 						<li>Attribut supplémentaire : <code>nbPortes</code></li>
 						<li>Implémenter <code>klaxonner()</code> → affiche "Tuuut tuuut !"</li>
 					</ul>
 				</li>
-				<li>Créer une classe <code>Moto</code> qui hérite de <code>Vehicule</code> avec :
+				<li>
+					Créer une classe <code>Moto</code> qui hérite de <code>Vehicule</code> avec :
 					<ul class="ml-6">
 						<li>Attribut supplémentaire : <code>avecSidecar</code></li>
 						<li>Implémenter <code>klaxonner()</code> → affiche "Beep beep !"</li>
@@ -174,7 +182,7 @@ public class CompteBancaire {
 	<Slide>
 		<h3>🎨 Diagramme UML cible</h3>
 		<PlantUml>
-{`
+			{`
 @startuml
 abstract class Vehicule {
   - marque: String
@@ -204,7 +212,7 @@ class Moto extends Vehicule {
 	<Slide>
 		<h3>💡 Indice</h3>
 		<Code>
-{`
+			{`
 public abstract class Vehicule {
     private String marque;
     private String modele;
@@ -227,7 +235,7 @@ public abstract class Vehicule {
 	<Slide>
 		<h3>✅ Solution : Vehicule</h3>
 		<Code class="language-java">
-{`
+			{`
 public abstract class Vehicule {
     private String marque;
     private String modele;
@@ -258,7 +266,7 @@ public abstract class Vehicule {
 		<h3>✅ Solution : Voiture et Moto</h3>
 		<div class="flex flex-row gap-4">
 			<Code class="language-java">
-{`
+				{`
 public class Voiture extends Vehicule {
     private int nbPortes;
     
@@ -282,7 +290,7 @@ public class Voiture extends Vehicule {
 `}
 			</Code>
 			<Code class="language-java">
-{`
+				{`
 public class Moto extends Vehicule {
     private boolean avecSidecar;
     
@@ -311,7 +319,7 @@ public class Moto extends Vehicule {
 	<Slide>
 		<h3>🧪 Test de votre code</h3>
 		<Code>
-{`
+			{`
 public class Main {
     public static void main(String[] args) {
         Voiture v = new Voiture("Peugeot", "208", 180, 5);
@@ -335,8 +343,12 @@ public class Main {
 		<h3>🎯 Points clés</h3>
 		<ul class="text-xl">
 			<li class="fragment">✅ <code>abstract class</code> → empêche l'instanciation directe</li>
-			<li class="fragment">✅ <code>abstract void klaxonner()</code> → contrat pour les sous-classes</li>
-			<li class="fragment">✅ <code>super(...)</code> → appel du constructeur parent obligatoire</li>
+			<li class="fragment">
+				✅ <code>abstract void klaxonner()</code> → contrat pour les sous-classes
+			</li>
+			<li class="fragment">
+				✅ <code>super(...)</code> → appel du constructeur parent obligatoire
+			</li>
 			<li class="fragment">✅ <code>@Override</code> → sécurité lors de la redéfinition</li>
 			<li class="fragment">✅ Code commun dans le parent → évite duplication</li>
 		</ul>
@@ -357,22 +369,27 @@ public class Main {
 		<div class="text-left text-xl">
 			<p class="font-bold text-accent-200">Objectif :</p>
 			<p class="mb-4">Combiner héritage, composition et interfaces dans un système réaliste.</p>
-			
+
 			<p class="font-bold text-accent-200 mt-6">Consignes :</p>
 			<ol class="space-y-2">
-				<li>Créer une interface <code>ILouable</code> avec :
+				<li>
+					Créer une interface <code>ILouable</code> avec :
 					<ul class="ml-6">
 						<li><code>double calculerPrixLocation(int nbJours)</code></li>
 					</ul>
 				</li>
-				<li>Réutiliser vos classes <code>Vehicule</code>, <code>Voiture</code>, <code>Moto</code></li>
-				<li>Faire implémenter <code>ILouable</code> par <code>Voiture</code> et <code>Moto</code> :
+				<li>
+					Réutiliser vos classes <code>Vehicule</code>, <code>Voiture</code>, <code>Moto</code>
+				</li>
+				<li>
+					Faire implémenter <code>ILouable</code> par <code>Voiture</code> et <code>Moto</code> :
 					<ul class="ml-6">
 						<li>Voiture : 50€/jour</li>
 						<li>Moto : 30€/jour</li>
 					</ul>
 				</li>
-				<li>Créer une classe <code>AgenceLocation</code> avec :
+				<li>
+					Créer une classe <code>AgenceLocation</code> avec :
 					<ul class="ml-6">
 						<li>Liste de véhicules louables</li>
 						<li>Méthode <code>ajouterVehicule(ILouable v)</code></li>
@@ -386,7 +403,7 @@ public class Main {
 	<Slide>
 		<h3>🎨 Diagramme UML cible</h3>
 		<PlantUml>
-{`
+			{`
 @startuml
 interface ILouable {
   + calculerPrixLocation(nbJours): double
@@ -422,7 +439,7 @@ AgenceLocation o-- "0..*" ILouable
 	<Slide>
 		<h3>✅ Solution : Interface et implémentations</h3>
 		<Code class="language-java h-[65vh]">
-{`
+			{`
 public interface ILouable {
     double calculerPrixLocation(int nbJours);
 }
@@ -457,7 +474,7 @@ public class Moto extends Vehicule implements ILouable {
 	<Slide>
 		<h3>✅ Solution : AgenceLocation</h3>
 		<Code class="language-java">
-{`
+			{`
 import java.util.ArrayList;
 import java.util.List;
 
@@ -491,7 +508,7 @@ public class AgenceLocation {
 	<Slide>
 		<h3>🧪 Test complet</h3>
 		<Code>
-{`
+			{`
 public class Main {
     public static void main(String[] args) {
         AgenceLocation agence = new AgenceLocation();
@@ -540,12 +557,14 @@ public class Main {
 		<div class="text-left text-xl">
 			<p class="font-bold text-accent-200">Améliorez votre système de location :</p>
 			<ol class="space-y-3 mt-4">
-				<li>Ajouter une interface <code>IReductible</code> avec :
+				<li>
+					Ajouter une interface <code>IReductible</code> avec :
 					<ul class="ml-6">
 						<li><code>double appliquerReduction(double prix)</code></li>
 					</ul>
 				</li>
-				<li>Créer des classes de réduction :
+				<li>
+					Créer des classes de réduction :
 					<ul class="ml-6">
 						<li><code>ReductionPourcentage</code> (ex: -20%)</li>
 						<li><code>ReductionMontant</code> (ex: -50€)</li>
@@ -563,7 +582,7 @@ public class Main {
 	<Slide>
 		<h3>✅ Solution Challenge : Interfaces</h3>
 		<Code class="language-java">
-{`
+			{`
 public interface IReductible {
     double appliquerReduction(double prix);
 }
@@ -600,7 +619,7 @@ public class ReductionMontant implements IReductible {
 	<Slide>
 		<h3>✅ Solution Challenge : AgenceLocation améliorée</h3>
 		<Code class="language-java">
-{`
+			{`
 public class AgenceLocation {
     private List<ILouable> vehicules;
     private IReductible reduction;
@@ -633,7 +652,7 @@ public class AgenceLocation {
 	<Slide>
 		<h3>🧪 Test du challenge</h3>
 		<Code>
-{`
+			{`
 public class Main {
     public static void main(String[] args) {
         AgenceLocation agence = new AgenceLocation();

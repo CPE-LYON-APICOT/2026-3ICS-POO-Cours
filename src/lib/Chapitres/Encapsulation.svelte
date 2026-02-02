@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Code from '$lib/deck/code.svelte'
 	import Slide from '$lib/deck/slide.svelte'
-	import Composition from './Composition.svelte'
 	import PlantUml from '$lib/deck/plantuml.svelte'
 </script>
 
@@ -9,27 +8,33 @@
 	<h3>Encapsulation</h3>
 	<Slide>
 		<p>
-			L'encapsulation est un concept fondamental de la programmation orientée objet. Elle consiste à cacher les détails internes d'une classe et à ne fournir qu'une interface publique pour interagir avec cette classe.
+			L'encapsulation est un concept fondamental de la programmation orientée objet. Elle consiste à
+			cacher les détails internes d'une classe et à ne fournir qu'une interface publique pour
+			interagir avec cette classe.
 		</p>
 		<aside class="notes">
-			L'encapsulation, c'est comme une voiture : vous appuyez sur l'accélérateur, vous n'avez pas besoin de savoir comment fonctionne le moteur.
-			C'est un principe de "boîte noire" : on expose ce qu'il faut, on cache le reste.
-			Historiquement, ce concept vient de la modularité en génie logiciel des années 70.
+			L'encapsulation, c'est comme une voiture : vous appuyez sur l'accélérateur, vous n'avez pas
+			besoin de savoir comment fonctionne le moteur. C'est un principe de "boîte noire" : on expose
+			ce qu'il faut, on cache le reste. Historiquement, ce concept vient de la modularité en génie
+			logiciel des années 70.
 		</aside>
 	</Slide>
 	<Slide>
 		<p>
-			L'encapsulation permet de protéger les données et de contrôler leur accès. Elle rend également le code plus modulaire et plus facile à maintenir.
+			L'encapsulation permet de protéger les données et de contrôler leur accès. Elle rend également
+			le code plus modulaire et plus facile à maintenir.
 		</p>
 		<aside class="notes">
-			En entreprise, c'est crucial. Imaginez une équipe de 20 développeurs : si tout le monde peut modifier n'importe quel attribut, c'est le chaos.
-			L'encapsulation impose des "contrats" entre les développeurs. On définit ce qui peut être utilisé et comment.
-			Anecdote : beaucoup de bugs critiques en production viennent de données modifiées "par accident" car non protégées.
+			En entreprise, c'est crucial. Imaginez une équipe de 20 développeurs : si tout le monde peut
+			modifier n'importe quel attribut, c'est le chaos. L'encapsulation impose des "contrats" entre
+			les développeurs. On définit ce qui peut être utilisé et comment. Anecdote : beaucoup de bugs
+			critiques en production viennent de données modifiées "par accident" car non protégées.
 		</aside>
 	</Slide>
 	<Slide>
 		<p>
-			Pour encapsuler des données, on utilise des modificateurs d'accès qui déterminent la visibilité des attributs et des méthodes d'une classe.
+			Pour encapsuler des données, on utilise des modificateurs d'accès qui déterminent la
+			visibilité des attributs et des méthodes d'une classe.
 		</p>
 		<ul>
 			<li><code>public</code> : accessible depuis n'importe où</li>
@@ -37,9 +42,10 @@
 			<li><code>protected</code> : accessible depuis la classe et ses sous-classes</li>
 		</ul>
 		<aside class="notes">
-			Il existe aussi le niveau "package-private" (sans modificateur) : accessible uniquement dans le même package.
-			En pratique, 90% du temps vous utiliserez private pour les attributs et public pour les méthodes d'interface.
-			Le protected est surtout utile dans les bibliothèques/frameworks où on veut permettre l'extension par héritage.
+			Il existe aussi le niveau "package-private" (sans modificateur) : accessible uniquement dans
+			le même package. En pratique, 90% du temps vous utiliserez private pour les attributs et
+			public pour les méthodes d'interface. Le protected est surtout utile dans les
+			bibliothèques/frameworks où on veut permettre l'extension par héritage.
 		</aside>
 	</Slide>
 	<Slide>
@@ -69,24 +75,29 @@
     `}
 		</Code>
 		<aside class="notes">
-			C'est le pattern classique JavaBean. Vous le verrez partout dans les frameworks Java (Spring, Hibernate...).
-			Les IDE génèrent ces getters/setters automatiquement : clic droit → Generate → Getters and Setters.
-			Important : même si c'est "juste" un getter/setter, passez par ces méthodes. Ça vous permettra d'ajouter de la logique plus tard.
+			C'est le pattern classique JavaBean. Vous le verrez partout dans les frameworks Java (Spring,
+			Hibernate...). Les IDE génèrent ces getters/setters automatiquement : clic droit → Generate →
+			Getters and Setters. Important : même si c'est "juste" un getter/setter, passez par ces
+			méthodes. Ça vous permettra d'ajouter de la logique plus tard.
 		</aside>
 	</Slide>
 	<Slide>
 		<p>
-			Dans cet exemple, les attributs <code>nom</code> et <code>age</code> sont privés et ne peuvent pas être accédés directement depuis l'extérieur.
-			On utilise des méthodes publiques, <code>getNom</code>, <code>setNom</code>, <code>getAge</code> et <code>setAge</code>, pour y accéder et les modifier.
+			Dans cet exemple, les attributs <code>nom</code> et <code>age</code> sont privés et ne peuvent
+			pas être accédés directement depuis l'extérieur. On utilise des méthodes publiques,
+			<code>getNom</code>, <code>setNom</code>, <code>getAge</code> et <code>setAge</code>, pour y
+			accéder et les modifier.
 		</p>
 		<p class="text-important">
-			Fondamentalement, <code>getNom</code> et <code>setNom</code> sont de simples méthodes, mais compte tenu de leur rôle, on les appelle des <i>accesseurs</i> et des <i>mutateurs</i>.
+			Fondamentalement, <code>getNom</code> et <code>setNom</code> sont de simples méthodes, mais
+			compte tenu de leur rôle, on les appelle des <i>accesseurs</i> et des <i>mutateurs</i>.
 		</p>
 	</Slide>
 	<Slide>
 		<p>
-			L'encapsulation permet de contrôler l'accès aux données et de s'assurer qu'elles sont manipulées de manière cohérente.
-			Par exemple, on peut ajouter des vérifications dans les méthodes <code>set</code> pour s'assurer que les valeurs sont valides.
+			L'encapsulation permet de contrôler l'accès aux données et de s'assurer qu'elles sont
+			manipulées de manière cohérente. Par exemple, on peut ajouter des vérifications dans les
+			méthodes <code>set</code> pour s'assurer que les valeurs sont valides.
 		</p>
 		<Code>
 			{`
@@ -98,23 +109,26 @@
     `}
 		</Code>
 		<aside class="notes">
-			En pratique, vous pouvez aller plus loin : lever une exception, logger l'erreur, notifier l'utilisateur...
-			Ce pattern s'appelle "defensive programming" - on se protège des mauvaises utilisations.
-			Dans les frameworks modernes, on utilise souvent des annotations de validation (@NotNull, @Min, @Max) au lieu de coder à la main.
+			En pratique, vous pouvez aller plus loin : lever une exception, logger l'erreur, notifier
+			l'utilisateur... Ce pattern s'appelle "defensive programming" - on se protège des mauvaises
+			utilisations. Dans les frameworks modernes, on utilise souvent des annotations de validation
+			(@NotNull, @Min, @Max) au lieu de coder à la main.
 		</aside>
 	</Slide>
 	<Slide>
 		<p>
-			L'utilisation du modificateur <code>protected</code> permet aux classes dérivées d'accéder aux attributs et méthodes de la classe parente.
-			Cela est utile lorsque l'on souhaite permettre à des sous-classes d'utiliser ou de modifier des données tout en les protégeant de l'accès direct extérieur.
+			L'utilisation du modificateur <code>protected</code> permet aux classes dérivées d'accéder aux attributs
+			et méthodes de la classe parente. Cela est utile lorsque l'on souhaite permettre à des sous-classes
+			d'utiliser ou de modifier des données tout en les protégeant de l'accès direct extérieur.
 		</p>
 		<aside class="notes">
-			Attention : protected ne veut pas dire "accessible seulement aux sous-classes". 
-			En Java, protected est aussi accessible depuis le même package ! C'est une subtilité souvent oubliée.
-			Bonne pratique : préférez private + getter protected si vous voulez vraiment contrôler l'accès.
+			Attention : protected ne veut pas dire "accessible seulement aux sous-classes". En Java,
+			protected est aussi accessible depuis le même package ! C'est une subtilité souvent oubliée.
+			Bonne pratique : préférez private + getter protected si vous voulez vraiment contrôler
+			l'accès.
 		</aside>
 	</Slide>
-		<Slide>
+	<Slide>
 		<Code>
 			{`
     class Animal {
@@ -137,13 +151,15 @@
     `}
 		</Code>
 		<p>
-			Dans cet exemple, l'attribut <code>nom</code> est protégé, ce qui permet à la classe <code>Chien</code> d'y accéder dans sa méthode <code>aboyer</code>.
+			Dans cet exemple, l'attribut <code>nom</code> est protégé, ce qui permet à la classe
+			<code>Chien</code>
+			d'y accéder dans sa méthode <code>aboyer</code>.
 		</p>
 	</Slide>
 	<Slide>
 		<p>
-			Les attributs privés sont utilisés pour restreindre l'accès direct aux données sensibles ou critiques,
-			garantissant ainsi que seules des méthodes contrôlées peuvent les modifier.
+			Les attributs privés sont utilisés pour restreindre l'accès direct aux données sensibles ou
+			critiques, garantissant ainsi que seules des méthodes contrôlées peuvent les modifier.
 		</p>
 		<Code>
 			{`
@@ -166,27 +182,33 @@
     `}
 		</Code>
 		<p class="smaller">
-			Dans cet exemple, le solde du compte est privé et ne peut être modifié que par les méthodes <code>deposer</code> et <code>retirer</code>, lesquelles effectuent des vérifications.
+			Dans cet exemple, le solde du compte est privé et ne peut être modifié que par les méthodes <code
+				>deposer</code
+			>
+			et <code>retirer</code>, lesquelles effectuent des vérifications.
 		</p>
 		<aside class="notes">
-			C'est l'exemple classique ! Imaginez si le solde était public : compte.solde = -1000000. Catastrophe.
-			Dans la vraie vie, les banques ajoutent aussi : logging, audit trail, notifications, limites de retrait...
-			L'encapsulation permet d'ajouter tout ça sans changer l'interface publique.
+			C'est l'exemple classique ! Imaginez si le solde était public : compte.solde = -1000000.
+			Catastrophe. Dans la vraie vie, les banques ajoutent aussi : logging, audit trail,
+			notifications, limites de retrait... L'encapsulation permet d'ajouter tout ça sans changer
+			l'interface publique.
 		</aside>
 	</Slide>
 	<Slide data_background_color="#00353F">
 		<h3>Verbosité</h3>
 		<p>
-			Le Java est parfois critiqué pour sa verbosité. En effet, le code Java peut sembler plus long et plus complexe que d'autres langages.
+			Le Java est parfois critiqué pour sa verbosité. En effet, le code Java peut sembler plus long
+			et plus complexe que d'autres langages.
 		</p>
 		<p>
-			Vous devez écrire environ 7 lignes pour déclarer un simple attribut avec ses accesseurs et mutateurs.
+			Vous devez écrire environ 7 lignes pour déclarer un simple attribut avec ses accesseurs et
+			mutateurs.
 		</p>
 		<aside class="notes">
-			C'est le principal reproche fait à Java. Python ou Kotlin font ça en 1 ligne.
-			Mais Java 14+ a introduit les Records qui réduisent beaucoup ce boilerplate.
-			Et les IDE modernes génèrent tout ça en 2 clics. En pratique, ce n'est plus vraiment un problème.
-			Lombok est aussi très populaire : @Data génère tous les getters/setters automatiquement.
+			C'est le principal reproche fait à Java. Python ou Kotlin font ça en 1 ligne. Mais Java 14+ a
+			introduit les Records qui réduisent beaucoup ce boilerplate. Et les IDE modernes génèrent tout
+			ça en 2 clics. En pratique, ce n'est plus vraiment un problème. Lombok est aussi très
+			populaire : @Data génère tous les getters/setters automatiquement.
 		</aside>
 	</Slide>
 	<Slide data_background_color="#00353F">
@@ -222,31 +244,34 @@
                 `}
 			</Code>
 		</div>
-        <p>
-			En Java, un IDE peut générer automatiquement ces méthodes. Cela peut sembler pénible, mais il faut le faire.
+		<p>
+			En Java, un IDE peut générer automatiquement ces méthodes. Cela peut sembler pénible, mais il
+			faut le faire.
 		</p>
 	</Slide>
-    <Slide>
-        <h3>Maintenance</h3>
-        <p>
-			En encapsulant les données et en contrôlant leur accès, vous facilitez la maintenance de votre code.
-			Imaginez que vous avez laissé un attribut public et que vous le modifiez dans 50 endroits différents.
-			Si vous souhaitez désormais enregistrer chaque modification, vous devrez intervenir à ces 50 endroits.
+	<Slide>
+		<h3>Maintenance</h3>
+		<p>
+			En encapsulant les données et en contrôlant leur accès, vous facilitez la maintenance de votre
+			code. Imaginez que vous avez laissé un attribut public et que vous le modifiez dans 50
+			endroits différents. Si vous souhaitez désormais enregistrer chaque modification, vous devrez
+			intervenir à ces 50 endroits.
 		</p>
-    <Code>
-        {`
+		<Code>
+			{`
     public void setMobilePhoneNumber(String mobilePhoneNumber) {
         this.mobilePhoneNumber = mobilePhoneNumber;
         envoyerEmailPourPrevenirUtilisateurDeLaModification(email, mobilePhoneNumber);
     }
     `}
-    </Code>
+		</Code>
 		<aside class="notes">
-			C'est le principe Open/Closed : ouvert à l'extension, fermé à la modification.
-			Dans les gros projets, c'est vital. J'ai vu des équipes passer des semaines à refactorer du code parce qu'un attribut était public.
-			Avec un setter, on ajoute la logique à UN endroit. C'est le Single Point of Change.
+			C'est le principe Open/Closed : ouvert à l'extension, fermé à la modification. Dans les gros
+			projets, c'est vital. J'ai vu des équipes passer des semaines à refactorer du code parce qu'un
+			attribut était public. Avec un setter, on ajoute la logique à UN endroit. C'est le Single
+			Point of Change.
 		</aside>
-    </Slide>
+	</Slide>
 
 	<!-- TRANSITION VERS L'HÉRITAGE -->
 	<Slide data_background_color="#1a1a2e">
@@ -259,7 +284,7 @@
 		<p>Imaginez que vous devez modéliser plusieurs types de comptes bancaires :</p>
 		<div class="grid grid-cols-2 gap-4 mt-6">
 			<Code class="language-java">
-{`
+				{`
 class CompteCourant {
     private String numero;
     private double solde;
@@ -272,7 +297,7 @@ class CompteCourant {
 `}
 			</Code>
 			<Code class="language-java">
-{`
+				{`
 class CompteEpargne {
     private String numero;
     private double solde;
@@ -285,21 +310,22 @@ class CompteEpargne {
 `}
 			</Code>
 		</div>
-		<p class="fragment text-red-400 mt-4 font-bold">
-			😱 Beaucoup de code dupliqué !
-		</p>
+		<p class="fragment text-red-400 mt-4 font-bold">😱 Beaucoup de code dupliqué !</p>
 	</Slide>
 
 	<Slide>
 		<h3>Généraliser les concepts</h3>
-		<p>En observant les classes, on remarque des <span class="text-important">points communs</span> :</p>
+		<p>
+			En observant les classes, on remarque des <span class="text-important">points communs</span> :
+		</p>
 		<ul class="text-xl mt-6">
 			<li class="fragment">Tous les comptes ont un numéro, un solde, un titulaire</li>
 			<li class="fragment">Tous peuvent déposer et retirer de l'argent</li>
 			<li class="fragment">Seul le calcul des intérêts diffère</li>
 		</ul>
 		<p class="fragment mt-8 text-accent-200 font-bold">
-			💡 On peut extraire un concept <span class="text-important">plus général</span> : <code>CompteBancaire</code>
+			💡 On peut extraire un concept <span class="text-important">plus général</span> :
+			<code>CompteBancaire</code>
 		</p>
 		<p class="fragment text-important">
 			C'est la <b>généralisation</b> qui mène naturellement à l'<b>héritage</b> !
@@ -309,7 +335,7 @@ class CompteEpargne {
 	<Slide>
 		<h3>Visualiser la généralisation</h3>
 		<PlantUml>
-{`
+			{`
 @startuml
 class CompteBancaire {
   - numero: String
@@ -332,7 +358,7 @@ class CompteEpargne extends CompteBancaire {
 `}
 		</PlantUml>
 		<p class="fragment mt-4">
-			Les éléments <span class="text-important">communs</span> sont dans la classe générale,<br/>
+			Les éléments <span class="text-important">communs</span> sont dans la classe générale,<br />
 			les <span class="text-important">spécificités</span> dans les classes dérivées.
 		</p>
 	</Slide>
@@ -340,9 +366,15 @@ class CompteEpargne extends CompteBancaire {
 	<Slide>
 		<h3>Récapitulatif</h3>
 		<div class="text-xl">
-			<p class="fragment">✅ L'<span class="text-important">encapsulation</span> protège vos données</p>
-			<p class="fragment mt-4">✅ La <span class="text-important">généralisation</span> évite la duplication</p>
-			<p class="fragment mt-4">✅ L'<span class="text-important">héritage</span> structure votre code</p>
+			<p class="fragment">
+				✅ L'<span class="text-important">encapsulation</span> protège vos données
+			</p>
+			<p class="fragment mt-4">
+				✅ La <span class="text-important">généralisation</span> évite la duplication
+			</p>
+			<p class="fragment mt-4">
+				✅ L'<span class="text-important">héritage</span> structure votre code
+			</p>
 		</div>
 		<p class="fragment mt-8 text-accent-200 text-2xl font-bold">
 			🔮 Voyons maintenant comment implémenter cela en Java !

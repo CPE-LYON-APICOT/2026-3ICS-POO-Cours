@@ -14,12 +14,14 @@
 	<Slide>
 		<h2>Patrons de conception</h2>
 		<p class="fragment">
-			Cours très bien expliqué : <a href="https://refactoring.guru/fr" target="_blank">Refactoring Guru</a>
+			Cours très bien expliqué : <a href="https://refactoring.guru/fr" target="_blank"
+				>Refactoring Guru</a
+			>
 		</p>
 		<aside class="notes">
-			Le "Gang of Four" (GoF) a défini 23 patterns en 1994 dans leur livre célèbre.
-			Refactoring Guru est une ressource moderne excellente avec des exemples en Java.
-			On ne verra que les patterns les plus utiles au quotidien.
+			Le "Gang of Four" (GoF) a défini 23 patterns en 1994 dans leur livre célèbre. Refactoring Guru
+			est une ressource moderne excellente avec des exemples en Java. On ne verra que les patterns
+			les plus utiles au quotidien.
 		</aside>
 	</Slide>
 	<Slide>
@@ -30,20 +32,22 @@
 		</p>
 		<p>Les bons développeurs connaissent ces patrons et savent quand les utiliser.</p>
 		<p class="text-important">
-			En connaissant bien ces patrons, vous pouvez proposer des fonctionnalités supplémentaires sans surcoût.
+			En connaissant bien ces patrons, vous pouvez proposer des fonctionnalités supplémentaires sans
+			surcoût.
 		</p>
 		<p>Un DP bien identifié permet de communiquer plus facilement avec les autres développeurs !</p>
 		<aside class="notes">
-			C'est un vocabulaire commun. Dire "c'est un Singleton" est plus clair que d'expliquer tout le mécanisme.
-			En revue de code ou en entretien, connaître les DP fait la différence.
-			Mais attention : ne pas forcer un pattern où il n'est pas nécessaire (over-engineering).
+			C'est un vocabulaire commun. Dire "c'est un Singleton" est plus clair que d'expliquer tout le
+			mécanisme. En revue de code ou en entretien, connaître les DP fait la différence. Mais
+			attention : ne pas forcer un pattern où il n'est pas nécessaire (over-engineering).
 		</aside>
 	</Slide>
 	<Slide>
 		<h3>Les patrons de conception sont-ils indispensables ?</h3>
 		<p>Non, mais ils sont très utiles pour résoudre des problèmes courants de manière efficace.</p>
 		<p>
-			Il existe de nombreux patrons de conception, mais il est inutile de tous les connaître par cœur !
+			Il existe de nombreux patrons de conception, mais il est inutile de tous les connaître par
+			cœur !
 		</p>
 		<p>
 			C'est un peu comme si nous avions observé des bouts de code qui marchent bien, et que nous les
@@ -72,21 +76,21 @@
 			toutes les instances d'une classe.
 		</p>
 		<aside class="notes">
-			Le Singleton est le pattern le plus connu et le plus controversé.
-			Problèmes : difficile à tester, peut cacher des dépendances, problèmes en multi-threading.
-			En Spring, les beans sont des singletons par défaut, mais gérés proprement par le framework.
+			Le Singleton est le pattern le plus connu et le plus controversé. Problèmes : difficile à
+			tester, peut cacher des dépendances, problèmes en multi-threading. En Spring, les beans sont
+			des singletons par défaut, mais gérés proprement par le framework.
 		</aside>
 	</Slide>
 	<Slide>
 		<h3>Qui prépare les commandes ?</h3>
 		<h4>Singleton</h4>
 		<p>
-			Un singleton est une classe avec une méthode statique <code>getInstance</code> qui retourne la
-			même instance de la classe à chaque appel.
+			Un singleton est une classe avec une méthode statique <code>getInstance</code> qui retourne la même
+			instance de la classe à chaque appel.
 		</p>
 		<p>
-			Pour cela, le constructeur de la classe est privé, et la seule manière de créer une instance de
-			la classe est d'appeler la méthode <code>getInstance</code> qui fait un <code>new</code>.
+			Pour cela, le constructeur de la classe est privé, et la seule manière de créer une instance
+			de la classe est d'appeler la méthode <code>getInstance</code> qui fait un <code>new</code>.
 		</p>
 		<div class="flex justify-center">
 			<img
@@ -106,9 +110,9 @@
 			Le patron de conception Factory permet de déléguer la création d'objets à une classe Factory.
 		</p>
 		<aside class="notes">
-			Factory cache la complexité de la création. L'appelant ne sait pas quelle classe concrète est utilisée.
-			Utile quand la création est complexe ou quand on veut changer l'implémentation facilement.
-			Variantes : Factory Method, Abstract Factory, Builder.
+			Factory cache la complexité de la création. L'appelant ne sait pas quelle classe concrète est
+			utilisée. Utile quand la création est complexe ou quand on veut changer l'implémentation
+			facilement. Variantes : Factory Method, Abstract Factory, Builder.
 		</aside>
 	</Slide>
 	<Slide className="smaller">
@@ -182,17 +186,17 @@
 		</p>
 		<aside class="notes">
 			C'est le pattern des événements : addEventListener en JavaScript, les listeners en Java Swing.
-			Moderne : RxJava, les flux réactifs. C'est le cœur de la programmation réactive.
-			Exemple : une interface qui se met à jour quand les données changent.
+			Moderne : RxJava, les flux réactifs. C'est le cœur de la programmation réactive. Exemple : une
+			interface qui se met à jour quand les données changent.
 		</aside>
 	</Slide>
 	<Slide>
 		<h3>Comment le chef prévient qu'il a fini ?</h3>
 		<h4>Observer</h4>
 		<p>
-			Le chef ne va pas maintenir une liste de serveurs, puis lorsqu'il a fini de préparer un
-			plat, appeler chacun d'entre eux, savoir s'ils sont disponibles. Imaginez qu'il ait en plus
-			des serveurs des livreurs Deliveroo, c'est ingérable.
+			Le chef ne va pas maintenir une liste de serveurs, puis lorsqu'il a fini de préparer un plat,
+			appeler chacun d'entre eux, savoir s'ils sont disponibles. Imaginez qu'il ait en plus des
+			serveurs des livreurs Deliveroo, c'est ingérable.
 		</p>
 		<p>
 			On va plutôt adopter une approche "Je préviens que j'ai fini, ceux que ça intéresse auront
@@ -253,8 +257,8 @@
 		</p>
 		<aside class="notes">
 			Le Decorator évite l'explosion des sous-classes. Au lieu de GateauBougiesChantilly, on décore.
-			Exemple Java célèbre : les streams d'IO. BufferedReader décore FileReader.
-			new BufferedReader(new FileReader("file.txt")) - c'est du Decorator !
+			Exemple Java célèbre : les streams d'IO. BufferedReader décore FileReader. new
+			BufferedReader(new FileReader("file.txt")) - c'est du Decorator !
 		</aside>
 	</Slide>
 	<Slide>
@@ -323,9 +327,9 @@
 			encapsuler et de les rendre interchangeables.
 		</p>
 		<aside class="notes">
-			Strategy remplace les longues cascades de if/else ou switch par du polymorphisme.
-			On peut changer l'algorithme à runtime sans modifier le code client.
-			Exemple : différentes stratégies de tri, de compression, de calcul de taxe...
+			Strategy remplace les longues cascades de if/else ou switch par du polymorphisme. On peut
+			changer l'algorithme à runtime sans modifier le code client. Exemple : différentes stratégies
+			de tri, de compression, de calcul de taxe...
 		</aside>
 	</Slide>
 	<Slide>
@@ -352,7 +356,9 @@
 		<h3>Chacun paie sa part ou on divise ?</h3>
 		<h4>Strategy</h4>
 		<p>
-			Chaque stratégie de paiement est une classe qui implémente une interface <code>PaymentStrategy</code>
+			Chaque stratégie de paiement est une classe qui implémente une interface <code
+				>PaymentStrategy</code
+			>
 			qui contient une méthode <code>pay()</code>.
 		</p>
 		<p>
@@ -410,25 +416,40 @@
 			<li>Universels</li>
 		</ul>
 		<aside class="notes">
-			Ils existent dans tous les langages OO : Java, C#, Python, TypeScript...
-			Ne les appliquez pas systématiquement. "YAGNI" - You Ain't Gonna Need It.
-			Mais quand le besoin se présente, c'est super puissant de les reconnaître.
+			Ils existent dans tous les langages OO : Java, C#, Python, TypeScript... Ne les appliquez pas
+			systématiquement. "YAGNI" - You Ain't Gonna Need It. Mais quand le besoin se présente, c'est
+			super puissant de les reconnaître.
 		</aside>
 	</Slide>
 	<Slide data_background_color="#00353F">
 		<h3>Attendus</h3>
-		<p>À l'aide du cours et du site présenté en début de chapitre, maîtrisez-en le plus possible.</p>
-		<p>Sans les DP, vous savez coder en POO, mais c'est le niveau débutant. Les DP font de vous un "bien meilleur" développeur.</p>
+		<p>
+			À l'aide du cours et du site présenté en début de chapitre, maîtrisez-en le plus possible.
+		</p>
+		<p>
+			Sans les DP, vous savez coder en POO, mais c'est le niveau débutant. Les DP font de vous un
+			"bien meilleur" développeur.
+		</p>
 		<aside class="notes">
-			Pour l'examen : Singleton, Factory, Observer, Strategy, Decorator sont les plus demandés.
-			En entreprise, vous les croiserez partout. Spring en utilise plein.
-			Entraînez-vous à les reconnaître dans du code existant.
+			Pour l'examen : Singleton, Factory, Observer, Strategy, Decorator sont les plus demandés. En
+			entreprise, vous les croiserez partout. Spring en utilise plein. Entraînez-vous à les
+			reconnaître dans du code existant.
 		</aside>
 	</Slide>
 	<Slide data_background_color="#00353F">
 		<h3>Attendus</h3>
-		<p>Si vous donnez le TP entier à faire à une IA, il est probable qu'elle vous donne une solution avec peu de DP mais qui répond immédiatement à la demande.</p>
-		<p>Quand on gère le cas de la carte Mojjo ou de l'anniversaire avec la bougie, si on n'a pas eu le réflexe dès le début d'utiliser les DP, on ne fait que casser son code et recommencer.</p>
-		<p class="text-important">Pour le projet, faites le plus de DP possible ! S'il n'y en a pas, je vous demanderai de rajouter une nouvelle fonctionnalité qui cassera tout votre code jusqu'à ce que vous soyez assez prévoyant.</p>
+		<p>
+			Si vous donnez le TP entier à faire à une IA, il est probable qu'elle vous donne une solution
+			avec peu de DP mais qui répond immédiatement à la demande.
+		</p>
+		<p>
+			Quand on gère le cas de la carte Mojjo ou de l'anniversaire avec la bougie, si on n'a pas eu
+			le réflexe dès le début d'utiliser les DP, on ne fait que casser son code et recommencer.
+		</p>
+		<p class="text-important">
+			Pour le projet, faites le plus de DP possible ! S'il n'y en a pas, je vous demanderai de
+			rajouter une nouvelle fonctionnalité qui cassera tout votre code jusqu'à ce que vous soyez
+			assez prévoyant.
+		</p>
 	</Slide>
 </Slide>

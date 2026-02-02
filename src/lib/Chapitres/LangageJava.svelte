@@ -31,8 +31,8 @@
 			(Java Virtual Machine ou <strong>JVM</strong>). En effet, Java est un langage compilé mais le
 			compilateur ne produit pas de code natif pour la machine, il produit du
 			<a class="reference external" href="https://fr.wikipedia.org/wiki/Bytecode_Java">bytecode</a> :
-			un jeu d’instructions compréhensibles par la JVM qu’elle va traduire en code exécutable par la
-			machine au moment de l’exécution.
+			un jeu d’instructions compréhensibles par la JVM qu’elle va traduire en code exécutable par la machine
+			au moment de l’exécution.
 		</p>
 		<p>
 			Pour qu’un programme Java fonctionne, il faut non seulement que les développeurs aient compilé
@@ -69,7 +69,9 @@
 	<h4>Caractéristiques</h4>
 	<div class="flex flex-col justify-center">
 		<ul class="r-strech">
-			<li>S'inspire mais se débarrasse des complexités du C (pointeurs, allocation mémoire, etc.)</li>
+			<li>
+				S'inspire mais se débarrasse des complexités du C (pointeurs, allocation mémoire, etc.)
+			</li>
 			<li>Orienté objet !</li>
 			<li>Gestion automatique de la mémoire</li>
 			<li>
@@ -147,8 +149,8 @@ les objets : les variables contiennent :
 	<ul>
 		<li>Ce n'est pas un type primitif, c'est une classe (d'où la présence de la majuscule)</li>
 		<li>
-			Comme c'est une classe, on utilise le mot-clé new pour créer un objet, on parle d'une
-			instance de classe de type String
+			Comme c'est une classe, on utilise le mot-clé new pour créer un objet, on parle d'une instance
+			de classe de type String
 			<Code
 				>{`
 				String str = new String() ;

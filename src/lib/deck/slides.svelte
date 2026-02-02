@@ -90,12 +90,10 @@
 						window.print()
 					}, 2000)
 				}
-				
 			})
 		window.deck = deck
 	})
 
-	
 	function registerPlantUml(deck: Reveal.Api) {
 		deck.registerPlugin({
 			id: 'plantuml',

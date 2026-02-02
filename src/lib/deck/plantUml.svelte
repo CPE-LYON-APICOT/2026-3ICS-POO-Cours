@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let className: string | null = null
+	export let className: string | null = null
 </script>
 
 <div class="{className} uml object-fit justify-self-center">

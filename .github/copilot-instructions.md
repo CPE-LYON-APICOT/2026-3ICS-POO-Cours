@@ -39,15 +39,17 @@ Ce projet est un **cours de Programmation Orientée Objet (POO) en Java** destin
 ### Utilisation de PlantUML
 
 Utiliser `<PlantUml>` systématiquement pour :
+
 - **Diagrammes de classes** : relations entre classes, héritage, interfaces
 - **Diagrammes de séquence** : interactions entre objets
 - **Diagrammes d'objets** : instances et leurs états
 - **Illustration de patterns** : Design Patterns, composition, etc.
 
 Exemple d'utilisation :
+
 ```svelte
 <PlantUml>
-{`
+	{`
 @startuml
 class Vehicule {
   - marque: String
@@ -62,6 +64,7 @@ class Voiture extends Vehicule {
 ```
 
 **Préférer PlantUML au code Java** quand il s'agit de montrer :
+
 - La structure d'un système de classes
 - Les relations entre entités (héritage, composition, agrégation)
 - Le déroulement d'interactions (diagrammes de séquence)
@@ -107,6 +110,7 @@ Pour chaque chapitre ou notion importante, créer des fichiers CSV de questions 
 Nom du fichier : `{chapitre}.csv` (ex: `encapsulation.csv`, `heritage.csv`)
 
 Format CSV avec les colonnes :
+
 ```csv
 question;reponse_correcte;reponse_fausse_1;reponse_fausse_2;reponse_fausse_3;explication
 ```

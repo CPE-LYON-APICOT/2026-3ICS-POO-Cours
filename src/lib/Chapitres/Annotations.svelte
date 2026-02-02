@@ -50,9 +50,10 @@
 			</strong>
 		</p>
 		<aside class="notes">
-			Les annotations sont lues soit à la compilation (ex: @Override), soit à l'exécution (ex: @Autowired).
-			Par réflexion (reflection), on peut lire les annotations et agir en conséquence.
-			C'est le cœur du "magic" de Spring : il scanne les classes et crée les beans selon les annotations.
+			Les annotations sont lues soit à la compilation (ex: @Override), soit à l'exécution (ex:
+			@Autowired). Par réflexion (reflection), on peut lire les annotations et agir en conséquence.
+			C'est le cœur du "magic" de Spring : il scanne les classes et crée les beans selon les
+			annotations.
 		</aside>
 	</Slide>
 	<Slide>
@@ -64,13 +65,13 @@
 			qu'une méthode redéfinit une méthode de la classe mère. Vous l'avez déjà utilisée sans le savoir.
 		</p>
 		<p>
-			En l'occurrence, cette dernière ne sert pas à grand-chose, si ce n'est vous mettre un avertissement au
-			cas où vous vous trompiez dans le nom de la méthode.
+			En l'occurrence, cette dernière ne sert pas à grand-chose, si ce n'est vous mettre un
+			avertissement au cas où vous vous trompiez dans le nom de la méthode.
 		</p>
 		<aside class="notes">
-			Autres annotations standard : @Deprecated (méthode obsolète), @SuppressWarnings (ignorer les avertissements).
-			@Override est super utile : si vous faites une faute de frappe, le compilateur vous prévient.
-			Exemple : écrire equals(Object o) au lieu de equals(object o).
+			Autres annotations standard : @Deprecated (méthode obsolète), @SuppressWarnings (ignorer les
+			avertissements). @Override est super utile : si vous faites une faute de frappe, le
+			compilateur vous prévient. Exemple : écrire equals(Object o) au lieu de equals(object o).
 		</aside>
 	</Slide>
 	<Slide>
@@ -81,10 +82,9 @@
 			des attributs, etc.
 		</p>
 		<aside class="notes">
-			Spring : @Controller, @Service, @Repository, @Autowired, @Bean...
-			JPA/Hibernate : @Entity, @Table, @Column, @OneToMany...
-			JUnit : @Test, @BeforeEach, @AfterEach...
-			C'est ce qui rend le code Java moderne plus déclaratif et moins verbeux.
+			Spring : @Controller, @Service, @Repository, @Autowired, @Bean... JPA/Hibernate : @Entity,
+			@Table, @Column, @OneToMany... JUnit : @Test, @BeforeEach, @AfterEach... C'est ce qui rend le
+			code Java moderne plus déclaratif et moins verbeux.
 		</aside>
 	</Slide>
 	<Slide>
@@ -92,14 +92,14 @@
 		<h4>Utilisation avec Spring</h4>
 		<h5>@Service et @Autowired</h5>
 		<p>
-			Imaginez que vous ayez une classe qui a besoin d'une autre classe pour fonctionner. 
-			Vous devrez la passer dans le constructeur à la création de votre objet.<br/>
+			Imaginez que vous ayez une classe qui a besoin d'une autre classe pour fonctionner. Vous
+			devrez la passer dans le constructeur à la création de votre objet.<br />
 			Par contre, si cette classe a aussi besoin de 5 autres classes, cela devient vite compliqué.
 		</p>
 		<aside class="notes">
 			C'est le problème de l'injection de dépendances manuelle : on doit tout câbler à la main.
-			Spring résout ça : il crée les objets et les injecte automatiquement.
-			C'est l'Inversion of Control (IoC) : on ne crée plus les objets, on les demande.
+			Spring résout ça : il crée les objets et les injecte automatiquement. C'est l'Inversion of
+			Control (IoC) : on ne crée plus les objets, on les demande.
 		</aside>
 	</Slide>
 	<Slide>
@@ -254,19 +254,23 @@
 		<h3>Les annotations</h3>
 		<h4>Utilisation avec Spring</h4>
 		<p>
-			Le principal avantage de Spring est que juste à l'aide d'annotations, vous pouvez définir des services qui seront utilisés par d'autres services.
+			Le principal avantage de Spring est que juste à l'aide d'annotations, vous pouvez définir des
+			services qui seront utilisés par d'autres services.
 		</p>
 		<p>
-			Si vous voulez déplacer du code qui devient complexe <strong>ou</strong> que vous voulez utiliser ailleurs, c'est alors très simple, il suffit de faire une nouvelle classe, l'anotter avec @Service
+			Si vous voulez déplacer du code qui devient complexe <strong>ou</strong> que vous voulez utiliser
+			ailleurs, c'est alors très simple, il suffit de faire une nouvelle classe, l'anotter avec @Service
 			et injecter ce service où vous voulez.
 		</p>
 		<p class="text-important">
-			Cette manière de coder est plus ou moins un Design Pattern appelé <strong>Dependency Injection</strong>
+			Cette manière de coder est plus ou moins un Design Pattern appelé <strong
+				>Dependency Injection</strong
+			>
 		</p>
 		<aside class="notes">
-			DI est fondamental en entreprise. Tous les gros projets Java utilisent Spring ou un framework similaire.
-			Avantages : code testable (on peut mocker les dépendances), modulaire, facile à maintenir.
-			En entretien, expliquer DI/IoC est souvent demandé. C'est un must-know.
+			DI est fondamental en entreprise. Tous les gros projets Java utilisent Spring ou un framework
+			similaire. Avantages : code testable (on peut mocker les dépendances), modulaire, facile à
+			maintenir. En entretien, expliquer DI/IoC est souvent demandé. C'est un must-know.
 		</aside>
 	</Slide>
 </Slide>

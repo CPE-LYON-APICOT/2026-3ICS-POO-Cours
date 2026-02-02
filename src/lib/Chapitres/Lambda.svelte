@@ -17,9 +17,10 @@
 			interfaces qui ne contiennent qu'une seule méthode abstraite.
 		</p>
 		<aside class="notes">
-			Les lambdas sont arrivées en Java 8 (2014). C'est la plus grosse évolution du langage depuis les génériques.
-			Elles viennent de la programmation fonctionnelle (Haskell, Scala, JavaScript...).
-			Aujourd'hui, impossible de coder en Java moderne sans connaître les lambdas. C'est partout.
+			Les lambdas sont arrivées en Java 8 (2014). C'est la plus grosse évolution du langage depuis
+			les génériques. Elles viennent de la programmation fonctionnelle (Haskell, Scala,
+			JavaScript...). Aujourd'hui, impossible de coder en Java moderne sans connaître les lambdas.
+			C'est partout.
 		</aside>
 	</Slide>
 	<Slide>
@@ -40,17 +41,20 @@
             `}
 		</Code>
 		<aside class="notes">
-			La flèche -> est le symbole clé. À gauche les paramètres, à droite le corps.
-			Si une seule expression, pas besoin d'accolades ni de return. Java le fait pour vous.
-			Si plusieurs instructions, accolades obligatoires et return explicite si nécessaire.
+			La flèche -> est le symbole clé. À gauche les paramètres, à droite le corps. Si une seule
+			expression, pas besoin d'accolades ni de return. Java le fait pour vous. Si plusieurs
+			instructions, accolades obligatoires et return explicite si nécessaire.
 		</aside>
 	</Slide>
-    <Slide>
-        <h3>Utilisation de la notation ::</h3>
-        <p>La notation <code>::</code> en Java est utilisée pour faire référence à une méthode ou à un constructeur. Elle est souvent utilisée avec les lambdas pour simplifier le code.</p>
-        <p>Exemple :</p>
-        <Code>
-            {`
+	<Slide>
+		<h3>Utilisation de la notation ::</h3>
+		<p>
+			La notation <code>::</code> en Java est utilisée pour faire référence à une méthode ou à un constructeur.
+			Elle est souvent utilisée avec les lambdas pour simplifier le code.
+		</p>
+		<p>Exemple :</p>
+		<Code>
+			{`
                 import java.util.Arrays;
                 import java.util.List;
 
@@ -63,13 +67,14 @@
                     }
                 }
             `}
-        </Code>
+		</Code>
 		<aside class="notes">
 			C'est une "method reference". System.out::println est équivalent à x -> System.out.println(x).
-			Plus court, plus lisible. L'IDE vous proposera souvent de convertir une lambda en method reference.
-			On peut aussi référencer des constructeurs : ArrayList::new crée une nouvelle instance.
+			Plus court, plus lisible. L'IDE vous proposera souvent de convertir une lambda en method
+			reference. On peut aussi référencer des constructeurs : ArrayList::new crée une nouvelle
+			instance.
 		</aside>
-    </Slide>
+	</Slide>
 	<Slide>
 		<h3>Exemple d'utilisation</h3>
 		<p>Voici un exemple d'utilisation des lambdas avec une interface fonctionnelle :</p>
@@ -106,9 +111,9 @@
             `}
 		</Code>
 		<aside class="notes">
-			Les Streams changent complètement la façon de traiter les données en Java.
-			Plus de boucles for explicites, on décrit CE qu'on veut, pas COMMENT le faire.
-			Bonus : avec parallelStream(), Java peut paralléliser automatiquement le traitement !
+			Les Streams changent complètement la façon de traiter les données en Java. Plus de boucles for
+			explicites, on décrit CE qu'on veut, pas COMMENT le faire. Bonus : avec parallelStream(), Java
+			peut paralléliser automatiquement le traitement !
 		</aside>
 	</Slide>
 	<Slide>
@@ -122,8 +127,8 @@
 		</ul>
 		<aside class="notes">
 			Retenez filter-map-reduce, c'est le trio magique. Vient de la programmation fonctionnelle.
-			Google MapReduce pour le Big Data est basé sur ces concepts.
-			Très utile pour traiter des listes d'objets métier en entreprise.
+			Google MapReduce pour le Big Data est basé sur ces concepts. Très utile pour traiter des
+			listes d'objets métier en entreprise.
 		</aside>
 	</Slide>
 	<Slide>
@@ -171,12 +176,11 @@
 			</div>
 		</div>
 		<aside class="notes">
-			Montrez bien la différence : à gauche on dit COMMENT faire, à droite CE QU'ON VEUT.
-			Le code Stream est plus déclaratif, plus facile à lire une fois qu'on maîtrise.
-			En entretien d'embauche, savoir écrire ce type de code est souvent demandé.
+			Montrez bien la différence : à gauche on dit COMMENT faire, à droite CE QU'ON VEUT. Le code
+			Stream est plus déclaratif, plus facile à lire une fois qu'on maîtrise. En entretien
+			d'embauche, savoir écrire ce type de code est souvent demandé.
 		</aside>
-	</Slide
-	>
+	</Slide>
 	<Slide>
 		<h3>Généralitées sur les Lambda</h3>
 		<ul>
@@ -189,8 +193,8 @@
 		</ul>
 		<aside class="notes">
 			Résumé important. Les interfaces fonctionnelles : Runnable, Comparator, Consumer, Function...
-			Java fournit plein d'interfaces dans java.util.function prêtes à l'emploi.
-			C'est le bridge entre la POO classique et la programmation fonctionnelle.
+			Java fournit plein d'interfaces dans java.util.function prêtes à l'emploi. C'est le bridge
+			entre la POO classique et la programmation fonctionnelle.
 		</aside>
 	</Slide>
 	<Slide>
@@ -226,32 +230,36 @@
 		</Code>
 		<aside class="notes">
 			C'est la règle "effectively final". La variable doit être comme si elle était déclarée final.
-			Pourquoi ? Pour éviter les problèmes de concurrence. La lambda peut s'exécuter plus tard.
-			Si on veut modifier une valeur, utiliser un AtomicInteger ou un tableau d'un élément.
+			Pourquoi ? Pour éviter les problèmes de concurrence. La lambda peut s'exécuter plus tard. Si
+			on veut modifier une valeur, utiliser un AtomicInteger ou un tableau d'un élément.
 		</aside>
 	</Slide>
-    <Slide>
-        <h3>Les collecteurs</h3>
-        <p>Les collecteurs sont utilisés pour accumuler les éléments d'un stream dans une collection, une chaîne de caractères, ou une autre structure de données.</p>
-        <p>Exemples de collecteurs :</p>
-        <ul>
-            <li><code>toList</code> : collecte les éléments dans une liste</li>
-            <li><code>toSet</code> : collecte les éléments dans un ensemble</li>
-            <li><code>joining</code> : concatène les éléments en une chaîne de caractères</li>
-            <li><code>groupingBy</code> : groupe les éléments par une clé</li>
-            <li><code>partitioningBy</code> : partitionne les éléments en deux groupes</li>
-        </ul>
+	<Slide>
+		<h3>Les collecteurs</h3>
+		<p>
+			Les collecteurs sont utilisés pour accumuler les éléments d'un stream dans une collection, une
+			chaîne de caractères, ou une autre structure de données.
+		</p>
+		<p>Exemples de collecteurs :</p>
+		<ul>
+			<li><code>toList</code> : collecte les éléments dans une liste</li>
+			<li><code>toSet</code> : collecte les éléments dans un ensemble</li>
+			<li><code>joining</code> : concatène les éléments en une chaîne de caractères</li>
+			<li><code>groupingBy</code> : groupe les éléments par une clé</li>
+			<li><code>partitioningBy</code> : partitionne les éléments en deux groupes</li>
+		</ul>
 		<aside class="notes">
-			Les Collectors sont le bout de la chaîne Stream. Ils transforment le stream en résultat concret.
-			groupingBy est très puissant pour faire des analyses : grouper des commandes par client, des employés par département...
-			En entreprise, c'est souvent utilisé pour préparer des données pour des rapports.
+			Les Collectors sont le bout de la chaîne Stream. Ils transforment le stream en résultat
+			concret. groupingBy est très puissant pour faire des analyses : grouper des commandes par
+			client, des employés par département... En entreprise, c'est souvent utilisé pour préparer des
+			données pour des rapports.
 		</aside>
-    </Slide>
-    <Slide>
-        <h3>Exemples de collecteurs</h3>
-        <p>Voici quelques exemples d'utilisation des collecteurs :</p>
-        <Code>
-            {`
+	</Slide>
+	<Slide>
+		<h3>Exemples de collecteurs</h3>
+		<p>Voici quelques exemples d'utilisation des collecteurs :</p>
+		<Code>
+			{`
                 // Exemples
                 var noms = Stream.of("Alice", "Bob", "Charlie").collect(Collectors.toList());
                 var nomsSet = Stream.of("Alice", "Bob", "Charlie", "Alice").collect(Collectors.toSet());
@@ -268,8 +276,8 @@
                     .collect(Collectors.partitioningBy(s -> s.length() > 3));
                 // {false=[Bob], true=[Alice, Charlie]}
             `}
-        </Code>
-    </Slide>
+		</Code>
+	</Slide>
 	<Slide>
 		<!-- Les intérêts des lambda -->
 		<h3>Les intérêts des lambdas</h3>

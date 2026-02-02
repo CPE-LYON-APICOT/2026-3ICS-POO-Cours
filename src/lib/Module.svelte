@@ -29,7 +29,7 @@
 
 	<Slide>
 		<h2>Ce que vous saurez faire à la fin</h2>
-		<div class="flex justify-center gap-8 mt-8  ">
+		<div class="flex justify-center gap-8 mt-8">
 			<div class="text-left">
 				<h4 class="text-red-400 mb-4 text-3xl">❌ Avant ce module</h4>
 				<ul class="text-2xl">
@@ -54,9 +54,8 @@
 			<b>Vous devez apprendre à coder pour les autres, pas juste pour vous.</b>
 		</p>
 		<aside class="notes">
-			C'est la vraie différence. En école, on code pour valider un TP.
-			En entreprise, le code doit survivre à votre départ, être repris par d'autres, évoluer.
-			Ce module vous prépare à ça.
+			C'est la vraie différence. En école, on code pour valider un TP. En entreprise, le code doit
+			survivre à votre départ, être repris par d'autres, évoluer. Ce module vous prépare à ça.
 		</aside>
 	</Slide>
 

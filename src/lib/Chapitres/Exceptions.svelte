@@ -14,9 +14,12 @@
 
 	<Slide>
 		<h3>Qu'est-ce qu'une exception ?</h3>
-		<p>Une <span class="text-important">exception</span> est une erreur qui survient pendant l'exécution du programme.</p>
+		<p>
+			Une <span class="text-important">exception</span> est une erreur qui survient pendant l'exécution
+			du programme.
+		</p>
 		<Code>
-{`
+			{`
 int a = 10 / 0;  // ArithmeticException !
 
 String s = null;
@@ -30,8 +33,8 @@ tab[10] = 42;    // ArrayIndexOutOfBoundsException !
 			😱 Sans gestion, ces erreurs <b>crashent</b> votre programme !
 		</p>
 		<aside class="notes">
-			Les exceptions sont fondamentales en production. Un programme qui crashe = utilisateurs mécontents.
-			L'idée : prévoir les problèmes et y réagir proprement au lieu de planter.
+			Les exceptions sont fondamentales en production. Un programme qui crashe = utilisateurs
+			mécontents. L'idée : prévoir les problèmes et y réagir proprement au lieu de planter.
 			Différence avec les erreurs de compilation : les exceptions arrivent à l'exécution.
 		</aside>
 	</Slide>
@@ -41,7 +44,7 @@ tab[10] = 42;    // ArrayIndexOutOfBoundsException !
 		<div class="text-xl">
 			<p>Imaginez un système bancaire :</p>
 			<Code class="fragment">
-{`
+				{`
 public void virer(CompteBancaire source, CompteBancaire dest, double montant) {
     source.retirer(montant);
     dest.deposer(montant);    // 💥 Crash ici si dest est null !
@@ -57,8 +60,8 @@ public void virer(CompteBancaire source, CompteBancaire dest, double montant) {
 			</p>
 		</div>
 		<aside class="notes">
-			Exemple réel : en 2012, Knight Capital a perdu 440 millions de dollars en 45 minutes à cause d'un bug.
-			Les exceptions + transactions permettent le rollback : si ça échoue, on annule tout.
+			Exemple réel : en 2012, Knight Capital a perdu 440 millions de dollars en 45 minutes à cause
+			d'un bug. Les exceptions + transactions permettent le rollback : si ça échoue, on annule tout.
 			C'est le principe ACID des bases de données.
 		</aside>
 	</Slide>
@@ -68,7 +71,7 @@ public void virer(CompteBancaire source, CompteBancaire dest, double montant) {
 		<h3>try / catch / finally</h3>
 		<p>On utilise des blocs pour <b>capturer</b> et <b>gérer</b> les exceptions.</p>
 		<Code lines="1-4|5-8|9-12">
-{`
+			{`
 try {
     // Code qui peut générer une exception
     int resultat = 10 / 0;
@@ -84,16 +87,16 @@ finally {
 `}
 		</Code>
 		<aside class="notes">
-			Le try délimite la zone de code surveillée. Le catch attrape l'exception.
-			Le finally s'exécute MÊME si on fait un return dans le try ou le catch !
-			C'est la garantie que le nettoyage sera fait. Très important pour éviter les fuites mémoire.
+			Le try délimite la zone de code surveillée. Le catch attrape l'exception. Le finally s'exécute
+			MÊME si on fait un return dans le try ou le catch ! C'est la garantie que le nettoyage sera
+			fait. Très important pour éviter les fuites mémoire.
 		</aside>
 	</Slide>
 
 	<Slide>
 		<h3>Exemple : virement sécurisé</h3>
 		<Code>
-{`
+			{`
 public void virer(CompteBancaire source, CompteBancaire dest, double montant) {
     try {
         if (source == null || dest == null) {
@@ -123,7 +126,7 @@ public void virer(CompteBancaire source, CompteBancaire dest, double montant) {
 		<h3>Lancer une exception avec throw</h3>
 		<p>On peut <b>créer</b> et <b>lancer</b> nos propres exceptions.</p>
 		<Code>
-{`
+			{`
 public void setAge(int age) {
     if (age < 0) {
         throw new IllegalArgumentException("L'âge ne peut pas être négatif !");
@@ -140,15 +143,15 @@ public void setAge(int age) {
 		</p>
 		<aside class="notes">
 			throw crée et lance l'exception. C'est vous qui décidez quand une situation est anormale.
-			C'est le pattern "Fail Fast" : mieux vaut échouer tôt que propager des données invalides.
-			Très utile pour valider les entrées utilisateur ou les paramètres de méthodes.
+			C'est le pattern "Fail Fast" : mieux vaut échouer tôt que propager des données invalides. Très
+			utile pour valider les entrées utilisateur ou les paramètres de méthodes.
 		</aside>
 	</Slide>
 
 	<Slide>
 		<h3>Utilisation</h3>
 		<Code>
-{`
+			{`
 Personne p = new Personne("Jean");
 
 try {
@@ -196,9 +199,9 @@ System.out.println("Programme continue...");
 			</tr>
 		</table>
 		<aside class="notes">
-			NullPointerException est la plus fréquente ! Tony Hoare l'appelle son "erreur à un milliard de dollars".
-			Java 14+ a amélioré les messages d'erreur NPE pour mieux identifier le problème.
-			En entretien, on vous demandera souvent de citer des exceptions courantes.
+			NullPointerException est la plus fréquente ! Tony Hoare l'appelle son "erreur à un milliard de
+			dollars". Java 14+ a amélioré les messages d'erreur NPE pour mieux identifier le problème. En
+			entretien, on vous demandera souvent de citer des exceptions courantes.
 		</aside>
 	</Slide>
 
@@ -210,7 +213,7 @@ System.out.println("Programme continue...");
 				<h4 class="text-important">🔍 Checked (vérifiées)</h4>
 				<p class="text-sm mt-2">Le compilateur <b>oblige</b> à les gérer</p>
 				<Code>
-{`
+					{`
 // IOException DOIT être gérée
 public void lireFichier() 
     throws IOException {
@@ -225,7 +228,7 @@ public void lireFichier()
 				<h4 class="text-important">⚡ Unchecked (non-vérifiées)</h4>
 				<p class="text-sm mt-2">Gestion <b>optionnelle</b></p>
 				<Code>
-{`
+					{`
 // Pas d'obligation
 public void diviser(int a, int b) {
     return a / b;
@@ -233,13 +236,15 @@ public void diviser(int a, int b) {
 }
 `}
 				</Code>
-				<p class="text-sm mt-2">Exemples : <code>NullPointerException</code>, <code>ArithmeticException</code></p>
+				<p class="text-sm mt-2">
+					Exemples : <code>NullPointerException</code>, <code>ArithmeticException</code>
+				</p>
 			</div>
 		</div>
 		<aside class="notes">
-			C'est un débat classique en Java. Certains pensent que les checked exceptions sont trop verbeuses.
-			Les unchecked héritent de RuntimeException. Les checked héritent directement de Exception.
-			En pratique moderne, on préfère souvent les unchecked pour moins de boilerplate.
+			C'est un débat classique en Java. Certains pensent que les checked exceptions sont trop
+			verbeuses. Les unchecked héritent de RuntimeException. Les checked héritent directement de
+			Exception. En pratique moderne, on préfère souvent les unchecked pour moins de boilerplate.
 		</aside>
 	</Slide>
 
@@ -247,7 +252,7 @@ public void diviser(int a, int b) {
 		<h3>Le mot-clé throws</h3>
 		<p>Déclare qu'une méthode <b>peut</b> lancer une exception (mais ne la gère pas).</p>
 		<Code>
-{`
+			{`
 public void lireFichier(String chemin) throws IOException {
     FileReader fr = new FileReader(chemin);
     // ... lecture ...
@@ -266,8 +271,8 @@ public void main() {
 		</Code>
 		<aside class="notes">
 			throws délègue la responsabilité. "Je sais que ça peut foirer, mais c'est à toi de gérer."
-			Attention : throw (sans s) lance l'exception, throws (avec s) déclare la possibilité.
-			On peut déclarer plusieurs exceptions : throws IOException, SQLException.
+			Attention : throw (sans s) lance l'exception, throws (avec s) déclare la possibilité. On peut
+			déclarer plusieurs exceptions : throws IOException, SQLException.
 		</aside>
 	</Slide>
 
@@ -276,7 +281,7 @@ public void main() {
 		<h3>Créer ses propres exceptions</h3>
 		<p>Pour des cas métier spécifiques, on peut créer nos propres exceptions.</p>
 		<Code>
-{`
+			{`
 public class SoldeInsuffisantException extends Exception {
     private double solde;
     private double montantDemande;
@@ -294,16 +299,16 @@ public class SoldeInsuffisantException extends Exception {
 `}
 		</Code>
 		<aside class="notes">
-			Les exceptions métier améliorent la lisibilité du code. SoldeInsuffisantException dit exactement ce qui se passe.
-			On peut stocker des infos supplémentaires (solde, montant) pour mieux gérer l'erreur.
-			Convention : le nom se termine par Exception.
+			Les exceptions métier améliorent la lisibilité du code. SoldeInsuffisantException dit
+			exactement ce qui se passe. On peut stocker des infos supplémentaires (solde, montant) pour
+			mieux gérer l'erreur. Convention : le nom se termine par Exception.
 		</aside>
 	</Slide>
 
 	<Slide>
 		<h3>Utilisation de l'exception personnalisée</h3>
 		<Code>
-{`
+			{`
 public class CompteBancaire {
     private double solde;
     
@@ -331,7 +336,9 @@ try {
 	<Slide>
 		<h3>Bonnes pratiques</h3>
 		<ul class="text-xl">
-			<li class="fragment">✅ Attraper des exceptions <b>spécifiques</b> plutôt que <code>Exception</code></li>
+			<li class="fragment">
+				✅ Attraper des exceptions <b>spécifiques</b> plutôt que <code>Exception</code>
+			</li>
 			<li class="fragment">✅ Ne jamais laisser un <code>catch</code> vide</li>
 			<li class="fragment">✅ Utiliser <code>finally</code> pour libérer les ressources</li>
 			<li class="fragment">✅ Logger les exceptions pour le debug</li>
@@ -339,16 +346,16 @@ try {
 			<li class="fragment">❌ Ne pas utiliser les exceptions pour le contrôle de flux normal</li>
 		</ul>
 		<aside class="notes">
-			Le catch vide est le pire anti-pattern : on avale l'erreur et on ne sait jamais ce qui s'est passé.
-			Pour le logging, utilisez un framework comme SLF4J/Logback en entreprise.
-			Les exceptions sont coûteuses en performance, ne les utilisez pas pour le flux normal.
+			Le catch vide est le pire anti-pattern : on avale l'erreur et on ne sait jamais ce qui s'est
+			passé. Pour le logging, utilisez un framework comme SLF4J/Logback en entreprise. Les
+			exceptions sont coûteuses en performance, ne les utilisez pas pour le flux normal.
 		</aside>
 	</Slide>
 
 	<Slide>
 		<h3>❌ Mauvais exemple</h3>
 		<Code>
-{`
+			{`
 try {
     // Un gros bloc de code
     compte.retirer(100);
@@ -367,7 +374,7 @@ try {
 	<Slide>
 		<h3>✅ Bon exemple</h3>
 		<Code>
-{`
+			{`
 try {
     compte.retirer(100);
 } catch (SoldeInsuffisantException e) {
@@ -394,7 +401,7 @@ try {
 			<div>
 				<h4 class="text-red-400">❌ Avant</h4>
 				<Code>
-{`
+					{`
 FileReader fr = null;
 try {
     fr = new FileReader("test.txt");
@@ -416,7 +423,7 @@ try {
 			<div>
 				<h4 class="text-green-400">✅ Maintenant</h4>
 				<Code>
-{`
+					{`
 try (FileReader fr = 
         new FileReader("test.txt")) {
     // ... lecture ...
@@ -430,8 +437,8 @@ try (FileReader fr =
 		</div>
 		<aside class="notes">
 			try-with-resources est arrivé en Java 7. Plus jamais de finally pour fermer un fichier !
-			L'objet doit implémenter AutoCloseable. close() est appelé automatiquement.
-			On peut déclarer plusieurs ressources séparées par des points-virgules.
+			L'objet doit implémenter AutoCloseable. close() est appelé automatiquement. On peut déclarer
+			plusieurs ressources séparées par des points-virgules.
 		</aside>
 	</Slide>
 
@@ -441,7 +448,7 @@ try (FileReader fr =
 		<div class="text-xl">
 			<p class="font-bold text-accent-200">API REST</p>
 			<Code>
-{`
+				{`
 @PostMapping("/comptes/{id}/retrait")
 public ResponseEntity<?> retirer(@PathVariable Long id, @RequestBody double montant) {
     try {
@@ -493,9 +500,9 @@ public ResponseEntity<?> retirer(@PathVariable Long id, @RequestBody double mont
 			💼 Les exceptions sont essentielles pour la robustesse des applications en production !
 		</p>
 		<aside class="notes">
-			Résumé à connaître par cœur pour l'examen. throw vs throws est une question classique.
-			En entreprise, la gestion des exceptions fait partie du quotidien du développeur.
-			Un code sans gestion d'erreur n'est pas un code professionnel.
+			Résumé à connaître par cœur pour l'examen. throw vs throws est une question classique. En
+			entreprise, la gestion des exceptions fait partie du quotidien du développeur. Un code sans
+			gestion d'erreur n'est pas un code professionnel.
 		</aside>
 	</Slide>
 </Slide>

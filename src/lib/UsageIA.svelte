@@ -3,8 +3,7 @@
 </script>
 
 <Slide data_background_color="#2B001A">
-		<Slide>
-	
+	<Slide>
 		<h2>Usage de l’IA dans ce module</h2>
 
 		<span class="font-bold text-[2em] underline"
@@ -82,7 +81,7 @@
 		</p>
 	</Slide>
 	<Slide>
-			<h2>Phase projet</h2>
+		<h2>Phase projet</h2>
 
 		<ul>
 			<li>Problème plus ouvert</li>
@@ -100,19 +99,19 @@
 		<h2>Un prompt vous sera fourni</h2>
 
 		<p>Pour la phase projet, vous recevrez un <b>prompt</b> à utiliser avec l'IA.</p>
-		
+
 		<ul class="mt-6">
-			<li class="fragment">Il cadrera l'IA pour qu'elle vous <b>guide</b> sans donner les réponses</li>
+			<li class="fragment">
+				Il cadrera l'IA pour qu'elle vous <b>guide</b> sans donner les réponses
+			</li>
 			<li class="fragment">Il sera adapté au contexte du module POO</li>
 		</ul>
 
-		<p class="note fragment mt-8">
-			Ce prompt sera communiqué au moment du projet.
-		</p>
+		<p class="note fragment mt-8">Ce prompt sera communiqué au moment du projet.</p>
 
 		<aside class="notes">
-			On vous donnera un prompt système qui transforme l'IA en tuteur.
-			L'idée c'est de vous apprendre à utiliser l'IA intelligemment, pas à tricher.
+			On vous donnera un prompt système qui transforme l'IA en tuteur. L'idée c'est de vous
+			apprendre à utiliser l'IA intelligemment, pas à tricher.
 		</aside>
 	</Slide>
 
@@ -137,12 +136,9 @@
 			</div>
 		</div>
 
-		
-
 		<aside class="notes">
-			C'est la progression. D'abord on apprend sans béquille, ensuite on apprend à utiliser l'outil correctement.
-			À la fin, vous saurez quand l'IA vous aide vraiment et quand elle vous ralentit.
+			C'est la progression. D'abord on apprend sans béquille, ensuite on apprend à utiliser l'outil
+			correctement. À la fin, vous saurez quand l'IA vous aide vraiment et quand elle vous ralentit.
 		</aside>
 	</Slide>
-
 </Slide>

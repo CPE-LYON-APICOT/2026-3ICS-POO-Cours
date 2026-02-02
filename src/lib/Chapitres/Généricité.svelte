@@ -14,8 +14,8 @@
 		<p>Cela permet de réutiliser du code avec différents types sans le dupliquer.</p>
 		<aside class="notes">
 			La généricité est arrivée en Java 5 (2004). Avant, on utilisait Object partout avec des casts.
-			C'est ce qui rend les Collections type-safe. ArrayList&lt;String&gt; au lieu de ArrayList.
-			Les langages modernes ont tous des génériques : C# templates, TypeScript generics, etc.
+			C'est ce qui rend les Collections type-safe. ArrayList&lt;String&gt; au lieu de ArrayList. Les
+			langages modernes ont tous des génériques : C# templates, TypeScript generics, etc.
 		</aside>
 	</Slide>
 	<Slide>
@@ -40,9 +40,10 @@
 	`}
 		</Code>
 		<aside class="notes">
-			T est une convention : T pour Type, E pour Element (dans les collections), K/V pour Key/Value (dans les maps).
-			Le diamond operator &lt;&gt; (Java 7+) évite de répéter le type : new Boite&lt;&gt;() au lieu de new Boite&lt;String&gt;().
-			Exemple concret : Optional&lt;T&gt; pour éviter les NullPointerException.
+			T est une convention : T pour Type, E pour Element (dans les collections), K/V pour Key/Value
+			(dans les maps). Le diamond operator &lt;&gt; (Java 7+) évite de répéter le type : new
+			Boite&lt;&gt;() au lieu de new Boite&lt;String&gt;(). Exemple concret : Optional&lt;T&gt; pour
+			éviter les NullPointerException.
 		</aside>
 	</Slide>
 	<Slide>
@@ -66,8 +67,8 @@
 	`}
 		</Code>
 		<aside class="notes">
-			Le &lt;T&gt; avant le type de retour déclare que c'est une méthode générique.
-			Java infère le type automatiquement à l'appel. Pas besoin d'écrire Util.&lt;String&gt;afficher("Hello").
+			Le &lt;T&gt; avant le type de retour déclare que c'est une méthode générique. Java infère le
+			type automatiquement à l'appel. Pas besoin d'écrire Util.&lt;String&gt;afficher("Hello").
 			Exemple réel : Collections.sort() est une méthode générique.
 		</aside>
 	</Slide>
@@ -93,9 +94,9 @@
 	`}
 		</Code>
 		<aside class="notes">
-			Comparable&lt;T&gt; est l'une des interfaces les plus utilisées en Java.
-			Elle permet le tri naturel des objets. Collections.sort() l'utilise.
-			C'est un exemple parfait de type-safety : on compare des Personne avec des Personne, pas avec des Object.
+			Comparable&lt;T&gt; est l'une des interfaces les plus utilisées en Java. Elle permet le tri
+			naturel des objets. Collections.sort() l'utilise. C'est un exemple parfait de type-safety : on
+			compare des Personne avec des Personne, pas avec des Object.
 		</aside>
 	</Slide>
 
@@ -129,9 +130,9 @@
 			génériques sont compatibles, évitant ainsi les erreurs de type à l'exécution.
 		</p>
 		<aside class="notes">
-			Le contrôle se fait à la compilation, pas à l'exécution (type erasure).
-			C'est une sécurité : on détecte les erreurs avant de lancer le programme.
-			Sans génériques, on aurait un ClassCastException à l'exécution.
+			Le contrôle se fait à la compilation, pas à l'exécution (type erasure). C'est une sécurité :
+			on détecte les erreurs avant de lancer le programme. Sans génériques, on aurait un
+			ClassCastException à l'exécution.
 		</aside>
 	</Slide>
 	<Slide>
@@ -163,9 +164,9 @@
 			</Code>
 		</div>
 		<aside class="notes">
-			extends pour les génériques fonctionne aussi pour les interfaces (extends, pas implements).
-			On appelle ça une "borne supérieure" (upper bound). T doit être Oiseau ou un sous-type.
-			Exemple réel : &lt;T extends Comparable&lt;T&gt;&gt; pour imposer que T soit comparable.
+			extends pour les génériques fonctionne aussi pour les interfaces (extends, pas implements). On
+			appelle ça une "borne supérieure" (upper bound). T doit être Oiseau ou un sous-type. Exemple
+			réel : &lt;T extends Comparable&lt;T&gt;&gt; pour imposer que T soit comparable.
 		</aside>
 	</Slide>
 	<Slide>
@@ -201,10 +202,10 @@
 			</Code>
 		</div>
 	</Slide>
-    <Slide>
-        <h3>Classes génériques avec plusieurs types</h3>
-        <Code>
-            {`
+	<Slide>
+		<h3>Classes génériques avec plusieurs types</h3>
+		<Code>
+			{`
         class Paire<T, U> {
             private T premier;
             private U second;
@@ -227,17 +228,17 @@
         System.out.println(paire.getPremier()); // Affiche "Age"
         System.out.println(paire.getSecond()); // Affiche 30
         `}
-        </Code>
+		</Code>
 		<aside class="notes">
-			On peut avoir autant de paramètres de type qu'on veut : Triplet&lt;A, B, C&gt;.
-			Exemple célèbre : Map&lt;K, V&gt; avec K pour les clés et V pour les valeurs.
-			En entreprise, très utile pour les DTOs (Data Transfer Objects) et les réponses API.
+			On peut avoir autant de paramètres de type qu'on veut : Triplet&lt;A, B, C&gt;. Exemple
+			célèbre : Map&lt;K, V&gt; avec K pour les clés et V pour les valeurs. En entreprise, très
+			utile pour les DTOs (Data Transfer Objects) et les réponses API.
 		</aside>
-    </Slide>
-    <Slide>
-        <h3>Méthodes génériques avec plusieurs types</h3>
-        <Code>
-            {`
+	</Slide>
+	<Slide>
+		<h3>Méthodes génériques avec plusieurs types</h3>
+		<Code>
+			{`
         class Util {
             public static <T, U> void afficherDeux(T premier, U second) {
                 System.out.println("Premier: " + premier);
@@ -248,6 +249,6 @@
         Util.afficherDeux("Hello", 123);    // Affiche "Premier: Hello" et "Second: 123"
         Util.afficherDeux(3.14, true);      // Affiche "Premier: 3.14" et "Second: true"
         `}
-        </Code>
-    </Slide>
+		</Code>
+	</Slide>
 </Slide>

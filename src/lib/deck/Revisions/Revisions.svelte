@@ -1,49 +1,52 @@
 <script>
-    import Code from '../code.svelte'
-    import PlantUml from '../plantUml.svelte'
-    import Slide from '../slide.svelte'
+	import Code from '../code.svelte'
+	import PlantUml from '../plantUml.svelte'
+	import Slide from '../slide.svelte'
 </script>
 
 <Slide data-background-color="white">
-    <h1>Révisions</h1>
+	<h1>Révisions</h1>
 </Slide>
 
 <Slide>
-    <h2>Exercice 1 : Gestion d'une médiathèque</h2>
+	<h2>Exercice 1 : Gestion d'une médiathèque</h2>
 </Slide>
 
 <Slide>
-    <p>
-        Dans cet exercice, on se propose de créer une application qui permet de répertorier l'ensemble
-        de nos oeuvres.
-    </p>
-    <p>
-        La ville de Lyon souhaite mettre en avant la culture et vous demande de créer un réseau social
-        dans lequel vous pourrez répertorier des oeuvres que vous aimez.
-    </p>
+	<p>
+		Dans cet exercice, on se propose de créer une application qui permet de répertorier l'ensemble
+		de nos oeuvres.
+	</p>
+	<p>
+		La ville de Lyon souhaite mettre en avant la culture et vous demande de créer un réseau social
+		dans lequel vous pourrez répertorier des oeuvres que vous aimez.
+	</p>
 
-    <p>La plateforme doit permettre de répertorier des romans, des livres ou des BD par exemple.</p>
+	<p>La plateforme doit permettre de répertorier des romans, des livres ou des BD par exemple.</p>
 
-    <div class="fragment">
-        <PlantUml>{`
+	<div class="fragment">
+		<PlantUml
+			>{`
             skinparam backgroundColor transparent
 
             abstract class Livre{}
             class BD extends Livre{}
             class Roman extends Livre{}
-            `}</PlantUml>
-    </div>
+            `}</PlantUml
+		>
+	</div>
 </Slide>
 
 <Slide>
-    <p>
-        Votre application succite un engouement tel que Netflix et Audible vous contactent pour intégrer
-        des films et des podcast qui pourront être lus directement sur votre plateforme.
-    </p>
+	<p>
+		Votre application succite un engouement tel que Netflix et Audible vous contactent pour intégrer
+		des films et des podcast qui pourront être lus directement sur votre plateforme.
+	</p>
 
-    <em>Proposez une solution pour intégrer ces nouvelles fonctionnalités</em>
-    <div class="fragment">
-        <PlantUml>{`
+	<em>Proposez une solution pour intégrer ces nouvelles fonctionnalités</em>
+	<div class="fragment">
+		<PlantUml
+			>{`
             skinparam backgroundColor transparent
             abstract class Oeuvre{}
             abstract class OeuvreMaterielle extends Oeuvre{}
@@ -55,20 +58,20 @@
             class PodcastAudible extends OeuvreNumérique{}
 
             `}
-        </PlantUml>
-    </div>
+		</PlantUml>
+	</div>
 </Slide>
 <Slide>
-    <p>
-        Votre appli à encore plus de succès, mais très vite, on vous reproche de résumer les oeuvres à
-        des livres et de donner une part trop importante à la culture écrite et au dématérialisé.
-    </p>
+	<p>
+		Votre appli à encore plus de succès, mais très vite, on vous reproche de résumer les oeuvres à
+		des livres et de donner une part trop importante à la culture écrite et au dématérialisé.
+	</p>
 
-    <em>Proposez une solution pour intégrer des Vinyls, des CD, des Mangas et des Peintures</em>
+	<em>Proposez une solution pour intégrer des Vinyls, des CD, des Mangas et des Peintures</em>
 
-    <div class="fragment">
-        <PlantUml>
-            {`
+	<div class="fragment">
+		<PlantUml>
+			{`
 
             skinparam backgroundColor transparent
             abstract class Oeuvre{}
@@ -84,45 +87,45 @@
             abstract class OeuvreNumérique extends Oeuvre{}
             abstract class FilmNetflix extends OeuvreNumérique {}
             abstract class PodcastAudible extends OeuvreNumérique{}`}
-        </PlantUml>
-    </div>
+		</PlantUml>
+	</div>
 </Slide>
 <Slide>
-    <p>
-        Il est temps de créer des classes qui représentent les différentes oeuvres que vous avez
-        répertoriées.
-    </p>
-    <em>Créez les classes correspondantes </em>
-    <div class="flex flex-row items-center">
-        <dl>
-            <dt>BD</dt>
-            <dd>Asterix</dd>
-            <dd>Blacksad</dd>
-            <dt>Roman</dt>
-            <dd>Harry Potter</dd>
-            <dd>Don Quichotte</dd>
-            <dt>Manga</dt>
-            <dd>Dragon Ball</dd>
-            <dt>Vinyl</dt>
-            <dd>Dark Side of the Moon (Pink Floyd)</dd>
-        </dl>
-        <dl>
-            <dt>CD</dt>
-            <dd>Thriller (Michael Jackson)</dd>
-            <dt>Peinture</dt>
-            <dd>La Joconde</dd>
-            <dd>Lapin anthropomorphe de John Tenniel (Noir et Blanc)</dd>
-            <dt>Film Netflix</dt>
-            <dd>Psychose</dd>
-            <dd>Pulp Fiction</dd>
-            <dt>Podcast</dt>
-            <dd>Actus du jour</dd>
-        </dl>
-    </div>
+	<p>
+		Il est temps de créer des classes qui représentent les différentes oeuvres que vous avez
+		répertoriées.
+	</p>
+	<em>Créez les classes correspondantes </em>
+	<div class="flex flex-row items-center">
+		<dl>
+			<dt>BD</dt>
+			<dd>Asterix</dd>
+			<dd>Blacksad</dd>
+			<dt>Roman</dt>
+			<dd>Harry Potter</dd>
+			<dd>Don Quichotte</dd>
+			<dt>Manga</dt>
+			<dd>Dragon Ball</dd>
+			<dt>Vinyl</dt>
+			<dd>Dark Side of the Moon (Pink Floyd)</dd>
+		</dl>
+		<dl>
+			<dt>CD</dt>
+			<dd>Thriller (Michael Jackson)</dd>
+			<dt>Peinture</dt>
+			<dd>La Joconde</dd>
+			<dd>Lapin anthropomorphe de John Tenniel (Noir et Blanc)</dd>
+			<dt>Film Netflix</dt>
+			<dd>Psychose</dd>
+			<dd>Pulp Fiction</dd>
+			<dt>Podcast</dt>
+			<dd>Actus du jour</dd>
+		</dl>
+	</div>
 </Slide>
 <Slide>
-    <PlantUml>
-        {`
+	<PlantUml>
+		{`
         skinparam backgroundColor transparent
         abstract class Oeuvre{}
         abstract class OeuvreMaterielle extends Oeuvre{}
@@ -152,15 +155,15 @@
         class PulpFiction extends FilmNetflix{}
         class ActusDuJour extends PodcastAudible{}
         `}
-    </PlantUml>
+	</PlantUml>
 </Slide>
 <Slide>
-    <p>Vous souhaitez maintenant créer des filtrages pour afficher les oeuvres par type.</p>
-    <em>Il y a le filtre noir et blanc, anthropomorphe, audio et visuel</em>
+	<p>Vous souhaitez maintenant créer des filtrages pour afficher les oeuvres par type.</p>
+	<em>Il y a le filtre noir et blanc, anthropomorphe, audio et visuel</em>
 </Slide>
 <Slide>
-    <PlantUml>
-        {`
+	<PlantUml>
+		{`
 
         skinparam backgroundColor transparent
         abstract class Oeuvre{}
@@ -216,23 +219,24 @@
 
 
         `}
-    </PlantUml>
+	</PlantUml>
 </Slide>
 <Slide>
-    <p>Imaginez des fonctionnalités que vous pourriez ajouter à votre application pour la rendre plus
-        attractive en vous appuyant sur les interfaces crées précédemment.
-    </p>
-    <ul>
-        <li>Les oeuvres peuvent être adaptées</li>
-        <li>Tout ce qui est visuel a un style artistique</li>
-        <li>Tout ce qui est écoutable a une durée</li>
-        <li>Les peintures ont toutes un support (toile, bois, etc.)</li>
-        <li>En fait, les films ont aussi une durée</li>
-    </ul>
+	<p>
+		Imaginez des fonctionnalités que vous pourriez ajouter à votre application pour la rendre plus
+		attractive en vous appuyant sur les interfaces crées précédemment.
+	</p>
+	<ul>
+		<li>Les oeuvres peuvent être adaptées</li>
+		<li>Tout ce qui est visuel a un style artistique</li>
+		<li>Tout ce qui est écoutable a une durée</li>
+		<li>Les peintures ont toutes un support (toile, bois, etc.)</li>
+		<li>En fait, les films ont aussi une durée</li>
+	</ul>
 </Slide>
 <Slide>
-    <PlantUml>
-        {`
+	<PlantUml>
+		{`
 
         skinparam backgroundColor transparent
         abstract class Oeuvre{
@@ -298,17 +302,16 @@
 
 
             `}
-    </PlantUml>
+	</PlantUml>
 </Slide>
 
 <Slide>
-    <h2>Exercice 2 : Création d'un programme de gestion d'animaux</h2>
+	<h2>Exercice 2 : Création d'un programme de gestion d'animaux</h2>
 </Slide>
 
 <Slide>
-
-    <PlantUml>
-        {`
+	<PlantUml>
+		{`
 
         skinparam backgroundColor transparent
         interface IVoler {
@@ -376,13 +379,11 @@
 
 
         `}
-    </PlantUml>
+	</PlantUml>
 </Slide>
 
 <Slide>
-
-
-    <Code class="language-java">
+	<Code class="language-java">
 		{`
    public abstract class Animal {
     private String name;
@@ -420,9 +421,9 @@
 	</Code>
 </Slide>
 <Slide>
-    <div style="display: grid;grid-template-columns: auto auto auto auto;">
-        <div class="fragment">
-            <Code class="language-java">
+	<div style="display: grid;grid-template-columns: auto auto auto auto;">
+		<div class="fragment">
+			<Code class="language-java">
 				{`
         
 public class Dog [???] {
@@ -448,10 +449,10 @@ public class Dog [???] {
 
         `}
 			</Code>
-        </div>
+		</div>
 
-        <div class="fragment">
-            <Code class="language-java">
+		<div class="fragment">
+			<Code class="language-java">
 				{`
         
 public abstract class Bird  [???] {
@@ -473,10 +474,10 @@ public abstract class Bird  [???] {
 
         `}
 			</Code>
-        </div>
+		</div>
 
-        <div class="fragment">
-            <Code class="language-java">
+		<div class="fragment">
+			<Code class="language-java">
 				{`
         
 public class Mesange  [???]  [???] {
@@ -503,10 +504,10 @@ public class Mesange  [???]  [???] {
 
         `}
 			</Code>
-        </div>
+		</div>
 
-        <div class="fragment">
-            <Code class="language-java">
+		<div class="fragment">
+			<Code class="language-java">
 				{`
         
 public class Penguin extends Bird {
@@ -524,11 +525,11 @@ public class Penguin extends Bird {
 
         `}
 			</Code>
-        </div>
-    </div>
+		</div>
+	</div>
 </Slide>
 <Slide>
-    <Code class="language-java">
+	<Code class="language-java">
 		{`
         // Enum pour la Factory
 enum AnimalType {
@@ -556,7 +557,7 @@ public class AnimalFactory {
 	</Code>
 </Slide>
 <Slide>
-    <Code class="language-java">
+	<Code class="language-java">
 		{`
         
 interface Food {
@@ -584,7 +585,7 @@ public class Fruit implements Food {
 	</Code>
 </Slide>
 <Slide>
-    <Code class="language-java">
+	<Code class="language-java">
 		{`
         
 public class Main {
@@ -623,95 +624,107 @@ public class Main {
         `}
 	</Code>
 </Slide>
-    <Slide>
-        <h2>Questions</h2>
-        <ul>
-            <li>
-                Pourquoi on ne fait pas de set sur la couleur ?
-                <ul>
-                    <li class="fragment">Parce qu'elle est marquée <code>final</code></li>
-                </ul>
-            </li>
-            <li>
-                Que peut manger le pingouin d'après ce code ?
-                <ul>
-                    <li class="fragment">Tout ce qui est viande ou fruit</li>
-                </ul>
-            </li>
+<Slide>
+	<h2>Questions</h2>
+	<ul>
+		<li>
+			Pourquoi on ne fait pas de set sur la couleur ?
+			<ul>
+				<li class="fragment">Parce qu'elle est marquée <code>final</code></li>
+			</ul>
+		</li>
+		<li>
+			Que peut manger le pingouin d'après ce code ?
+			<ul>
+				<li class="fragment">Tout ce qui est viande ou fruit</li>
+			</ul>
+		</li>
 
-            <li>
-                Pourquoi la méthode <code>canBeConsumed</code> est-elle abstraite dans <code>Animal</code> mais
-                implémentée dans les sous-classes ?
-                <ul>
-                    <li class="fragment">Parce que chaque type d'animal a des règles spécifiques pour déterminer ce
-                        qu'il peut consommer.</li>
-                </ul>
-            </li>
-            <li>
-                Pourquoi <code>IVoler</code> est une interface et non une classe abstraite ?
-                <ul>
-                    <li class="fragment">Parce qu'elle représente un comportement transversal qui peut être partagé par
-                        différentes hiérarchies de classes.</li>
-                </ul>
-            </li>
-            <li>
-                Pourquoi la classe <code>Penguin</code> n'implémente-t-elle pas <code>IVoler</code> ?
-                <ul>
-                    <li class="fragment">Parce que les pingouins ne volent pas, donc ils ne doivent pas avoir la méthode
-                        <code>fly</code>.</li>
-                </ul>
-            </li>
-        </ul>
-    </Slide>
-    <Slide>
-        <Slide>
-            <h2>Questions</h2>
-            <ul>
-                <li>
-                    Pourquoi la méthode <code>fetch</code> n'est-elle pas définie dans <code>Animal</code> ?
-                    <ul>
-                        <li class="fragment">Parce que tous les animaux ne savent pas rapporter des objets, cette
-                            méthode est spécifique aux chiens.</li>
-                    </ul>
-                </li>
-                <li>
-                    Pourquoi utiliser une énumération <code>AnimalType</code> dans la factory au lieu de simples chaînes
-                    de caractères ?
-                    <ul>
-                        <li class="fragment">Pour éviter les erreurs de saisie et garantir un ensemble limité de types
-                            d'animaux valides.</li>
-                    </ul>
-                </li>
-                <li>
-                    Pourquoi la méthode <code>consume</code> de <code>Food</code> est-elle abstraite ?
-                    <ul>
-                        <li class="fragment">Parce que chaque type de nourriture a une manière spécifique d'être
-                            consommée.</li>
-                    </ul>
-                </li>
-                <li>
-                    Pourquoi la méthode <code>toString</code> est-elle redéfinie dans <code>Animal</code> ?
-                    <ul>
-                        <li class="fragment">Pour fournir une représentation textuelle utile des objets
-                            <code>Animal</code>, incluant leur nom et leur couleur.</li>
-                    </ul>
-                </li>
-                <li>
-                    Pourquoi la méthode <code>makeSound</code> est-elle redéfinie dans chaque sous-classe ?
-                    <ul>
-                        <li class="fragment">Parce que chaque animal a un son unique qui le caractérise.</li>
-                    </ul>
-                </li>
-
-            </ul>
-        </Slide>
-    </Slide>
-    <Slide>
-        <h3>Correction</h3>
-    </Slide>
-    <Slide>
-        <div style="overflow: auto; max-height:100vh;">
-            <Code class="language-java">
+		<li>
+			Pourquoi la méthode <code>canBeConsumed</code> est-elle abstraite dans <code>Animal</code>
+			mais implémentée dans les sous-classes ?
+			<ul>
+				<li class="fragment">
+					Parce que chaque type d'animal a des règles spécifiques pour déterminer ce qu'il peut
+					consommer.
+				</li>
+			</ul>
+		</li>
+		<li>
+			Pourquoi <code>IVoler</code> est une interface et non une classe abstraite ?
+			<ul>
+				<li class="fragment">
+					Parce qu'elle représente un comportement transversal qui peut être partagé par différentes
+					hiérarchies de classes.
+				</li>
+			</ul>
+		</li>
+		<li>
+			Pourquoi la classe <code>Penguin</code> n'implémente-t-elle pas <code>IVoler</code> ?
+			<ul>
+				<li class="fragment">
+					Parce que les pingouins ne volent pas, donc ils ne doivent pas avoir la méthode
+					<code>fly</code>.
+				</li>
+			</ul>
+		</li>
+	</ul>
+</Slide>
+<Slide>
+	<Slide>
+		<h2>Questions</h2>
+		<ul>
+			<li>
+				Pourquoi la méthode <code>fetch</code> n'est-elle pas définie dans <code>Animal</code> ?
+				<ul>
+					<li class="fragment">
+						Parce que tous les animaux ne savent pas rapporter des objets, cette méthode est
+						spécifique aux chiens.
+					</li>
+				</ul>
+			</li>
+			<li>
+				Pourquoi utiliser une énumération <code>AnimalType</code> dans la factory au lieu de simples
+				chaînes de caractères ?
+				<ul>
+					<li class="fragment">
+						Pour éviter les erreurs de saisie et garantir un ensemble limité de types d'animaux
+						valides.
+					</li>
+				</ul>
+			</li>
+			<li>
+				Pourquoi la méthode <code>consume</code> de <code>Food</code> est-elle abstraite ?
+				<ul>
+					<li class="fragment">
+						Parce que chaque type de nourriture a une manière spécifique d'être consommée.
+					</li>
+				</ul>
+			</li>
+			<li>
+				Pourquoi la méthode <code>toString</code> est-elle redéfinie dans <code>Animal</code> ?
+				<ul>
+					<li class="fragment">
+						Pour fournir une représentation textuelle utile des objets
+						<code>Animal</code>, incluant leur nom et leur couleur.
+					</li>
+				</ul>
+			</li>
+			<li>
+				Pourquoi la méthode <code>makeSound</code> est-elle redéfinie dans chaque sous-classe ?
+				<ul>
+					<li class="fragment">Parce que chaque animal a un son unique qui le caractérise.</li>
+				</ul>
+			</li>
+		</ul>
+	</Slide>
+</Slide>
+<Slide>
+	<h3>Correction</h3>
+</Slide>
+<Slide>
+	<div style="overflow: auto; max-height:100vh;">
+		<Code class="language-java">
 			{`
         
 // Classe abstraite principale
@@ -906,10 +919,10 @@ public class Main {
 
         `}
 		</Code>
-        </div>
-    </Slide>
-    <Slide>
-        <pre>
+	</div>
+</Slide>
+<Slide>
+	<pre>
 
 Name: Buddy, Color: Brown
 Buddy eats the meat!
@@ -943,4 +956,4 @@ Eating fruit!
 Pingu says: Honk!
 
 </pre>
-    </Slide>
+</Slide>

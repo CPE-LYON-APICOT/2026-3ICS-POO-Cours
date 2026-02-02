@@ -31,9 +31,10 @@
 			<br /> En revanche, on peut utiliser une interface pour simuler l'héritage multiple.
 		</p>
 		<aside class="notes">
-			L'héritage multiple existe en C++, mais ça crée le fameux "problème du diamant" : si deux parents ont la même méthode, laquelle appeler ?
-			Java a choisi d'interdire l'héritage multiple de classes pour éviter ces ambiguïtés.
-			Le canard est l'exemple parfait : il vole ET il nage. Comment modéliser ça sans héritage multiple ?
+			L'héritage multiple existe en C++, mais ça crée le fameux "problème du diamant" : si deux
+			parents ont la même méthode, laquelle appeler ? Java a choisi d'interdire l'héritage multiple
+			de classes pour éviter ces ambiguïtés. Le canard est l'exemple parfait : il vole ET il nage.
+			Comment modéliser ça sans héritage multiple ?
 		</aside>
 	</Slide>
 </Slide>
@@ -41,7 +42,8 @@
 	<h3>Les interfaces</h3>
 	<Slide>
 		<p>
-			Une interface est un type de référence similaire à une classe abstraite qui ne contient que des méthodes abstraites.
+			Une interface est un type de référence similaire à une classe abstraite qui ne contient que
+			des méthodes abstraites.
 		</p>
 		<p>Une interface n'a pas de code "par défaut", seulement des signatures de méthodes.</p>
 		<Code
@@ -54,9 +56,10 @@
         `}</Code
 		>
 		<aside class="notes">
-			Une interface, c'est un "contrat". Elle dit : "Toute classe qui m'implémente DOIT avoir ces méthodes."
-			C'est le niveau d'abstraction le plus élevé en Java. Aucune implémentation, juste des promesses.
-			Depuis Java 8, on peut avoir des méthodes "default" avec du code, mais c'est l'exception, pas la règle.
+			Une interface, c'est un "contrat". Elle dit : "Toute classe qui m'implémente DOIT avoir ces
+			méthodes." C'est le niveau d'abstraction le plus élevé en Java. Aucune implémentation, juste
+			des promesses. Depuis Java 8, on peut avoir des méthodes "default" avec du code, mais c'est
+			l'exception, pas la règle.
 		</aside>
 	</Slide>
 
@@ -66,11 +69,13 @@
 			Une classe signale les interfaces qu’elle implémente grâce au mot-clé <code>implements</code>.
 			Une classe concrète doit fournir une implémentation pour toutes les méthodes d’une interface,
 			soit dans sa déclaration, soit parce qu’elle en hérite.
-		</p>		<aside class="notes">
-			C'est la différence clé avec l'héritage : on "extends" une classe, on "implements" une interface.
-			Et surtout : on peut implémenter PLUSIEURS interfaces, contrairement à l'héritage.
+		</p>
+		<aside class="notes">
+			C'est la différence clé avec l'héritage : on "extends" une classe, on "implements" une
+			interface. Et surtout : on peut implémenter PLUSIEURS interfaces, contrairement à l'héritage.
 			Si vous oubliez d'implémenter une méthode, le compilateur vous le dira.
-		</aside>	</Slide>
+		</aside>
+	</Slide>
 	<Slide>
 		<h3>Implémentation d’une interface</h3>
 		<Code className="h-[70vh]"
@@ -88,24 +93,29 @@
         }
     }
     `}</Code
-		>		<aside class="notes">
-			Notez qu'on peut combiner extends ET implements. SiegeAuto hérite d'Accessoire ET implémente ArticleLouable.
-			C'est très courant en pratique. Une classe a souvent une hiérarchie ET des capacités additionnelles.
-			L'ordre est important : extends AVANT implements !
-		</aside>	</Slide>
+		>
+		<aside class="notes">
+			Notez qu'on peut combiner extends ET implements. SiegeAuto hérite d'Accessoire ET implémente
+			ArticleLouable. C'est très courant en pratique. Une classe a souvent une hiérarchie ET des
+			capacités additionnelles. L'ordre est important : extends AVANT implements !
+		</aside>
+	</Slide>
 	<Slide>
 		<h3>Implémentation d’une interface</h3>
 		<p>
 			Une interface permet de mutualiser une implémentation entre des classes qui n’ont pas de lien
 			d’héritage.<br />
-			Si une classe implémente une interface, ses classes dérivées héritent de cette implémentation,
-			mais il est toutefois possible de la surcharger.
-		</p>		<aside class="notes">
-			C'est là toute la puissance des interfaces. Un Avion et un Oiseau n'ont rien en commun... sauf qu'ils volent.
-			Avec une interface Volant, on peut les traiter de la même façon pour tout ce qui concerne le vol.
-			C'est le principe de "programmation par contrat" : on programme contre une interface, pas une implémentation.
-		</aside>	</Slide>
-	
+			Si une classe implémente une interface, ses classes dérivées héritent de cette implémentation, mais
+			il est toutefois possible de la surcharger.
+		</p>
+		<aside class="notes">
+			C'est là toute la puissance des interfaces. Un Avion et un Oiseau n'ont rien en commun... sauf
+			qu'ils volent. Avec une interface Volant, on peut les traiter de la même façon pour tout ce
+			qui concerne le vol. C'est le principe de "programmation par contrat" : on programme contre
+			une interface, pas une implémentation.
+		</aside>
+	</Slide>
+
 	<Slide>
 		<h3>Comment choisir entre une classe abstraite et une interface ?</h3>
 		<ul class=" text-4xl">
@@ -124,20 +134,20 @@
 						Par exemple, un avion et un oiseau peuvent voler, mais ils n'ont rien à voir l'un avec l'autre.
 					</li>
 					<li>
-						Sinon, prévoyez plutôt une interface si vous pensez qu'une classe fille pourrait avoir besoin
-						d'hériter de plusieurs classes.
+						Sinon, prévoyez plutôt une interface si vous pensez qu'une classe fille pourrait avoir
+						besoin d'hériter de plusieurs classes.
 					</li>
 				</ul>
 			</li>
 		</ul>
 		<aside class="notes">
-			C'est LA question qu'on vous posera en entretien d'embauche ! Retenez bien cette règle.
-			"Est un" → classe abstraite (relation d'identité)
-			"Peut faire" → interface (capacité)
-			Dans le doute, préférez l'interface. C'est plus flexible et ça suit le principe de composition over inheritance.
+			C'est LA question qu'on vous posera en entretien d'embauche ! Retenez bien cette règle. "Est
+			un" → classe abstraite (relation d'identité) "Peut faire" → interface (capacité) Dans le
+			doute, préférez l'interface. C'est plus flexible et ça suit le principe de composition over
+			inheritance.
 		</aside>
 	</Slide>
-    <Slide>
+	<Slide>
 		<h3>Comment choisir entre une classe abstraite et une interface ?</h3>
 		<div class=" flex flex-row justify-center items-center">
 			<PlantUml>
@@ -208,12 +218,15 @@
 			</PlantUml>
 		</div>
 	</Slide>
-	
+
 	<Slide>
 		<h3>Préambule au polymorphisme</h3>
-        <p>Vos méthodes peuvent prendre en paramètre une interface, ce qui permet de passer n'importe quel objet qui l'implémente.</p>
-        <Code class=" highlighter language-java"
-            >{`
+		<p>
+			Vos méthodes peuvent prendre en paramètre une interface, ce qui permet de passer n'importe
+			quel objet qui l'implémente.
+		</p>
+		<Code class=" highlighter language-java"
+			>{`
             public class BassinAquatique {
                 public void faireNager(Nageur nageur) {
                     nageur.nager();
@@ -222,11 +235,13 @@
                     // peu importe que ce soit des mammifères ou des reptiles
                 }
             }
-            `}</Code>
+            `}</Code
+		>
 		<aside class="notes">
-			C'est ça la vraie puissance des interfaces ! Le code ne sait pas et n'a pas besoin de savoir ce qu'est un Nageur.
-			Demain, vous ajoutez une classe Robot qui implémente Nageur → ça marche sans changer une ligne !
-			C'est le principe d'inversion de dépendance (le D de SOLID) : dépendez des abstractions, pas des implémentations.
+			C'est ça la vraie puissance des interfaces ! Le code ne sait pas et n'a pas besoin de savoir
+			ce qu'est un Nageur. Demain, vous ajoutez une classe Robot qui implémente Nageur → ça marche
+			sans changer une ligne ! C'est le principe d'inversion de dépendance (le D de SOLID) :
+			dépendez des abstractions, pas des implémentations.
 		</aside>
 	</Slide>
 	<Slide>
@@ -256,7 +271,9 @@
 		<h3>Héritage d’interface</h3>
 
 		<p>
-			Comme chaque interface introduit un nouveau type, il est possible de contrôler, grâce au mot-clé <code>instanceof</code>, qu’une variable, un paramètre ou un attribut est bien une instance compatible avec cette interface.
+			Comme chaque interface introduit un nouveau type, il est possible de contrôler, grâce au
+			mot-clé <code>instanceof</code>, qu’une variable, un paramètre ou un attribut est bien une
+			instance compatible avec cette interface.
 		</p>
 		<Code className="highlighter language-java"
 			>{`
@@ -276,12 +293,12 @@
 	<Slide>
 		<h3>Les interfaces marqueurs</h3>
 		<p>
-			Une interface sans méthode est appelée une interface marqueur. <br/>
-            Elle est utilisée pour étiqueter une classe.
+			Une interface sans méthode est appelée une interface marqueur. <br />
+			Elle est utilisée pour étiqueter une classe.
 		</p>
-           <p>On les utilise ainsi </p>
-        <Code className="highlighter language-java"
-            >{`
+		<p>On les utilise ainsi</p>
+		<Code className="highlighter language-java"
+			>{`
             interface IConfidential {}
             class DossierMedical implements IConfidential {}
             ...
@@ -290,34 +307,40 @@
                     return; // On ne loggue pas les informations confidentielles
                 }
             }
-            `}</Code>
-    
-        <p>Rappelez-vous, comme on peut implémenter plusieurs interfaces, n'importe quelle classe peut implémenter une interface marqueur.</p>
+            `}</Code
+		>
+
+		<p>
+			Rappelez-vous, comme on peut implémenter plusieurs interfaces, n'importe quelle classe peut
+			implémenter une interface marqueur.
+		</p>
 		<aside class="notes">
-			Historiquement, Java utilisait beaucoup ça : Serializable, Cloneable sont des interfaces marqueurs du JDK.
-			Aujourd'hui, on préfère les annotations (@Confidential) qui sont plus puissantes et flexibles.
-			Mais le concept reste valide et vous le verrez dans du code legacy.
+			Historiquement, Java utilisait beaucoup ça : Serializable, Cloneable sont des interfaces
+			marqueurs du JDK. Aujourd'hui, on préfère les annotations (@Confidential) qui sont plus
+			puissantes et flexibles. Mais le concept reste valide et vous le verrez dans du code legacy.
 		</aside>
 	</Slide>
 	<Slide>
-        <h3>Conventions de nommage</h3>
-        <ul>
-            <li>Les interfaces sont nommées avec un nom qui commence par "I" suivi d'un nom.</li>
-            <li>Le nom est un adjectif ou un nom qui décrit un comportement.</li>
-            <li>Exemple :
-                <ul>
-                    <li>IVolant</li>
-                    <li>IConfidentiel</li>
-                    <li><s>INageur</s></li>
-                    <li><s>Bateau</s></li>
-                    <li><s>Vitesse</s></li>
-                </ul>
-            </li>
-        </ul>
+		<h3>Conventions de nommage</h3>
+		<ul>
+			<li>Les interfaces sont nommées avec un nom qui commence par "I" suivi d'un nom.</li>
+			<li>Le nom est un adjectif ou un nom qui décrit un comportement.</li>
+			<li>
+				Exemple :
+				<ul>
+					<li>IVolant</li>
+					<li>IConfidentiel</li>
+					<li><s>INageur</s></li>
+					<li><s>Bateau</s></li>
+					<li><s>Vitesse</s></li>
+				</ul>
+			</li>
+		</ul>
 		<aside class="notes">
 			Le préfixe "I" est une convention C#/Microsoft. En Java pur, on met souvent pas de préfixe.
-			Mais dans beaucoup d'entreprises françaises, le "I" est la norme. Suivez la convention de votre équipe.
-			Le JDK utilise des suffixes "-able" : Comparable, Serializable, Iterable. C'est aussi une bonne pratique.
+			Mais dans beaucoup d'entreprises françaises, le "I" est la norme. Suivez la convention de
+			votre équipe. Le JDK utilise des suffixes "-able" : Comparable, Serializable, Iterable. C'est
+			aussi une bonne pratique.
 		</aside>
-    </Slide>
+	</Slide>
 </Slide>
