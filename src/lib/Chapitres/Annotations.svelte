@@ -26,6 +26,11 @@
                     Class type();
                 }`}
 		</Code>
+		<aside class="notes">
+			Les annotations sont arrivées en Java 5. Avant, on utilisait des fichiers XML pour la config.
+			Aujourd'hui, c'est le mécanisme central des frameworks modernes : Spring, Hibernate, JPA...
+			Les annotations sont des métadonnées : elles décrivent le code sans le modifier directement.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Les annotations</h3>
@@ -44,6 +49,11 @@
 				or, vous savez qu'on ne peut pas mettre d'attributs dans une interface.
 			</strong>
 		</p>
+		<aside class="notes">
+			Les annotations sont lues soit à la compilation (ex: @Override), soit à l'exécution (ex: @Autowired).
+			Par réflexion (reflection), on peut lire les annotations et agir en conséquence.
+			C'est le cœur du "magic" de Spring : il scanne les classes et crée les beans selon les annotations.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Les annotations</h3>
@@ -57,6 +67,11 @@
 			En l'occurrence, cette dernière ne sert pas à grand-chose, si ce n'est vous mettre un avertissement au
 			cas où vous vous trompiez dans le nom de la méthode.
 		</p>
+		<aside class="notes">
+			Autres annotations standard : @Deprecated (méthode obsolète), @SuppressWarnings (ignorer les avertissements).
+			@Override est super utile : si vous faites une faute de frappe, le compilateur vous prévient.
+			Exemple : écrire equals(Object o) au lieu de equals(object o).
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Les annotations</h3>
@@ -65,6 +80,12 @@
 			etc. Elles permettent de définir des comportements spécifiques à des classes, des méthodes,
 			des attributs, etc.
 		</p>
+		<aside class="notes">
+			Spring : @Controller, @Service, @Repository, @Autowired, @Bean...
+			JPA/Hibernate : @Entity, @Table, @Column, @OneToMany...
+			JUnit : @Test, @BeforeEach, @AfterEach...
+			C'est ce qui rend le code Java moderne plus déclaratif et moins verbeux.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Les annotations</h3>
@@ -75,6 +96,11 @@
 			Vous devrez la passer dans le constructeur à la création de votre objet.<br/>
 			Par contre, si cette classe a aussi besoin de 5 autres classes, cela devient vite compliqué.
 		</p>
+		<aside class="notes">
+			C'est le problème de l'injection de dépendances manuelle : on doit tout câbler à la main.
+			Spring résout ça : il crée les objets et les injecte automatiquement.
+			C'est l'Inversion of Control (IoC) : on ne crée plus les objets, on les demande.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Les annotations</h3>
@@ -237,5 +263,10 @@
 		<p class="text-important">
 			Cette manière de coder est plus ou moins un Design Pattern appelé <strong>Dependency Injection</strong>
 		</p>
+		<aside class="notes">
+			DI est fondamental en entreprise. Tous les gros projets Java utilisent Spring ou un framework similaire.
+			Avantages : code testable (on peut mocker les dépendances), modulaire, facile à maintenir.
+			En entretien, expliquer DI/IoC est souvent demandé. C'est un must-know.
+		</aside>
 	</Slide>
 </Slide>
