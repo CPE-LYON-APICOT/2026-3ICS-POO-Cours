@@ -62,7 +62,7 @@
 <Composition />
 <Interfaces />
 <ExercicesSeance1 />
-<Slide id="seance2">
+<!-- <Slide id="seance2">
 	<h3>Séance 2</h3>
 </Slide>
 
@@ -349,4 +349,4 @@
 		<h1>Annexes</h1></Slide
 	>
 	<LangageJava />
-</Slide>
+</Slide> -->

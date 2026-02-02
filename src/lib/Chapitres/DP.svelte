@@ -16,6 +16,11 @@
 		<p class="fragment">
 			Cours très bien expliqué : <a href="https://refactoring.guru/fr" target="_blank">Refactoring Guru</a>
 		</p>
+		<aside class="notes">
+			Le "Gang of Four" (GoF) a défini 23 patterns en 1994 dans leur livre célèbre.
+			Refactoring Guru est une ressource moderne excellente avec des exemples en Java.
+			On ne verra que les patterns les plus utiles au quotidien.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Qu'est-ce qu'un patron de conception ?</h3>
@@ -28,6 +33,11 @@
 			En connaissant bien ces patrons, vous pouvez proposer des fonctionnalités supplémentaires sans surcoût.
 		</p>
 		<p>Un DP bien identifié permet de communiquer plus facilement avec les autres développeurs !</p>
+		<aside class="notes">
+			C'est un vocabulaire commun. Dire "c'est un Singleton" est plus clair que d'expliquer tout le mécanisme.
+			En revue de code ou en entretien, connaître les DP fait la différence.
+			Mais attention : ne pas forcer un pattern où il n'est pas nécessaire (over-engineering).
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Les patrons de conception sont-ils indispensables ?</h3>
@@ -61,6 +71,11 @@
 			Si vous avez bien suivi, vous connaissez déjà une manière pour qu'un attribut soit partagé par
 			toutes les instances d'une classe.
 		</p>
+		<aside class="notes">
+			Le Singleton est le pattern le plus connu et le plus controversé.
+			Problèmes : difficile à tester, peut cacher des dépendances, problèmes en multi-threading.
+			En Spring, les beans sont des singletons par défaut, mais gérés proprement par le framework.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Qui prépare les commandes ?</h3>
@@ -90,6 +105,11 @@
 		<p class="text-important">
 			Le patron de conception Factory permet de déléguer la création d'objets à une classe Factory.
 		</p>
+		<aside class="notes">
+			Factory cache la complexité de la création. L'appelant ne sait pas quelle classe concrète est utilisée.
+			Utile quand la création est complexe ou quand on veut changer l'implémentation facilement.
+			Variantes : Factory Method, Abstract Factory, Builder.
+		</aside>
 	</Slide>
 	<Slide className="smaller">
 		<h3>Comment les serveurs passent commande ?</h3>
@@ -160,6 +180,11 @@
 			objets, de sorte que lorsqu'un objet change d'état, tous les objets qui en dépendent sont
 			notifiés et mis à jour automatiquement.
 		</p>
+		<aside class="notes">
+			C'est le pattern des événements : addEventListener en JavaScript, les listeners en Java Swing.
+			Moderne : RxJava, les flux réactifs. C'est le cœur de la programmation réactive.
+			Exemple : une interface qui se met à jour quand les données changent.
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Comment le chef prévient qu'il a fini ?</h3>
@@ -226,6 +251,11 @@
 			Le patron de conception Decorator permet d'attacher de nouvelles fonctionnalités à des objets
 			existants de manière dynamique et transparente, sans affecter leur comportement.
 		</p>
+		<aside class="notes">
+			Le Decorator évite l'explosion des sous-classes. Au lieu de GateauBougiesChantilly, on décore.
+			Exemple Java célèbre : les streams d'IO. BufferedReader décore FileReader.
+			new BufferedReader(new FileReader("file.txt")) - c'est du Decorator !
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Ce client qui fête son anniversaire</h3>
@@ -292,6 +322,11 @@
 			Le patron de conception Strategy permet de définir une famille d'algorithmes, de les
 			encapsuler et de les rendre interchangeables.
 		</p>
+		<aside class="notes">
+			Strategy remplace les longues cascades de if/else ou switch par du polymorphisme.
+			On peut changer l'algorithme à runtime sans modifier le code client.
+			Exemple : différentes stratégies de tri, de compression, de calcul de taxe...
+		</aside>
 	</Slide>
 	<Slide>
 		<h3>Chacun paie sa part ou on divise ?</h3>
@@ -374,11 +409,21 @@
 			<li>Combinables</li>
 			<li>Universels</li>
 		</ul>
+		<aside class="notes">
+			Ils existent dans tous les langages OO : Java, C#, Python, TypeScript...
+			Ne les appliquez pas systématiquement. "YAGNI" - You Ain't Gonna Need It.
+			Mais quand le besoin se présente, c'est super puissant de les reconnaître.
+		</aside>
 	</Slide>
 	<Slide data_background_color="#00353F">
 		<h3>Attendus</h3>
 		<p>À l'aide du cours et du site présenté en début de chapitre, maîtrisez-en le plus possible.</p>
 		<p>Sans les DP, vous savez coder en POO, mais c'est le niveau débutant. Les DP font de vous un "bien meilleur" développeur.</p>
+		<aside class="notes">
+			Pour l'examen : Singleton, Factory, Observer, Strategy, Decorator sont les plus demandés.
+			En entreprise, vous les croiserez partout. Spring en utilise plein.
+			Entraînez-vous à les reconnaître dans du code existant.
+		</aside>
 	</Slide>
 	<Slide data_background_color="#00353F">
 		<h3>Attendus</h3>
