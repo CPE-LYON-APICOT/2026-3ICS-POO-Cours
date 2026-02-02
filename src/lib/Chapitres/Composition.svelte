@@ -91,6 +91,11 @@
 				</tr>
 			</tbody>
 		</table>
+		<aside class="notes">
+			Faites cet exercice mental à chaque fois que vous modélisez. C'est automatique avec l'expérience.
+			En entretien d'embauche, on vous demande souvent : "Pourquoi avoir choisi héritage ou composition ici ?"
+			Réponse : "Parce que dire 'Une Voiture est un Moteur' n'a pas de sens."
+		</aside>
 	</Slide>
 
 	<!-- EXEMPLE VOITURE/MOTEUR -->
@@ -182,12 +187,21 @@ class VoitureElectrique {
 		<p class="fragment text-accent-200">
 			On peut changer le moteur sans modifier la classe Voiture !
 		</p>
+		<aside class="notes">
+			C'est le principe "Composition over Inheritance" du Gang of Four. Préférez composer plutôt qu'hériter.
+			L'héritage crée un couplage fort. La composition permet de changer de stratégie à l'exécution.
+			C'est la base de nombreux Design Patterns : Strategy, Decorator, Adapter...
+		</aside>
 	</Slide>
 
 	<!-- LES DEUX RELATIONS -->
 	<Slide data_background_color="#1a1a2e">
 		<h2 class="text-5xl">Les deux relations fondamentales</h2>
 		<p class="text-2xl text-gray-400">Le cœur de l'architecture objet</p>
+		<aside class="notes">
+			Tout le reste de la POO découle de ces deux relations. Maîtrisez-les et vous maîtrisez 80% de l'architecture objet.
+			Quand vous lisez du code, cherchez ces relations. Quand vous concevez, posez-vous ces questions.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -213,6 +227,11 @@ class VoitureElectrique {
 				</dd>
 			</dl>
 		</div>
+		<aside class="notes">
+			Ces termes viennent de l'anglais et sont utilisés mondialement. Apprenez "is-a" et "has-a".
+			Quand vous modélisez, reformulez toujours en français : "Un X est-il un Y ?" "Un X a-t-il un Y ?"
+			La réponse vous dit quelle relation utiliser. C'est mécanique.
+		</aside>
 	</Slide>
 
 	<!-- EXEMPLE MAÎTRE/ANIMAL -->
@@ -243,6 +262,11 @@ Maitre *-- Animal : possède
 @enduml
 `}
 		</PlantUml>
+		<aside class="notes">
+			Cet exemple combine les deux concepts. C'est typique d'une architecture réelle.
+			Le Maître ne connaît pas le type exact de son animal. Il sait juste que c'est un Animal.
+			C'est de l'injection de dépendance avant l'heure ! Les frameworks comme Spring font exactement ça.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -311,6 +335,11 @@ marie.presenterAnimal();  // "Miaou !"
 			C'est le <span class="text-important">polymorphisme</span> en action !<br/>
 			(on le verra en détail plus tard)
 		</p>
+		<aside class="notes">
+			C'est là que tout prend son sens. Composition + héritage + polymorphisme = architecture flexible.
+			Si demain on ajoute un Perroquet, le code du Maître ne change pas. Zéro modification.
+			C'est le principe Open/Closed en action : ouvert à l'extension, fermé à la modification.
+		</aside>
 	</Slide>
 
 	<!-- COMPOSITION VS AGRÉGATION -->
@@ -329,6 +358,11 @@ marie.presenterAnimal();  // "Miaou !"
 				<p class="text-sm text-gray-400 mt-2">Si l'Équipe est dissoute, les Joueurs existent toujours.</p>
 			</div>
 		</div>
+		<aside class="notes">
+			En pratique, beaucoup de développeurs confondent les deux, et ce n'est pas grave.
+			L'important c'est de se poser la question : "Si je supprime le conteneur, le contenu a-t-il encore un sens ?"
+			Une roue sans voiture = bizarre. Un joueur sans équipe = normal (il peut changer d'équipe).
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -424,5 +458,10 @@ class Equipe {
 				</tr>
 			</tbody>
 		</table>
+		<aside class="notes">
+			Gardez ce tableau en tête. C'est la base de toute modélisation objet.
+			En UML, on utilise ces symboles. En entretien, on vous demandera de dessiner ces diagrammes.
+			Prochaine étape : les interfaces, pour aller encore plus loin dans l'abstraction.
+		</aside>
 	</Slide>
 </Slide>

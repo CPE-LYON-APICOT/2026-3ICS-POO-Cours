@@ -29,6 +29,11 @@ tab[10] = 42;    // ArrayIndexOutOfBoundsException !
 		<p class="fragment mt-4 text-red-400 font-bold">
 			😱 Sans gestion, ces erreurs <b>crashent</b> votre programme !
 		</p>
+		<aside class="notes">
+			Les exceptions sont fondamentales en production. Un programme qui crashe = utilisateurs mécontents.
+			L'idée : prévoir les problèmes et y réagir proprement au lieu de planter.
+			Différence avec les erreurs de compilation : les exceptions arrivent à l'exécution.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -51,6 +56,11 @@ public void virer(CompteBancaire source, CompteBancaire dest, double montant) {
 				✅ Solution : gérer les erreurs avec des <span class="text-important">exceptions</span>
 			</p>
 		</div>
+		<aside class="notes">
+			Exemple réel : en 2012, Knight Capital a perdu 440 millions de dollars en 45 minutes à cause d'un bug.
+			Les exceptions + transactions permettent le rollback : si ça échoue, on annule tout.
+			C'est le principe ACID des bases de données.
+		</aside>
 	</Slide>
 
 	<!-- TRY / CATCH / FINALLY -->
@@ -73,6 +83,11 @@ finally {
 }
 `}
 		</Code>
+		<aside class="notes">
+			Le try délimite la zone de code surveillée. Le catch attrape l'exception.
+			Le finally s'exécute MÊME si on fait un return dans le try ou le catch !
+			C'est la garantie que le nettoyage sera fait. Très important pour éviter les fuites mémoire.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -123,6 +138,11 @@ public void setAge(int age) {
 		<p class="fragment mt-4 text-accent-200">
 			💡 Cela permet de <b>valider les données</b> et d'arrêter l'exécution proprement.
 		</p>
+		<aside class="notes">
+			throw crée et lance l'exception. C'est vous qui décidez quand une situation est anormale.
+			C'est le pattern "Fail Fast" : mieux vaut échouer tôt que propager des données invalides.
+			Très utile pour valider les entrées utilisateur ou les paramètres de méthodes.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -175,6 +195,11 @@ System.out.println("Programme continue...");
 				<td class="p-3">Erreur base de données</td>
 			</tr>
 		</table>
+		<aside class="notes">
+			NullPointerException est la plus fréquente ! Tony Hoare l'appelle son "erreur à un milliard de dollars".
+			Java 14+ a amélioré les messages d'erreur NPE pour mieux identifier le problème.
+			En entretien, on vous demandera souvent de citer des exceptions courantes.
+		</aside>
 	</Slide>
 
 	<!-- CHECKED VS UNCHECKED -->
@@ -211,6 +236,11 @@ public void diviser(int a, int b) {
 				<p class="text-sm mt-2">Exemples : <code>NullPointerException</code>, <code>ArithmeticException</code></p>
 			</div>
 		</div>
+		<aside class="notes">
+			C'est un débat classique en Java. Certains pensent que les checked exceptions sont trop verbeuses.
+			Les unchecked héritent de RuntimeException. Les checked héritent directement de Exception.
+			En pratique moderne, on préfère souvent les unchecked pour moins de boilerplate.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -234,6 +264,11 @@ public void main() {
 }
 `}
 		</Code>
+		<aside class="notes">
+			throws délègue la responsabilité. "Je sais que ça peut foirer, mais c'est à toi de gérer."
+			Attention : throw (sans s) lance l'exception, throws (avec s) déclare la possibilité.
+			On peut déclarer plusieurs exceptions : throws IOException, SQLException.
+		</aside>
 	</Slide>
 
 	<!-- CRÉER SES PROPRES EXCEPTIONS -->
@@ -258,6 +293,11 @@ public class SoldeInsuffisantException extends Exception {
 }
 `}
 		</Code>
+		<aside class="notes">
+			Les exceptions métier améliorent la lisibilité du code. SoldeInsuffisantException dit exactement ce qui se passe.
+			On peut stocker des infos supplémentaires (solde, montant) pour mieux gérer l'erreur.
+			Convention : le nom se termine par Exception.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -298,6 +338,11 @@ try {
 			<li class="fragment">✅ Créer des exceptions métier personnalisées</li>
 			<li class="fragment">❌ Ne pas utiliser les exceptions pour le contrôle de flux normal</li>
 		</ul>
+		<aside class="notes">
+			Le catch vide est le pire anti-pattern : on avale l'erreur et on ne sait jamais ce qui s'est passé.
+			Pour le logging, utilisez un framework comme SLF4J/Logback en entreprise.
+			Les exceptions sont coûteuses en performance, ne les utilisez pas pour le flux normal.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -383,6 +428,11 @@ try (FileReader fr =
 				</Code>
 			</div>
 		</div>
+		<aside class="notes">
+			try-with-resources est arrivé en Java 7. Plus jamais de finally pour fermer un fichier !
+			L'objet doit implémenter AutoCloseable. close() est appelé automatiquement.
+			On peut déclarer plusieurs ressources séparées par des points-virgules.
+		</aside>
 	</Slide>
 
 	<!-- CAS D'USAGE ENTREPRISE -->
@@ -442,5 +492,10 @@ public ResponseEntity<?> retirer(@PathVariable Long id, @RequestBody double mont
 		<p class="fragment mt-8 text-accent-200 font-bold">
 			💼 Les exceptions sont essentielles pour la robustesse des applications en production !
 		</p>
+		<aside class="notes">
+			Résumé à connaître par cœur pour l'examen. throw vs throws est une question classique.
+			En entreprise, la gestion des exceptions fait partie du quotidien du développeur.
+			Un code sans gestion d'erreur n'est pas un code professionnel.
+		</aside>
 	</Slide>
 </Slide>

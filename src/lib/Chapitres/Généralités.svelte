@@ -33,6 +33,11 @@
 		<p class="fragment mt-8 text-important font-bold">
 			Chaque concept devient une <b>classe</b>, chaque instance concrète devient un <b>objet</b>.
 		</p>
+		<aside class="notes">
+			La POO est née de ce besoin : les programmeurs voulaient modéliser le monde réel dans leurs programmes.
+			Avant, on avait des structures de données et des fonctions séparées. Maintenant, tout est regroupé.
+			C'est plus intuitif pour l'humain : on pense en termes d'objets, pas en termes de bits.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -87,6 +92,11 @@ class Client {
 		<p class="fragment mt-6 text-important">
 			💡 La classe modélise le <b>concept</b>, l'objet représente une <b>instance concrète</b>.
 		</p>
+		<aside class="notes">
+			C'est un mapping 1:1 entre le métier et le code. Les analystes parlent de Client, les développeurs codent Client.
+			C'est là toute la puissance de la POO : on parle le même langage que le métier.
+			C'est la base du Domain-Driven Design (DDD) qu'on voit dans les entreprises modernes.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -133,6 +143,10 @@ Personne <|.. marie
 	<Slide data_background_color="#1a1a2e">
 		<h2 class="text-5xl">Créer des objets</h2>
 		<p class="text-2xl text-gray-400">Le mot-clé new et les constructeurs</p>
+		<aside class="notes">
+			Maintenant qu'on sait ce qu'est un objet, voyons comment en créer un.
+			C'est la partie pratique : comment ça marche en mémoire, comment initialiser proprement.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -148,6 +162,15 @@ Personne jean = new Personne();
 			<ol class="text-xl">
 				<li class="fragment">Java alloue de la mémoire pour l'objet</li>
 				<li class="fragment">Le <b>constructeur</b> de la classe est appelé</li>
+				<li class="fragment">L'objet est prêt à être utilisé</li>
+			</ol>
+		</div>
+		<aside class="notes">
+			En interne, Java alloue de la mémoire dans le "heap" (tas). La variable jean contient une référence vers cet espace.
+			Contrairement au C, vous n'avez pas à gérer la mémoire vous-même. Le Garbage Collector s'en charge.
+			Chaque fois que vous écrivez "new", vous créez un NOUVEL objet en mémoire.
+		</aside>
+	</Slide>
 				<li class="fragment">L'objet est prêt à être utilisé</li>
 			</ol>
 		</div>
@@ -195,6 +218,11 @@ public Personne(String nom, String prenom, int age) {
 		<p class="fragment mt-4 text-accent-200">
 			<code>this</code> permet de distinguer l'attribut du paramètre quand ils ont le même nom.
 		</p>
+		<aside class="notes">
+			C'est une convention très courante : donner le même nom au paramètre et à l'attribut.
+			Sans "this", le paramètre "cache" l'attribut (shadowing). this lève l'ambiguïté.
+			Certains préfèrent préfixer les paramètres (pNom) ou les attributs (_nom). C'est une question de convention d'équipe.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -215,6 +243,11 @@ p.nom = "Jean";               // On initialise après
 		<p class="fragment text-red-400 mt-4">
 			⚠️ Dès que vous définissez un constructeur, le constructeur par défaut disparaît !
 		</p>
+		<aside class="notes">
+			C'est un piège classique ! Si vous définissez Personne(String nom), alors new Personne() ne compile plus.
+			Solution : définir explicitement un constructeur sans paramètres si vous en avez besoin.
+			Les frameworks (Hibernate, Spring) ont souvent besoin du constructeur par défaut pour l'instanciation dynamique.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -244,6 +277,11 @@ public class Personne {
 		<p class="fragment text-accent-200 mt-4">
 			<code>this(...)</code> permet d'appeler un autre constructeur de la même classe.
 		</p>
+		<aside class="notes">
+			C'est le "constructor chaining". Très utile pour éviter la duplication de code.
+			Le this() doit être la première instruction du constructeur, comme super().
+			On voit souvent ça avec des valeurs par défaut : le constructeur simple appelle le complet.
+		</aside>
 	</Slide>
 
 	<!-- RÉCAPITULATIF -->
@@ -270,5 +308,10 @@ public class Personne {
 		<p class="fragment mt-8 text-accent-200 text-xl">
 			🔮 Maintenant, voyons comment <b>protéger</b> nos données avec l'encapsulation !
 		</p>
+		<aside class="notes">
+			Voilà les bases. Classe = moule, objet = instance concrète. New = création, constructeur = initialisation.
+			Avec ça, vous pouvez déjà écrire du code objet. Mais c'est pas encore sécurisé.
+			On passe à l'encapsulation pour apprendre à protéger nos données.
+		</aside>
 	</Slide>
 </Slide>

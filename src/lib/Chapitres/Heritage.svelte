@@ -9,12 +9,21 @@
 		<p>
 			En POO, l'héritage est un mécanisme qui permet de créer une nouvelle classe à partir d'une classe existante.
 		</p>
+		<aside class="notes">
+			L'héritage, c'est comme dans la vraie vie : les enfants héritent des caractéristiques des parents.
+			En code, une classe enfant récupère automatiquement tout ce que possède la classe parent.
+			C'est un des piliers de la POO, introduit dès Simula en 1967 !
+		</aside>
 	</Slide>
 	<Slide>
 		<p>
 			La classe existante est appelée <span class="text-important">classe mère</span> ou
 			<span class="text-important">classe de base</span>.
 		</p>
+		<aside class="notes">
+			On dit aussi "superclasse" en anglais (superclass). C'est le terme utilisé dans la documentation Java.
+			La classe mère définit le comportement commun à toutes ses classes filles.
+		</aside>
 	</Slide>
 	<Slide>
 		<p>
@@ -22,6 +31,11 @@
 			<span class="text-important">classe dérivée</span>.
 		</p>
 		<p>La classe fille peut aussi ajouter des attributs et des méthodes qui lui sont propres.</p>
+		<aside class="notes">
+			On dit aussi "subclass" en anglais. La classe fille est une spécialisation de la classe mère.
+			C'est la relation "est un" : un Chien est un Animal, donc Chien hérite d'Animal.
+			En Java, toutes les classes héritent implicitement de Object. C'est la racine de l'arbre d'héritage.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -82,6 +96,11 @@ class Chien extends Animal {
 			redéfinir les méthodes de la classe mère.
 		</p>
 		<p>Redéfinir une méthode s'appelle <span class="text-important">redéfinition</span> (ou <em>override</em>).</p>
+		<aside class="notes">
+			Attention à ne pas confondre redéfinition (override) et surcharge (overload) !
+			Redéfinition : même signature, comportement différent dans la classe fille.
+			Surcharge : même nom, signatures différentes (nombre/type de paramètres).
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -93,6 +112,11 @@ class Chien extends Animal {
 		<div class="fragment mt-8">
 			<p class="text-accent-200">Exemple : Un animal crie, mais chaque animal crie différemment !</p>
 		</div>
+		<aside class="notes">
+			C'est là que la POO prend tout son sens. Le concept général est dans la classe mère, le détail dans la fille.
+			Un Animal sait qu'il doit crier, mais seul le Chien sait qu'il aboie.
+			C'est le Template Method Pattern : la structure dans le parent, les détails dans les enfants.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -215,6 +239,10 @@ class Chien extends Animal {
 	<Slide data_background_color="#1a1a2e">
 		<h2 class="text-5xl">Les classes abstraites</h2>
 		<p class="text-2xl text-gray-400">Quand on ne peut pas tout définir...</p>
+		<aside class="notes">
+			Maintenant on passe à un concept plus avancé : l'abstraction.
+			Parfois, une classe est trop générale pour être instanciée. C'est là qu'intervient abstract.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -235,6 +263,11 @@ abstract class Animal {
 Chien c = new Chien();       // ✅ OK
 `}
 		</Code>
+		<aside class="notes">
+			Pensez-y comme un moule incomplet. On ne peut pas utiliser un moule incomplet pour fabriquer quelque chose.
+			Mais les classes filles complètent le moule et deviennent utilisables.
+			Une méthode abstraite n'a pas de corps {} - juste une signature suivie de ;
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -247,6 +280,11 @@ Chien c = new Chien();       // ✅ OK
 		<p class="fragment mt-8 text-accent-200">
 			🤔 Comment calculer la surface d'une "Forme" générique ? C'est impossible !
 		</p>
+		<aside class="notes">
+			C'est une question de sémantique. Une "Forme" c'est quoi ? Un cercle ? Un carré ? On ne sait pas.
+			Donc on ne peut pas calculer sa surface. Mais on SAIT que toute forme a une surface.
+			La classe abstraite dit : "Je ne sais pas comment, mais mes enfants sauront."
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -343,6 +381,11 @@ class Rectangle extends Forme {
 	<Slide data_background_color="#3d1a1a">
 		<h2 class="text-5xl">⚠️ Quand NE PAS hériter</h2>
 		<p class="text-2xl text-gray-400">L'erreur classique du débutant</p>
+		<aside class="notes">
+			Attention, l'héritage est puissant mais dangereux si mal utilisé.
+			C'est l'une des erreurs les plus fréquentes chez les développeurs juniors.
+			Même les seniors tombent dans le piège parfois !
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -366,6 +409,11 @@ p.clear();      // 😱 On peut tout supprimer !
 		<p class="fragment text-red-400 font-bold">
 			Une Pile n'est PAS une ArrayList, elle UTILISE une ArrayList !
 		</p>
+		<aside class="notes">
+			C'est le fameux exemple de Joshua Bloch dans "Effective Java". Il déconseille d'hériter des collections.
+			Le problème : on expose des méthodes qui n'ont pas de sens pour une Pile (add, remove au milieu...).
+			C'est une violation du principe de substitution de Liskov.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -391,6 +439,11 @@ class Pile {
 		<p class="fragment text-green-400 font-bold">
 			On expose uniquement ce qui a du sens pour une Pile.
 		</p>
+		<aside class="notes">
+			Voilà la solution propre. La Pile "a une" ArrayList, elle n'"est pas" une ArrayList.
+			L'utilisateur ne peut faire que empiler et depiler. Impossible de corrompre l'état interne.
+			C'est le principe d'encapsulation appliqué à l'architecture.
+		</aside>
 	</Slide>
 
 	<Slide>
@@ -438,5 +491,10 @@ class Pile {
 				<td class="p-4">Classe/méthode non instanciable</td>
 			</tr>
 		</table>
+		<aside class="notes">
+			Ce sont les 5 mots-clés essentiels de l'héritage en Java. Apprenez-les par cœur !
+			Extends pour hériter, super pour accéder au parent, @Override pour redéfinir proprement.
+			Avec ça, vous couvrez 95% des cas d'utilisation de l'héritage.
+		</aside>
 	</Slide>
 </Slide>
