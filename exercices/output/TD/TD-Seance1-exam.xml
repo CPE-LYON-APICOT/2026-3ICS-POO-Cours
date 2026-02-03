@@ -1,0 +1,2764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Introduction</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q01 : poo-piliers </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Selon l’introduction du cours, quels sont les 3 “mots” qui résument la POO ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Les 3 piliers sont : <strong>Ranger</strong> (organiser le code en regroupant données et comportements), <strong>Protéger</strong> (encapsuler pour éviter les erreurs), <strong>Généraliser</strong> (héritage et polymorphisme pour réutiliser).</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+Compiler (exécuter le code)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+Ranger (organiser le code)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+Optimiser (améliorer les performances)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+Protéger (éviter les erreurs)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+Généraliser (réutiliser le code)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Classes et Objets</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q02 : poo-references </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Analysez le code suivant :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>Etudiant e1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Etudiant</span><span class="op">(</span><span class="st">&quot;Alice&quot;</span><span class="op">,</span> <span class="dv">20</span><span class="op">);</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>Etudiant e2 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Etudiant</span><span class="op">(</span><span class="st">&quot;Bob&quot;</span><span class="op">,</span> <span class="dv">22</span><span class="op">);</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>Etudiant e3 <span class="op">=</span> e1<span class="op">;</span></span></code></pre></div>
+<p>Combien d’objets sont créés en mémoire ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>2 objets</strong> sont créés en mémoire (avec les deux <code>new</code>).</p>
+<p><code>e3</code> contient une <strong>référence</strong> vers le même objet que <code>e1</code>. Ce n’est pas une copie de l’objet, c’est la même adresse mémoire.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+0 objet
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+2 objets
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+1 objet
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+3 objets
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Classes et Objets</text>
+</category>
+</question>
+
+
+<question type="numerical">
+<name>
+<text> Q03 : poo-modification-reference </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Soit le code suivant :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>Etudiant e1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Etudiant</span><span class="op">(</span><span class="st">&quot;Alice&quot;</span><span class="op">,</span> <span class="dv">20</span><span class="op">);</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>Etudiant e3 <span class="op">=</span> e1<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>e3<span class="op">.</span><span class="fu">age</span> <span class="op">=</span> <span class="dv">25</span><span class="op">;</span></span></code></pre></div>
+<p>Quelle sera la valeur de <code>e1.age</code> après exécution ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><code>e1.age</code> vaudra <strong>25</strong>. Puisque <code>e1</code> et <code>e3</code> pointent vers le même objet, modifier via <code>e3</code> modifie l’objet que <code>e1</code> référence aussi.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<answer fraction="100" format="moodle_auto_format">
+<text>25</text>
+<tolerance>0</tolerance>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Classes et Objets</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q04 : poo-new-keyword </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Que se passe-t-il quand on écrit <code>Personne jean = new Personne();</code> ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Avec <code>new</code> :
+1. Java alloue de la mémoire dans le tas (heap)
+2. Le constructeur de la classe est appelé pour initialiser l’objet
+3. Une référence vers cet espace mémoire est retournée et stockée dans la variable</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Java alloue de la mémoire, appelle le constructeur, et retourne une référence
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Java vérifie si un objet Personne existe déjà
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Java crée une variable locale sans allocer de mémoire
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Java copie une instance existante de Personne
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Classes et Objets</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q05 : poo-constructeur-defaut </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Que se passe-t-il si vous définissez un constructeur <code>Personne(String nom)</code> sans définir de constructeur sans paramètres ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Dès que vous définissez un constructeur, le constructeur par défaut (sans paramètres) <strong>disparaît</strong> !</p>
+<p>Si vous avez besoin des deux, vous devez définir explicitement le constructeur sans paramètres.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Une exception sera levée à l’exécution
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Java crée automatiquement un constructeur sans paramètres
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+<code>new Personne()</code> ne compilera plus
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Le code fonctionne normalement
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/null et NullPointerException</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q06 : poo-npe </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Que se passe-t-il à l’exécution du code suivant ?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>Etudiant e <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>e<span class="op">.</span><span class="fu">nom</span><span class="op">);</span></span></code></pre></div>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Le programme va <strong>planter</strong> avec une <code>NullPointerException</code>.</p>
+<p>Message d’erreur : <code>Cannot invoke "..." because "e" is null</code></p>
+<p>On ne peut pas appeler de méthode ou accéder à un attribut sur <code>null</code> car il n’y a pas d’objet.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Affiche “null”
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Affiche une chaîne vide
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Lance une NullPointerException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Comparaison d'objets</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q07 : poo-equals-vs-double-equals </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Soit le code suivant :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">String</span> a <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span><span class="st">&quot;Hello&quot;</span><span class="op">);</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">String</span> b <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span><span class="st">&quot;Hello&quot;</span><span class="op">);</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">String</span> c <span class="op">=</span> a<span class="op">;</span></span></code></pre></div>
+<p>Quelles expressions retournent <code>true</code> ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: decimal">
+<li><code>a == b</code> → <strong>false</strong> (deux objets différents en mémoire)</li>
+<li><code>a.equals(b)</code> → <strong>true</strong> (même contenu “Hello”)</li>
+<li><code>a == c</code> → <strong>true</strong> (même référence, même objet)</li>
+<li><code>a.equals(c)</code> → <strong>true</strong> (même contenu)</li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+a.equals(c)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+a.equals(b)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+a == c
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+a == b
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Comparaison d'objets</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q08 : poo-null-equals-pattern </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Quel code est le plus sûr pour comparer une variable <code>nom</code> (potentiellement null) avec la chaîne “admin” ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Mettre la constante à gauche : <code>"admin".equals(nom)</code></p>
+<p>Ainsi, même si <code>nom</code> est <code>null</code>, pas de crash (<code>equals</code> gère <code>null</code> en paramètre).</p>
+<p>L’autre syntaxe <code>nom.equals("admin")</code> provoque une <strong>NullPointerException</strong> si <code>nom</code> est null.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+<code>"admin".equals(nom)</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>nom == "admin"</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>nom.compareTo("admin") == 0</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>nom.equals("admin")</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Encapsulation</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q09 : poo-modificateurs-acces </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Quels sont les modificateurs d’accès en Java ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Les 4 modificateurs d’accès sont : <code>private</code>, <code>public</code>, <code>protected</code> et (default/package-private).</p>
+<p><code>static</code> et <code>final</code> ne sont <strong>PAS</strong> des modificateurs d’accès, mais des modificateurs de comportement.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+protected
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+final
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+public
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+static
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+(default/package)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+private
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Encapsulation</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q10 : poo-private-visibility </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Un attribut déclaré <code>private</code> est accessible depuis :</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<table class="table_shade">
+<thead>
+<tr class="header">
+<th>Modificateur</th>
+<th>Classe</th>
+<th>Package</th>
+<th>Sous-classe</th>
+<th>Partout</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>private</code></td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Partout dans le programme
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+La classe elle-même uniquement
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+La classe et le même package
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+La classe et ses sous-classes
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Encapsulation</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q11 : poo-protected-visibility </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Un attribut déclaré <code>protected</code> est accessible depuis :</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><code>protected</code> donne accès à :
+- La classe elle-même
+- Les classes du même package
+- Les sous-classes (même dans d’autres packages)</p>
+<p>C’est plus permissif que <code>private</code> mais moins que <code>public</code>.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+N’importe quelle classe de n’importe quel package
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+Les sous-classes (même dans d’autres packages)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+Les classes du même package
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+La classe elle-même
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Héritage</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q12 : poo-override-annotation </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>À quoi sert l’annotation <code>@Override</code> ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>L’annotation <code>@Override</code> indique au compilateur qu’on redéfinit une méthode de la classe mère.</p>
+<p><strong>Avantages</strong> :
+- <strong>Sécurité</strong> : le compilateur vérifie que la méthode existe bien dans la classe mère (détecte les fautes de frappe)
+- <strong>Lisibilité</strong> : le code est plus clair pour le lecteur</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Elle permet au compilateur de vérifier qu’on redéfinit bien une méthode du parent
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Elle améliore les performances de la méthode
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Elle est obligatoire pour redéfinir une méthode
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Elle rend la méthode publique
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Héritage</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q13 : poo-super-constructeur </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Où doit se trouver l’appel à <code>super()</code> dans un constructeur de classe fille ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><code>super()</code> doit être la <strong>première instruction</strong> du constructeur.</p>
+<p>Le parent doit être construit avant l’enfant. Si vous oubliez <code>super()</code>, Java appelle automatiquement <code>super()</code> sans argument (ce qui échoue si le parent n’a pas de constructeur sans paramètres).</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+N’importe où dans le constructeur
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+En première instruction du constructeur
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Après l’initialisation des attributs de la classe fille
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+En dernière instruction du constructeur
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Héritage</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q14 : poo-abstract-forme </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Soit <code>abstract class Forme { abstract double calculerSurface(); }</code>. Quel code est valide ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>On ne peut <strong>pas</strong> instancier une classe abstraite avec <code>new Forme()</code>.</p>
+<p>Mais on peut déclarer une variable de type <code>Forme</code> et l’initialiser avec une instance d’une classe concrète qui hérite de <code>Forme</code>.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+<code>Forme f = new Cercle(5.0);</code> (si Cercle extends Forme)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Les trois sont valides
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>Forme f = new Forme() {};</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>Forme f = new Forme();</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Héritage</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q15 : poo-heritage-multiple </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>En Java, une classe peut hériter de combien de classes ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>En Java, une classe ne peut hériter que d’<strong>une seule classe</strong> (héritage simple).</p>
+<p>C’est pour éviter le “problème du diamant” qui existe en C++ avec l’héritage multiple.</p>
+<p>Pour “simuler” l’héritage multiple, on utilise les <strong>interfaces</strong>.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Autant de classes que souhaité
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Une seule classe
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Deux classes maximum
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Aucune, l’héritage n’existe pas en Java
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Composition</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q16 : poo-est-un-vs-a-un </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Pour chaque affirmation, dites si elle est vraie :</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li>“Un Chien <strong>est un</strong> Animal” → <strong>Héritage</strong> ✅</li>
+<li>“Une Voiture <strong>a un</strong> Moteur” → <strong>Composition</strong> ✅</li>
+<li>“Une Voiture <strong>est un</strong> Moteur” → Faux ! (n’a pas de sens)</li>
+<li>“Un Maître <strong>a un</strong> Animal” → <strong>Composition</strong> ✅</li>
+<li>“Un Rectangle <strong>est une</strong> Forme” (pas “a une”) → <strong>Héritage</strong></li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+“Un Chien est un Animal” → Héritage
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+“Une Voiture a un Moteur” → Composition
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+“Un Maître a un Animal” → Composition
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+“Un Rectangle a une Forme” → Composition
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+“Une Voiture est un Moteur” → Héritage
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Composition</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q17 : poo-choix-heritage-composition </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Comment choisir entre héritage et composition ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>La règle d’or :
+- Si on peut dire “X <strong>est un</strong> Y” (relation d’identité) → <strong>Héritage</strong>
+- Si on peut dire “X <strong>a un</strong> Y” (relation de possession) → <strong>Composition</strong></p>
+<p>Exemple : “Une Voiture est un Moteur” sonne faux, donc pas d’héritage. “Une Voiture a un Moteur” sonne juste, donc composition.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Toujours utiliser l’héritage, c’est plus simple
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Utiliser l’héritage pour les attributs, la composition pour les méthodes
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Si “X est un Y” → Héritage ; Si “X a un Y” → Composition
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Toujours utiliser la composition, c’est plus moderne
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Interfaces</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q18 : poo-implements-keyword </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Quel mot-clé utilise-t-on pour implémenter une interface ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>On utilise <code>implements</code> pour implémenter une interface :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> SiegeAuto <span class="kw">implements</span> ArticleLouable <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span></code></pre></div>
+<p>On utilise <code>extends</code> pour hériter d’une classe.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+inherits
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+extends
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+uses
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+implements
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Interfaces</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q19 : poo-interface-multiple </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Une classe peut-elle implémenter plusieurs interfaces ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Oui, une classe peut implémenter <strong>autant d’interfaces qu’elle veut</strong> :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Canard <span class="kw">implements</span> Volant<span class="op">,</span> Nageur<span class="op">,</span> Marcheur <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span></code></pre></div>
+<p>C’est la solution de Java au problème de l’héritage multiple : on hérite d’une classe mais on implémente plusieurs interfaces.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Maximum 2 interfaces
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui, mais seulement si les interfaces n’ont pas de méthodes en commun
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, une seule interface par classe
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Oui, autant qu’elle veut
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Interfaces</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q20 : poo-extends-implements-ordre </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Quel est l’ordre correct pour hériter d’une classe ET implémenter des interfaces ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>L’ordre est obligatoire : <code>extends</code> AVANT <code>implements</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> SiegeAuto <span class="kw">extends</span> Accessoire <span class="kw">implements</span> ArticleLouable<span class="op">,</span> Transportable <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="co">// ...</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+L’ordre n’a pas d’importance
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+class X implements I1, I2 extends Y
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+class X extends Y implements I1, I2
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Synthèse</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q21 : poo-instanceof </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Que retourne <code>bob instanceof Carnivore</code> si <code>Humain implements Omnivore</code> et <code>Omnivore extends Carnivore</code> ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><code>true</code> !</p>
+<p>Si <code>Omnivore extends Carnivore</code> et <code>Humain implements Omnivore</code>, alors un <code>Humain</code> est aussi un <code>Carnivore</code> (par transitivité).</p>
+<p><code>instanceof</code> vérifie toute la chaîne d’héritage/implémentation.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+true
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+false
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+NullPointerException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+<question type="essay">
+    <name><text>Procédural vs Orienté Objet</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Expliquez la différence fondamentale entre la programmation procédurale et la programmation orientée objet en termes d'organisation des données et des traitements.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>En <strong>programmation procédurale</strong>, les données et les traitements sont séparés. Les fonctions peuvent accéder à n'importe quelle donnée globale, ce qui rend difficile de savoir "qui fait quoi".</p><p>En <strong>POO</strong>, les données (attributs) et les traitements (méthodes) sont regroupés dans des objets. Chaque objet est responsable de lui-même et ses méthodes n'accèdent qu'à ses propres données. Le code est mieux organisé et plus modulaire.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-procedural-vs-oo</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Avantage du regroupement</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Pourquoi est-il problématique d'avoir des variables "en vrac" comme <code>nomClient</code>, <code>ageClient</code>, <code>emailClient</code>, <code>nomProduit</code>, <code>prixProduit</code> plutôt que des objets <code>Client</code> et <code>Produit</code> ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Avec des variables "en vrac" :
+- Rien n'indique que <code>nomClient</code> va avec <code>ageClient</code> et <code>emailClient</code>
+- On peut facilement passer le mauvais paramètre à une fonction (ex: l'âge de Marie à Jean)
+- Quand le code grossit, c'est le chaos : on ne sait plus quelle variable va avec quelle autre
+- Pas de validation des données cohérente</p><p>Avec des objets, chaque "boîte" contient ce qui lui appartient et garantit la cohérence.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-avantage-regroupement</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Classe vs Objet</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p><strong>Qu'est-ce qu'une classe ? Qu'est-ce qu'un objet ?</strong></p><p>Expliquez la différence entre ces deux concepts fondamentaux de la POO et donnez une analogie du monde réel.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Une <strong>classe</strong> est un modèle ou un plan qui définit les attributs (données) et les méthodes (comportements) que possèderont les objets créés à partir de cette classe.</p><p>Un <strong>objet</strong> est une instance concrète d'une classe. Chaque objet possède ses propres valeurs d'attributs mais partage les mêmes méthodes définies dans la classe.</p><p><strong>Analogie</strong> : La classe est le plan d'une maison, l'objet est une maison construite à partir de ce plan. On peut construire plusieurs maisons à partir du même plan.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-classe-objet</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Le mot-clé this</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Qu'est-ce que le mot-clé <code>this</code> en Java ? Dans quel cas est-il particulièrement utile dans un constructeur ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><code>this</code> est une référence à l'<strong>objet courant</strong> (l'instance en cours de manipulation).</p><p>Dans le constructeur, <code>this.nom</code> fait référence à l'attribut de l'objet, tandis que <code>nom</code> (sans <code>this</code>) fait référence au paramètre du constructeur.</p><p>Sans <code>this</code>, le paramètre "masque" l'attribut (shadowing). <code>this</code> permet de lever l'ambiguïté.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-this-keyword</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Surcharge de constructeurs</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Qu'est-ce que la surcharge de constructeurs ? Expliquez l'intérêt de <code>this(...)</code> dans un constructeur.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>La <strong>surcharge de constructeurs</strong> permet à une classe d'avoir plusieurs constructeurs avec des paramètres différents.</p><p><code>this(...)</code> permet d'appeler un autre constructeur de la même classe. C'est utile pour éviter la duplication de code : le constructeur simplifié peut appeler le constructeur complet avec des valeurs par défaut.</p><p>``<code>java
+public Personne(String nom) {
+    this(nom, "Inconnu", 0);  // Appelle le constructeur complet
+}
+</code>``</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-surcharge-constructeurs</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Définition de null</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Qu'est-ce que <code>null</code> en Java ? Est-ce un objet vide ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><code>null</code> est une valeur spéciale qui signifie "<strong>absence d'objet</strong>" ou "aucune référence".</p><p>Une variable contenant <code>null</code> ne pointe vers aucun objet en mémoire.</p><p>Ce n'est <strong>PAS</strong> un objet vide. C'est l'absence totale d'objet.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-null-definition</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Prévenir les NPE</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Comment peut-on prévenir les NullPointerException dans son code ? Donnez au moins 2 techniques.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>1. <strong>Vérifier avant d'utiliser</strong> : <code>if (obj != null) { obj.methode(); }</code></p><p>2. <strong>Pattern "constante à gauche"</strong> : <code>"valeur".equals(variable)</code> au lieu de <code>variable.equals("valeur")</code></p><p>3. <strong>Utiliser Optional</strong> (Java 8+) pour représenter explicitement l'absence de valeur</p><p>4. <strong>Initialiser les attributs</strong> dans le constructeur plutôt que de les laisser à null</p><p>5. <strong>Annotations @NotNull</strong> pour documenter et vérifier les invariants</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-npe-prevention</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Différence == et equals</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Expliquez la différence entre <code>==</code> et <code>.equals()</code> pour comparer deux objets en Java.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>- <code>==</code> compare les <strong>références</strong> (adresses mémoire) : vérifie si les deux variables pointent vers le <strong>même objet</strong> en mémoire.</p><p>- <code>.equals()</code> compare le <strong>contenu</strong> des objets : vérifie si les deux objets sont "égaux" selon la logique définie dans la méthode <code>equals()</code>.</p><p>Par défaut, <code>equals()</code> fait la même chose que <code>==</code>, mais les classes comme <code>String</code> redéfinissent <code>equals()</code> pour comparer le contenu.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-equals-reference</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Définition de l&apos;encapsulation</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Qu'est-ce que l'encapsulation et pourquoi est-elle importante en POO ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>L'encapsulation consiste à <strong>cacher les détails internes</strong> d'une classe et à ne fournir qu'une <strong>interface publique</strong> pour interagir avec elle.</p><p><strong>Importance</strong> :
+- <strong>Protection des données</strong> : on peut valider les modifications (ex: empêcher un âge négatif)
+- <strong>Maintenabilité</strong> : on peut changer l'implémentation interne sans affecter les utilisateurs
+- <strong>Cohérence</strong> : on empêche les états incohérents
+- <strong>Évolutivité</strong> : on peut ajouter de la logique (logging, notification) sans changer l'interface</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-encapsulation-definition</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Intérêt des getters/setters</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Pourquoi utiliser des getters et setters plutôt que des attributs publics, même si le setter ne fait que <code>this.x = x</code> ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Même un getter/setter "trivial" apporte des avantages :</p><p>1. <strong>Évolutivité</strong> : On peut ajouter de la logique plus tard (validation, logging, notification) sans changer l'interface publique</p><p>2. <strong>Contrôle</strong> : On peut rendre un attribut en lecture seule (getter sans setter)</p><p>3. <strong>Débogage</strong> : On peut mettre un point d'arrêt dans le setter pour tracer les modifications</p><p>4. <strong>Frameworks</strong> : Beaucoup de frameworks (Spring, Hibernate) utilisent les getters/setters par réflexion</p><p>5. <strong>Maintenance</strong> : Si l'attribut est modifié à 50 endroits et qu'on veut ajouter un comportement, avec un setter on ne change qu'un seul endroit</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-getter-setter-interet</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Exemple du compte bancaire</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Pourquoi est-il crucial que l'attribut <code>solde</code> d'une classe <code>CompteBancaire</code> soit privé avec des méthodes <code>deposer()</code> et <code>retirer()</code> plutôt que public ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Si <code>solde</code> était public, n'importe qui pourrait écrire :
+``<code>java
+compte.solde = -1000000;  // Catastrophe !
+</code>`<code></p><p>Avec des méthodes :
+</code>`<code>java
+void retirer(double montant) {
+    if (montant > 0 && montant <= solde) {
+        solde -= montant;
+    }
+}
+</code>``</p><p>On peut :
+- Valider que le montant est positif
+- Vérifier que le solde est suffisant
+- Ajouter des limites de retrait
+- Logger les opérations pour l'audit
+- Notifier le client en cas de découvert</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-compte-bancaire</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Définition de l&apos;héritage</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Qu'est-ce que l'héritage en POO ? Quel mot-clé utilise-t-on en Java ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>L'héritage permet de créer une nouvelle classe (classe fille) à partir d'une classe existante (classe mère).</p><p>La classe fille <strong>hérite</strong> de tous les attributs et méthodes de la classe mère, et peut :
+- Ajouter de nouveaux attributs/méthodes
+- <strong>Redéfinir</strong> (override) des méthodes existantes</p><p>On utilise le mot-clé <code>extends</code> : <code>class Chien extends Animal</code></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-heritage-definition</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Redéfinition vs Surcharge</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Quelle est la différence entre la redéfinition (override) et la surcharge (overload) de méthodes ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><strong>Redéfinition (Override)</strong> :
+- Même signature (nom + paramètres) que la méthode du parent
+- Comportement différent dans la classe fille
+- Utilise <code>@Override</code>
+- Se produit entre classe mère et classe fille</p><p><strong>Surcharge (Overload)</strong> :
+- Même nom mais signatures différentes (nombre/type de paramètres)
+- Peut se produire dans la même classe
+- Le compilateur choisit la bonne méthode selon les paramètres</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-override-vs-overload</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Le mot-clé super</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Qu'est-ce que <code>super</code> et dans quels cas l'utilise-t-on ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><code>super</code> est une référence à la <strong>classe mère</strong>.</p><p><strong>Utilisations</strong> :
+1. <strong>Appeler le constructeur parent</strong> : <code>super(paramètres)</code>
+   - Doit être la première instruction du constructeur
+   
+2. <strong>Appeler une méthode du parent</strong> : <code>super.methode()</code>
+   - Utile quand on redéfinit une méthode mais qu'on veut quand même exécuter le comportement parent en plus</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-super-keyword</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Classes abstraites</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Qu'est-ce qu'une classe abstraite ? Dans quel cas est-elle utile ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Une classe abstraite est une classe qui <strong>ne peut pas être instanciée</strong>. Elle est destinée à être héritée.</p><p>Elle peut contenir :
+- Des méthodes abstraites (sans implémentation) que les classes filles DOIVENT implémenter
+- Des méthodes concrètes (avec implémentation) partagées par toutes les classes filles</p><p><strong>Utilité</strong> :
+- Définir un <strong>contrat</strong> que les classes filles doivent respecter
+- Quand instancier la classe n'a pas de sens (ex: on ne peut pas calculer la surface d'une "Forme" générique)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-abstract-class</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Polymorphisme</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Analysez le code suivant et expliquez ce qui s'affiche et pourquoi :</p><p>``<code>java
+class Animal {
+    void crier() { System.out.println("..."); }
+}</p><p>class Chien extends Animal {
+    @Override
+    void crier() { System.out.println("Wouaf!"); }
+}</p><p>class Chat extends Animal {
+    @Override
+    void crier() { System.out.println("Miaou!"); }
+}</p><p>// Dans le main :
+Animal a1 = new Chien();
+Animal a2 = new Chat();
+a1.crier();
+a2.crier();
+</code>``</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Résultat :
+``<code>
+Wouaf!
+Miaou!
+</code>`<code></p><p>C'est le <strong>polymorphisme</strong> : même si les variables sont de type </code>Animal`, c'est la méthode de la <strong>classe réelle</strong> de l'objet qui est appelée (liaison dynamique).</p><p>À l'exécution, Java regarde le type réel de l'objet, pas le type de la variable.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-polymorphisme</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Définition de la composition</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Qu'est-ce que la composition en POO ? Donnez un exemple.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>La composition permet de créer des objets complexes en combinant des objets plus simples.</p><p>En POO, cela consiste à avoir des <strong>instances de classes en tant qu'attributs</strong> d'une autre classe.</p><p><strong>Exemple</strong> : Une <code>Voiture</code> <strong>a un</strong> <code>Moteur</code> et <strong>a</strong> 4 <code>Roue</code>.
+``<code>java
+class Voiture {
+    private Moteur moteur;
+    private Roue[] roues;
+}
+</code>``</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-composition-definition</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Avantage de la composition</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Pourquoi dit-on souvent "préférez la composition à l'héritage" (composition over inheritance) ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>La composition offre plus de <strong>flexibilité</strong> :</p><p>1. <strong>Couplage faible</strong> : On peut changer le composant sans modifier la classe contenante
+   
+2. <strong>Changement à l'exécution</strong> : On peut remplacer un moteur essence par un moteur électrique sans changer la classe Voiture</p><p>3. <strong>Évite les hiérarchies profondes</strong> : L'héritage crée des arbres rigides difficiles à modifier</p><p>4. <strong>Réutilisation</strong> : Un même Moteur peut être composé dans différents véhicules</p><p>5. <strong>Pas de problème d'héritage multiple</strong> : On peut composer autant d'objets qu'on veut</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-composition-avantage</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Délégation</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Dans le code suivant, expliquez ce qu'est la "délégation" :</p><p>``<code>java
+class Voiture {
+    private Moteur moteur;
+    
+    void conduire() {
+        moteur.demarrer();  // ???
+        System.out.println("La voiture roule");
+    }
+}
+</code>``</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>La <strong>délégation</strong> consiste à confier une tâche à un objet composé plutôt que de la faire soi-même.</p><p>Ici, la <code>Voiture</code> ne sait pas comment démarrer un moteur. Elle <strong>délègue</strong> cette responsabilité à son attribut <code>moteur</code> en appelant <code>moteur.demarrer()</code>.</p><p>C'est un principe clé : chaque classe fait ce qu'elle sait faire et délègue le reste.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-delegation</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Définition d&apos;une interface</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Qu'est-ce qu'une interface en Java ? En quoi diffère-t-elle d'une classe abstraite ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Une interface est un type de référence qui ne contient que des <strong>signatures de méthodes</strong> (pas d'implémentation par défaut).</p><p><strong>Différences avec une classe abstraite</strong> :
+- Interface : que des méthodes abstraites (sauf méthodes <code>default</code> depuis Java 8)
+- Classe abstraite : peut avoir des méthodes concrètes ET abstraites
+- On peut <strong>implémenter plusieurs interfaces</strong> mais hériter d'<strong>une seule classe</strong>
+- Interface = contrat de "capacité" (peut faire)
+- Classe abstraite = contrat d'identité (est un)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-interface-definition</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Interface vs Classe abstraite</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Comment choisir entre une interface et une classe abstraite ? Donnez un exemple pour chaque cas.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><strong>Classe abstraite</strong> si on peut dire "X <strong>est un</strong> Y" :
+- Relation d'identité
+- Partage de code entre classes liées
+- Exemple : <code>Chien extends Animal</code> (un chien EST un animal)</p><p><strong>Interface</strong> si on peut dire "X <strong>peut faire</strong> Y" :
+- Capacité/comportement
+- Classes sans lien commun peuvent partager l'interface
+- Exemple : <code>Avion implements Volant</code> et <code>Oiseau implements Volant</code> (les deux PEUVENT voler mais n'ont rien en commun)</p><p><strong>Règle</strong> : Dans le doute, préférez l'interface (plus flexible).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-interface-abstract-choix</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Polymorphisme avec interfaces</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Expliquez comment le code suivant utilise le polymorphisme grâce aux interfaces :</p><p>``<code>java
+void faireNager(Nageur nageur) {
+    nageur.nager();
+}</p><p>// Appels possibles :
+faireNager(new Dauphin());
+faireNager(new Crocodile());
+faireNager(new Humain());
+</code>``</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>La méthode <code>faireNager</code> accepte n'importe quel objet qui implémente l'interface <code>Nageur</code>.</p><p>Elle ne sait pas (et n'a pas besoin de savoir) si c'est un Dauphin, un Crocodile ou un Humain. Elle sait juste que l'objet <strong>peut nager</strong>.</p><p>C'est le polymorphisme : un même code fonctionne avec différents types d'objets, tant qu'ils respectent le contrat (l'interface).</p><p>Demain, si on ajoute une classe <code>Robot</code> qui implémente <code>Nageur</code>, le code fonctionne sans modification !</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-interface-polymorphisme</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Interface marqueur</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Qu'est-ce qu'une interface marqueur ? Donnez un exemple d'utilisation.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Une interface marqueur est une interface <strong>sans aucune méthode</strong>. Elle sert à "étiqueter" une classe.</p><p><strong>Exemple</strong> :
+``<code>java
+interface IConfidentiel {}</p><p>class DossierMedical implements IConfidentiel {}</p><p>void logger(Object obj) {
+    if (obj instanceof IConfidentiel) {
+        return;  // On ne logge pas les données confidentielles
+    }
+    // Logger normalement...
+}
+</code>`<code></p><p>Aujourd'hui, on préfère souvent les <strong>annotations</strong> (</code>@Confidential`) qui sont plus flexibles.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-interface-marqueur</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Les deux relations fondamentales</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Récapitulez les deux types de relations fondamentales en POO avec leurs caractéristiques et un exemple pour chacune.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><strong>1. Relation "est un" (is-a) → Héritage</strong>
+- Relation d'identité/spécialisation
+- Mot-clé : <code>extends</code>
+- Une seule classe parente possible
+- Exemple : <code>class Chien extends Animal</code> (un chien EST un animal)</p><p><strong>2. Relation "a un" (has-a) → Composition</strong>
+- Relation de possession/agrégation
+- Attribut de type objet
+- Autant de composants que souhaité
+- Exemple : <code>class Voiture { private Moteur moteur; }</code> (une voiture A un moteur)</p><p>Ces deux relations constituent l'architecture d'une application orientée objet.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-synthese-relations</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Erreur classique d&apos;héritage</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Pourquoi le code suivant est-il une mauvaise idée ?</p><p>``<code>java
+class Pile extends ArrayList {
+    void empiler(Object o) { add(o); }
+    Object depiler() { return remove(size() - 1); }
+}
+</code>``</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>C'est un <strong>abus d'héritage</strong> ! Une <code>Pile</code> n'EST PAS une <code>ArrayList</code>.</p><p><strong>Problèmes</strong> :
+1. La Pile hérite de toutes les méthodes d'ArrayList (add, remove, get à n'importe quel index...)
+2. Un utilisateur peut contourner <code>empiler/depiler</code> et briser l'invariant de pile (LIFO)
+3. La Pile <strong>utilise</strong> une ArrayList, elle n'en EST pas une</p><p><strong>Solution</strong> : Composition
+``<code>java
+class Pile {
+    private ArrayList data = new ArrayList();  // A un ArrayList
+    void empiler(Object o) { data.add(o); }
+    Object depiler() { return data.remove(data.size() - 1); }
+}
+</code>``</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-erreur-heritage</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Exercice de conception</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Concevez les classes pour modéliser un zoo avec : des Animaux (Lion, Dauphin, Aigle), certains peuvent Nager, d'autres peuvent Voler, et un Gardien qui s'occupe de plusieurs animaux.</p><p>Indiquez pour chaque relation s'il s'agit d'héritage, de composition ou d'interface.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>``<code>
+abstract class Animal { ... }</p><p>class Lion extends Animal { }        // Héritage : Lion EST un Animal
+class Dauphin extends Animal implements Nageur { }  // Héritage + Interface
+class Aigle extends Animal implements Volant { }    // Héritage + Interface</p><p>interface Nageur { void nager(); }   // Interface : capacité
+interface Volant { void voler(); }   // Interface : capacité</p><p>class Gardien {
+    private List<Animal> animaux;    // Composition : Gardien A des Animaux
+}
+</code>``</p><p><strong>Justifications</strong> :
+- <strong>Héritage</strong> : Lion/Dauphin/Aigle SONT des Animaux
+- <strong>Interface</strong> : Nager et Voler sont des <strong>capacités</strong>, pas des identités
+- <strong>Composition</strong> : Le Gardien A des animaux (il les possède/gère)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>5</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-conception-zoo</text></tag></tags>
+  </question>
+</quiz>

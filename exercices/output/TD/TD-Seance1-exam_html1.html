@@ -1,0 +1,882 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+<title>Exam 1</title>
+<style type="text/css">
+body{font-family: Arial, Helvetica, Sans;}
+</style>
+<meta charset="utf-8" />
+</head>
+
+<body>
+<h2>Exam 1</h2>
+
+<ol>
+<li>
+<h4>Question</h4>
+<p>Selon l’introduction du cours, quels sont les 3 “mots” qui résument la POO ?</p>
+<br/>
+<ol type="a">
+<li>
+Optimiser (améliorer les performances)
+</li>
+<li>
+Compiler (exécuter le code)
+</li>
+<li>
+Généraliser (réutiliser le code)
+</li>
+<li>
+Ranger (organiser le code)
+</li>
+<li>
+Protéger (éviter les erreurs)
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>Les 3 piliers sont : <strong>Ranger</strong> (organiser le code en regroupant données et comportements), <strong>Protéger</strong> (encapsuler pour éviter les erreurs), <strong>Généraliser</strong> (héritage et polymorphisme pour réutiliser).</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Correct.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Analysez le code suivant :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>Etudiant e1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Etudiant</span><span class="op">(</span><span class="st">&quot;Alice&quot;</span><span class="op">,</span> <span class="dv">20</span><span class="op">);</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>Etudiant e2 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Etudiant</span><span class="op">(</span><span class="st">&quot;Bob&quot;</span><span class="op">,</span> <span class="dv">22</span><span class="op">);</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>Etudiant e3 <span class="op">=</span> e1<span class="op">;</span></span></code></pre></div>
+<p>Combien d’objets sont créés en mémoire ?</p>
+<br/>
+<ol type="a">
+<li>
+1 objet
+</li>
+<li>
+0 objet
+</li>
+<li>
+2 objets
+</li>
+<li>
+3 objets
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p><strong>2 objets</strong> sont créés en mémoire (avec les deux <code>new</code>).</p>
+<p><code>e3</code> contient une <strong>référence</strong> vers le même objet que <code>e1</code>. Ce n’est pas une copie de l’objet, c’est la même adresse mémoire.</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Soit le code suivant :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>Etudiant e1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Etudiant</span><span class="op">(</span><span class="st">&quot;Alice&quot;</span><span class="op">,</span> <span class="dv">20</span><span class="op">);</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>Etudiant e3 <span class="op">=</span> e1<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>e3<span class="op">.</span><span class="fu">age</span> <span class="op">=</span> <span class="dv">25</span><span class="op">;</span></span></code></pre></div>
+<p>Quelle sera la valeur de <code>e1.age</code> après exécution ?</p>
+<br/>
+<h4>Solution</h4>
+<p><code>e1.age</code> vaudra <strong>25</strong>. Puisque <code>e1</code> et <code>e3</code> pointent vers le même objet, modifier via <code>e3</code> modifie l’objet que <code>e1</code> référence aussi.</p>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Que se passe-t-il quand on écrit <code>Personne jean = new Personne();</code> ?</p>
+<br/>
+<ol type="a">
+<li>
+Java crée une variable locale sans allocer de mémoire
+</li>
+<li>
+Java copie une instance existante de Personne
+</li>
+<li>
+Java alloue de la mémoire, appelle le constructeur, et retourne une référence
+</li>
+<li>
+Java vérifie si un objet Personne existe déjà
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>Avec <code>new</code> :
+1. Java alloue de la mémoire dans le tas (heap)
+2. Le constructeur de la classe est appelé pour initialiser l’objet
+3. Une référence vers cet espace mémoire est retournée et stockée dans la variable</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Que se passe-t-il si vous définissez un constructeur <code>Personne(String nom)</code> sans définir de constructeur sans paramètres ?</p>
+<br/>
+<ol type="a">
+<li>
+Une exception sera levée à l’exécution
+</li>
+<li>
+Java crée automatiquement un constructeur sans paramètres
+</li>
+<li>
+<code>new Personne()</code> ne compilera plus
+</li>
+<li>
+Le code fonctionne normalement
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>Dès que vous définissez un constructeur, le constructeur par défaut (sans paramètres) <strong>disparaît</strong> !</p>
+<p>Si vous avez besoin des deux, vous devez définir explicitement le constructeur sans paramètres.</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Que se passe-t-il à l’exécution du code suivant ?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>Etudiant e <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>e<span class="op">.</span><span class="fu">nom</span><span class="op">);</span></span></code></pre></div>
+<br/>
+<ol type="a">
+<li>
+Affiche une chaîne vide
+</li>
+<li>
+Lance une NullPointerException
+</li>
+<li>
+Affiche “null”
+</li>
+<li>
+Erreur de compilation
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>Le programme va <strong>planter</strong> avec une <code>NullPointerException</code>.</p>
+<p>Message d’erreur : <code>Cannot invoke "..." because "e" is null</code></p>
+<p>On ne peut pas appeler de méthode ou accéder à un attribut sur <code>null</code> car il n’y a pas d’objet.</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Soit le code suivant :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">String</span> a <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span><span class="st">&quot;Hello&quot;</span><span class="op">);</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">String</span> b <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span><span class="st">&quot;Hello&quot;</span><span class="op">);</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">String</span> c <span class="op">=</span> a<span class="op">;</span></span></code></pre></div>
+<p>Quelles expressions retournent <code>true</code> ?</p>
+<br/>
+<ol type="a">
+<li>
+a == c
+</li>
+<li>
+a.equals(b)
+</li>
+<li>
+a == b
+</li>
+<li>
+a.equals(c)
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<ol style="list-style-type: decimal">
+<li><code>a == b</code> → <strong>false</strong> (deux objets différents en mémoire)</li>
+<li><code>a.equals(b)</code> → <strong>true</strong> (même contenu “Hello”)</li>
+<li><code>a == c</code> → <strong>true</strong> (même référence, même objet)</li>
+<li><code>a.equals(c)</code> → <strong>true</strong> (même contenu)</li>
+</ol>
+<br/>
+<ol type="a">
+<li>
+Correct.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Quel code est le plus sûr pour comparer une variable <code>nom</code> (potentiellement null) avec la chaîne “admin” ?</p>
+<br/>
+<ol type="a">
+<li>
+<code>nom == "admin"</code>
+</li>
+<li>
+<code>nom.compareTo("admin") == 0</code>
+</li>
+<li>
+<code>nom.equals("admin")</code>
+</li>
+<li>
+<code>"admin".equals(nom)</code>
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>Mettre la constante à gauche : <code>"admin".equals(nom)</code></p>
+<p>Ainsi, même si <code>nom</code> est <code>null</code>, pas de crash (<code>equals</code> gère <code>null</code> en paramètre).</p>
+<p>L’autre syntaxe <code>nom.equals("admin")</code> provoque une <strong>NullPointerException</strong> si <code>nom</code> est null.</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Quels sont les modificateurs d’accès en Java ?</p>
+<br/>
+<ol type="a">
+<li>
+private
+</li>
+<li>
+final
+</li>
+<li>
+protected
+</li>
+<li>
+public
+</li>
+<li>
+static
+</li>
+<li>
+(default/package)
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>Les 4 modificateurs d’accès sont : <code>private</code>, <code>public</code>, <code>protected</code> et (default/package-private).</p>
+<p><code>static</code> et <code>final</code> ne sont <strong>PAS</strong> des modificateurs d’accès, mais des modificateurs de comportement.</p>
+<br/>
+<ol type="a">
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Un attribut déclaré <code>private</code> est accessible depuis :</p>
+<br/>
+<ol type="a">
+<li>
+La classe et ses sous-classes
+</li>
+<li>
+La classe elle-même uniquement
+</li>
+<li>
+La classe et le même package
+</li>
+<li>
+Partout dans le programme
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Modificateur</th>
+<th>Classe</th>
+<th>Package</th>
+<th>Sous-classe</th>
+<th>Partout</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>private</code></td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Un attribut déclaré <code>protected</code> est accessible depuis :</p>
+<br/>
+<ol type="a">
+<li>
+Les classes du même package
+</li>
+<li>
+Les sous-classes (même dans d’autres packages)
+</li>
+<li>
+N’importe quelle classe de n’importe quel package
+</li>
+<li>
+La classe elle-même
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p><code>protected</code> donne accès à :
+- La classe elle-même
+- Les classes du même package
+- Les sous-classes (même dans d’autres packages)</p>
+<p>C’est plus permissif que <code>private</code> mais moins que <code>public</code>.</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>À quoi sert l’annotation <code>@Override</code> ?</p>
+<br/>
+<ol type="a">
+<li>
+Elle est obligatoire pour redéfinir une méthode
+</li>
+<li>
+Elle améliore les performances de la méthode
+</li>
+<li>
+Elle rend la méthode publique
+</li>
+<li>
+Elle permet au compilateur de vérifier qu’on redéfinit bien une méthode du parent
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>L’annotation <code>@Override</code> indique au compilateur qu’on redéfinit une méthode de la classe mère.</p>
+<p><strong>Avantages</strong> :
+- <strong>Sécurité</strong> : le compilateur vérifie que la méthode existe bien dans la classe mère (détecte les fautes de frappe)
+- <strong>Lisibilité</strong> : le code est plus clair pour le lecteur</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Où doit se trouver l’appel à <code>super()</code> dans un constructeur de classe fille ?</p>
+<br/>
+<ol type="a">
+<li>
+En première instruction du constructeur
+</li>
+<li>
+Après l’initialisation des attributs de la classe fille
+</li>
+<li>
+N’importe où dans le constructeur
+</li>
+<li>
+En dernière instruction du constructeur
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p><code>super()</code> doit être la <strong>première instruction</strong> du constructeur.</p>
+<p>Le parent doit être construit avant l’enfant. Si vous oubliez <code>super()</code>, Java appelle automatiquement <code>super()</code> sans argument (ce qui échoue si le parent n’a pas de constructeur sans paramètres).</p>
+<br/>
+<ol type="a">
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Soit <code>abstract class Forme { abstract double calculerSurface(); }</code>. Quel code est valide ?</p>
+<br/>
+<ol type="a">
+<li>
+<code>Forme f = new Forme() {};</code>
+</li>
+<li>
+<code>Forme f = new Cercle(5.0);</code> (si Cercle extends Forme)
+</li>
+<li>
+Les trois sont valides
+</li>
+<li>
+<code>Forme f = new Forme();</code>
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>On ne peut <strong>pas</strong> instancier une classe abstraite avec <code>new Forme()</code>.</p>
+<p>Mais on peut déclarer une variable de type <code>Forme</code> et l’initialiser avec une instance d’une classe concrète qui hérite de <code>Forme</code>.</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>En Java, une classe peut hériter de combien de classes ?</p>
+<br/>
+<ol type="a">
+<li>
+Une seule classe
+</li>
+<li>
+Autant de classes que souhaité
+</li>
+<li>
+Aucune, l’héritage n’existe pas en Java
+</li>
+<li>
+Deux classes maximum
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>En Java, une classe ne peut hériter que d’<strong>une seule classe</strong> (héritage simple).</p>
+<p>C’est pour éviter le “problème du diamant” qui existe en C++ avec l’héritage multiple.</p>
+<p>Pour “simuler” l’héritage multiple, on utilise les <strong>interfaces</strong>.</p>
+<br/>
+<ol type="a">
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Pour chaque affirmation, dites si elle est vraie :</p>
+<br/>
+<ol type="a">
+<li>
+“Une Voiture a un Moteur” → Composition
+</li>
+<li>
+“Un Rectangle a une Forme” → Composition
+</li>
+<li>
+“Une Voiture est un Moteur” → Héritage
+</li>
+<li>
+“Un Maître a un Animal” → Composition
+</li>
+<li>
+“Un Chien est un Animal” → Héritage
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<ul>
+<li>“Un Chien <strong>est un</strong> Animal” → <strong>Héritage</strong> ✅</li>
+<li>“Une Voiture <strong>a un</strong> Moteur” → <strong>Composition</strong> ✅</li>
+<li>“Une Voiture <strong>est un</strong> Moteur” → Faux ! (n’a pas de sens)</li>
+<li>“Un Maître <strong>a un</strong> Animal” → <strong>Composition</strong> ✅</li>
+<li>“Un Rectangle <strong>est une</strong> Forme” (pas “a une”) → <strong>Héritage</strong></li>
+</ul>
+<br/>
+<ol type="a">
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Correct.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Comment choisir entre héritage et composition ?</p>
+<br/>
+<ol type="a">
+<li>
+Toujours utiliser la composition, c’est plus moderne
+</li>
+<li>
+Toujours utiliser l’héritage, c’est plus simple
+</li>
+<li>
+Si “X est un Y” → Héritage ; Si “X a un Y” → Composition
+</li>
+<li>
+Utiliser l’héritage pour les attributs, la composition pour les méthodes
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>La règle d’or :
+- Si on peut dire “X <strong>est un</strong> Y” (relation d’identité) → <strong>Héritage</strong>
+- Si on peut dire “X <strong>a un</strong> Y” (relation de possession) → <strong>Composition</strong></p>
+<p>Exemple : “Une Voiture est un Moteur” sonne faux, donc pas d’héritage. “Une Voiture a un Moteur” sonne juste, donc composition.</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Quel mot-clé utilise-t-on pour implémenter une interface ?</p>
+<br/>
+<ol type="a">
+<li>
+implements
+</li>
+<li>
+extends
+</li>
+<li>
+uses
+</li>
+<li>
+inherits
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>On utilise <code>implements</code> pour implémenter une interface :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> SiegeAuto <span class="kw">implements</span> ArticleLouable <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span></code></pre></div>
+<p>On utilise <code>extends</code> pour hériter d’une classe.</p>
+<br/>
+<ol type="a">
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Une classe peut-elle implémenter plusieurs interfaces ?</p>
+<br/>
+<ol type="a">
+<li>
+Maximum 2 interfaces
+</li>
+<li>
+Oui, mais seulement si les interfaces n’ont pas de méthodes en commun
+</li>
+<li>
+Oui, autant qu’elle veut
+</li>
+<li>
+Non, une seule interface par classe
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>Oui, une classe peut implémenter <strong>autant d’interfaces qu’elle veut</strong> :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Canard <span class="kw">implements</span> Volant<span class="op">,</span> Nageur<span class="op">,</span> Marcheur <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span></code></pre></div>
+<p>C’est la solution de Java au problème de l’héritage multiple : on hérite d’une classe mais on implémente plusieurs interfaces.</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Quel est l’ordre correct pour hériter d’une classe ET implémenter des interfaces ?</p>
+<br/>
+<ol type="a">
+<li>
+class X implements I1, I2 extends Y
+</li>
+<li>
+L’ordre n’a pas d’importance
+</li>
+<li>
+class X extends Y implements I1, I2
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>L’ordre est obligatoire : <code>extends</code> AVANT <code>implements</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> SiegeAuto <span class="kw">extends</span> Accessoire <span class="kw">implements</span> ArticleLouable<span class="op">,</span> Transportable <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="co">// ...</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+</ol>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Que retourne <code>bob instanceof Carnivore</code> si <code>Humain implements Omnivore</code> et <code>Omnivore extends Carnivore</code> ?</p>
+<br/>
+<ol type="a">
+<li>
+NullPointerException
+</li>
+<li>
+true
+</li>
+<li>
+false
+</li>
+<li>
+Erreur de compilation
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p><code>true</code> !</p>
+<p>Si <code>Omnivore extends Carnivore</code> et <code>Humain implements Omnivore</code>, alors un <code>Humain</code> est aussi un <code>Carnivore</code> (par transitivité).</p>
+<p><code>instanceof</code> vérifie toute la chaîne d’héritage/implémentation.</p>
+<br/>
+<ol type="a">
+<li>
+Incorrect.
+</li>
+<li>
+Correct.
+</li>
+<li>
+Incorrect.
+</li>
+<li>
+Incorrect.
+</li>
+</ol>
+<br/>
+</li>
+</ol>
+
+</body>
+</html>

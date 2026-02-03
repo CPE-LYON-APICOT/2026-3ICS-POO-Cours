@@ -266,7 +266,7 @@ Chien c = new Chien();       // ✅ OK
 		<aside class="notes">
 			Pensez-y comme un moule incomplet. On ne peut pas utiliser un moule incomplet pour fabriquer quelque chose.
 			Mais les classes filles complètent le moule et deviennent utilisables.
-			Une méthode abstraite n'a pas de corps {} - juste une signature suivie de ;
+			Une méthode abstraite n'a pas de corps {'{}'}  - juste une signature suivie de ;
 		</aside>
 	</Slide>
 

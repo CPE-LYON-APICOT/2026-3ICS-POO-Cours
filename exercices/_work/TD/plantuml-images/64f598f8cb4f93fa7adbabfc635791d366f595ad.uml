@@ -1,0 +1,27 @@
+@startuml
+interface Nageur {
+    + nager()
+}
+
+interface Volant {
+    + voler()
+}
+
+abstract class Animal {
+    + crier()
+}
+
+class Dauphin extends Animal implements Nageur {
+    + crier()
+    + nager()
+}
+
+class Oiseau extends Animal implements Volant {
+    + crier()
+    + voler()
+}
+
+class Canard extends Oiseau implements Nageur {
+    + nager()
+}
+@enduml

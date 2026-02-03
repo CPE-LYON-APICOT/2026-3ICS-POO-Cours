@@ -1,0 +1,1615 @@
+---
+title: "TD Séance 1 - Fondamentaux de la POO"
+author: "CPE Lyon"
+produce:
+  html: true
+  pdf: true
+  moodle: true
+  wooclap: false
+---
+
+# Partie 1 : Introduction à la POO
+
+---
+
+:::question
+id: poo-piliers
+type: mchoice
+title: Les 3 piliers de la POO
+points: 2
+section: Introduction
+
+Selon l'introduction du cours, quels sont les 3 "mots" qui résument la POO ?
+
+:::answers
+- [x] Ranger (organiser le code)
+- [x] Protéger (éviter les erreurs)
+- [ ] Compiler (exécuter le code)
+- [x] Généraliser (réutiliser le code)
+- [ ] Optimiser (améliorer les performances)
+
+:::solution
+Les 3 piliers sont : **Ranger** (organiser le code en regroupant données et comportements), **Protéger** (encapsuler pour éviter les erreurs), **Généraliser** (héritage et polymorphisme pour réutiliser).
+
+---
+
+:::question
+id: poo-procedural-vs-oo
+type: essay
+title: Procédural vs Orienté Objet
+points: 3
+section: Introduction
+
+Expliquez la différence fondamentale entre la programmation procédurale et la programmation orientée objet en termes d'organisation des données et des traitements.
+
+:::solution
+En **programmation procédurale**, les données et les traitements sont séparés. Les fonctions peuvent accéder à n'importe quelle donnée globale, ce qui rend difficile de savoir "qui fait quoi".
+
+En **POO**, les données (attributs) et les traitements (méthodes) sont regroupés dans des objets. Chaque objet est responsable de lui-même et ses méthodes n'accèdent qu'à ses propres données. Le code est mieux organisé et plus modulaire.
+
+---
+
+:::question
+id: poo-avantage-regroupement
+type: essay
+title: Avantage du regroupement
+points: 2
+section: Introduction
+
+Pourquoi est-il problématique d'avoir des variables "en vrac" comme `nomClient`, `ageClient`, `emailClient`, `nomProduit`, `prixProduit` plutôt que des objets `Client` et `Produit` ?
+
+:::solution
+Avec des variables "en vrac" :
+- Rien n'indique que `nomClient` va avec `ageClient` et `emailClient`
+- On peut facilement passer le mauvais paramètre à une fonction (ex: l'âge de Marie à Jean)
+- Quand le code grossit, c'est le chaos : on ne sait plus quelle variable va avec quelle autre
+- Pas de validation des données cohérente
+
+Avec des objets, chaque "boîte" contient ce qui lui appartient et garantit la cohérence.
+
+---
+
+# Partie 2 : Classes et Objets
+
+---
+
+:::question
+id: poo-classe-objet
+type: essay
+title: Classe vs Objet
+points: 3
+section: Classes et Objets
+
+**Qu'est-ce qu'une classe ? Qu'est-ce qu'un objet ?**
+
+Expliquez la différence entre ces deux concepts fondamentaux de la POO et donnez une analogie du monde réel.
+
+:::solution
+Une **classe** est un modèle ou un plan qui définit les attributs (données) et les méthodes (comportements) que possèderont les objets créés à partir de cette classe.
+
+Un **objet** est une instance concrète d'une classe. Chaque objet possède ses propres valeurs d'attributs mais partage les mêmes méthodes définies dans la classe.
+
+**Analogie** : La classe est le plan d'une maison, l'objet est une maison construite à partir de ce plan. On peut construire plusieurs maisons à partir du même plan.
+
+---
+
+:::question
+id: poo-references
+type: schoice
+title: Références et objets
+points: 2
+section: Classes et Objets
+shuffle: true
+
+Analysez le code suivant :
+
+```java
+Etudiant e1 = new Etudiant("Alice", 20);
+Etudiant e2 = new Etudiant("Bob", 22);
+Etudiant e3 = e1;
+```
+
+Combien d'objets sont créés en mémoire ?
+
+:::answers
+- [ ] 1 objet
+- [x] 2 objets
+- [ ] 3 objets
+- [ ] 0 objet
+
+:::solution
+**2 objets** sont créés en mémoire (avec les deux `new`).
+
+`e3` contient une **référence** vers le même objet que `e1`. Ce n'est pas une copie de l'objet, c'est la même adresse mémoire.
+
+---
+
+:::question
+id: poo-this-keyword
+type: essay
+title: Le mot-clé this
+points: 2
+section: Classes et Objets
+
+Qu'est-ce que le mot-clé `this` en Java ? Dans quel cas est-il particulièrement utile dans un constructeur ?
+
+:::solution
+`this` est une référence à l'**objet courant** (l'instance en cours de manipulation).
+
+Dans le constructeur, `this.nom` fait référence à l'attribut de l'objet, tandis que `nom` (sans `this`) fait référence au paramètre du constructeur.
+
+Sans `this`, le paramètre "masque" l'attribut (shadowing). `this` permet de lever l'ambiguïté.
+
+---
+
+:::question
+id: poo-modification-reference
+type: num
+title: Modification via référence
+points: 2
+section: Classes et Objets
+solution: 25
+tolerance: 0
+
+Soit le code suivant :
+
+```java
+Etudiant e1 = new Etudiant("Alice", 20);
+Etudiant e3 = e1;
+e3.age = 25;
+```
+
+Quelle sera la valeur de `e1.age` après exécution ?
+
+:::solution
+`e1.age` vaudra **25**. Puisque `e1` et `e3` pointent vers le même objet, modifier via `e3` modifie l'objet que `e1` référence aussi.
+
+---
+
+:::question
+id: poo-new-keyword
+type: schoice
+title: Le mot-clé new
+points: 2
+section: Classes et Objets
+
+Que se passe-t-il quand on écrit `Personne jean = new Personne();` ?
+
+:::answers
+- [ ] Java copie une instance existante de Personne
+- [x] Java alloue de la mémoire, appelle le constructeur, et retourne une référence
+- [ ] Java vérifie si un objet Personne existe déjà
+- [ ] Java crée une variable locale sans allocer de mémoire
+
+:::solution
+Avec `new` :
+1. Java alloue de la mémoire dans le tas (heap)
+2. Le constructeur de la classe est appelé pour initialiser l'objet
+3. Une référence vers cet espace mémoire est retournée et stockée dans la variable
+
+---
+
+:::question
+id: poo-constructeur-defaut
+type: schoice
+title: Constructeur par défaut
+points: 2
+section: Classes et Objets
+
+Que se passe-t-il si vous définissez un constructeur `Personne(String nom)` sans définir de constructeur sans paramètres ?
+
+:::answers
+- [ ] Java crée automatiquement un constructeur sans paramètres
+- [x] `new Personne()` ne compilera plus
+- [ ] Une exception sera levée à l'exécution
+- [ ] Le code fonctionne normalement
+
+:::solution
+Dès que vous définissez un constructeur, le constructeur par défaut (sans paramètres) **disparaît** !
+
+Si vous avez besoin des deux, vous devez définir explicitement le constructeur sans paramètres.
+
+---
+
+:::question
+id: poo-surcharge-constructeurs
+type: essay
+title: Surcharge de constructeurs
+points: 2
+section: Classes et Objets
+
+Qu'est-ce que la surcharge de constructeurs ? Expliquez l'intérêt de `this(...)` dans un constructeur.
+
+:::solution
+La **surcharge de constructeurs** permet à une classe d'avoir plusieurs constructeurs avec des paramètres différents.
+
+`this(...)` permet d'appeler un autre constructeur de la même classe. C'est utile pour éviter la duplication de code : le constructeur simplifié peut appeler le constructeur complet avec des valeurs par défaut.
+
+```java
+public Personne(String nom) {
+    this(nom, "Inconnu", 0);  // Appelle le constructeur complet
+}
+```
+
+---
+
+# Partie 3 : null et NullPointerException
+
+---
+
+:::question
+id: poo-null-definition
+type: essay
+title: Définition de null
+points: 2
+section: null et NullPointerException
+
+Qu'est-ce que `null` en Java ? Est-ce un objet vide ?
+
+:::solution
+`null` est une valeur spéciale qui signifie "**absence d'objet**" ou "aucune référence".
+
+Une variable contenant `null` ne pointe vers aucun objet en mémoire.
+
+Ce n'est **PAS** un objet vide. C'est l'absence totale d'objet.
+
+---
+
+:::question
+id: poo-npe
+type: schoice
+title: NullPointerException
+points: 2
+section: null et NullPointerException
+
+Que se passe-t-il à l'exécution du code suivant ?
+
+```java
+Etudiant e = null;
+System.out.println(e.nom);
+```
+
+:::answers
+- [ ] Affiche "null"
+- [ ] Affiche une chaîne vide
+- [x] Lance une NullPointerException
+- [ ] Erreur de compilation
+
+:::solution
+Le programme va **planter** avec une `NullPointerException`.
+
+Message d'erreur : `Cannot invoke "..." because "e" is null`
+
+On ne peut pas appeler de méthode ou accéder à un attribut sur `null` car il n'y a pas d'objet.
+
+---
+
+:::question
+id: poo-npe-prevention
+type: essay
+title: Prévenir les NPE
+points: 3
+section: null et NullPointerException
+
+Comment peut-on prévenir les NullPointerException dans son code ? Donnez au moins 2 techniques.
+
+:::solution
+1. **Vérifier avant d'utiliser** : `if (obj != null) { obj.methode(); }`
+
+2. **Pattern "constante à gauche"** : `"valeur".equals(variable)` au lieu de `variable.equals("valeur")`
+
+3. **Utiliser Optional** (Java 8+) pour représenter explicitement l'absence de valeur
+
+4. **Initialiser les attributs** dans le constructeur plutôt que de les laisser à null
+
+5. **Annotations @NotNull** pour documenter et vérifier les invariants
+
+---
+
+# Partie 4 : Comparaison d'objets
+
+---
+
+:::question
+id: poo-equals-vs-double-equals
+type: mchoice
+title: == vs equals()
+points: 3
+section: Comparaison d'objets
+
+Soit le code suivant :
+
+```java
+String a = new String("Hello");
+String b = new String("Hello");
+String c = a;
+```
+
+Quelles expressions retournent `true` ?
+
+:::answers
+- [ ] a == b
+- [x] a.equals(b)
+- [x] a == c
+- [x] a.equals(c)
+
+:::solution
+1. `a == b` → **false** (deux objets différents en mémoire)
+2. `a.equals(b)` → **true** (même contenu "Hello")
+3. `a == c` → **true** (même référence, même objet)
+4. `a.equals(c)` → **true** (même contenu)
+
+---
+
+:::question
+id: poo-null-equals-pattern
+type: schoice
+title: Pattern sécurisé pour equals
+points: 2
+section: Comparaison d'objets
+
+Quel code est le plus sûr pour comparer une variable `nom` (potentiellement null) avec la chaîne "admin" ?
+
+:::answers
+- [ ] `nom.equals("admin")`
+- [x] `"admin".equals(nom)`
+- [ ] `nom == "admin"`
+- [ ] `nom.compareTo("admin") == 0`
+
+:::solution
+Mettre la constante à gauche : `"admin".equals(nom)`
+
+Ainsi, même si `nom` est `null`, pas de crash (`equals` gère `null` en paramètre).
+
+L'autre syntaxe `nom.equals("admin")` provoque une **NullPointerException** si `nom` est null.
+
+---
+
+:::question
+id: poo-equals-reference
+type: essay
+title: Différence == et equals
+points: 3
+section: Comparaison d'objets
+
+Expliquez la différence entre `==` et `.equals()` pour comparer deux objets en Java.
+
+:::solution
+- `==` compare les **références** (adresses mémoire) : vérifie si les deux variables pointent vers le **même objet** en mémoire.
+
+- `.equals()` compare le **contenu** des objets : vérifie si les deux objets sont "égaux" selon la logique définie dans la méthode `equals()`.
+
+Par défaut, `equals()` fait la même chose que `==`, mais les classes comme `String` redéfinissent `equals()` pour comparer le contenu.
+
+---
+
+# Partie 5 : Encapsulation
+
+---
+
+:::question
+id: poo-modificateurs-acces
+type: mchoice
+title: Modificateurs d'accès
+points: 2
+section: Encapsulation
+
+Quels sont les modificateurs d'accès en Java ?
+
+:::answers
+- [x] private
+- [x] public
+- [ ] static
+- [x] protected
+- [ ] final
+- [x] (default/package)
+
+:::solution
+Les 4 modificateurs d'accès sont : `private`, `public`, `protected` et (default/package-private).
+
+`static` et `final` ne sont **PAS** des modificateurs d'accès, mais des modificateurs de comportement.
+
+---
+
+:::question
+id: poo-encapsulation-definition
+type: essay
+title: Définition de l'encapsulation
+points: 3
+section: Encapsulation
+
+Qu'est-ce que l'encapsulation et pourquoi est-elle importante en POO ?
+
+:::solution
+L'encapsulation consiste à **cacher les détails internes** d'une classe et à ne fournir qu'une **interface publique** pour interagir avec elle.
+
+**Importance** :
+- **Protection des données** : on peut valider les modifications (ex: empêcher un âge négatif)
+- **Maintenabilité** : on peut changer l'implémentation interne sans affecter les utilisateurs
+- **Cohérence** : on empêche les états incohérents
+- **Évolutivité** : on peut ajouter de la logique (logging, notification) sans changer l'interface
+
+---
+
+:::question
+id: poo-private-visibility
+type: schoice
+title: Portée de private
+points: 1
+section: Encapsulation
+
+Un attribut déclaré `private` est accessible depuis :
+
+:::answers
+- [x] La classe elle-même uniquement
+- [ ] La classe et ses sous-classes
+- [ ] La classe et le même package
+- [ ] Partout dans le programme
+
+:::solution
+| Modificateur | Classe | Package | Sous-classe | Partout |
+|--------------|--------|---------|-------------|---------|
+| `private`    | ✅     | ❌      | ❌          | ❌      |
+
+---
+
+:::question
+id: poo-protected-visibility
+type: mchoice
+title: Portée de protected
+points: 2
+section: Encapsulation
+
+Un attribut déclaré `protected` est accessible depuis :
+
+:::answers
+- [x] La classe elle-même
+- [ ] Les classes du même package
+- [x] Les sous-classes (même dans d'autres packages)
+- [ ] N'importe quelle classe de n'importe quel package
+
+:::solution
+`protected` donne accès à :
+- La classe elle-même
+- Les classes du même package
+- Les sous-classes (même dans d'autres packages)
+
+C'est plus permissif que `private` mais moins que `public`.
+
+---
+
+:::question
+id: poo-getter-setter-interet
+type: essay
+title: Intérêt des getters/setters
+points: 3
+section: Encapsulation
+
+Pourquoi utiliser des getters et setters plutôt que des attributs publics, même si le setter ne fait que `this.x = x` ?
+
+:::solution
+Même un getter/setter "trivial" apporte des avantages :
+
+1. **Évolutivité** : On peut ajouter de la logique plus tard (validation, logging, notification) sans changer l'interface publique
+
+2. **Contrôle** : On peut rendre un attribut en lecture seule (getter sans setter)
+
+3. **Débogage** : On peut mettre un point d'arrêt dans le setter pour tracer les modifications
+
+4. **Frameworks** : Beaucoup de frameworks (Spring, Hibernate) utilisent les getters/setters par réflexion
+
+5. **Maintenance** : Si l'attribut est modifié à 50 endroits et qu'on veut ajouter un comportement, avec un setter on ne change qu'un seul endroit
+
+---
+
+:::question
+id: poo-compte-bancaire
+type: essay
+title: Exemple du compte bancaire
+points: 3
+section: Encapsulation
+
+Pourquoi est-il crucial que l'attribut `solde` d'une classe `CompteBancaire` soit privé avec des méthodes `deposer()` et `retirer()` plutôt que public ?
+
+:::solution
+Si `solde` était public, n'importe qui pourrait écrire :
+```java
+compte.solde = -1000000;  // Catastrophe !
+```
+
+Avec des méthodes :
+```java
+void retirer(double montant) {
+    if (montant > 0 && montant <= solde) {
+        solde -= montant;
+    }
+}
+```
+
+On peut :
+- Valider que le montant est positif
+- Vérifier que le solde est suffisant
+- Ajouter des limites de retrait
+- Logger les opérations pour l'audit
+- Notifier le client en cas de découvert
+
+---
+
+# Partie 6 : Héritage
+
+---
+
+:::question
+id: poo-heritage-definition
+type: essay
+title: Définition de l'héritage
+points: 3
+section: Héritage
+
+Qu'est-ce que l'héritage en POO ? Quel mot-clé utilise-t-on en Java ?
+
+:::solution
+L'héritage permet de créer une nouvelle classe (classe fille) à partir d'une classe existante (classe mère).
+
+La classe fille **hérite** de tous les attributs et méthodes de la classe mère, et peut :
+- Ajouter de nouveaux attributs/méthodes
+- **Redéfinir** (override) des méthodes existantes
+
+On utilise le mot-clé `extends` : `class Chien extends Animal`
+
+---
+
+:::question
+id: poo-override-vs-overload
+type: essay
+title: Redéfinition vs Surcharge
+points: 3
+section: Héritage
+
+Quelle est la différence entre la redéfinition (override) et la surcharge (overload) de méthodes ?
+
+:::solution
+**Redéfinition (Override)** :
+- Même signature (nom + paramètres) que la méthode du parent
+- Comportement différent dans la classe fille
+- Utilise `@Override`
+- Se produit entre classe mère et classe fille
+
+**Surcharge (Overload)** :
+- Même nom mais signatures différentes (nombre/type de paramètres)
+- Peut se produire dans la même classe
+- Le compilateur choisit la bonne méthode selon les paramètres
+
+---
+
+:::question
+id: poo-override-annotation
+type: schoice
+title: Annotation @Override
+points: 2
+section: Héritage
+
+À quoi sert l'annotation `@Override` ?
+
+:::answers
+- [ ] Elle est obligatoire pour redéfinir une méthode
+- [x] Elle permet au compilateur de vérifier qu'on redéfinit bien une méthode du parent
+- [ ] Elle améliore les performances de la méthode
+- [ ] Elle rend la méthode publique
+
+:::solution
+L'annotation `@Override` indique au compilateur qu'on redéfinit une méthode de la classe mère.
+
+**Avantages** :
+- **Sécurité** : le compilateur vérifie que la méthode existe bien dans la classe mère (détecte les fautes de frappe)
+- **Lisibilité** : le code est plus clair pour le lecteur
+
+---
+
+:::question
+id: poo-super-keyword
+type: essay
+title: Le mot-clé super
+points: 3
+section: Héritage
+
+Qu'est-ce que `super` et dans quels cas l'utilise-t-on ?
+
+:::solution
+`super` est une référence à la **classe mère**.
+
+**Utilisations** :
+1. **Appeler le constructeur parent** : `super(paramètres)`
+   - Doit être la première instruction du constructeur
+   
+2. **Appeler une méthode du parent** : `super.methode()`
+   - Utile quand on redéfinit une méthode mais qu'on veut quand même exécuter le comportement parent en plus
+
+---
+
+:::question
+id: poo-super-constructeur
+type: schoice
+title: super() dans le constructeur
+points: 2
+section: Héritage
+
+Où doit se trouver l'appel à `super()` dans un constructeur de classe fille ?
+
+:::answers
+- [x] En première instruction du constructeur
+- [ ] En dernière instruction du constructeur
+- [ ] N'importe où dans le constructeur
+- [ ] Après l'initialisation des attributs de la classe fille
+
+:::solution
+`super()` doit être la **première instruction** du constructeur.
+
+Le parent doit être construit avant l'enfant. Si vous oubliez `super()`, Java appelle automatiquement `super()` sans argument (ce qui échoue si le parent n'a pas de constructeur sans paramètres).
+
+---
+
+:::question
+id: poo-abstract-class
+type: essay
+title: Classes abstraites
+points: 3
+section: Héritage
+
+Qu'est-ce qu'une classe abstraite ? Dans quel cas est-elle utile ?
+
+:::solution
+Une classe abstraite est une classe qui **ne peut pas être instanciée**. Elle est destinée à être héritée.
+
+Elle peut contenir :
+- Des méthodes abstraites (sans implémentation) que les classes filles DOIVENT implémenter
+- Des méthodes concrètes (avec implémentation) partagées par toutes les classes filles
+
+**Utilité** :
+- Définir un **contrat** que les classes filles doivent respecter
+- Quand instancier la classe n'a pas de sens (ex: on ne peut pas calculer la surface d'une "Forme" générique)
+
+---
+
+:::question
+id: poo-abstract-forme
+type: schoice
+title: Instanciation de classe abstraite
+points: 1
+section: Héritage
+
+Soit `abstract class Forme { abstract double calculerSurface(); }`. Quel code est valide ?
+
+:::answers
+- [ ] `Forme f = new Forme();`
+- [x] `Forme f = new Cercle(5.0);` (si Cercle extends Forme)
+- [ ] `Forme f = new Forme() {};`
+- [ ] Les trois sont valides
+
+:::solution
+On ne peut **pas** instancier une classe abstraite avec `new Forme()`.
+
+Mais on peut déclarer une variable de type `Forme` et l'initialiser avec une instance d'une classe concrète qui hérite de `Forme`.
+
+---
+
+:::question
+id: poo-polymorphisme
+type: essay
+title: Polymorphisme
+points: 4
+section: Héritage
+
+Analysez le code suivant et expliquez ce qui s'affiche et pourquoi :
+
+```java
+class Animal {
+    void crier() { System.out.println("..."); }
+}
+
+class Chien extends Animal {
+    @Override
+    void crier() { System.out.println("Wouaf!"); }
+}
+
+class Chat extends Animal {
+    @Override
+    void crier() { System.out.println("Miaou!"); }
+}
+
+// Dans le main :
+Animal a1 = new Chien();
+Animal a2 = new Chat();
+a1.crier();
+a2.crier();
+```
+
+:::solution
+Résultat :
+```
+Wouaf!
+Miaou!
+```
+
+C'est le **polymorphisme** : même si les variables sont de type `Animal`, c'est la méthode de la **classe réelle** de l'objet qui est appelée (liaison dynamique).
+
+À l'exécution, Java regarde le type réel de l'objet, pas le type de la variable.
+
+---
+
+:::question
+id: poo-heritage-multiple
+type: schoice
+title: Héritage multiple
+points: 2
+section: Héritage
+
+En Java, une classe peut hériter de combien de classes ?
+
+:::answers
+- [x] Une seule classe
+- [ ] Deux classes maximum
+- [ ] Autant de classes que souhaité
+- [ ] Aucune, l'héritage n'existe pas en Java
+
+:::solution
+En Java, une classe ne peut hériter que d'**une seule classe** (héritage simple).
+
+C'est pour éviter le "problème du diamant" qui existe en C++ avec l'héritage multiple.
+
+Pour "simuler" l'héritage multiple, on utilise les **interfaces**.
+
+---
+
+# Partie 7 : Composition
+
+---
+
+:::question
+id: poo-composition-definition
+type: essay
+title: Définition de la composition
+points: 3
+section: Composition
+
+Qu'est-ce que la composition en POO ? Donnez un exemple.
+
+:::solution
+La composition permet de créer des objets complexes en combinant des objets plus simples.
+
+En POO, cela consiste à avoir des **instances de classes en tant qu'attributs** d'une autre classe.
+
+**Exemple** : Une `Voiture` **a un** `Moteur` et **a** 4 `Roue`.
+```java
+class Voiture {
+    private Moteur moteur;
+    private Roue[] roues;
+}
+```
+
+---
+
+:::question
+id: poo-est-un-vs-a-un
+type: mchoice
+title: Est-un vs A-un
+points: 3
+section: Composition
+
+Pour chaque affirmation, dites si elle est vraie :
+
+:::answers
+- [x] "Un Chien est un Animal" → Héritage
+- [x] "Une Voiture a un Moteur" → Composition
+- [ ] "Une Voiture est un Moteur" → Héritage
+- [x] "Un Maître a un Animal" → Composition
+- [ ] "Un Rectangle a une Forme" → Composition
+
+:::solution
+- "Un Chien **est un** Animal" → **Héritage** ✅
+- "Une Voiture **a un** Moteur" → **Composition** ✅
+- "Une Voiture **est un** Moteur" → Faux ! (n'a pas de sens)
+- "Un Maître **a un** Animal" → **Composition** ✅
+- "Un Rectangle **est une** Forme" (pas "a une") → **Héritage**
+
+---
+
+:::question
+id: poo-choix-heritage-composition
+type: schoice
+title: Choix Héritage/Composition
+points: 2
+section: Composition
+
+Comment choisir entre héritage et composition ?
+
+:::answers
+- [x] Si "X est un Y" → Héritage ; Si "X a un Y" → Composition
+- [ ] Toujours utiliser l'héritage, c'est plus simple
+- [ ] Toujours utiliser la composition, c'est plus moderne
+- [ ] Utiliser l'héritage pour les attributs, la composition pour les méthodes
+
+:::solution
+La règle d'or :
+- Si on peut dire "X **est un** Y" (relation d'identité) → **Héritage**
+- Si on peut dire "X **a un** Y" (relation de possession) → **Composition**
+
+Exemple : "Une Voiture est un Moteur" sonne faux, donc pas d'héritage. "Une Voiture a un Moteur" sonne juste, donc composition.
+
+---
+
+:::question
+id: poo-composition-avantage
+type: essay
+title: Avantage de la composition
+points: 3
+section: Composition
+
+Pourquoi dit-on souvent "préférez la composition à l'héritage" (composition over inheritance) ?
+
+:::solution
+La composition offre plus de **flexibilité** :
+
+1. **Couplage faible** : On peut changer le composant sans modifier la classe contenante
+   
+2. **Changement à l'exécution** : On peut remplacer un moteur essence par un moteur électrique sans changer la classe Voiture
+
+3. **Évite les hiérarchies profondes** : L'héritage crée des arbres rigides difficiles à modifier
+
+4. **Réutilisation** : Un même Moteur peut être composé dans différents véhicules
+
+5. **Pas de problème d'héritage multiple** : On peut composer autant d'objets qu'on veut
+
+---
+
+:::question
+id: poo-delegation
+type: essay
+title: Délégation
+points: 2
+section: Composition
+
+Dans le code suivant, expliquez ce qu'est la "délégation" :
+
+```java
+class Voiture {
+    private Moteur moteur;
+    
+    void conduire() {
+        moteur.demarrer();  // ???
+        System.out.println("La voiture roule");
+    }
+}
+```
+
+:::solution
+La **délégation** consiste à confier une tâche à un objet composé plutôt que de la faire soi-même.
+
+Ici, la `Voiture` ne sait pas comment démarrer un moteur. Elle **délègue** cette responsabilité à son attribut `moteur` en appelant `moteur.demarrer()`.
+
+C'est un principe clé : chaque classe fait ce qu'elle sait faire et délègue le reste.
+
+---
+
+# Partie 8 : Interfaces
+
+---
+
+:::question
+id: poo-interface-definition
+type: essay
+title: Définition d'une interface
+points: 3
+section: Interfaces
+
+Qu'est-ce qu'une interface en Java ? En quoi diffère-t-elle d'une classe abstraite ?
+
+:::solution
+Une interface est un type de référence qui ne contient que des **signatures de méthodes** (pas d'implémentation par défaut).
+
+**Différences avec une classe abstraite** :
+- Interface : que des méthodes abstraites (sauf méthodes `default` depuis Java 8)
+- Classe abstraite : peut avoir des méthodes concrètes ET abstraites
+- On peut **implémenter plusieurs interfaces** mais hériter d'**une seule classe**
+- Interface = contrat de "capacité" (peut faire)
+- Classe abstraite = contrat d'identité (est un)
+
+---
+
+:::question
+id: poo-implements-keyword
+type: schoice
+title: Mot-clé implements
+points: 1
+section: Interfaces
+
+Quel mot-clé utilise-t-on pour implémenter une interface ?
+
+:::answers
+- [ ] extends
+- [x] implements
+- [ ] inherits
+- [ ] uses
+
+:::solution
+On utilise `implements` pour implémenter une interface :
+```java
+class SiegeAuto implements ArticleLouable { ... }
+```
+
+On utilise `extends` pour hériter d'une classe.
+
+---
+
+:::question
+id: poo-interface-multiple
+type: schoice
+title: Implémentation multiple
+points: 2
+section: Interfaces
+
+Une classe peut-elle implémenter plusieurs interfaces ?
+
+:::answers
+- [x] Oui, autant qu'elle veut
+- [ ] Non, une seule interface par classe
+- [ ] Maximum 2 interfaces
+- [ ] Oui, mais seulement si les interfaces n'ont pas de méthodes en commun
+
+:::solution
+Oui, une classe peut implémenter **autant d'interfaces qu'elle veut** :
+```java
+class Canard implements Volant, Nageur, Marcheur { ... }
+```
+
+C'est la solution de Java au problème de l'héritage multiple : on hérite d'une classe mais on implémente plusieurs interfaces.
+
+---
+
+:::question
+id: poo-interface-abstract-choix
+type: essay
+title: Interface vs Classe abstraite
+points: 4
+section: Interfaces
+
+Comment choisir entre une interface et une classe abstraite ? Donnez un exemple pour chaque cas.
+
+:::solution
+**Classe abstraite** si on peut dire "X **est un** Y" :
+- Relation d'identité
+- Partage de code entre classes liées
+- Exemple : `Chien extends Animal` (un chien EST un animal)
+
+**Interface** si on peut dire "X **peut faire** Y" :
+- Capacité/comportement
+- Classes sans lien commun peuvent partager l'interface
+- Exemple : `Avion implements Volant` et `Oiseau implements Volant` (les deux PEUVENT voler mais n'ont rien en commun)
+
+**Règle** : Dans le doute, préférez l'interface (plus flexible).
+
+---
+
+:::question
+id: poo-interface-polymorphisme
+type: essay
+title: Polymorphisme avec interfaces
+points: 3
+section: Interfaces
+
+Expliquez comment le code suivant utilise le polymorphisme grâce aux interfaces :
+
+```java
+void faireNager(Nageur nageur) {
+    nageur.nager();
+}
+
+// Appels possibles :
+faireNager(new Dauphin());
+faireNager(new Crocodile());
+faireNager(new Humain());
+```
+
+:::solution
+La méthode `faireNager` accepte n'importe quel objet qui implémente l'interface `Nageur`.
+
+Elle ne sait pas (et n'a pas besoin de savoir) si c'est un Dauphin, un Crocodile ou un Humain. Elle sait juste que l'objet **peut nager**.
+
+C'est le polymorphisme : un même code fonctionne avec différents types d'objets, tant qu'ils respectent le contrat (l'interface).
+
+Demain, si on ajoute une classe `Robot` qui implémente `Nageur`, le code fonctionne sans modification !
+
+---
+
+:::question
+id: poo-interface-marqueur
+type: essay
+title: Interface marqueur
+points: 2
+section: Interfaces
+
+Qu'est-ce qu'une interface marqueur ? Donnez un exemple d'utilisation.
+
+:::solution
+Une interface marqueur est une interface **sans aucune méthode**. Elle sert à "étiqueter" une classe.
+
+**Exemple** :
+```java
+interface IConfidentiel {}
+
+class DossierMedical implements IConfidentiel {}
+
+void logger(Object obj) {
+    if (obj instanceof IConfidentiel) {
+        return;  // On ne logge pas les données confidentielles
+    }
+    // Logger normalement...
+}
+```
+
+Aujourd'hui, on préfère souvent les **annotations** (`@Confidential`) qui sont plus flexibles.
+
+---
+
+:::question
+id: poo-extends-implements-ordre
+type: schoice
+title: Ordre extends/implements
+points: 1
+section: Interfaces
+
+Quel est l'ordre correct pour hériter d'une classe ET implémenter des interfaces ?
+
+:::answers
+- [x] class X extends Y implements I1, I2
+- [ ] class X implements I1, I2 extends Y
+- [ ] L'ordre n'a pas d'importance
+
+:::solution
+L'ordre est obligatoire : `extends` AVANT `implements`.
+
+```java
+class SiegeAuto extends Accessoire implements ArticleLouable, Transportable {
+    // ...
+}
+```
+
+---
+
+# Partie 9 : Synthèse et Réflexion
+
+---
+
+:::question
+id: poo-synthese-relations
+type: essay
+title: Les deux relations fondamentales
+points: 4
+section: Synthèse
+
+Récapitulez les deux types de relations fondamentales en POO avec leurs caractéristiques et un exemple pour chacune.
+
+:::solution
+**1. Relation "est un" (is-a) → Héritage**
+- Relation d'identité/spécialisation
+- Mot-clé : `extends`
+- Une seule classe parente possible
+- Exemple : `class Chien extends Animal` (un chien EST un animal)
+
+**2. Relation "a un" (has-a) → Composition**
+- Relation de possession/agrégation
+- Attribut de type objet
+- Autant de composants que souhaité
+- Exemple : `class Voiture { private Moteur moteur; }` (une voiture A un moteur)
+
+Ces deux relations constituent l'architecture d'une application orientée objet.
+
+---
+
+:::question
+id: poo-erreur-heritage
+type: essay
+title: Erreur classique d'héritage
+points: 3
+section: Synthèse
+
+Pourquoi le code suivant est-il une mauvaise idée ?
+
+```java
+class Pile extends ArrayList {
+    void empiler(Object o) { add(o); }
+    Object depiler() { return remove(size() - 1); }
+}
+```
+
+:::solution
+C'est un **abus d'héritage** ! Une `Pile` n'EST PAS une `ArrayList`.
+
+**Problèmes** :
+1. La Pile hérite de toutes les méthodes d'ArrayList (add, remove, get à n'importe quel index...)
+2. Un utilisateur peut contourner `empiler/depiler` et briser l'invariant de pile (LIFO)
+3. La Pile **utilise** une ArrayList, elle n'en EST pas une
+
+**Solution** : Composition
+```java
+class Pile {
+    private ArrayList data = new ArrayList();  // A un ArrayList
+    void empiler(Object o) { data.add(o); }
+    Object depiler() { return data.remove(data.size() - 1); }
+}
+```
+
+---
+
+:::question
+id: poo-conception-zoo
+type: essay
+title: Exercice de conception
+points: 5
+section: Synthèse
+
+Concevez les classes pour modéliser un zoo avec : des Animaux (Lion, Dauphin, Aigle), certains peuvent Nager, d'autres peuvent Voler, et un Gardien qui s'occupe de plusieurs animaux.
+
+Indiquez pour chaque relation s'il s'agit d'héritage, de composition ou d'interface.
+
+:::solution
+```
+abstract class Animal { ... }
+
+class Lion extends Animal { }        // Héritage : Lion EST un Animal
+class Dauphin extends Animal implements Nageur { }  // Héritage + Interface
+class Aigle extends Animal implements Volant { }    // Héritage + Interface
+
+interface Nageur { void nager(); }   // Interface : capacité
+interface Volant { void voler(); }   // Interface : capacité
+
+class Gardien {
+    private List<Animal> animaux;    // Composition : Gardien A des Animaux
+}
+```
+
+**Justifications** :
+- **Héritage** : Lion/Dauphin/Aigle SONT des Animaux
+- **Interface** : Nager et Voler sont des **capacités**, pas des identités
+- **Composition** : Le Gardien A des animaux (il les possède/gère)
+
+---
+
+:::question
+id: poo-instanceof
+type: schoice
+title: Opérateur instanceof
+points: 2
+section: Synthèse
+
+Que retourne `bob instanceof Carnivore` si `Humain implements Omnivore` et `Omnivore extends Carnivore` ?
+
+:::answers
+- [x] true
+- [ ] false
+- [ ] Erreur de compilation
+- [ ] NullPointerException
+
+:::solution
+`true` ! 
+
+Si `Omnivore extends Carnivore` et `Humain implements Omnivore`, alors un `Humain` est aussi un `Carnivore` (par transitivité).
+
+`instanceof` vérifie toute la chaîne d'héritage/implémentation.
+
+---
+
+# Partie 10 : Approfondissements
+
+---
+
+:::question
+id: poo-heap-stack
+type: essay
+title: Mémoire Heap et Stack
+points: 3
+section: Classes et Objets
+
+Quand on écrit `Personne p = new Personne("Jean");`, où sont stockés la variable `p` et l'objet `Personne` ?
+
+:::solution
+- La **variable `p`** (qui contient une référence/adresse) est stockée sur la **pile (stack)**
+- L'**objet `Personne`** lui-même est stocké dans le **tas (heap)**
+
+La pile contient les références (comme des "numéros de casier"), le tas contient les objets réels (le contenu des casiers).
+
+En Java, le **Garbage Collector** se charge de libérer automatiquement la mémoire du heap quand un objet n'est plus référencé.
+
+---
+
+:::question
+id: poo-garbage-collector
+type: schoice
+title: Garbage Collector
+points: 2
+section: Classes et Objets
+
+À quoi sert le Garbage Collector en Java ?
+
+:::answers
+- [ ] À compiler le code Java en bytecode
+- [ ] À optimiser les performances du code
+- [x] À libérer automatiquement la mémoire des objets non référencés
+- [ ] À vérifier les types à l'exécution
+
+:::solution
+Le **Garbage Collector** (GC) surveille la mémoire et supprime automatiquement les objets qui ne sont plus référencés par aucune variable.
+
+Contrairement au C/C++, le développeur Java n'a pas à gérer manuellement la libération de la mémoire (pas de `free()` ou `delete`).
+
+---
+
+:::question
+id: poo-objet-vide-vs-null
+type: essay
+title: Objet vide vs null
+points: 2
+section: null et NullPointerException
+
+Quelle est la différence entre une liste vide (`new ArrayList<>()`) et une référence `null` ?
+
+:::solution
+- **Liste vide** : L'objet **existe** en mémoire, il contient simplement 0 éléments. On peut appeler ses méthodes (`list.size()` retourne 0).
+
+- **null** : Il n'y a **aucun objet**. La variable ne pointe vers rien. Appeler une méthode sur `null` provoque une `NullPointerException`.
+
+Exemple :
+```java
+List<String> liste = new ArrayList<>();  // Objet existe, 0 éléments
+liste.size();  // OK, retourne 0
+
+List<String> nulle = null;  // Aucun objet
+nulle.size();  // NullPointerException !
+```
+
+---
+
+:::question
+id: poo-enummap-usage
+type: essay
+title: EnumMap pour les compétences
+points: 3
+section: Classes et Objets
+
+Dans un jeu RPG, on veut gérer les compétences d'un personnage (FORCE, AGILITE, INTELLIGENCE). Pourquoi utiliser une `EnumMap<Competence, Integer>` plutôt que des attributs séparés `int force, int agilite, int intelligence` ?
+
+:::solution
+Avantages de `EnumMap<Competence, Integer>` :
+
+1. **Moins de code répétitif** : pas besoin de créer un getter/setter par compétence
+
+2. **Méthode générique** : `augmenterCompetence(Competence c, int valeur)` fonctionne pour toutes les compétences
+
+3. **Évolutivité** : ajouter une nouvelle compétence (ex: CHARISME) ne nécessite que de modifier l'enum
+
+4. **Itération facile** : on peut parcourir toutes les compétences avec une boucle
+
+5. **Type-safe** : seules les clés de l'enum sont acceptées (pas de faute de frappe possible)
+
+---
+
+:::question
+id: poo-exception-validation
+type: schoice
+title: Validation avec exceptions
+points: 2
+section: Encapsulation
+
+Dans une classe `Personnage`, comment valider qu'une compétence reste entre 3 et 15 ?
+
+```java
+void augmenterCompetence(Competence c, int valeur) {
+    // ???
+}
+```
+
+:::answers
+- [ ] Ne rien vérifier, l'utilisateur sait ce qu'il fait
+- [ ] Ignorer silencieusement les valeurs invalides
+- [x] Lever une IllegalArgumentException si la valeur est hors limites
+- [ ] Retourner false si la valeur est invalide
+
+:::solution
+La bonne pratique est de **lever une exception** pour signaler une erreur :
+
+```java
+void augmenterCompetence(Competence c, int valeur) {
+    if (valeur < 3 || valeur > 15) {
+        throw new IllegalArgumentException(
+            "La compétence doit être entre 3 et 15");
+    }
+    competences.put(c, valeur);
+}
+```
+
+Cela garantit l'intégrité des données et informe clairement l'appelant de son erreur.
+
+---
+
+:::question
+id: poo-abstract-method
+type: schoice
+title: Méthode abstraite
+points: 2
+section: Héritage
+
+Soit une classe `abstract class Personnage` avec `abstract void attaqueSpeciale();`. Que doit faire une classe `Mercenaire extends Personnage` ?
+
+:::answers
+- [ ] Rien, la méthode est héritée automatiquement
+- [x] Implémenter obligatoirement la méthode attaqueSpeciale()
+- [ ] Déclarer aussi la méthode comme abstract
+- [ ] Appeler super.attaqueSpeciale()
+
+:::solution
+Une classe qui hérite d'une classe abstraite **doit implémenter toutes les méthodes abstraites**, sinon elle doit elle-même être déclarée abstraite.
+
+```java
+class Mercenaire extends Personnage {
+    @Override
+    void attaqueSpeciale() {
+        System.out.println("Tir de précision !");
+    }
+}
+```
+
+---
+
+:::question
+id: poo-polymorphisme-liste
+type: essay
+title: Polymorphisme avec une liste
+points: 4
+section: Héritage
+
+Expliquez ce qui se passe dans ce code et pourquoi c'est utile :
+
+```java
+List<Personnage> equipe = new ArrayList<>();
+equipe.add(new Mercenaire("Rex"));
+equipe.add(new SuperMutant("Grok"));
+equipe.add(new Scientifique("Ada"));
+
+for (Personnage p : equipe) {
+    p.attaqueSpeciale();
+}
+```
+
+:::solution
+Grâce au **polymorphisme**, on peut stocker différents types de personnages dans une même liste de type `Personnage`.
+
+À chaque tour de boucle, `p.attaqueSpeciale()` appelle la méthode **du type réel** de l'objet :
+- Pour Rex : comportement du Mercenaire
+- Pour Grok : comportement du SuperMutant
+- Pour Ada : comportement du Scientifique
+
+**Utilité** : On peut traiter uniformément des objets différents sans connaître leur type exact. Ajouter un nouveau type (ex: `Robot`) ne change pas le code de la boucle !
+
+---
+
+:::question
+id: poo-try-catch
+type: schoice
+title: Gestion d'exceptions
+points: 2
+section: Encapsulation
+
+Quel est le rôle du bloc `catch` dans un `try-catch` ?
+
+:::answers
+- [ ] Exécuter du code après le try, qu'il y ait erreur ou non
+- [x] Intercepter et traiter une exception levée dans le bloc try
+- [ ] Lever une nouvelle exception
+- [ ] Empêcher les exceptions de se produire
+
+:::solution
+Le bloc `catch` **intercepte** les exceptions levées dans le bloc `try` et permet de les **traiter** (afficher un message, corriger l'erreur, etc.) au lieu que le programme plante.
+
+```java
+try {
+    personnage.augmenterCompetence(Competence.FORCE, 20);
+} catch (IllegalArgumentException e) {
+    System.out.println("Erreur : " + e.getMessage());
+}
+```
+
+---
+
+:::question
+id: poo-test-exception
+type: essay
+title: Tester les exceptions
+points: 3
+section: Synthèse
+
+Comment tester qu'une méthode lève bien une exception dans un test unitaire JUnit ?
+
+:::solution
+En JUnit 5, on utilise `assertThrows` :
+
+```java
+@Test
+void testCompetenceHorsLimite() {
+    Personnage p = new Mercenaire("Test");
+    
+    assertThrows(IllegalArgumentException.class, () -> {
+        p.augmenterCompetence(Competence.FORCE, 20);
+    });
+}
+```
+
+Cela vérifie que le code dans la lambda **lève bien** une `IllegalArgumentException`. Si aucune exception n'est levée ou si c'est une autre exception, le test échoue.
+
+---
+
+:::question
+id: poo-composition-item
+type: essay
+title: Composition avec des objets Item
+points: 3
+section: Composition
+
+Dans un RPG, un `Personnage` peut porter une `Arme` et une `Armure`. Implémentez les méthodes `equiperArme()` et `getArme()` en respectant l'encapsulation.
+
+:::solution
+```java
+class Personnage {
+    private Arme arme;  // Composition : le personnage A une arme
+    
+    public void equiperArme(Arme nouvelleArme) {
+        if (nouvelleArme == null) {
+            throw new IllegalArgumentException("L'arme ne peut pas être null");
+        }
+        this.arme = nouvelleArme;
+    }
+    
+    public Arme getArme() {
+        return this.arme;
+    }
+    
+    public boolean estArme() {
+        return this.arme != null;
+    }
+}
+```
+
+L'attribut `arme` est **privé** (encapsulation) et les méthodes publiques contrôlent l'accès.
+
+---
+
+:::question
+id: poo-super-initialisation
+type: schoice
+title: Initialisation avec super()
+points: 2
+section: Héritage
+
+Pourquoi appeler `super()` dans le constructeur d'une classe fille ?
+
+:::answers
+- [ ] Pour créer une nouvelle instance de la classe mère
+- [x] Pour initialiser la partie héritée de l'objet via le constructeur parent
+- [ ] Pour copier les attributs de la classe mère
+- [ ] C'est optionnel et ne sert à rien
+
+:::solution
+`super()` appelle le constructeur de la classe mère pour **initialiser les attributs hérités**.
+
+Le parent doit être construit **avant** l'enfant. Si vous oubliez `super()`, Java appelle automatiquement `super()` sans arguments (ce qui échoue si le parent n'a pas de constructeur sans paramètres).
+
+```java
+class Mercenaire extends Personnage {
+    Mercenaire(String nom) {
+        super(nom);  // Initialise les attributs de Personnage
+        augmenterCompetence(Competence.AGILITE, 5);  // Bonus du Mercenaire
+    }
+}
+```
+
+---
+
+:::question
+id: poo-chaining-constructeurs
+type: essay
+title: Chaînage de constructeurs
+points: 2
+section: Classes et Objets
+
+Expliquez comment le chaînage de constructeurs fonctionne avec `this(...)` :
+
+```java
+class Personnage {
+    Personnage(String nom, int niveau) {
+        this.nom = nom;
+        this.niveau = niveau;
+    }
+    
+    Personnage(String nom) {
+        this(nom, 1);  // ???
+    }
+}
+```
+
+:::solution
+Le constructeur `Personnage(String nom)` appelle **l'autre constructeur** de la même classe via `this(nom, 1)`.
+
+C'est le **chaînage de constructeurs** (constructor chaining). Avantages :
+- Évite la duplication de code d'initialisation
+- Le constructeur simplifié utilise des valeurs par défaut (ici niveau = 1)
+- Un seul endroit contient la logique d'initialisation
+
+`this(...)` doit être la **première instruction** du constructeur.
+
+---
+
+:::question
+id: poo-equals-personnalise
+type: essay
+title: Redéfinir equals()
+points: 3
+section: Comparaison d'objets
+
+Pourquoi et comment redéfinir la méthode `equals()` pour une classe `Etudiant` ?
+
+:::solution
+Par défaut, `equals()` compare les **références** (comme `==`). Si on veut comparer le **contenu**, il faut redéfinir `equals()`.
+
+```java
+class Etudiant {
+    private String nom;
+    private int numero;
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Etudiant other = (Etudiant) obj;
+        return numero == other.numero 
+            && Objects.equals(nom, other.nom);
+    }
+}
+```
+
+Deux étudiants sont "égaux" s'ils ont le même nom et numéro, même si ce sont deux objets distincts en mémoire.
+
+---
+
+:::question
+id: poo-client-poo
+type: essay
+title: Modélisation Client en POO
+points: 3
+section: Introduction
+
+En entreprise, on manipule des concepts comme "Client", "Facture", "Commande". Comment la POO permet-elle de modéliser ces concepts ?
+
+:::solution
+Chaque concept du monde réel devient une **classe** en POO :
+
+```java
+class Client {
+    private String nom;
+    private String email;
+    private List<Commande> commandes;
+    
+    void passerCommande() { ... }
+    void consulterFactures() { ... }
+}
+
+class Facture {
+    private Client client;
+    private double montant;
+    private Date date;
+}
+```
+
+**Avantages** :
+- Le code "parle" le même langage que le métier
+- Les données et comportements sont regroupés dans la même entité
+- C'est la base du **Domain-Driven Design** (DDD)
+

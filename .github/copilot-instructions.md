@@ -111,9 +111,20 @@ Nom du fichier : `{chapitre}.csv` (ex: `encapsulation.csv`, `heritage.csv`)
 
 Format CSV avec les colonnes :
 
-```csv
-question;reponse_correcte;reponse_fausse_1;reponse_fausse_2;reponse_fausse_3;explication
-```
+| Type | Title | Correct | Choice | Choice | Choice | Choice | Choice | Choice | Choice |
+|---|---|---|---|---|---|---|---|---|---|
+| MCQ | Par exemple : quelle est la capitale de l'Ouganda ? | 1 |  |  |  |  |  |  |  |
+| Poll | Par exemple : selon vous, faut-il faire plus pour lutter contre le   changement climatique ? |  |  |  |  |  |  |  |  |
+| Rating | Par exemple : notez de 1 à 5 [1 =   pas du tout d'accord - 5 = entièrement d'accord] les éléments suivants : |  |  |  |  |  |  |  |  |
+| OpenQuestion | Par exemple : décrivez les étudiants d'aujourd'hui en un mot |  |  |  |  |  |  |  |  |
+| GuessNumber | Par exemple : combien de balles de tennis peut-on mettre dans un train ? |  |  |  |  |  |  |  |  |
+| Matching | Par exemple : liez les capitales avec les pays |  | undefined --- undefined | undefined --- undefined | undefined --- undefined |  |  |  |  |
+| Prioritization | Par exemple : quelle importance accordez-vous à ces futurs défis ? |  |  |  |  |  |  |  |  |
+| Sorting | Par exemple : classez les périodes suivants par ordre chronologique |  |  |  |  |  |  |  |  |
+| FillInTheBlanks | Par exemple : remplissez ce texte avec des couleurs |  | Les roses sont [rouges] et les violettes sont [bleues].      Le soleil est {{jaune, bleu, rose}}. |  |  |  |  |  |  |
+| Brainstorm | Par exemple : quelles sont vos idées pour un meilleur Internet ? |  |  |  |  |  |  |  |  |
+| Concordance | Par exemple : Un homme de 43 ans   vient consulter pour une douleur "en barre", médiane, dans la   région lombaire. Il a ressenti cette douleur deux jours après une séance de   natation alors qu'il n'est pas habitué à en pratiquer. |  |  |  | 3 | 5 | 10 | 15 | 6 |
+| SCTJudgment | Par exemple : Un homme de 43 ans   vient consulter pour une douleur "en barre", médiane, dans la   région lombaire. Il a ressenti cette douleur deux jours après une séance de   natation alors qu'il n'est pas habitué à en pratiquer. |  |  | 4 | 7 | 10 | 3 |  |  |
 
 ### Exemple de contenu
 

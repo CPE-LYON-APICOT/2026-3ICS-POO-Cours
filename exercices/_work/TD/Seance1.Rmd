@@ -1,0 +1,346 @@
+---
+title: "POO - Kahoot Séance 1"
+output: html_document
+---
+
+# Kahoot POO - Questions Rapides
+
+:::question
+## poo-kahoot-classe
+
+Quel mot-clé déclare une classe en Java ?
+
+:::answers
+- [ ] Class
+- [x] class
+- [ ] new
+- [ ] type
+:::
+
+:::solution
+En Java, le mot-clé `class` (minuscule) permet de déclarer une classe.
+:::
+:::
+
+:::question
+## poo-kahoot-new
+
+Quel mot-clé permet de créer un objet ?
+
+:::answers
+- [ ] create
+- [ ] object
+- [x] new
+- [ ] make
+:::
+
+:::solution
+Le mot-clé `new` permet d'instancier un objet en Java.
+:::
+:::
+
+:::question
+## poo-kahoot-private
+
+Un attribut `private` est accessible depuis...
+
+:::answers
+- [x] Sa propre classe uniquement
+- [ ] Toutes les classes
+- [ ] Les classes filles
+- [ ] Le même package
+:::
+
+:::solution
+`private` limite l'accès à la classe elle-même.
+:::
+:::
+
+:::question
+## poo-kahoot-public
+
+Un attribut `public` est accessible depuis...
+
+:::answers
+- [ ] Sa propre classe uniquement
+- [x] Toutes les classes
+- [ ] Les classes filles
+- [ ] Le même package
+:::
+
+:::solution
+`public` permet l'accès depuis n'importe où.
+:::
+:::
+
+:::question
+## poo-kahoot-heritage
+
+Quel mot-clé permet d'hériter d'une classe ?
+
+:::answers
+- [ ] inherits
+- [ ] implements
+- [x] extends
+- [ ] super
+:::
+
+:::solution
+`extends` permet d'hériter d'une classe parente.
+:::
+:::
+
+:::question
+## poo-kahoot-interface
+
+Quel mot-clé permet d'implémenter une interface ?
+
+:::answers
+- [ ] extends
+- [x] implements
+- [ ] interface
+- [ ] uses
+:::
+
+:::solution
+`implements` permet d'implémenter une interface.
+:::
+:::
+
+:::question
+## poo-kahoot-constructeur
+
+Comment s'appelle la méthode qui initialise un objet ?
+
+:::answers
+- [ ] init()
+- [ ] create()
+- [x] Le constructeur
+- [ ] start()
+:::
+
+:::solution
+Le constructeur porte le même nom que la classe et initialise l'objet.
+:::
+:::
+
+:::question
+## poo-kahoot-this
+
+À quoi sert le mot-clé `this` ?
+
+:::answers
+- [ ] Créer un objet
+- [x] Référencer l'objet courant
+- [ ] Appeler le parent
+- [ ] Déclarer une variable
+:::
+
+:::solution
+`this` fait référence à l'instance courante de la classe.
+:::
+:::
+
+:::question
+## poo-kahoot-super
+
+À quoi sert le mot-clé `super` ?
+
+:::answers
+- [ ] Créer un objet
+- [ ] Référencer l'objet courant
+- [x] Appeler le parent
+- [ ] Déclarer une variable
+:::
+
+:::solution
+`super` permet d'accéder aux membres de la classe parente.
+:::
+:::
+
+:::question
+## poo-kahoot-null
+
+Que vaut une référence non initialisée ?
+
+:::answers
+- [ ] 0
+- [ ] ""
+- [x] null
+- [ ] undefined
+:::
+
+:::solution
+Une référence non initialisée vaut `null` en Java.
+:::
+:::
+
+:::question
+## poo-kahoot-npe
+
+Que signifie NPE ?
+
+:::answers
+- [ ] New Pointer Error
+- [x] NullPointerException
+- [ ] No Program Execution
+- [ ] Null Program Error
+:::
+
+:::solution
+NPE = NullPointerException, erreur très courante en Java.
+:::
+:::
+
+:::question
+## poo-kahoot-getter
+
+Comment nomme-t-on une méthode qui retourne un attribut ?
+
+:::answers
+- [x] Getter
+- [ ] Setter
+- [ ] Accessor
+- [ ] Reader
+:::
+
+:::solution
+Un getter (ou accesseur) retourne la valeur d'un attribut.
+:::
+:::
+
+:::question
+## poo-kahoot-setter
+
+Comment nomme-t-on une méthode qui modifie un attribut ?
+
+:::answers
+- [ ] Getter
+- [x] Setter
+- [ ] Modifier
+- [ ] Writer
+:::
+
+:::solution
+Un setter (ou mutateur) modifie la valeur d'un attribut.
+:::
+:::
+
+:::question
+## poo-kahoot-abstract
+
+Une classe `abstract` peut-elle être instanciée ?
+
+:::answers
+- [ ] Oui, toujours
+- [x] Non, jamais
+- [ ] Seulement avec new
+- [ ] Seulement dans main()
+:::
+
+:::solution
+Une classe abstraite ne peut PAS être instanciée directement.
+:::
+:::
+
+:::question
+## poo-kahoot-override
+
+Quel annotation indique qu'on redéfinit une méthode ?
+
+:::answers
+- [ ] @Redefine
+- [x] @Override
+- [ ] @Replace
+- [ ] @Super
+:::
+
+:::solution
+`@Override` indique une redéfinition de méthode héritée.
+:::
+:::
+
+:::question
+## poo-kahoot-final-classe
+
+Une classe `final` peut-elle avoir des classes filles ?
+
+:::answers
+- [ ] Oui, toujours
+- [x] Non, jamais
+- [ ] Seulement une
+- [ ] Seulement abstraites
+:::
+
+:::solution
+Une classe `final` ne peut pas être étendue (héritée).
+:::
+:::
+
+:::question
+## poo-kahoot-equals
+
+Quelle méthode compare le contenu de deux objets ?
+
+:::answers
+- [ ] ==
+- [x] equals()
+- [ ] compare()
+- [ ] same()
+:::
+
+:::solution
+`equals()` compare le contenu, `==` compare les références.
+:::
+:::
+
+:::question
+## poo-kahoot-tostring
+
+Quelle méthode retourne une représentation textuelle d'un objet ?
+
+:::answers
+- [ ] print()
+- [ ] display()
+- [x] toString()
+- [ ] getText()
+:::
+
+:::solution
+`toString()` retourne une chaîne décrivant l'objet.
+:::
+:::
+
+:::question
+## poo-kahoot-encapsulation
+
+L'encapsulation consiste à...
+
+:::answers
+- [x] Cacher les détails internes
+- [ ] Hériter d'une classe
+- [ ] Créer plusieurs objets
+- [ ] Utiliser des interfaces
+:::
+
+:::solution
+L'encapsulation cache l'implémentation et expose une interface publique.
+:::
+:::
+
+:::question
+## poo-kahoot-polymorphisme
+
+Le polymorphisme permet...
+
+:::answers
+- [ ] De créer des classes
+- [ ] D'avoir des attributs privés
+- [x] D'utiliser un même type pour différents objets
+- [ ] De définir des constantes
+:::
+
+:::solution
+Le polymorphisme permet de traiter différents objets via un type commun.
+:::
+:::

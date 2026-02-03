@@ -1,0 +1,35 @@
+@startuml
+interface IPayant {
+    + calculerPrix(nbJours: int): double
+}
+
+abstract class Media {
+    - titre: String
+    - disponible: boolean
+    + emprunter()
+    + rendre()
+    + getTitre(): String
+    + estDisponible(): boolean
+}
+
+class Livre extends Media {
+    - auteur: String
+    - nbPages: int
+    + getAuteur(): String
+}
+
+class DVD extends Media {
+    - duree: int
+    + getDuree(): int
+}
+
+class DVDRecent extends DVD implements IPayant {
+    - prixParJour: double
+    + calculerPrix(nbJours: int): double
+}
+
+class CD extends Media {
+    - nbPistes: int
+    + getNbPistes(): int
+}
+@enduml

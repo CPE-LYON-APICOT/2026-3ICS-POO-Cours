@@ -171,10 +171,6 @@ Personne jean = new Personne();
 			Chaque fois que vous écrivez "new", vous créez un NOUVEL objet en mémoire.
 		</aside>
 	</Slide>
-				<li class="fragment">L'objet est prêt à être utilisé</li>
-			</ol>
-		</div>
-	</Slide>
 
 	<Slide>
 		<h3>Le constructeur</h3>
@@ -284,15 +280,270 @@ public class Personne {
 		</aside>
 	</Slide>
 
+	<!-- RÉFÉRENCES ET NULL -->
+	<Slide data_background_color="#1a1a2e">
+		<h2 class="text-5xl">Les références en Java</h2>
+		<p class="text-2xl text-gray-400">Comprendre ce que contient vraiment une variable</p>
+		<aside class="notes">
+			Avant de continuer, il faut comprendre un concept fondamental.
+			En Java, les variables d'objets ne contiennent pas l'objet lui-même... mais une référence vers l'objet.
+			C'est comme une adresse postale vs la maison elle-même.
+		</aside>
+	</Slide>
+
+	<Slide>
+		<h3>Une variable = une référence</h3>
+		<p>Quand vous écrivez <code>Personne jean = new Personne();</code>, que se passe-t-il ?</p>
+		<div class="grid grid-cols-2 gap-8 mt-6">
+			<div class="fragment">
+				<h4 class="text-accent-200">📍 La variable</h4>
+				<p class="text-xl">Contient une <b>adresse mémoire</b></p>
+				<p class="text-sm text-gray-400">(comme un numéro de casier)</p>
+			</div>
+			<div class="fragment">
+				<h4 class="text-accent-200">📦 L'objet</h4>
+				<p class="text-xl">Stocké ailleurs en mémoire (le <b>heap</b>)</p>
+				<p class="text-sm text-gray-400">(le contenu du casier)</p>
+			</div>
+		</div>
+		<Code class="fragment mt-6">
+{`
+Personne jean = new Personne("Jean");
+Personne copie = jean;  // copie la RÉFÉRENCE, pas l'objet !
+
+copie.setAge(30);
+System.out.println(jean.getAge());  // Affiche 30 ! 😱
+`}
+		</Code>
+		<aside class="notes">
+			C'est LE piège des débutants. Deux variables peuvent pointer vers le même objet.
+			Modifier via une variable modifie l'objet, visible depuis l'autre variable.
+			C'est différent des types primitifs (int, double) qui sont copiés par valeur.
+		</aside>
+	</Slide>
+
+	<Slide>
+		<h3>La valeur spéciale : null</h3>
+		<p>Une variable peut ne pointer vers <b>rien</b>. C'est la valeur <code class="text-important">null</code>.</p>
+		<Code>
+{`
+Personne personne = null;  // Aucun objet référencé
+
+// C'est souvent le cas quand :
+Personne resultat = chercherParNom("Toto");  // Pas trouvé → null
+`}
+		</Code>
+		<p class="fragment mt-6 text-red-400 font-bold">
+			⚠️ <code>null</code> signifie "absence d'objet". Ce n'est pas un objet vide !
+		</p>
+		<aside class="notes">
+			Null c'est "rien", pas "vide". Une liste vide existe (0 éléments), null n'existe pas du tout.
+			C'est une distinction cruciale. Null = pas de référence. Vide = objet qui ne contient rien.
+		</aside>
+	</Slide>
+
+	<Slide>
+		<h3>Le bug le plus fréquent : NullPointerException</h3>
+		<p>Si vous appelez une méthode sur <code>null</code>... 💥</p>
+		<Code>
+{`
+Personne personne = null;
+personne.getNom();  // ❌ NullPointerException !
+
+// Le message d'erreur :
+// Exception in thread "main" java.lang.NullPointerException:
+// Cannot invoke "Personne.getNom()" because "personne" is null
+`}
+		</Code>
+		<div class="fragment mt-6">
+			<p class="text-green-400 font-bold">✅ Toujours vérifier avant d'utiliser :</p>
+			<Code>
+{`
+if (personne != null) {
+    System.out.println(personne.getNom());
+}
+`}
+			</Code>
+		</div>
+		<aside class="notes">
+			C'est LE bug numéro 1 en Java. Tony Hoare, l'inventeur de null, l'a appelé "son erreur à un milliard de dollars".
+			Vous verrez NullPointerException des centaines de fois dans votre carrière. Apprenez à le débugger !
+			Le message vous dit quelle variable est null. Remontez le fil pour comprendre pourquoi.
+		</aside>
+	</Slide>
+
+	<Slide>
+		<h3>Bonne pratique : programmation défensive</h3>
+		<Code>
+{`
+public void afficherClient(Client client) {
+    // ❌ Risqué
+    System.out.println(client.getNom());
+    
+    // ✅ Défensif
+    if (client == null) {
+        System.out.println("Aucun client");
+        return;
+    }
+    System.out.println(client.getNom());
+}
+`}
+		</Code>
+		<p class="fragment mt-4 text-accent-200">
+			💡 En entreprise, beaucoup d'erreurs viennent de <code>null</code> non géré.
+		</p>
+		<aside class="notes">
+			C'est la base de la "programmation défensive". Ne faites jamais confiance aux données entrantes.
+			Les frameworks modernes (Spring) peuvent injecter @NonNull pour éviter ça.
+			Depuis Java 8, on a Optional pour mieux gérer l'absence de valeur.
+		</aside>
+	</Slide>
+
+	<!-- COMPARAISON D'OBJETS -->
+	<Slide data_background_color="#1a1a2e">
+		<h2 class="text-5xl">Comparer des objets</h2>
+		<p class="text-2xl text-gray-400">== vs equals() : le piège classique</p>
+		<aside class="notes">
+			Maintenant qu'on sait ce qu'est une référence, on peut comprendre un autre piège majeur.
+			Comment comparer deux objets ? C'est plus subtil qu'il n'y paraît.
+		</aside>
+	</Slide>
+
+	<Slide>
+		<h3>Le piège de ==</h3>
+		<Code>
+{`
+String a = new String("Bonjour");
+String b = new String("Bonjour");
+
+System.out.println(a == b);  // false ! 😱
+`}
+		</Code>
+		<p class="fragment mt-6">
+			<code>==</code> compare les <b>références</b> (les adresses mémoire), pas le contenu !
+		</p>
+		<PlantUml class="fragment">
+{`
+@startuml
+object "a" as a
+object "b" as b
+object "String: \\"Bonjour\\"" as s1
+object "String: \\"Bonjour\\"" as s2
+
+a --> s1 : référence
+b --> s2 : référence
+@enduml
+`}
+		</PlantUml>
+		<aside class="notes">
+			a et b pointent vers deux objets différents en mémoire. Même si le contenu est identique, ce sont deux casiers différents.
+			C'est le piège classique des débutants avec les String. "Bonjour" == "Bonjour" mais new String != new String.
+		</aside>
+	</Slide>
+
+	<Slide>
+		<h3>La solution : equals()</h3>
+		<p>Pour comparer le <b>contenu</b> des objets, utilisez la méthode <code class="text-important">equals()</code>.</p>
+		<Code>
+{`
+String a = new String("Bonjour");
+String b = new String("Bonjour");
+
+System.out.println(a.equals(b));  // true ✅
+`}
+		</Code>
+		<div class="fragment mt-6 grid grid-cols-2 gap-4">
+			<div class="p-4 bg-red-900/30 rounded-lg">
+				<h4 class="text-red-400">== (double égal)</h4>
+				<p class="text-sm">Compare les <b>références</b></p>
+				<p class="text-xs text-gray-400">"Est-ce le même objet ?"</p>
+			</div>
+			<div class="p-4 bg-green-900/30 rounded-lg">
+				<h4 class="text-green-400">equals()</h4>
+				<p class="text-sm">Compare le <b>contenu</b></p>
+				<p class="text-xs text-gray-400">"Ont-ils la même valeur ?"</p>
+			</div>
+		</div>
+		<aside class="notes">
+			C'est LA règle à retenir. Pour les objets, utilisez equals(). Pour les primitifs (int, double), utilisez ==.
+			String, Integer, toutes les classes du JDK redéfinissent equals() pour comparer le contenu.
+		</aside>
+	</Slide>
+
+	<Slide>
+		<h3>⚠️ Attention à null avec equals()</h3>
+		<Code>
+{`
+String a = null;
+String b = "Bonjour";
+
+a.equals(b);  // ❌ NullPointerException !
+b.equals(a);  // ✅ false (equals gère null)
+`}
+		</Code>
+		<p class="fragment mt-6 text-accent-200 font-bold">
+			💡 Astuce : mettez la valeur "sûre" (non-null) à gauche !
+		</p>
+		<Code class="fragment">
+{`
+// Pattern sécurisé avec une constante
+"admin".equals(username);  // ✅ Jamais de NPE
+`}
+		</Code>
+		<aside class="notes">
+			C'est un pattern très courant. En mettant la constante à gauche, on évite le NPE.
+			Depuis Java 7, on a aussi Objects.equals(a, b) qui gère null des deux côtés.
+		</aside>
+	</Slide>
+
+	<Slide>
+		<h3>Récapitulatif : comparaisons</h3>
+		<table class="text-xl">
+			<thead>
+				<tr>
+					<th class="p-3">Type</th>
+					<th class="p-3">Opérateur</th>
+					<th class="p-3">Exemple</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="p-3">Primitifs (int, double...)</td>
+					<td class="p-3"><code>==</code></td>
+					<td class="p-3"><code>age == 25</code></td>
+				</tr>
+				<tr>
+					<td class="p-3">Objets (contenu)</td>
+					<td class="p-3"><code>equals()</code></td>
+					<td class="p-3"><code>nom.equals("Jean")</code></td>
+				</tr>
+				<tr>
+					<td class="p-3">Objets (même instance)</td>
+					<td class="p-3"><code>==</code></td>
+					<td class="p-3"><code>obj1 == obj2</code></td>
+				</tr>
+				<tr>
+					<td class="p-3">Vérifier null</td>
+					<td class="p-3"><code>==</code></td>
+					<td class="p-3"><code>obj == null</code></td>
+				</tr>
+			</tbody>
+		</table>
+		<aside class="notes">
+			Retenez ce tableau ! Primitifs → ==. Objets contenu → equals(). Null check → ==.
+			On verra plus tard comment redéfinir equals() pour vos propres classes.
+		</aside>
+	</Slide>
+
 	<!-- RÉCAPITULATIF -->
 	<Slide>
 		<h3>Récapitulatif</h3>
-		<div class="grid grid-cols-2 gap-8 mt-6">
+		<div class="grid grid-cols-3 gap-4 mt-6">
 			<div class="fragment p-4 bg-accent-950 rounded-lg">
-				<h4 class="text-important">📐 Classes et Objets</h4>
+				<h4 class="text-important">📐 Classes</h4>
 				<ul class="text-sm mt-2">
-					<li>Une classe = un plan</li>
-					<li>Un objet = une instance</li>
+					<li>Classe = plan</li>
+					<li>Objet = instance</li>
 					<li>Attributs + méthodes</li>
 				</ul>
 			</div>
@@ -304,13 +555,21 @@ public class Personne {
 					<li><code>this</code> = objet courant</li>
 				</ul>
 			</div>
+			<div class="fragment p-4 bg-accent-950 rounded-lg">
+				<h4 class="text-important">🔗 Références</h4>
+				<ul class="text-sm mt-2">
+					<li>Variable = référence</li>
+					<li><code>null</code> = rien</li>
+					<li><code>equals()</code> pour comparer</li>
+				</ul>
+			</div>
 		</div>
 		<p class="fragment mt-8 text-accent-200 text-xl">
 			🔮 Maintenant, voyons comment <b>protéger</b> nos données avec l'encapsulation !
 		</p>
 		<aside class="notes">
 			Voilà les bases. Classe = moule, objet = instance concrète. New = création, constructeur = initialisation.
-			Avec ça, vous pouvez déjà écrire du code objet. Mais c'est pas encore sécurisé.
+			Les variables contiennent des références, null = pas d'objet, equals() pour comparer le contenu.
 			On passe à l'encapsulation pour apprendre à protéger nos données.
 		</aside>
 	</Slide>

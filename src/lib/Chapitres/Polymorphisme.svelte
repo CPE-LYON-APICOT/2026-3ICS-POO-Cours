@@ -77,7 +77,7 @@
 		</p>
 		<aside class="notes">
 			Ici, c'est la JVM qui décide à l'exécution quelle méthode appeler. C'est la "liaison tardive" ou "late binding".
-			C'est ce qui permet de faire des List<Animal> et d'appeler faireDuBruit() sans savoir si c'est un Chien ou un Chat.
+			C'est ce qui permet de faire des List&lt;Animal&gt; et d'appeler faireDuBruit() sans savoir si c'est un Chien ou un Chat.
 			C'est la magie de la POO : le code appelant ne connaît pas le type concret !
 		</aside>
 	</Slide>
@@ -171,7 +171,7 @@
     `}
 		</Code>
 		<aside class="notes">
-			Imaginez une List<Forme> avec 100 formes différentes. Une boucle for et calculerSurface() sur chacune.
+			Imaginez une List&lt;Forme&gt; avec 100 formes différentes. Une boucle for et calculerSurface() sur chacune.
 			Le code ne sait pas si c'est un Cercle ou un Rectangle. Et c'est BIEN : il n'a pas besoin de le savoir.
 			C'est le polymorphisme qui fait tout le travail. C'est la beauté de la POO.
 		</aside>

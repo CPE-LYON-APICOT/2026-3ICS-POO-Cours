@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Code from '$lib/deck/code.svelte'
+	import PlantUml from '$lib/deck/plantUml.svelte'
 	import Slide from '$lib/deck/slide.svelte'
-	import PlantUml from '$lib/deck/plantuml.svelte'
 </script>
 
 <Slide>
