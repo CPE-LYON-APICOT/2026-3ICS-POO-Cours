@@ -1,0 +1,1021 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="category">
+<category>
+<text>$course$/Seance1_rexams/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q1 : poo-kahoot-classe </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Quel mot-clé déclare une classe en Java ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />create</label></li>
+<li><label><input type="checkbox" />object</label></li>
+<li><label><input type="checkbox" checked="" />new</label></li>
+<li><label><input type="checkbox" />make</label></li>
+</ul>
+</div>
+<div class="solution">
+<p>Le mot-clé <code>new</code> permet d’instancier un objet en Java.</p>
+</div>
+<p>:::</p>
+<div class="question">
+<p>id: poo-kahoot-private
+type: schoice
+title: Portée de private</p>
+<p>Un attribut <code>private</code> est accessible depuis…</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Sa propre classe uniquement</label></li>
+<li><label><input type="checkbox" />Toutes les classes</label></li>
+<li><label><input type="checkbox" />Les classes filles</label></li>
+<li><label><input type="checkbox" />Le même package</label></li>
+</ul>
+</div>
+<div class="solution">
+<p><code>private</code> limite l’accès à la classe elle-même.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-public
+type: schoice
+title: Portée de public</p>
+<p>Un attribut <code>public</code> est accessible depuis…</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />Sa propre classe uniquement</label></li>
+<li><label><input type="checkbox" checked="" />Toutes les classes</label></li>
+<li><label><input type="checkbox" />Les classes filles</label></li>
+<li><label><input type="checkbox" />Le même package</label></li>
+</ul>
+</div>
+<div class="solution">
+<p><code>public</code> permet l’accès depuis n’importe où.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-heritage
+type: schoice
+title: Mot-clé pour hériter</p>
+<p>Quel mot-clé permet d’hériter d’une classe ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />inherits</label></li>
+<li><label><input type="checkbox" />implements</label></li>
+<li><label><input type="checkbox" checked="" />extends</label></li>
+<li><label><input type="checkbox" />super</label></li>
+</ul>
+</div>
+<div class="solution">
+<p><code>extends</code> permet d’hériter d’une classe parente.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-interface
+type: schoice
+title: Mot-clé pour implémenter</p>
+<p>Quel mot-clé permet d’implémenter une interface ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />extends</label></li>
+<li><label><input type="checkbox" checked="" />implements</label></li>
+<li><label><input type="checkbox" />interface</label></li>
+<li><label><input type="checkbox" />uses</label></li>
+</ul>
+</div>
+<div class="solution">
+<p><code>implements</code> permet d’implémenter une interface.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-constructeur
+type: schoice
+title: Initialisation d’un objet</p>
+<p>Comment s’appelle la méthode qui initialise un objet ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />init()</label></li>
+<li><label><input type="checkbox" />create()</label></li>
+<li><label><input type="checkbox" checked="" />Le constructeur</label></li>
+<li><label><input type="checkbox" />start()</label></li>
+</ul>
+</div>
+<div class="solution">
+<p>Le constructeur porte le même nom que la classe et initialise l’objet.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-this
+type: schoice
+title: Mot-clé this</p>
+<p>À quoi sert le mot-clé <code>this</code> ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />Créer un objet</label></li>
+<li><label><input type="checkbox" checked="" />Référencer l’objet courant</label></li>
+<li><label><input type="checkbox" />Appeler le parent</label></li>
+<li><label><input type="checkbox" />Déclarer une variable</label></li>
+</ul>
+</div>
+<div class="solution">
+<p><code>this</code> fait référence à l’instance courante de la classe.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-super
+type: schoice
+title: Mot-clé super</p>
+<p>À quoi sert le mot-clé <code>super</code> ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />Créer un objet</label></li>
+<li><label><input type="checkbox" />Référencer l’objet courant</label></li>
+<li><label><input type="checkbox" checked="" />Appeler le parent</label></li>
+<li><label><input type="checkbox" />Déclarer une variable</label></li>
+</ul>
+</div>
+<div class="solution">
+<p><code>super</code> permet d’accéder aux membres de la classe parente.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-null
+type: schoice
+title: Référence non initialisée</p>
+<p>Que vaut une référence non initialisée ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />0</label></li>
+<li><label><input type="checkbox" />“”</label></li>
+<li><label><input type="checkbox" checked="" />null</label></li>
+<li><label><input type="checkbox" />undefined</label></li>
+</ul>
+</div>
+<div class="solution">
+<p>Une référence non initialisée vaut <code>null</code> en Java.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-npe
+type: schoice
+title: Signification de NPE</p>
+<p>Que signifie NPE ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />New Pointer Error</label></li>
+<li><label><input type="checkbox" checked="" />NullPointerException</label></li>
+<li><label><input type="checkbox" />No Program Execution</label></li>
+<li><label><input type="checkbox" />Null Program Error</label></li>
+</ul>
+</div>
+<div class="solution">
+<p>NPE = NullPointerException, erreur très courante en Java.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-getter
+type: schoice
+title: Méthode qui retourne un attribut</p>
+<p>Comment nomme-t-on une méthode qui retourne un attribut ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Getter</label></li>
+<li><label><input type="checkbox" />Setter</label></li>
+<li><label><input type="checkbox" />Accessor</label></li>
+<li><label><input type="checkbox" />Reader</label></li>
+</ul>
+</div>
+<div class="solution">
+<p>Un getter (ou accesseur) retourne la valeur d’un attribut.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-setter
+type: schoice
+title: Méthode qui modifie un attribut</p>
+<p>Comment nomme-t-on une méthode qui modifie un attribut ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />Getter</label></li>
+<li><label><input type="checkbox" checked="" />Setter</label></li>
+<li><label><input type="checkbox" />Modifier</label></li>
+<li><label><input type="checkbox" />Writer</label></li>
+</ul>
+</div>
+<div class="solution">
+<p>Un setter (ou mutateur) modifie la valeur d’un attribut.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-abstract
+type: schoice
+title: Instanciation d’une classe abstraite</p>
+<p>Une classe <code>abstract</code> peut-elle être instanciée ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />Oui toujours</label></li>
+<li><label><input type="checkbox" checked="" />Non jamais</label></li>
+<li><label><input type="checkbox" />Seulement avec new</label></li>
+<li><label><input type="checkbox" />Seulement dans main()</label></li>
+</ul>
+</div>
+<div class="solution">
+<p>Une classe abstraite ne peut PAS être instanciée directement.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-override
+type: schoice
+title: Annotation de redéfinition</p>
+<p>Quelle annotation indique qu’on redéfinit une méthode ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" /><span class="citation">@Redefine</span></label></li>
+<li><label><input type="checkbox" checked="" /><span class="citation">@Override</span></label></li>
+<li><label><input type="checkbox" /><span class="citation">@Replace</span></label></li>
+<li><label><input type="checkbox" /><span class="citation">@Super</span></label></li>
+</ul>
+</div>
+<div class="solution">
+<p><code>@Override</code> indique une redéfinition de méthode héritée.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-final-classe
+type: schoice
+title: Classe final et héritage</p>
+<p>Une classe <code>final</code> peut-elle avoir des classes filles ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />Oui toujours</label></li>
+<li><label><input type="checkbox" checked="" />Non jamais</label></li>
+<li><label><input type="checkbox" />Seulement une</label></li>
+<li><label><input type="checkbox" />Seulement abstraites</label></li>
+</ul>
+</div>
+<div class="solution">
+<p>Une classe <code>final</code> ne peut pas être étendue (héritée).</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-equals
+type: schoice
+title: Comparaison de contenu</p>
+<p>Quelle méthode compare le contenu de deux objets ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />==</label></li>
+<li><label><input type="checkbox" checked="" />equals()</label></li>
+<li><label><input type="checkbox" />compare()</label></li>
+<li><label><input type="checkbox" />same()</label></li>
+</ul>
+</div>
+<div class="solution">
+<p><code>equals()</code> compare le contenu, <code>==</code> compare les références.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-tostring
+type: schoice
+title: Représentation textuelle</p>
+<p>Quelle méthode retourne une représentation textuelle d’un objet ?</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />print()</label></li>
+<li><label><input type="checkbox" />display()</label></li>
+<li><label><input type="checkbox" checked="" />toString()</label></li>
+<li><label><input type="checkbox" />getText()</label></li>
+</ul>
+</div>
+<div class="solution">
+<p><code>toString()</code> retourne une chaîne décrivant l’objet.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-encapsulation
+type: schoice
+title: Principe d’encapsulation</p>
+<p>L’encapsulation consiste à…</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" />Cacher les détails internes</label></li>
+<li><label><input type="checkbox" />Hériter d’une classe</label></li>
+<li><label><input type="checkbox" />Créer plusieurs objets</label></li>
+<li><label><input type="checkbox" />Utiliser des interfaces</label></li>
+</ul>
+</div>
+<div class="solution">
+<p>L’encapsulation cache l’implémentation et expose une interface publique.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-kahoot-polymorphisme
+type: schoice
+title: Principe du polymorphisme</p>
+<p>Le polymorphisme permet…</p>
+<div class="answers">
+<ul class="task-list">
+<li><label><input type="checkbox" />De créer des classes</label></li>
+<li><label><input type="checkbox" />D’avoir des attributs privés</label></li>
+<li><label><input type="checkbox" checked="" />D’utiliser un même type pour différents objets</label></li>
+<li><label><input type="checkbox" />De définir des constantes</label></li>
+</ul>
+</div>
+<div class="solution">
+<p>Le polymorphisme permet de traiter différents objets via un type commun.</p>
+</div>
+</div>
+<h2 id="associations-matching">Associations (Matching)</h2>
+<div class="question">
+<p>id: poo-match-visibilite
+type: matching
+title: Modificateurs et portées</p>
+<p>Associez chaque modificateur à sa portée :</p>
+<div class="answers">
+<ul>
+<li>private — Classe uniquement</li>
+<li>protected — Classe + sous-classes + package</li>
+<li>public — Partout</li>
+<li>(rien) — Package uniquement</li>
+</ul>
+</div>
+<div class="solution">
+<p>Les 4 niveaux de visibilité en Java avec leur portée respective.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-match-concepts
+type: matching
+title: Concepts POO et définitions</p>
+<p>Associez chaque concept POO à sa définition :</p>
+<div class="answers">
+<ul>
+<li>Encapsulation — Cacher les détails internes</li>
+<li>Héritage — Réutiliser le code d’une classe parente</li>
+<li>Polymorphisme — Traiter différents objets via un type commun</li>
+<li>Composition — Un objet contient d’autres objets</li>
+</ul>
+</div>
+<div class="solution">
+<p>Les 4 piliers de la POO et leurs définitions.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-match-motsclés
+type: matching
+title: Mots-clés et usages</p>
+<p>Associez chaque mot-clé à son usage :</p>
+<div class="answers">
+<ul>
+<li>extends — Hériter d’une classe</li>
+<li>implements — Implémenter une interface</li>
+<li>super — Appeler le parent</li>
+<li>this — Référencer l’objet courant</li>
+</ul>
+</div>
+<div class="solution">
+<p>Les mots-clés essentiels de la POO Java.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-match-methodes
+type: matching
+title: Méthodes Object et rôles</p>
+<p>Associez chaque méthode Object à son rôle :</p>
+<div class="answers">
+<ul>
+<li>equals() — Comparer le contenu</li>
+<li>toString() — Représentation textuelle</li>
+<li>hashCode() — Code de hachage</li>
+<li>getClass() — Obtenir le type</li>
+</ul>
+</div>
+<div class="solution">
+<p>Méthodes héritées de Object utilisées fréquemment.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-match-relations
+type: matching
+title: Relations UML et exemples</p>
+<p>Associez chaque relation UML à son exemple :</p>
+<div class="answers">
+<ul>
+<li>Est-un — Voiture extends Véhicule</li>
+<li>A-un — Voiture contient Moteur</li>
+<li>Utilise — Conducteur utilise Voiture</li>
+<li>Implémente — Canard implements Volant</li>
+</ul>
+</div>
+<div class="solution">
+<p>Les différentes relations entre classes en POO.</p>
+</div>
+</div>
+<h2 id="textes-à-trous-fillintheblanks">Textes à trous (FillInTheBlanks)</h2>
+<div class="question">
+<p>id: poo-fill-classe
+type: cloze
+title: Déclaration de classe</p>
+<p>Complétez la déclaration de classe :</p>
+<div class="answers">
+<p>public [class] Voiture [extends] Vehicule { }</p>
+</div>
+<div class="solution">
+<p><code>class</code> pour déclarer, <code>extends</code> pour hériter.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-fill-interface
+type: cloze
+title: Implémentation d’interface</p>
+<p>Complétez l’implémentation d’interface :</p>
+<div class="answers">
+<p>public class Canard [implements] Volant { }</p>
+</div>
+<div class="solution">
+<p><code>implements</code> permet d’implémenter une interface.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-fill-constructeur
+type: cloze
+title: Constructeur avec this</p>
+<p>Complétez le constructeur :</p>
+<div class="answers">
+<p>public Personne(String nom) { [this].nom = nom; }</p>
+</div>
+<div class="solution">
+<p><code>this</code> distingue l’attribut du paramètre.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-fill-heritage
+type: cloze
+title: Appel au constructeur parent</p>
+<p>Complétez l’appel au constructeur parent :</p>
+<div class="answers">
+<p>public Voiture(String marque) { <a href="marque">super</a>; }</p>
+</div>
+<div class="solution">
+<p><code>super(...)</code> appelle le constructeur de la classe parente.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-fill-getter
+type: cloze
+title: Getter</p>
+<p>Complétez le getter :</p>
+<div class="answers">
+<p>public String getNom() { [return] this.nom; }</p>
+</div>
+<div class="solution">
+<p>Un getter utilise <code>return</code> pour retourner la valeur.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-fill-instanciation
+type: cloze
+title: Création d’objet</p>
+<p>Complétez la création d’objet :</p>
+<div class="answers">
+<p>Voiture v = [new] Voiture(“Peugeot”);</p>
+</div>
+<div class="solution">
+<p><code>new</code> permet d’instancier un objet.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-fill-override
+type: cloze
+title: Redéfinition de méthode</p>
+<p>Complétez la redéfinition de méthode :</p>
+<div class="answers">
+<p><span class="citation">[@Override]</span> public String toString() { return this.nom; }</p>
+</div>
+<div class="solution">
+<p><code>@Override</code> indique qu’on redéfinit une méthode héritée.</p>
+</div>
+</div>
+<h2 id="classements-sorting">Classements (Sorting)</h2>
+<div class="question">
+<p>id: poo-sort-visibilite
+type: sorting
+title: Ordre des modificateurs</p>
+<p>Classez les modificateurs du plus restrictif au moins restrictif :</p>
+<div class="answers">
+<ul>
+<li>private</li>
+<li>(default/package)</li>
+<li>protected</li>
+<li>public</li>
+</ul>
+</div>
+<div class="solution">
+<p>private &lt; default &lt; protected &lt; public en termes d’accessibilité.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-sort-heritage
+type: sorting
+title: Ordre des constructeurs</p>
+<p>Classez dans l’ordre d’exécution lors de la création d’un objet fils :</p>
+<div class="answers">
+<ul>
+<li>Constructeur de Object</li>
+<li>Constructeur du grand-parent</li>
+<li>Constructeur du parent</li>
+<li>Constructeur de la classe</li>
+</ul>
+</div>
+<div class="solution">
+<p>Les constructeurs s’exécutent du plus haut ancêtre vers la classe instanciée.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-sort-abstraction
+type: sorting
+title: Niveau d’abstraction</p>
+<p>Classez du plus concret au plus abstrait :</p>
+<div class="answers">
+<ul>
+<li>Objet instancié</li>
+<li>Classe concrète</li>
+<li>Classe abstraite</li>
+<li>Interface</li>
+</ul>
+</div>
+<div class="solution">
+<p>Un objet est concret, une interface est le plus abstrait.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-sort-compilation
+type: sorting
+title: Étapes de compilation Java</p>
+<p>Classez les étapes de création d’un programme Java :</p>
+<div class="answers">
+<ul>
+<li>Écrire le code source (.java)</li>
+<li>Compiler avec javac</li>
+<li>Obtenir le bytecode (.class)</li>
+<li>Exécuter avec java (JVM)</li>
+</ul>
+</div>
+<div class="solution">
+<p>Le cycle classique : code → compilation → bytecode → exécution.</p>
+</div>
+</div>
+<div class="question">
+<p>id: poo-sort-memoire
+type: sorting
+title: Création d’objet en mémoire</p>
+<p>Classez ce qui se passe quand on écrit <code>Voiture v = new Voiture();</code> :</p>
+<div class="answers">
+<ul>
+<li>Déclaration de la référence v sur la pile</li>
+<li>Allocation mémoire dans le tas</li>
+<li>Appel du constructeur</li>
+<li>Affectation de l’adresse à v</li>
+</ul>
+</div>
+<div class="solution">
+<p>La référence est sur la pile, l’objet dans le tas.</p>
+</div>
+</div>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>En Java, le mot-clé <code>class</code> (minuscule) permet de déclarer une classe.
+:::
+:::</p>
+<p>:::question
+id: poo-kahoot-new
+type: schoice
+title: Mot-clé pour créer un objet</p>
+<p>Quel mot-clé permet de créer un objet ?</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+class
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Class
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+type
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+new
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+<question type="essay">
+    <name><text>q50424</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>## poo-kahoot-classe</p><p>Quel mot-clé déclare une classe en Java ?</p><p>:::answers
+- [ ] create
+- [ ] object
+- [x] new
+- [ ] make
+:::</p><p>:::solution
+Le mot-clé <code>new</code> permet d'instancier un objet en Java.
+:::
+:::</p><p>:::question
+## poo-kahoot-private</p><p>Un attribut <code>private</code> est accessible depuis...</p><p>:::answers
+- [x] Sa propre classe uniquement
+- [ ] Toutes les classes
+- [ ] Les classes filles
+- [ ] Le même package
+:::</p><p>:::solution
+<code>private</code> limite l'accès à la classe elle-même.
+:::
+:::</p><p>:::question
+## poo-kahoot-public</p><p>Un attribut <code>public</code> est accessible depuis...</p><p>:::answers
+- [ ] Sa propre classe uniquement
+- [x] Toutes les classes
+- [ ] Les classes filles
+- [ ] Le même package
+:::</p><p>:::solution
+<code>public</code> permet l'accès depuis n'importe où.
+:::
+:::</p><p>:::question
+## poo-kahoot-heritage</p><p>Quel mot-clé permet d'hériter d'une classe ?</p><p>:::answers
+- [ ] inherits
+- [ ] implements
+- [x] extends
+- [ ] super
+:::</p><p>:::solution
+<code>extends</code> permet d'hériter d'une classe parente.
+:::
+:::</p><p>:::question
+## poo-kahoot-interface</p><p>Quel mot-clé permet d'implémenter une interface ?</p><p>:::answers
+- [ ] extends
+- [x] implements
+- [ ] interface
+- [ ] uses
+:::</p><p>:::solution
+<code>implements</code> permet d'implémenter une interface.
+:::
+:::</p><p>:::question
+## poo-kahoot-constructeur</p><p>Comment s'appelle la méthode qui initialise un objet ?</p><p>:::answers
+- [ ] init()
+- [ ] create()
+- [x] Le constructeur
+- [ ] start()
+:::</p><p>:::solution
+Le constructeur porte le même nom que la classe et initialise l'objet.
+:::
+:::</p><p>:::question
+## poo-kahoot-this</p><p>À quoi sert le mot-clé <code>this</code> ?</p><p>:::answers
+- [ ] Créer un objet
+- [x] Référencer l'objet courant
+- [ ] Appeler le parent
+- [ ] Déclarer une variable
+:::</p><p>:::solution
+<code>this</code> fait référence à l'instance courante de la classe.
+:::
+:::</p><p>:::question
+## poo-kahoot-super</p><p>À quoi sert le mot-clé <code>super</code> ?</p><p>:::answers
+- [ ] Créer un objet
+- [ ] Référencer l'objet courant
+- [x] Appeler le parent
+- [ ] Déclarer une variable
+:::</p><p>:::solution
+<code>super</code> permet d'accéder aux membres de la classe parente.
+:::
+:::</p><p>:::question
+## poo-kahoot-null</p><p>Que vaut une référence non initialisée ?</p><p>:::answers
+- [ ] 0
+- [ ] ""
+- [x] null
+- [ ] undefined
+:::</p><p>:::solution
+Une référence non initialisée vaut <code>null</code> en Java.
+:::
+:::</p><p>:::question
+## poo-kahoot-npe</p><p>Que signifie NPE ?</p><p>:::answers
+- [ ] New Pointer Error
+- [x] NullPointerException
+- [ ] No Program Execution
+- [ ] Null Program Error
+:::</p><p>:::solution
+NPE = NullPointerException, erreur très courante en Java.
+:::
+:::</p><p>:::question
+## poo-kahoot-getter</p><p>Comment nomme-t-on une méthode qui retourne un attribut ?</p><p>:::answers
+- [x] Getter
+- [ ] Setter
+- [ ] Accessor
+- [ ] Reader
+:::</p><p>:::solution
+Un getter (ou accesseur) retourne la valeur d'un attribut.
+:::
+:::</p><p>:::question
+## poo-kahoot-setter</p><p>Comment nomme-t-on une méthode qui modifie un attribut ?</p><p>:::answers
+- [ ] Getter
+- [x] Setter
+- [ ] Modifier
+- [ ] Writer
+:::</p><p>:::solution
+Un setter (ou mutateur) modifie la valeur d'un attribut.
+:::
+:::</p><p>:::question
+## poo-kahoot-abstract</p><p>Une classe <code>abstract</code> peut-elle être instanciée ?</p><p>:::answers
+- [ ] Oui, toujours
+- [x] Non, jamais
+- [ ] Seulement avec new
+- [ ] Seulement dans main()
+:::</p><p>:::solution
+Une classe abstraite ne peut PAS être instanciée directement.
+:::
+:::</p><p>:::question
+## poo-kahoot-override</p><p>Quel annotation indique qu'on redéfinit une méthode ?</p><p>:::answers
+- [ ] @Redefine
+- [x] @Override
+- [ ] @Replace
+- [ ] @Super
+:::</p><p>:::solution
+<code>@Override</code> indique une redéfinition de méthode héritée.
+:::
+:::</p><p>:::question
+## poo-kahoot-final-classe</p><p>Une classe <code>final</code> peut-elle avoir des classes filles ?</p><p>:::answers
+- [ ] Oui, toujours
+- [x] Non, jamais
+- [ ] Seulement une
+- [ ] Seulement abstraites
+:::</p><p>:::solution
+Une classe <code>final</code> ne peut pas être étendue (héritée).
+:::
+:::</p><p>:::question
+## poo-kahoot-equals</p><p>Quelle méthode compare le contenu de deux objets ?</p><p>:::answers
+- [ ] ==
+- [x] equals()
+- [ ] compare()
+- [ ] same()
+:::</p><p>:::solution
+<code>equals()</code> compare le contenu, <code>==</code> compare les références.
+:::
+:::</p><p>:::question
+## poo-kahoot-tostring</p><p>Quelle méthode retourne une représentation textuelle d'un objet ?</p><p>:::answers
+- [ ] print()
+- [ ] display()
+- [x] toString()
+- [ ] getText()
+:::</p><p>:::solution
+<code>toString()</code> retourne une chaîne décrivant l'objet.
+:::
+:::</p><p>:::question
+## poo-kahoot-encapsulation</p><p>L'encapsulation consiste à...</p><p>:::answers
+- [x] Cacher les détails internes
+- [ ] Hériter d'une classe
+- [ ] Créer plusieurs objets
+- [ ] Utiliser des interfaces
+:::</p><p>:::solution
+L'encapsulation cache l'implémentation et expose une interface publique.
+:::
+:::</p><p>:::question
+## poo-kahoot-polymorphisme</p><p>Le polymorphisme permet...</p><p>:::answers
+- [ ] De créer des classes
+- [ ] D'avoir des attributs privés
+- [x] D'utiliser un même type pour différents objets
+- [ ] De définir des constantes
+:::</p><p>:::solution
+Le polymorphisme permet de traiter différents objets via un type commun.
+:::
+:::</p><p># Associations (Matching)</p><p>:::question
+## poo-match-visibilite
+type: Matching</p><p>Associez chaque modificateur à sa portée :</p><p>:::answers
+- private --- Classe uniquement
+- protected --- Classe + sous-classes + package
+- public --- Partout
+- (rien) --- Package uniquement
+:::</p><p>:::solution
+Les 4 niveaux de visibilité en Java avec leur portée respective.
+:::
+:::</p><p>:::question
+## poo-match-concepts
+type: Matching</p><p>Associez chaque concept POO à sa définition :</p><p>:::answers
+- Encapsulation --- Cacher les détails internes
+- Héritage --- Réutiliser le code d'une classe parente
+- Polymorphisme --- Traiter différents objets via un type commun
+- Composition --- Un objet contient d'autres objets
+:::</p><p>:::solution
+Les 4 piliers de la POO et leurs définitions.
+:::
+:::</p><p>:::question
+## poo-match-motsclés
+type: Matching</p><p>Associez chaque mot-clé à son usage :</p><p>:::answers
+- extends --- Hériter d'une classe
+- implements --- Implémenter une interface
+- super --- Appeler le parent
+- this --- Référencer l'objet courant
+:::</p><p>:::solution
+Les mots-clés essentiels de la POO Java.
+:::
+:::</p><p>:::question
+## poo-match-methodes
+type: Matching</p><p>Associez chaque méthode Object à son rôle :</p><p>:::answers
+- equals() --- Comparer le contenu
+- toString() --- Représentation textuelle
+- hashCode() --- Code de hachage
+- getClass() --- Obtenir le type
+:::</p><p>:::solution
+Méthodes héritées de Object utilisées fréquemment.
+:::
+:::</p><p>:::question
+## poo-match-relations
+type: Matching</p><p>Associez chaque relation UML à son exemple :</p><p>:::answers
+- Est-un --- Voiture extends Véhicule
+- A-un --- Voiture contient Moteur
+- Utilise --- Conducteur utilise Voiture
+- Implémente --- Canard implements Volant
+:::</p><p>:::solution
+Les différentes relations entre classes en POO.
+:::
+:::</p><p># Textes à trous (FillInTheBlanks)</p><p>:::question
+## poo-fill-classe
+type: FillInTheBlanks</p><p>Complétez la déclaration de classe :</p><p>:::answers
+public [class] Voiture [extends] Vehicule { }
+:::</p><p>:::solution
+<code>class</code> pour déclarer, <code>extends</code> pour hériter.
+:::
+:::</p><p>:::question
+## poo-fill-interface
+type: FillInTheBlanks</p><p>Complétez l'implémentation d'interface :</p><p>:::answers
+public class Canard [implements] Volant { }
+:::</p><p>:::solution
+<code>implements</code> permet d'implémenter une interface.
+:::
+:::</p><p>:::question
+## poo-fill-constructeur
+type: FillInTheBlanks</p><p>Complétez le constructeur :</p><p>:::answers
+public Personne(String nom) { [this].nom = nom; }
+:::</p><p>:::solution
+<code>this</code> distingue l'attribut du paramètre.
+:::
+:::</p><p>:::question
+## poo-fill-heritage
+type: FillInTheBlanks</p><p>Complétez l'appel au constructeur parent :</p><p>:::answers
+public Voiture(String marque) { [super](marque); }
+:::</p><p>:::solution
+<code>super(...)</code> appelle le constructeur de la classe parente.
+:::
+:::</p><p>:::question
+## poo-fill-getter
+type: FillInTheBlanks</p><p>Complétez le getter :</p><p>:::answers
+public String getNom() { [return] this.nom; }
+:::</p><p>:::solution
+Un getter utilise <code>return</code> pour retourner la valeur.
+:::
+:::</p><p>:::question
+## poo-fill-instanciation
+type: FillInTheBlanks</p><p>Complétez la création d'objet :</p><p>:::answers
+Voiture v = [new] Voiture("Peugeot");
+:::</p><p>:::solution
+<code>new</code> permet d'instancier un objet.
+:::
+:::</p><p>:::question
+## poo-fill-override
+type: FillInTheBlanks</p><p>Complétez la redéfinition de méthode :</p><p>:::answers
+[@Override] public String toString() { return this.nom; }
+:::</p><p>:::solution
+<code>@Override</code> indique qu'on redéfinit une méthode héritée.
+:::
+:::</p><p># Classements (Sorting)</p><p>:::question
+## poo-sort-visibilite
+type: Sorting</p><p>Classez les modificateurs du plus restrictif au moins restrictif :</p><p>:::answers
+- private
+- (default/package)
+- protected
+- public
+:::</p><p>:::solution
+private < default < protected < public en termes d'accessibilité.
+:::
+:::</p><p>:::question
+## poo-sort-heritage
+type: Sorting</p><p>Classez dans l'ordre d'exécution lors de la création d'un objet fils :</p><p>:::answers
+- Constructeur de Object
+- Constructeur du grand-parent
+- Constructeur du parent
+- Constructeur de la classe
+:::</p><p>:::solution
+Les constructeurs s'exécutent du plus haut ancêtre vers la classe instanciée.
+:::
+:::</p><p>:::question
+## poo-sort-abstraction
+type: Sorting</p><p>Classez du plus concret au plus abstrait :</p><p>:::answers
+- Objet instancié
+- Classe concrète
+- Classe abstraite
+- Interface
+:::</p><p>:::solution
+Un objet est concret, une interface est le plus abstrait.
+:::
+:::</p><p>:::question
+## poo-sort-compilation
+type: Sorting</p><p>Classez les étapes de création d'un programme Java :</p><p>:::answers
+- Écrire le code source (.java)
+- Compiler avec javac
+- Obtenir le bytecode (.class)
+- Exécuter avec java (JVM)
+:::</p><p>:::solution
+Le cycle classique : code → compilation → bytecode → exécution.
+:::
+:::</p><p>:::question
+## poo-sort-memoire
+type: Sorting</p><p>Classez ce qui se passe quand on écrit <code>Voiture v = new Voiture();</code> :</p><p>:::answers
+- Déclaration de la référence v sur la pile
+- Allocation mémoire dans le tas
+- Appel du constructeur
+- Affectation de l'adresse à v
+:::</p><p>:::solution
+La référence est sur la pile, l'objet dans le tas.
+:::
+:::</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>En Java, le mot-clé <code>class</code> (minuscule) permet de déclarer une classe.
+:::
+:::</p><p>:::question
+## poo-kahoot-new</p><p>Quel mot-clé permet de créer un objet ?</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>q50424</text></tag></tags>
+  </question>
+</quiz>

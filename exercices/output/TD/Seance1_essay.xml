@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="essay">
+    <name><text>q50424</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>## poo-kahoot-classe</p><p>Quel mot-clé déclare une classe en Java ?</p><p>:::answers
+- [ ] create
+- [ ] object
+- [x] new
+- [ ] make
+:::</p><p>:::solution
+Le mot-clé <code>new</code> permet d'instancier un objet en Java.
+:::
+:::</p><p>:::question
+## poo-kahoot-private</p><p>Un attribut <code>private</code> est accessible depuis...</p><p>:::answers
+- [x] Sa propre classe uniquement
+- [ ] Toutes les classes
+- [ ] Les classes filles
+- [ ] Le même package
+:::</p><p>:::solution
+<code>private</code> limite l'accès à la classe elle-même.
+:::
+:::</p><p>:::question
+## poo-kahoot-public</p><p>Un attribut <code>public</code> est accessible depuis...</p><p>:::answers
+- [ ] Sa propre classe uniquement
+- [x] Toutes les classes
+- [ ] Les classes filles
+- [ ] Le même package
+:::</p><p>:::solution
+<code>public</code> permet l'accès depuis n'importe où.
+:::
+:::</p><p>:::question
+## poo-kahoot-heritage</p><p>Quel mot-clé permet d'hériter d'une classe ?</p><p>:::answers
+- [ ] inherits
+- [ ] implements
+- [x] extends
+- [ ] super
+:::</p><p>:::solution
+<code>extends</code> permet d'hériter d'une classe parente.
+:::
+:::</p><p>:::question
+## poo-kahoot-interface</p><p>Quel mot-clé permet d'implémenter une interface ?</p><p>:::answers
+- [ ] extends
+- [x] implements
+- [ ] interface
+- [ ] uses
+:::</p><p>:::solution
+<code>implements</code> permet d'implémenter une interface.
+:::
+:::</p><p>:::question
+## poo-kahoot-constructeur</p><p>Comment s'appelle la méthode qui initialise un objet ?</p><p>:::answers
+- [ ] init()
+- [ ] create()
+- [x] Le constructeur
+- [ ] start()
+:::</p><p>:::solution
+Le constructeur porte le même nom que la classe et initialise l'objet.
+:::
+:::</p><p>:::question
+## poo-kahoot-this</p><p>À quoi sert le mot-clé <code>this</code> ?</p><p>:::answers
+- [ ] Créer un objet
+- [x] Référencer l'objet courant
+- [ ] Appeler le parent
+- [ ] Déclarer une variable
+:::</p><p>:::solution
+<code>this</code> fait référence à l'instance courante de la classe.
+:::
+:::</p><p>:::question
+## poo-kahoot-super</p><p>À quoi sert le mot-clé <code>super</code> ?</p><p>:::answers
+- [ ] Créer un objet
+- [ ] Référencer l'objet courant
+- [x] Appeler le parent
+- [ ] Déclarer une variable
+:::</p><p>:::solution
+<code>super</code> permet d'accéder aux membres de la classe parente.
+:::
+:::</p><p>:::question
+## poo-kahoot-null</p><p>Que vaut une référence non initialisée ?</p><p>:::answers
+- [ ] 0
+- [ ] ""
+- [x] null
+- [ ] undefined
+:::</p><p>:::solution
+Une référence non initialisée vaut <code>null</code> en Java.
+:::
+:::</p><p>:::question
+## poo-kahoot-npe</p><p>Que signifie NPE ?</p><p>:::answers
+- [ ] New Pointer Error
+- [x] NullPointerException
+- [ ] No Program Execution
+- [ ] Null Program Error
+:::</p><p>:::solution
+NPE = NullPointerException, erreur très courante en Java.
+:::
+:::</p><p>:::question
+## poo-kahoot-getter</p><p>Comment nomme-t-on une méthode qui retourne un attribut ?</p><p>:::answers
+- [x] Getter
+- [ ] Setter
+- [ ] Accessor
+- [ ] Reader
+:::</p><p>:::solution
+Un getter (ou accesseur) retourne la valeur d'un attribut.
+:::
+:::</p><p>:::question
+## poo-kahoot-setter</p><p>Comment nomme-t-on une méthode qui modifie un attribut ?</p><p>:::answers
+- [ ] Getter
+- [x] Setter
+- [ ] Modifier
+- [ ] Writer
+:::</p><p>:::solution
+Un setter (ou mutateur) modifie la valeur d'un attribut.
+:::
+:::</p><p>:::question
+## poo-kahoot-abstract</p><p>Une classe <code>abstract</code> peut-elle être instanciée ?</p><p>:::answers
+- [ ] Oui, toujours
+- [x] Non, jamais
+- [ ] Seulement avec new
+- [ ] Seulement dans main()
+:::</p><p>:::solution
+Une classe abstraite ne peut PAS être instanciée directement.
+:::
+:::</p><p>:::question
+## poo-kahoot-override</p><p>Quel annotation indique qu'on redéfinit une méthode ?</p><p>:::answers
+- [ ] @Redefine
+- [x] @Override
+- [ ] @Replace
+- [ ] @Super
+:::</p><p>:::solution
+<code>@Override</code> indique une redéfinition de méthode héritée.
+:::
+:::</p><p>:::question
+## poo-kahoot-final-classe</p><p>Une classe <code>final</code> peut-elle avoir des classes filles ?</p><p>:::answers
+- [ ] Oui, toujours
+- [x] Non, jamais
+- [ ] Seulement une
+- [ ] Seulement abstraites
+:::</p><p>:::solution
+Une classe <code>final</code> ne peut pas être étendue (héritée).
+:::
+:::</p><p>:::question
+## poo-kahoot-equals</p><p>Quelle méthode compare le contenu de deux objets ?</p><p>:::answers
+- [ ] ==
+- [x] equals()
+- [ ] compare()
+- [ ] same()
+:::</p><p>:::solution
+<code>equals()</code> compare le contenu, <code>==</code> compare les références.
+:::
+:::</p><p>:::question
+## poo-kahoot-tostring</p><p>Quelle méthode retourne une représentation textuelle d'un objet ?</p><p>:::answers
+- [ ] print()
+- [ ] display()
+- [x] toString()
+- [ ] getText()
+:::</p><p>:::solution
+<code>toString()</code> retourne une chaîne décrivant l'objet.
+:::
+:::</p><p>:::question
+## poo-kahoot-encapsulation</p><p>L'encapsulation consiste à...</p><p>:::answers
+- [x] Cacher les détails internes
+- [ ] Hériter d'une classe
+- [ ] Créer plusieurs objets
+- [ ] Utiliser des interfaces
+:::</p><p>:::solution
+L'encapsulation cache l'implémentation et expose une interface publique.
+:::
+:::</p><p>:::question
+## poo-kahoot-polymorphisme</p><p>Le polymorphisme permet...</p><p>:::answers
+- [ ] De créer des classes
+- [ ] D'avoir des attributs privés
+- [x] D'utiliser un même type pour différents objets
+- [ ] De définir des constantes
+:::</p><p>:::solution
+Le polymorphisme permet de traiter différents objets via un type commun.
+:::
+:::</p><p># Associations (Matching)</p><p>:::question
+## poo-match-visibilite
+type: Matching</p><p>Associez chaque modificateur à sa portée :</p><p>:::answers
+- private --- Classe uniquement
+- protected --- Classe + sous-classes + package
+- public --- Partout
+- (rien) --- Package uniquement
+:::</p><p>:::solution
+Les 4 niveaux de visibilité en Java avec leur portée respective.
+:::
+:::</p><p>:::question
+## poo-match-concepts
+type: Matching</p><p>Associez chaque concept POO à sa définition :</p><p>:::answers
+- Encapsulation --- Cacher les détails internes
+- Héritage --- Réutiliser le code d'une classe parente
+- Polymorphisme --- Traiter différents objets via un type commun
+- Composition --- Un objet contient d'autres objets
+:::</p><p>:::solution
+Les 4 piliers de la POO et leurs définitions.
+:::
+:::</p><p>:::question
+## poo-match-motsclés
+type: Matching</p><p>Associez chaque mot-clé à son usage :</p><p>:::answers
+- extends --- Hériter d'une classe
+- implements --- Implémenter une interface
+- super --- Appeler le parent
+- this --- Référencer l'objet courant
+:::</p><p>:::solution
+Les mots-clés essentiels de la POO Java.
+:::
+:::</p><p>:::question
+## poo-match-methodes
+type: Matching</p><p>Associez chaque méthode Object à son rôle :</p><p>:::answers
+- equals() --- Comparer le contenu
+- toString() --- Représentation textuelle
+- hashCode() --- Code de hachage
+- getClass() --- Obtenir le type
+:::</p><p>:::solution
+Méthodes héritées de Object utilisées fréquemment.
+:::
+:::</p><p>:::question
+## poo-match-relations
+type: Matching</p><p>Associez chaque relation UML à son exemple :</p><p>:::answers
+- Est-un --- Voiture extends Véhicule
+- A-un --- Voiture contient Moteur
+- Utilise --- Conducteur utilise Voiture
+- Implémente --- Canard implements Volant
+:::</p><p>:::solution
+Les différentes relations entre classes en POO.
+:::
+:::</p><p># Textes à trous (FillInTheBlanks)</p><p>:::question
+## poo-fill-classe
+type: FillInTheBlanks</p><p>Complétez la déclaration de classe :</p><p>:::answers
+public [class] Voiture [extends] Vehicule { }
+:::</p><p>:::solution
+<code>class</code> pour déclarer, <code>extends</code> pour hériter.
+:::
+:::</p><p>:::question
+## poo-fill-interface
+type: FillInTheBlanks</p><p>Complétez l'implémentation d'interface :</p><p>:::answers
+public class Canard [implements] Volant { }
+:::</p><p>:::solution
+<code>implements</code> permet d'implémenter une interface.
+:::
+:::</p><p>:::question
+## poo-fill-constructeur
+type: FillInTheBlanks</p><p>Complétez le constructeur :</p><p>:::answers
+public Personne(String nom) { [this].nom = nom; }
+:::</p><p>:::solution
+<code>this</code> distingue l'attribut du paramètre.
+:::
+:::</p><p>:::question
+## poo-fill-heritage
+type: FillInTheBlanks</p><p>Complétez l'appel au constructeur parent :</p><p>:::answers
+public Voiture(String marque) { [super](marque); }
+:::</p><p>:::solution
+<code>super(...)</code> appelle le constructeur de la classe parente.
+:::
+:::</p><p>:::question
+## poo-fill-getter
+type: FillInTheBlanks</p><p>Complétez le getter :</p><p>:::answers
+public String getNom() { [return] this.nom; }
+:::</p><p>:::solution
+Un getter utilise <code>return</code> pour retourner la valeur.
+:::
+:::</p><p>:::question
+## poo-fill-instanciation
+type: FillInTheBlanks</p><p>Complétez la création d'objet :</p><p>:::answers
+Voiture v = [new] Voiture("Peugeot");
+:::</p><p>:::solution
+<code>new</code> permet d'instancier un objet.
+:::
+:::</p><p>:::question
+## poo-fill-override
+type: FillInTheBlanks</p><p>Complétez la redéfinition de méthode :</p><p>:::answers
+[@Override] public String toString() { return this.nom; }
+:::</p><p>:::solution
+<code>@Override</code> indique qu'on redéfinit une méthode héritée.
+:::
+:::</p><p># Classements (Sorting)</p><p>:::question
+## poo-sort-visibilite
+type: Sorting</p><p>Classez les modificateurs du plus restrictif au moins restrictif :</p><p>:::answers
+- private
+- (default/package)
+- protected
+- public
+:::</p><p>:::solution
+private < default < protected < public en termes d'accessibilité.
+:::
+:::</p><p>:::question
+## poo-sort-heritage
+type: Sorting</p><p>Classez dans l'ordre d'exécution lors de la création d'un objet fils :</p><p>:::answers
+- Constructeur de Object
+- Constructeur du grand-parent
+- Constructeur du parent
+- Constructeur de la classe
+:::</p><p>:::solution
+Les constructeurs s'exécutent du plus haut ancêtre vers la classe instanciée.
+:::
+:::</p><p>:::question
+## poo-sort-abstraction
+type: Sorting</p><p>Classez du plus concret au plus abstrait :</p><p>:::answers
+- Objet instancié
+- Classe concrète
+- Classe abstraite
+- Interface
+:::</p><p>:::solution
+Un objet est concret, une interface est le plus abstrait.
+:::
+:::</p><p>:::question
+## poo-sort-compilation
+type: Sorting</p><p>Classez les étapes de création d'un programme Java :</p><p>:::answers
+- Écrire le code source (.java)
+- Compiler avec javac
+- Obtenir le bytecode (.class)
+- Exécuter avec java (JVM)
+:::</p><p>:::solution
+Le cycle classique : code → compilation → bytecode → exécution.
+:::
+:::</p><p>:::question
+## poo-sort-memoire
+type: Sorting</p><p>Classez ce qui se passe quand on écrit <code>Voiture v = new Voiture();</code> :</p><p>:::answers
+- Déclaration de la référence v sur la pile
+- Allocation mémoire dans le tas
+- Appel du constructeur
+- Affectation de l'adresse à v
+:::</p><p>:::solution
+La référence est sur la pile, l'objet dans le tas.
+:::
+:::</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>En Java, le mot-clé <code>class</code> (minuscule) permet de déclarer une classe.
+:::
+:::</p><p>:::question
+## poo-kahoot-new</p><p>Quel mot-clé permet de créer un objet ?</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>q50424</text></tag></tags>
+  </question>
+</quiz>

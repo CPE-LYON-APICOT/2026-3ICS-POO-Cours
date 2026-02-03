@@ -391,6 +391,8 @@ generate_wooclap_csv <- function(questions) {
       essay   = "OpenQuestion",
       string  = "OpenQuestion",
       cloze   = "FillInTheBlanks",
+      matching = "Matching",
+      sorting = "Sorting",
       "Other"
     )
     
@@ -435,9 +437,53 @@ generate_wooclap_csv <- function(questions) {
       }
     } else if (meta$type == "cloze") {
       # Pour les textes à trous, le contenu va dans Choice
-      cloze_text <- gsub(",", ";", q$question)
-      cloze_text <- gsub('"', '""', cloze_text)
-      choices[1] <- cloze_text
+      cloze_text <- q$answers
+      if (!is.null(cloze_text)) {
+        cloze_text <- gsub(",", ";", cloze_text)
+        cloze_text <- gsub('"', '""', cloze_text)
+        choices[1] <- cloze_text
+      }
+    } else if (meta$type == "matching") {
+      # Pour les associations: format "A --- B"
+      if (!is.null(q$answers)) {
+        lines <- str_split(q$answers, "\\n")[[1]]
+        match_pairs <- c()
+        for (line in lines) {
+          line <- str_trim(line)
+          if (str_detect(line, "^-\\s+.*---.*")) {
+            # Format: "- left --- right"
+            pair <- str_replace(line, "^-\\s+", "")
+            pair <- gsub(",", ";", pair)
+            pair <- gsub('"', '""', pair)
+            match_pairs <- c(match_pairs, pair)
+          }
+        }
+        for (i in seq_along(match_pairs)) {
+          if (i <= 7) {
+            choices[i] <- match_pairs[i]
+          }
+        }
+      }
+    } else if (meta$type == "sorting") {
+      # Pour les classements: liste ordonnée
+      if (!is.null(q$answers)) {
+        lines <- str_split(q$answers, "\\n")[[1]]
+        sort_items <- c()
+        for (line in lines) {
+          line <- str_trim(line)
+          if (str_detect(line, "^-\\s+")) {
+            item <- str_replace(line, "^-\\s+", "")
+            item <- gsub(",", ";", item)
+            item <- gsub('"', '""', item)
+            sort_items <- c(sort_items, item)
+          }
+        }
+        for (i in seq_along(sort_items)) {
+          if (i <= 7) {
+            choices[i] <- sort_items[i]
+          }
+        }
+      }
     }
     
     # Construire la ligne CSV
