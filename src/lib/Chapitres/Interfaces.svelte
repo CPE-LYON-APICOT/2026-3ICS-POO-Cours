@@ -188,11 +188,7 @@
                 abstract class MammifèreNageur extends Mammifère {
                     + nager()
                 }
-		<aside class="notes">
-			À gauche avec les interfaces : propre, flexible. À droite sans : explosion combinatoire de classes.
-			C'est le fameux problème "Mammifère qui nage ET qui pond" → impossible sans interface.
-			En pratique, les interfaces résolvent 90% des problèmes de modélisation complexe.
-		</aside>
+		
 
                 abstract class ReptileNageur extends Reptile {
                     + nager()
@@ -217,6 +213,11 @@
                 `}
 			</PlantUml>
 		</div>
+		<aside class="notes">
+			À gauche avec les interfaces : propre, flexible. À droite sans : explosion combinatoire de classes.
+			C'est le fameux problème "Mammifère qui nage ET qui pond" → impossible sans interface.
+			En pratique, les interfaces résolvent 90% des problèmes de modélisation complexe.
+		</aside>
 	</Slide>
 
 	<Slide>

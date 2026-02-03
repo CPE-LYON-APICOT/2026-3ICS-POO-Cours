@@ -6,7 +6,6 @@
 	import Interfaces from '$lib/Chapitres/Interfaces.svelte'
 	import Encapsulation from '$lib/Chapitres/Encapsulation.svelte'
 	import Gnralits from './Chapitres/Généralités.svelte'
-	import Exercices from './Exercices.svelte'
 	import LangageJava from './Chapitres/LangageJava.svelte'
 	import Polymorphisme from './Chapitres/Polymorphisme.svelte'
 	import Code from './deck/code.svelte'

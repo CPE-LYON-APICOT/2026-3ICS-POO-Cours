@@ -422,13 +422,13 @@ System.out.println(a == b);  // false ! 😱
 		<p class="fragment mt-6">
 			<code>==</code> compare les <b>références</b> (les adresses mémoire), pas le contenu !
 		</p>
-		<PlantUml class="fragment">
+		<PlantUml className="fragment">
 {`
 @startuml
 object "a" as a
 object "b" as b
-object "String: \\"Bonjour\\"" as s1
-object "String: \\"Bonjour\\"" as s2
+object "String: Bonjour" as s1
+object "String: Bonjour" as s2
 
 a --> s1 : référence
 b --> s2 : référence
