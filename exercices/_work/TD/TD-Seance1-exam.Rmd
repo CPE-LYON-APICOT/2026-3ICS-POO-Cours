@@ -2,10 +2,9 @@
 title: "TD Séance 1 - Fondamentaux de la POO"
 author: "CPE Lyon"
 produce:
-  html: true
-  pdf: true
+  html: false
+  pdf: false
   moodle: true
-  wooclap: false
 ---
 
 # Partie 1 : Introduction à la POO

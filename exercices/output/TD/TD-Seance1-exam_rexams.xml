@@ -53,7 +53,17 @@
 <answernumbering>abc</answernumbering>
 <answer fraction="33.33333" format="html">
 <text><![CDATA[<p>
-Protéger (éviter les erreurs)
+Généraliser (réutiliser le code)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+Ranger (organiser le code)
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -71,6 +81,16 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+Protéger (éviter les erreurs)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
 <answer fraction="-50" format="html">
 <text><![CDATA[<p>
 Compiler (exécuter le code)
@@ -78,26 +98,6 @@ Compiler (exécuter le code)
 <feedback format="html">
 <text><![CDATA[<p>
 Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="33.33333" format="html">
-<text><![CDATA[<p>
-Généraliser (réutiliser le code)
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="33.33333" format="html">
-<text><![CDATA[<p>
-Ranger (organiser le code)
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -158,16 +158,6 @@ Correct.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-0 objet
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
 <answer fraction="100" format="html">
 <text><![CDATA[<p>
 2 objets
@@ -181,6 +171,16 @@ Correct.
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
 3 objets
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+0 objet
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -312,16 +312,6 @@ Incorrect.
 <answernumbering>abc</answernumbering>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Java crée une variable locale sans allocer de mémoire
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
 Java vérifie si un objet Personne existe déjà
 </p>]]></text>
 <feedback format="html">
@@ -347,6 +337,16 @@ Java alloue de la mémoire, appelle le constructeur, et retourne une référence
 <feedback format="html">
 <text><![CDATA[<p>
 Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Java crée une variable locale sans allocer de mémoire
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -403,9 +403,19 @@ Correct.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+<code>new Personne()</code> ne compilera plus
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Java crée automatiquement un constructeur sans paramètres
+Le code fonctionne normalement
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -423,19 +433,9 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="100" format="html">
-<text><![CDATA[<p>
-<code>new Personne()</code> ne compilera plus
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
-</p>]]></text>
-</feedback>
-</answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Le code fonctionne normalement
+Java crée automatiquement un constructeur sans paramètres
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -509,16 +509,6 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-Affiche une chaîne vide
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
 <answer fraction="100" format="html">
 <text><![CDATA[<p>
 Lance une NullPointerException
@@ -532,6 +522,16 @@ Correct.
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
 Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Affiche une chaîne vide
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -706,7 +706,7 @@ Correct.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-<code>nom.compareTo("admin") == 0</code>
+<code>nom.equals("admin")</code>
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -726,7 +726,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-<code>nom.equals("admin")</code>
+<code>nom.compareTo("admin") == 0</code>
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -787,9 +787,29 @@ Incorrect.
 <shuffleanswers>true</shuffleanswers>
 <single>false</single>
 <answernumbering>abc</answernumbering>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+public
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
 <answer fraction="-50" format="html">
 <text><![CDATA[<p>
 static
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+final
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -809,7 +829,7 @@ Correct.
 </answer>
 <answer fraction="25" format="html">
 <text><![CDATA[<p>
-public
+private
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -824,26 +844,6 @@ Correct.
 <feedback format="html">
 <text><![CDATA[<p>
 Correct.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="25" format="html">
-<text><![CDATA[<p>
-private
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="-50" format="html">
-<text><![CDATA[<p>
-final
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -918,9 +918,19 @@ Incorrect.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+La classe elle-même uniquement
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-La classe et ses sous-classes
+La classe et le même package
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -940,21 +950,11 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-La classe et le même package
+La classe et ses sous-classes
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
 Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="100" format="html">
-<text><![CDATA[<p>
-La classe elle-même uniquement
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1014,23 +1014,13 @@ Correct.
 <shuffleanswers>true</shuffleanswers>
 <single>false</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="-50" format="html">
+<answer fraction="50" format="html">
 <text><![CDATA[<p>
-N’importe quelle classe de n’importe quel package
+La classe elle-même
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="-50" format="html">
-<text><![CDATA[<p>
-Les classes du même package
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
+Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1044,13 +1034,23 @@ Correct.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="50" format="html">
+<answer fraction="-50" format="html">
 <text><![CDATA[<p>
-La classe elle-même
+Les classes du même package
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Correct.
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+N’importe quelle classe de n’importe quel package
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1111,16 +1111,6 @@ Correct.
 <answernumbering>abc</answernumbering>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Elle améliore les performances de la méthode
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
 Elle rend la méthode publique
 </p>]]></text>
 <feedback format="html">
@@ -1131,7 +1121,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Elle est obligatoire pour redéfinir une méthode
+Elle améliore les performances de la méthode
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1146,6 +1136,16 @@ Elle permet au compilateur de vérifier qu’on redéfinit bien une méthode du 
 <feedback format="html">
 <text><![CDATA[<p>
 Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Elle est obligatoire pour redéfinir une méthode
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1214,7 +1214,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-N’importe où dans le constructeur
+En dernière instruction du constructeur
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1224,7 +1224,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-En dernière instruction du constructeur
+N’importe où dans le constructeur
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1295,19 +1295,9 @@ Correct.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="100" format="html">
-<text><![CDATA[<p>
-<code>Forme f = new Cercle(5.0);</code> (si Cercle extends Forme)
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
-</p>]]></text>
-</feedback>
-</answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Les trois sont valides
+<code>Forme f = new Forme();</code>
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1325,9 +1315,19 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+<code>Forme f = new Cercle(5.0);</code> (si Cercle extends Forme)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-<code>Forme f = new Forme();</code>
+Les trois sont valides
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1399,13 +1399,13 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="0" format="html">
+<answer fraction="100" format="html">
 <text><![CDATA[<p>
-Autant de classes que souhaité
+Une seule classe
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Incorrect.
+Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1419,13 +1419,13 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="100" format="html">
+<answer fraction="0" format="html">
 <text><![CDATA[<p>
-Une seule classe
+Autant de classes que souhaité
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Correct.
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1487,23 +1487,23 @@ Correct.
 <shuffleanswers>true</shuffleanswers>
 <single>false</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="-50" format="html">
-<text><![CDATA[<p>
-“Un Rectangle a une Forme” → Composition
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
 <answer fraction="33.33333" format="html">
 <text><![CDATA[<p>
-“Une Voiture a un Moteur” → Composition
+“Un Maître a un Animal” → Composition
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
 Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+“Une Voiture est un Moteur” → Héritage
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1519,7 +1519,7 @@ Correct.
 </answer>
 <answer fraction="33.33333" format="html">
 <text><![CDATA[<p>
-“Un Maître a un Animal” → Composition
+“Une Voiture a un Moteur” → Composition
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1529,7 +1529,7 @@ Correct.
 </answer>
 <answer fraction="-50" format="html">
 <text><![CDATA[<p>
-“Une Voiture est un Moteur” → Héritage
+“Un Rectangle a une Forme” → Composition
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1592,6 +1592,16 @@ Incorrect.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Utiliser l’héritage pour les attributs, la composition pour les méthodes
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
 <answer fraction="100" format="html">
 <text><![CDATA[<p>
 Si “X est un Y” → Héritage ; Si “X a un Y” → Composition
@@ -1599,16 +1609,6 @@ Si “X est un Y” → Héritage ; Si “X a un Y” → Composition
 <feedback format="html">
 <text><![CDATA[<p>
 Correct.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-Toujours utiliser la composition, c’est plus moderne
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1624,7 +1624,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Utiliser l’héritage pour les attributs, la composition pour les méthodes
+Toujours utiliser la composition, c’est plus moderne
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1686,6 +1686,16 @@ Incorrect.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+implements
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
 extends
@@ -1713,16 +1723,6 @@ inherits
 <feedback format="html">
 <text><![CDATA[<p>
 Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="100" format="html">
-<text><![CDATA[<p>
-implements
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1780,19 +1780,19 @@ Correct.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="0" format="html">
+<answer fraction="100" format="html">
 <text><![CDATA[<p>
-Maximum 2 interfaces
+Oui, autant qu’elle veut
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Incorrect.
+Correct.
 </p>]]></text>
 </feedback>
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Non, une seule interface par classe
+Maximum 2 interfaces
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1810,13 +1810,13 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="100" format="html">
+<answer fraction="0" format="html">
 <text><![CDATA[<p>
-Oui, autant qu’elle veut
+Non, une seule interface par classe
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Correct.
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1961,7 +1961,17 @@ Incorrect.
 <answernumbering>abc</answernumbering>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Erreur de compilation
+NullPointerException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+false
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1981,17 +1991,7 @@ Correct.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-false
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-NullPointerException
+Erreur de compilation
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -2054,17 +2054,7 @@ Incorrect.
 <answernumbering>abc</answernumbering>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-À optimiser les performances du code
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-À compiler le code Java en bytecode
+À vérifier les types à l’exécution
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -2084,7 +2074,17 @@ Correct.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-À vérifier les types à l’exécution
+À optimiser les performances du code
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+À compiler le code Java en bytecode
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -2155,6 +2155,16 @@ Incorrect.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Ignorer silencieusement les valeurs invalides
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
 <answer fraction="100" format="html">
 <text><![CDATA[<p>
 Lever une IllegalArgumentException si la valeur est hors limites
@@ -2178,16 +2188,6 @@ Incorrect.
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
 Retourner false si la valeur est invalide
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-Ignorer silencieusement les valeurs invalides
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -2273,16 +2273,6 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="100" format="html">
-<text><![CDATA[<p>
-Implémenter obligatoirement la méthode attaqueSpeciale()
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
-</p>]]></text>
-</feedback>
-</answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
 Rien, la méthode est héritée automatiquement
@@ -2290,6 +2280,16 @@ Rien, la méthode est héritée automatiquement
 <feedback format="html">
 <text><![CDATA[<p>
 Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Implémenter obligatoirement la méthode attaqueSpeciale()
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -2350,13 +2350,13 @@ Incorrect.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="0" format="html">
+<answer fraction="100" format="html">
 <text><![CDATA[<p>
-Lever une nouvelle exception
+Intercepter et traiter une exception levée dans le bloc try
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Incorrect.
+Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -2372,7 +2372,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Empêcher les exceptions de se produire
+Lever une nouvelle exception
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -2380,13 +2380,13 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="100" format="html">
+<answer fraction="0" format="html">
 <text><![CDATA[<p>
-Intercepter et traiter une exception levée dans le bloc try
+Empêcher les exceptions de se produire
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Correct.
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -2451,17 +2451,7 @@ Correct.
 <answernumbering>abc</answernumbering>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Pour copier les attributs de la classe mère
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-Pour créer une nouvelle instance de la classe mère
+C’est optionnel et ne sert à rien
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -2481,7 +2471,17 @@ Correct.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-C’est optionnel et ne sert à rien
+Pour créer une nouvelle instance de la classe mère
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Pour copier les attributs de la classe mère
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
