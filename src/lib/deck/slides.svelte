@@ -60,8 +60,8 @@
 				hash: true,
 				showNotes: false,
 				mouseWheel: true,
-				previewLinks: true,
-				postMessageEvents: true,
+				// previewLinks: true,
+				postMessageEvents: false,
 				// transition: 'zoom',
 				highlight: {
 					highlightOnLoad: true

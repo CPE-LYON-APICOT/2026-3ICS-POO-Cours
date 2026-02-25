@@ -1,20 +1,37 @@
+---
+title: "TP 1 — Système de Gestion de Bibliothèque Municipale"
+author: "Alexis PICOT"
+produce:
+  html: true
+  pdf: true
+  moodle: true
+  wooclap: false
+---
+
 # TP 1 — Système de Gestion de Bibliothèque Municipale
+
+
+**Rappel :** L'objectif n'est pas de finir le plus vite possible, mais de comprendre pourquoi la POO est nécessaire. Prenez le temps de réfléchir, de vous tromper, et d'apprendre de vos erreurs.
+
+Bon courage !
+
+---
 
 ## Contexte
 
 Vous venez d'être embauché en tant que développeur junior dans une petite entreprise de services numériques. Votre premier client est la bibliothèque municipale de Villeurbanne qui souhaite moderniser son système de gestion.
 
-Le directeur de la bibliothèque, M. Dupont, vous explique sa situation :
+Le directeur de la bibliothèque, vous explique sa situation :
 
 > "Actuellement, tout est géré sur papier et Excel. On a des livres, des adhérents, et on note les emprunts dans un cahier. C'est devenu ingérable avec nos 15 000 ouvrages et 3 000 adhérents. On voudrait un système simple pour gérer tout ça. Rien de compliqué, juste pouvoir enregistrer un emprunt et savoir qui a quoi."
 
-M. Dupont n'est pas très technique. Il vous donne des informations au compte-gouttes et change régulièrement d'avis. Bienvenue dans le monde réel.
+Le directeur n'est pas très technique. Il vous donne des informations au compte-gouttes et change régulièrement d'avis. Bienvenue dans le monde réel.
 
 ---
 
 ## Étape 1 — Le besoin initial (version "simple")
 
-M. Dupont vous envoie un premier mail :
+Le directeur vous envoie un premier mail :
 
 > "Pour commencer, on voudrait juste pouvoir gérer nos livres. Un livre, c'est simple : un titre, un auteur, un ISBN, et on veut savoir s'il est disponible ou pas. On a aussi besoin de gérer les adhérents : nom, prénom, numéro de carte. Et bien sûr, les emprunts : qui a emprunté quoi et quand."
 
@@ -48,7 +65,7 @@ Créez un programme Java qui permet de :
 
 ## Étape 2 — Première évolution : "Ah oui, j'avais oublié..."
 
-Deux jours plus tard, M. Dupont vous rappelle :
+Deux jours plus tard, Le directeur vous rappelle :
 
 > "En fait, on ne gère pas que des livres. On a aussi des DVD, des CD audio, et des magazines. Pour les DVD, on a besoin du réalisateur et de la durée. Pour les CD, c'est l'artiste et le nombre de pistes. Pour les magazines, c'est le numéro et la date de parution. Ah, et les durées d'emprunt ne sont pas les mêmes : 3 semaines pour les livres, 1 semaine pour les DVD et CD, et les magazines ne sont pas empruntables, on peut juste les consulter sur place."
 
@@ -81,7 +98,7 @@ Votre système doit maintenant gérer :
 
 ## Étape 3 — Deuxième évolution : "Le conseil municipal a décidé..."
 
-Une semaine plus tard, nouveau coup de fil de M. Dupont :
+Une semaine plus tard, nouveau coup de fil :
 
 > "Le conseil municipal a voté de nouvelles règles. Désormais, les adhérents sont classés en catégories : les enfants (moins de 12 ans), les étudiants, les adultes, et les seniors (plus de 65 ans). Les tarifs d'abonnement sont différents, mais surtout les règles d'emprunt changent :
 > - Les enfants ne peuvent emprunter que 3 documents maximum en même temps
@@ -180,8 +197,8 @@ Document:
 - Ajouter un nouveau type de document nécessite de modifier cette classe et TOUS les endroits qui l'utilisent
 - Les bugs sont faciles à introduire (oublier un cas dans un switch)
 
-> **Point pédagogique pour l'enseignant :**
-> C'est le moment d'introduire ou de rappeler le concept d'**héritage** et de **polymorphisme**. Une classe abstraite `Document` avec des sous-classes spécialisées permet d'éviter ces problèmes. Chaque sous-classe ne contient que les attributs qui la concernent, et le polymorphisme évite les switch/if sur le type.
+> **Indice**
+> **héritage** et **polymorphisme**. Une classe abstraite `Document` avec des sous-classes spécialisées permet d'éviter ces problèmes. Chaque sous-classe ne contient que les attributs qui la concernent, et le polymorphisme évite les switch/if sur le type.
 
 ### Piège n°2 : La classe Adhérent avec des if/else pour les règles
 
@@ -205,8 +222,9 @@ if (adherent.getCategorie().equals("ENFANT")) {
 - Risque d'oublier des cas
 - Les règles sont dispersées dans le code au lieu d'être centralisées
 
-> **Point pédagogique pour l'enseignant :**
-> C'est le moment de montrer comment l'**héritage** ou la **composition** avec des **stratégies** peut résoudre ce problème. Chaque type d'adhérent peut avoir sa propre logique de vérification.
+> **Indice**
+> **héritage** ou **composition** avec des **stratégies** peut résoudre ce problème. Chaque type d'adhérent peut avoir sa propre logique de vérification.
+> Les **strategies** sont un type de design pattern, vous les verrez plus tard dans le cours.
 
 ### Piège n°3 : Le modèle anémique
 
@@ -232,8 +250,8 @@ class BibliothequeService {
 - On n'utilise pas les avantages de la POO
 - Le code des services devient énorme et difficile à maintenir
 
-> **Point pédagogique pour l'enseignant :**
-> C'est le moment de parler de l'**encapsulation** et du principe "Tell, don't ask". Un objet doit savoir faire des choses, pas juste contenir des données. Par exemple, un `Document` devrait savoir s'il est empruntable, calculer sa date de retour, etc.
+> **Indice**
+> **encapsulation**. Un objet doit savoir faire des choses, pas juste contenir des données. Par exemple, un `Document` devrait savoir s'il est empruntable, calculer sa date de retour, etc.
 
 ### Piège n°4 : La gestion des erreurs par des retours de booléens
 
@@ -255,8 +273,8 @@ public boolean emprunter(Document doc, Adherent adh) {
 - Difficile de déboguer
 - Pas de distinction entre les différents types d'erreurs
 
-> **Point pédagogique pour l'enseignant :**
-> C'est le moment d'introduire les **exceptions** et de montrer comment elles permettent de gérer les cas d'erreur de manière plus explicite. On peut créer des exceptions spécifiques : `DocumentIndisponibleException`, `PenalitesExcessivesException`, etc.
+> **Indice**
+> **exceptions**. Elles permettent de gérer les cas d'erreur de manière plus explicite. On peut créer des exceptions spécifiques : `DocumentIndisponibleException`, `PenalitesExcessivesException`, etc.
 
 ### Piège n°5 : La duplication de code
 
@@ -271,18 +289,18 @@ Vous pourriez avoir le même code copié-collé à plusieurs endroits :
 - Code plus long et plus difficile à lire
 - Bugs difficiles à corriger
 
-> **Point pédagogique pour l'enseignant :**
-> C'est le moment de rappeler le principe **DRY** (Don't Repeat Yourself) et de montrer comment l'**héritage**, la **composition** et les **méthodes utilitaires** permettent de factoriser le code.
+> **Indice**
+> **DRY** (Don't Repeat Yourself) **héritage**, **composition** et **méthodes utilitaires** permettent de factoriser le code.
 
 ---
 
-## Étapes facultatives (différenciation pédagogique)
+## Étapes facultatives
 
 ### Niveau 1 — Pour ceux qui terminent l'étape 3
 
 #### Extension 1.1 : Réservations
 
-M. Dupont vous rappelle :
+Le client vous rappelle :
 
 > "J'ai oublié de vous dire : on voudrait pouvoir faire des réservations. Si un document n'est pas disponible, un adhérent peut le réserver. Quand le document est retourné, le premier qui l'a réservé est notifié et a 3 jours pour venir le chercher, sinon on passe au suivant."
 
@@ -334,8 +352,9 @@ M. Dupont vous rappelle :
 
 **Question piège :** Comment éviter que le code de notification soit dispersé partout dans votre application ?
 
-> **Point pédagogique pour l'enseignant :**
-> C'est le moment d'introduire le pattern **Observer** ou d'utiliser des **événements** pour découpler la logique métier de la logique de notification.
+> **Indice**
+> DP **Observer** ou d'utiliser des **événements** pour découpler la logique métier de la logique de notification.
+> A priori vous ne devriez pas encore connaitre cette manière de faire mais vous pouvez essayer !
 
 ### Niveau 3 — Pour les très rapides
 
@@ -376,7 +395,7 @@ M. Dupont vous rappelle :
 
 ---
 
-## Limites pédagogiques à annoncer aux étudiants
+## Limites pédagogiques
 
 ### Ce qui est INTERDIT
 
@@ -420,67 +439,39 @@ M. Dupont vous rappelle :
 
 ---
 
-## Suggestions d'improvisation pour l'enseignant
+```{r, echo=FALSE}
 
-### Pendant l'étape 1
 
-- "Et si le même livre existait en plusieurs exemplaires ?" (pour les faire réfléchir tôt)
-- "Comment géreriez-vous l'affichage différent selon le type de document ?" (pour anticiper l'étape 2)
+# ### Pendant l'étape 1
 
-### Pendant l'étape 2
+# - "Et si le même livre existait en plusieurs exemplaires ?" 
+# - "Comment géreriez-vous l'affichage différent selon le type de document ?" 
 
-- "Et si demain on ajoutait des jeux vidéo à la bibliothèque ?"
-- "Combien de fichiers devriez-vous modifier pour ajouter ce nouveau type ?"
-- "Votre code compile, mais est-il extensible ?"
+# ### Pendant l'étape 2
 
-### Pendant l'étape 3
+# - "Et si demain on ajoutait des jeux vidéo à la bibliothèque ?"
+# - "Combien de fichiers devriez-vous modifier pour ajouter ce nouveau type ?"
+# - "Votre code compile, mais est-il extensible ?"
 
-- "Montrez-moi comment vous vérifiez qu'un enfant peut emprunter un DVD"
-- "Et si on ajoutait une catégorie 'Famille' avec encore d'autres règles ?"
-- "Où est centralisée la logique de vérification des emprunts ?"
+# ### Pendant l'étape 3
 
-### Pour challenger les meilleurs
+# - "Montrez-moi comment vous vérifiez qu'un enfant peut emprunter un DVD"
+# - "Et si on ajoutait une catégorie 'Famille' avec encore d'autres règles ?"
+# - "Où est centralisée la logique de vérification des emprunts ?"
 
-- "Comment feriez-vous pour ajouter un système de recommandations ?" (force à réfléchir aux relations entre objets)
-- "Et si on voulait que le système puisse fonctionner avec différentes interfaces : console, web, application mobile ?" (force à réfléchir à la séparation des responsabilités)
-- "Comment géreriez-vous l'annulation d'un emprunt ?" (force à réfléchir aux états et transitions)
+# ### Pour challenger les meilleurs
 
-### Questions de réflexion à poser
+# - "Comment feriez-vous pour ajouter un système de recommandations ?" (force à réfléchir aux relations entre objets)
+# - "Et si on voulait que le système puisse fonctionner avec différentes interfaces : console, web, application mobile ?" (force à réfléchir à la séparation des responsabilités)
+# - "Comment géreriez-vous l'annulation d'un emprunt ?" (force à réfléchir aux états et transitions)
 
-- "Si vous deviez expliquer votre conception à un collègue, combien de temps cela prendrait-il ?"
-- "Quel est le fichier le plus long de votre projet ? Pourquoi est-il si long ?"
-- "Si je vous demande de changer la durée d'emprunt des DVD, combien de fichiers devez-vous modifier ?"
-- "Vos classes ont-elles des responsabilités claires et uniques ?"
+# ### Questions de réflexion à poser
 
----
+# - "Si vous deviez expliquer votre conception à un collègue, combien de temps cela prendrait-il ?"
+# - "Quel est le fichier le plus long de votre projet ? Pourquoi est-il si long ?"
+# - "Si je vous demande de changer la durée d'emprunt des DVD, combien de fichiers devez-vous modifier ?"
+# - "Vos classes ont-elles des responsabilités claires et uniques ?"
 
-## Critères d'évaluation (indicatifs)
 
-### Fonctionnel (50%)
-- Le programme fonctionne conformément aux attendus
-- Les cas d'erreur sont gérés
-- Les règles métier sont respectées
+```
 
-### Conception (30%)
-- Utilisation appropriée de l'héritage et du polymorphisme
-- Encapsulation correcte
-- Pas de duplication de code
-- Séparation des responsabilités
-
-### Qualité du code (20%)
-- Nommage clair et cohérent
-- Code lisible et bien structuré
-- Commentaires pertinents
-- Gestion des erreurs appropriée
-
----
-
-## Ressources disponibles
-
-- Votre cours et vos TD sur la POO
-- La documentation Java officielle
-- L'enseignant, qui est là pour vous guider (pas pour coder à votre place)
-
-**Rappel :** L'objectif n'est pas de finir le plus vite possible, mais de comprendre pourquoi la POO est nécessaire. Prenez le temps de réfléchir, de vous tromper, et d'apprendre de vos erreurs.
-
-Bon courage !

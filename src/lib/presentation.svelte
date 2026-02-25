@@ -23,9 +23,9 @@
 
 <Slide animate={true}>
 	<h1 class="capitalize">{import.meta.env.VITE_PAGE_TITLE}</h1>
-	<a class="print:hidden" href="/?print-pdf" target="_blank">Version imprimable 🖨</a><br />
-	<a class="print:hidden" href="/?view=scroll" target="_blank">Version défilable</a><br />
-	<a class="print:hidden" href="#/exercices">Lien vers les TP/TD</a><br />
+	<!-- <a class="print:hidden" href="/?print-pdf" target="_blank">Version imprimable 🖨</a><br /> -->
+	<!-- <a class="print:hidden" href="/?view=scroll" target="_blank">Version défilable</a><br /> -->
+	<!-- <a class="print:hidden" href="#/exercices">Lien vers les TP/TD</a><br /> -->
 	<!-- <a class="print:hidden" href="#/annexes">Annexes</a>
 	<br />
 	<a class="print:hidden  !text-red-600 m-2 "  href="#feedback">Feedback</a>
@@ -65,7 +65,7 @@
 <Heritage />
 <Composition />
 <Interfaces />
-<ExercicesSeance1 />
+ <ExercicesSeance1 /> 
 <!--  
 <Slide id="seance2">
 	<h3>Séance 2</h3>

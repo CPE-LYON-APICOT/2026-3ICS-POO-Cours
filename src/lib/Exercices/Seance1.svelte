@@ -56,26 +56,26 @@ public class CompteBancaire {
     private String numero;
     private double solde;
     private String titulaire;
-    
+
     public CompteBancaire(String numero, String titulaire) {
         // À compléter
     }
-    
+
     public void deposer(double montant) {
         // À compléter : vérification + ajout
     }
-    
+
     public void retirer(double montant) {
         // À compléter : vérifications + retrait
     }
-    
+
     // Ajouter les getters
 }
 `}
 		</Code>
 	</Slide>
 
-	<Slide>
+	 <Slide  >
 		<h3>✅ Solution</h3>
 		<Code class="language-java h-[70vh]">
 			{`
@@ -83,32 +83,32 @@ public class CompteBancaire {
     private String numero;
     private double solde;
     private String titulaire;
-    
+
     public CompteBancaire(String numero, String titulaire) {
         this.numero = numero;
         this.titulaire = titulaire;
         this.solde = 0.0;
     }
-    
+
     public String getNumero() {
         return numero;
     }
-    
+
     public double getSolde() {
         return solde;
     }
-    
+
     public String getTitulaire() {
         return titulaire;
     }
-    
+
     public void deposer(double montant) {
         if (montant <= 0) {
             throw new IllegalArgumentException("Le montant doit être positif");
         }
         solde += montant;
     }
-    
+
     public void retirer(double montant) {
         if (montant <= 0) {
             throw new IllegalArgumentException("Le montant doit être positif");
@@ -121,7 +121,7 @@ public class CompteBancaire {
 }
 `}
 		</Code>
-	</Slide>
+	</Slide> 	
 
 	<Slide>
 		<h3>🎯 Points clés</h3>
@@ -217,15 +217,15 @@ public abstract class Vehicule {
     private String marque;
     private String modele;
     private int vitesseMax;
-    
+
     public Vehicule(String marque, String modele, int vitesseMax) {
         // À compléter
     }
-    
+
     public void demarrer() {
         System.out.println("Le véhicule démarre...");
     }
-    
+
     // Méthode abstraite à déclarer
 }
 `}
@@ -240,19 +240,19 @@ public abstract class Vehicule {
     private String marque;
     private String modele;
     private int vitesseMax;
-    
+
     public Vehicule(String marque, String modele, int vitesseMax) {
         this.marque = marque;
         this.modele = modele;
         this.vitesseMax = vitesseMax;
     }
-    
+
     public void demarrer() {
         System.out.println(marque + " " + modele + " démarre...");
     }
-    
+
     public abstract void klaxonner();
-    
+
     // Getters
     public String getMarque() { return marque; }
     public String getModele() { return modele; }
@@ -260,7 +260,7 @@ public abstract class Vehicule {
 }
 `}
 		</Code>
-	</Slide>
+	</Slide> 
 
 	<Slide>
 		<h3>✅ Solution : Voiture et Moto</h3>
@@ -269,20 +269,20 @@ public abstract class Vehicule {
 				{`
 public class Voiture extends Vehicule {
     private int nbPortes;
-    
-    public Voiture(String marque, 
-                   String modele, 
-                   int vitesseMax, 
+
+    public Voiture(String marque,
+                   String modele,
+                   int vitesseMax,
                    int nbPortes) {
         super(marque, modele, vitesseMax);
         this.nbPortes = nbPortes;
     }
-    
+
     @Override
     public void klaxonner() {
         System.out.println("Tuuut tuuut !");
     }
-    
+
     public int getNbPortes() {
         return nbPortes;
     }
@@ -293,20 +293,20 @@ public class Voiture extends Vehicule {
 				{`
 public class Moto extends Vehicule {
     private boolean avecSidecar;
-    
-    public Moto(String marque, 
-                String modele, 
-                int vitesseMax, 
+
+    public Moto(String marque,
+                String modele,
+                int vitesseMax,
                 boolean avecSidecar) {
         super(marque, modele, vitesseMax);
         this.avecSidecar = avecSidecar;
     }
-    
+
     @Override
     public void klaxonner() {
         System.out.println("Beep beep !");
     }
-    
+
     public boolean hasAvecSidecar() {
         return avecSidecar;
     }
@@ -324,13 +324,13 @@ public class Main {
     public static void main(String[] args) {
         Voiture v = new Voiture("Peugeot", "208", 180, 5);
         Moto m = new Moto("Harley-Davidson", "Road King", 160, true);
-        
+
         v.demarrer();      // "Peugeot 208 démarre..."
         v.klaxonner();     // "Tuuut tuuut !"
-        
+
         m.demarrer();      // "Harley-Davidson Road King démarre..."
         m.klaxonner();     // "Beep beep !"
-        
+
         // On ne peut PAS instancier Vehicule directement
         // Vehicule x = new Vehicule("Test", "Test", 100); // ❌ Erreur !
     }
@@ -436,7 +436,7 @@ AgenceLocation o-- "0..*" ILouable
 		</PlantUml>
 	</Slide>
 
-	<Slide>
+	 <Slide >
 		<h3>✅ Solution : Interface et implémentations</h3>
 		<Code class="language-java h-[65vh]">
 			{`
@@ -447,9 +447,9 @@ public interface ILouable {
 public class Voiture extends Vehicule implements ILouable {
     private int nbPortes;
     private static final double PRIX_JOUR = 50.0;
-    
+
     // ... constructeur, klaxonner(), etc.
-    
+
     @Override
     public double calculerPrixLocation(int nbJours) {
         return nbJours * PRIX_JOUR;
@@ -459,9 +459,9 @@ public class Voiture extends Vehicule implements ILouable {
 public class Moto extends Vehicule implements ILouable {
     private boolean avecSidecar;
     private static final double PRIX_JOUR = 30.0;
-    
+
     // ... constructeur, klaxonner(), etc.
-    
+
     @Override
     public double calculerPrixLocation(int nbJours) {
         return nbJours * PRIX_JOUR;
@@ -469,9 +469,7 @@ public class Moto extends Vehicule implements ILouable {
 }
 `}
 		</Code>
-	</Slide>
-
-	<Slide>
+	</Slide> <Slide>
 		<h3>✅ Solution : AgenceLocation</h3>
 		<Code class="language-java">
 			{`
@@ -480,15 +478,15 @@ import java.util.List;
 
 public class AgenceLocation {
     private List<ILouable> vehicules;
-    
+
     public AgenceLocation() {
         this.vehicules = new ArrayList<>();
     }
-    
+
     public void ajouterVehicule(ILouable vehicule) {
         vehicules.add(vehicule);
     }
-    
+
     public double calculerRevenuTotal(int nbJours) {
         double total = 0;
         for (ILouable vehicule : vehicules) {
@@ -496,14 +494,14 @@ public class AgenceLocation {
         }
         return total;
     }
-    
+
     public int getNombreVehicules() {
         return vehicules.size();
     }
 }
 `}
 		</Code>
-	</Slide>
+	</Slide> 
 
 	<Slide>
 		<h3>🧪 Test complet</h3>
@@ -512,18 +510,18 @@ public class AgenceLocation {
 public class Main {
     public static void main(String[] args) {
         AgenceLocation agence = new AgenceLocation();
-        
+
         Voiture v1 = new Voiture("Peugeot", "208", 180, 5);
         Voiture v2 = new Voiture("Renault", "Clio", 170, 5);
         Moto m1 = new Moto("Yamaha", "MT-07", 200, false);
-        
+
         agence.ajouterVehicule(v1);
         agence.ajouterVehicule(v2);
         agence.ajouterVehicule(m1);
-        
+
         System.out.println("Nombre de véhicules : " + agence.getNombreVehicules());
         // Affiche : 3
-        
+
         System.out.println("Revenu pour 7 jours : " + agence.calculerRevenuTotal(7) + "€");
         // Affiche : 910.0€ (50*7 + 50*7 + 30*7)
     }
@@ -579,7 +577,7 @@ public class Main {
 		</p>
 	</Slide>
 
-	<Slide>
+	 <Slide >
 		<h3>✅ Solution Challenge : Interfaces</h3>
 		<Code class="language-java">
 			{`
@@ -589,11 +587,11 @@ public interface IReductible {
 
 public class ReductionPourcentage implements IReductible {
     private double pourcentage;
-    
+
     public ReductionPourcentage(double pourcentage) {
         this.pourcentage = pourcentage;
     }
-    
+
     @Override
     public double appliquerReduction(double prix) {
         return prix * (1 - pourcentage / 100);
@@ -602,11 +600,11 @@ public class ReductionPourcentage implements IReductible {
 
 public class ReductionMontant implements IReductible {
     private double montant;
-    
+
     public ReductionMontant(double montant) {
         this.montant = montant;
     }
-    
+
     @Override
     public double appliquerReduction(double prix) {
         return Math.max(0, prix - montant);
@@ -615,24 +613,23 @@ public class ReductionMontant implements IReductible {
 `}
 		</Code>
 	</Slide>
-
-	<Slide>
+	 <Slide >
 		<h3>✅ Solution Challenge : AgenceLocation améliorée</h3>
 		<Code class="language-java">
 			{`
 public class AgenceLocation {
     private List<ILouable> vehicules;
     private IReductible reduction;
-    
+
     public AgenceLocation() {
         this.vehicules = new ArrayList<>();
         this.reduction = null;
     }
-    
+
     public void setReduction(IReductible reduction) {
         this.reduction = reduction;
     }
-    
+
     public double calculerRevenuTotal(int nbJours) {
         double total = 0;
         for (ILouable vehicule : vehicules) {
@@ -647,7 +644,7 @@ public class AgenceLocation {
 }
 `}
 		</Code>
-	</Slide>
+	</Slide> 
 
 	<Slide>
 		<h3>🧪 Test du challenge</h3>
@@ -656,19 +653,19 @@ public class AgenceLocation {
 public class Main {
     public static void main(String[] args) {
         AgenceLocation agence = new AgenceLocation();
-        
+
         agence.ajouterVehicule(new Voiture("Peugeot", "208", 180, 5));
         agence.ajouterVehicule(new Moto("Yamaha", "MT-07", 200, false));
-        
+
         // Sans réduction
         System.out.println("Prix normal : " + agence.calculerRevenuTotal(7) + "€");
         // 560€ (50*7 + 30*7)
-        
+
         // Avec réduction de 20%
         agence.setReduction(new ReductionPourcentage(20));
         System.out.println("Avec -20% : " + agence.calculerRevenuTotal(7) + "€");
         // 448€ (560 * 0.8)
-        
+
         // Avec réduction de 100€
         agence.setReduction(new ReductionMontant(100));
         System.out.println("Avec -100€ : " + agence.calculerRevenuTotal(7) + "€");
@@ -679,41 +676,5 @@ public class Main {
 		</Code>
 	</Slide>
 
-	<Slide>
-		<h3>🎓 Récapitulatif des exercices</h3>
-		<table class="text-lg mt-4">
-			<thead>
-				<tr>
-					<th class="p-3">Exercice</th>
-					<th class="p-3">Concepts</th>
-					<th class="p-3">Temps</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="p-3">1. Compte bancaire</td>
-					<td class="p-3">Encapsulation, validation</td>
-					<td class="p-3">15 min</td>
-				</tr>
-				<tr>
-					<td class="p-3">2. Véhicules</td>
-					<td class="p-3">Héritage, classes abstraites</td>
-					<td class="p-3">20 min</td>
-				</tr>
-				<tr>
-					<td class="p-3">3. Location</td>
-					<td class="p-3">Interfaces, composition</td>
-					<td class="p-3">25 min</td>
-				</tr>
-				<tr>
-					<td class="p-3">Bonus. Réductions</td>
-					<td class="p-3">Strategy pattern</td>
-					<td class="p-3">15 min</td>
-				</tr>
-			</tbody>
-		</table>
-		<p class="mt-6 text-accent-200 font-bold">
-			💼 Ces patterns sont utilisés quotidiennement dans l'industrie !
-		</p>
-	</Slide>
+
 </Slide>

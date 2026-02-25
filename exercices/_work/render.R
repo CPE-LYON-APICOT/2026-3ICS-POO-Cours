@@ -41,7 +41,7 @@ uses_question_syntax <- function(file) {
 # Create directories if they don't exist
 
 public_corrige_dir <- file.path("../corriges")
-public_git_dir <- file.path("../2025-3ICS-POO-Exercices")
+public_git_dir <- file.path("../2026-3ICS-POO-Exercices")
 public_html_dir <- file.path("../html")
 public_moodle_dir <- file.path("../moodle")
 

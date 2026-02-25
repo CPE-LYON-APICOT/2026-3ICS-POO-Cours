@@ -350,9 +350,5 @@
 		</p>
 	</Slide>
 
-	<Slide>
-		<h2>Mise en place des TDs/TPs</h2>
-		<p>Les TD et TP sont à commit régulièrement sur votre dépôt git (voir démonstration)</p>
-		<p>Seul le projet est à réaliser en binôme</p>
-	</Slide>
+	
 </Slide>
