@@ -2,10 +2,10 @@
 title: "TP 1 — Système de Gestion de Bibliothèque Municipale"
 author: "Alexis PICOT"
 produce:
-  html: true
   pdf: true
-  moodle: true
-  wooclap: false
+  md: true
+  html: true
+  create_answers: true
 ---
 
 # TP 1 — Système de Gestion de Bibliothèque Municipale
@@ -61,6 +61,109 @@ Créez un programme Java qui permet de :
 
 **Prenez le temps de réfléchir à votre structure AVANT de coder.**
 
+<article>
+
+### Correction Étape 1
+
+À ce stade, vous devriez avoir 3 classes simples :
+
+```java
+public class Livre {
+    private String titre;
+    private String auteur;
+    private String isbn;
+    private boolean disponible;
+    
+    public Livre(String titre, String auteur, String isbn) {
+        this.titre = titre;
+        this.auteur = auteur;
+        this.isbn = isbn;
+        this.disponible = true;
+    }
+    
+    // Getters
+    public String getTitre() { return titre; }
+    public String getAuteur() { return auteur; }
+    public String getIsbn() { return isbn; }
+    public boolean isDisponible() { return disponible; }
+    
+    // Le livre sait changer son état
+    public void emprunter() {
+        this.disponible = false;
+    }
+    
+    public void retourner() {
+        this.disponible = true;
+    }
+    
+    @Override
+    public String toString() {
+        return titre + " de " + auteur + (disponible ? " [Disponible]" : " [Emprunté]");
+    }
+}
+```
+
+```java
+public class Adherent {
+    private String nom;
+    private String prenom;
+    private String numeroCarte;
+    
+    public Adherent(String nom, String prenom, String numeroCarte) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numeroCarte = numeroCarte;
+    }
+    
+    public String getNom() { return nom; }
+    public String getPrenom() { return prenom; }
+    public String getNumeroCarte() { return numeroCarte; }
+    
+    @Override
+    public String toString() {
+        return prenom + " " + nom + " (Carte: " + numeroCarte + ")";
+    }
+}
+```
+
+```java
+import java.time.LocalDate;
+
+public class Emprunt {
+    private Livre livre;
+    private Adherent adherent;
+    private LocalDate dateEmprunt;
+    
+    public Emprunt(Livre livre, Adherent adherent) {
+        this.livre = livre;
+        this.adherent = adherent;
+        this.dateEmprunt = LocalDate.now();
+        livre.emprunter(); // Le livre n'est plus disponible
+    }
+    
+    public Livre getLivre() { return livre; }
+    public Adherent getAdherent() { return adherent; }
+    public LocalDate getDateEmprunt() { return dateEmprunt; }
+    
+    public void terminer() {
+        livre.retourner(); // Le livre redevient disponible
+    }
+    
+    @Override
+    public String toString() {
+        return livre.getTitre() + " emprunté par " + adherent.getPrenom() + 
+               " le " + dateEmprunt;
+    }
+}
+```
+
+**Points importants :**
+- Le `Livre` sait gérer son état (emprunter/retourner)
+- L'`Emprunt` fait le lien entre `Livre` et `Adherent`
+- Pas de logique métier dans un service externe
+
+</article>
+
 ---
 
 ## Étape 2 — Première évolution : "Ah oui, j'avais oublié..."
@@ -93,6 +196,161 @@ Votre système doit maintenant gérer :
 - Est-ce que votre code de l'étape 1 est facile à modifier ?
 
 **Si vous avez l'impression de faire beaucoup de copier-coller, c'est un signe que quelque chose ne va pas.**
+
+<article>
+
+### Correction Étape 2
+
+C'est le moment d'introduire l'**héritage** avec une classe abstraite `Document` :
+
+```java
+import java.time.LocalDate;
+
+public abstract class Document {
+    private String titre;
+    private boolean disponible;
+    
+    public Document(String titre) {
+        this.titre = titre;
+        this.disponible = true;
+    }
+    
+    public String getTitre() { return titre; }
+    public boolean isDisponible() { return disponible; }
+    
+    public void emprunter() { this.disponible = false; }
+    public void retourner() { this.disponible = true; }
+    
+    // Chaque sous-classe définit sa durée d'emprunt (polymorphisme)
+    public abstract int getDureeEmpruntJours();
+    
+    // Chaque sous-classe sait si elle est empruntable
+    public abstract boolean isEmpruntable();
+    
+    // Calcule la date de retour automatiquement
+    public LocalDate calculerDateRetour(LocalDate dateEmprunt) {
+        return dateEmprunt.plusDays(getDureeEmpruntJours());
+    }
+    
+    // Chaque sous-classe s'affiche différemment
+    public abstract String getDescription();
+    
+    @Override
+    public String toString() {
+        String statut = disponible ? "Disponible" : "Emprunté";
+        return getDescription() + " [" + statut + "]";
+    }
+}
+```
+
+```java
+public class Livre extends Document {
+    private String auteur;
+    private String isbn;
+    
+    public Livre(String titre, String auteur, String isbn) {
+        super(titre);
+        this.auteur = auteur;
+        this.isbn = isbn;
+    }
+    
+    public String getAuteur() { return auteur; }
+    public String getIsbn() { return isbn; }
+    
+    @Override
+    public int getDureeEmpruntJours() { return 21; } // 3 semaines
+    
+    @Override
+    public boolean isEmpruntable() { return true; }
+    
+    @Override
+    public String getDescription() {
+        return "Livre: " + getTitre() + " de " + auteur;
+    }
+}
+```
+
+```java
+public class DVD extends Document {
+    private String realisateur;
+    private int dureeMinutes;
+    
+    public DVD(String titre, String realisateur, int dureeMinutes) {
+        super(titre);
+        this.realisateur = realisateur;
+        this.dureeMinutes = dureeMinutes;
+    }
+    
+    @Override
+    public int getDureeEmpruntJours() { return 7; } // 1 semaine
+    
+    @Override
+    public boolean isEmpruntable() { return true; }
+    
+    @Override
+    public String getDescription() {
+        return "DVD: " + getTitre() + " de " + realisateur + " (" + dureeMinutes + " min)";
+    }
+}
+```
+
+```java
+public class CD extends Document {
+    private String artiste;
+    private int nombrePistes;
+    
+    public CD(String titre, String artiste, int nombrePistes) {
+        super(titre);
+        this.artiste = artiste;
+        this.nombrePistes = nombrePistes;
+    }
+    
+    @Override
+    public int getDureeEmpruntJours() { return 7; }
+    
+    @Override
+    public boolean isEmpruntable() { return true; }
+    
+    @Override
+    public String getDescription() {
+        return "CD: " + getTitre() + " par " + artiste;
+    }
+}
+```
+
+```java
+import java.time.LocalDate;
+
+public class Magazine extends Document {
+    private int numero;
+    private LocalDate dateParution;
+    
+    public Magazine(String titre, int numero, LocalDate dateParution) {
+        super(titre);
+        this.numero = numero;
+        this.dateParution = dateParution;
+    }
+    
+    @Override
+    public int getDureeEmpruntJours() { return 0; }
+    
+    @Override
+    public boolean isEmpruntable() { return false; } // Non empruntable !
+    
+    @Override
+    public String getDescription() {
+        return "Magazine: " + getTitre() + " n°" + numero;
+    }
+}
+```
+
+**Points clés :**
+- La classe abstraite `Document` factorise le code commun
+- Chaque sous-classe ne définit que ce qui lui est **spécifique**
+- Le **polymorphisme** permet de traiter tous les documents de manière uniforme
+- Pour ajouter un type (ex: Jeu vidéo), il suffit de créer une nouvelle sous-classe
+
+</article>
 
 ---
 
@@ -139,6 +397,279 @@ Une semaine plus tard, nouveau coup de fil :
 - Votre code est-il encore lisible et maintenable ?
 
 **C'est le moment de prendre du recul sur votre conception.**
+
+<article>
+
+### Correction Étape 3
+
+On applique le même principe d'héritage aux adhérents, avec des **exceptions** pour la gestion d'erreurs :
+
+#### Les exceptions métier
+
+```java
+public class DocumentIndisponibleException extends Exception {
+    public DocumentIndisponibleException(String message) { super(message); }
+}
+
+public class DocumentNonEmpruntableException extends Exception {
+    public DocumentNonEmpruntableException(String message) { super(message); }
+}
+
+public class PenalitesExcessivesException extends Exception {
+    public PenalitesExcessivesException(String message) { super(message); }
+}
+
+public class QuotaEmpruntsAtteintException extends Exception {
+    public QuotaEmpruntsAtteintException(String message) { super(message); }
+}
+
+public class RestrictionAgeException extends Exception {
+    public RestrictionAgeException(String message) { super(message); }
+}
+```
+
+#### L'énumération pour les classifications DVD
+
+```java
+public enum ClassificationDVD {
+    TOUT_PUBLIC("Tout public", 0),
+    MOINS_12_ANS("-12 ans", 12),
+    MOINS_16_ANS("-16 ans", 16),
+    ADULTE("Adulte", 18);
+    
+    private final String libelle;
+    private final int ageMinimum;
+    
+    ClassificationDVD(String libelle, int ageMinimum) {
+        this.libelle = libelle;
+        this.ageMinimum = ageMinimum;
+    }
+    
+    public String getLibelle() { return libelle; }
+    public int getAgeMinimum() { return ageMinimum; }
+}
+```
+
+#### La classe DVD mise à jour
+
+```java
+public class DVD extends Document {
+    private String realisateur;
+    private int dureeMinutes;
+    private ClassificationDVD classification;
+    
+    public DVD(String titre, String realisateur, int dureeMinutes, 
+               ClassificationDVD classification) {
+        super(titre);
+        this.realisateur = realisateur;
+        this.dureeMinutes = dureeMinutes;
+        this.classification = classification;
+    }
+    
+    public ClassificationDVD getClassification() { return classification; }
+    
+    @Override
+    public int getDureeEmpruntJours() { return 7; }
+    
+    @Override
+    public boolean isEmpruntable() { return true; }
+    
+    @Override
+    public String getDescription() {
+        return "DVD: " + getTitre() + " [" + classification.getLibelle() + "]";
+    }
+}
+```
+
+#### La hiérarchie des adhérents
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Adherent {
+    private String nom;
+    private String prenom;
+    private String numeroCarte;
+    private double penalites;
+    private List<Emprunt> empruntsEnCours;
+    
+    private static final double PENALITE_PAR_JOUR = 0.20;
+    private static final double PENALITE_MAX = 10.0;
+    
+    public Adherent(String nom, String prenom, String numeroCarte) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numeroCarte = numeroCarte;
+        this.penalites = 0;
+        this.empruntsEnCours = new ArrayList<>();
+    }
+    
+    // Chaque type d'adhérent définit son quota
+    public abstract int getQuotaMaxEmprunts();
+    
+    // Chaque type d'adhérent définit son âge pour les restrictions
+    public abstract int getAge();
+    
+    public double getPenalites() { return penalites; }
+    public int getNombreEmpruntsEnCours() { return empruntsEnCours.size(); }
+    
+    // L'adhérent sait vérifier s'il peut emprunter
+    public void verifierEmpruntAutorise(Document doc) 
+            throws DocumentNonEmpruntableException, DocumentIndisponibleException,
+                   PenalitesExcessivesException, QuotaEmpruntsAtteintException,
+                   RestrictionAgeException {
+        
+        if (!doc.isEmpruntable()) {
+            throw new DocumentNonEmpruntableException(
+                "Le document '" + doc.getTitre() + "' n'est pas empruntable");
+        }
+        
+        if (!doc.isDisponible()) {
+            throw new DocumentIndisponibleException(
+                "Le document '" + doc.getTitre() + "' n'est pas disponible");
+        }
+        
+        if (penalites >= PENALITE_MAX) {
+            throw new PenalitesExcessivesException(
+                "Pénalités trop élevées (" + penalites + "€)");
+        }
+        
+        if (getNombreEmpruntsEnCours() >= getQuotaMaxEmprunts()) {
+            throw new QuotaEmpruntsAtteintException(
+                "Quota atteint (" + getQuotaMaxEmprunts() + " max)");
+        }
+        
+        // Vérification âge pour les DVD
+        if (doc instanceof DVD) {
+            DVD dvd = (DVD) doc;
+            if (getAge() < dvd.getClassification().getAgeMinimum()) {
+                throw new RestrictionAgeException(
+                    "Âge minimum requis: " + dvd.getClassification().getAgeMinimum() + " ans");
+            }
+        }
+    }
+    
+    public void ajouterEmprunt(Emprunt emprunt) {
+        empruntsEnCours.add(emprunt);
+    }
+    
+    public double retirerEmprunt(Emprunt emprunt, LocalDate dateRetour) {
+        empruntsEnCours.remove(emprunt);
+        long joursRetard = emprunt.calculerJoursRetard(dateRetour);
+        if (joursRetard > 0) {
+            double penalite = joursRetard * PENALITE_PAR_JOUR;
+            this.penalites += penalite;
+            return penalite;
+        }
+        return 0;
+    }
+    
+    public void payerPenalites(double montant) {
+        this.penalites = Math.max(0, this.penalites - montant);
+    }
+}
+```
+
+#### Les sous-classes d'adhérents
+
+```java
+public class Enfant extends Adherent {
+    private LocalDate dateNaissance;
+    
+    public Enfant(String nom, String prenom, String numeroCarte, 
+                  LocalDate dateNaissance) {
+        super(nom, prenom, numeroCarte);
+        this.dateNaissance = dateNaissance;
+    }
+    
+    @Override
+    public int getQuotaMaxEmprunts() { return 3; }
+    
+    @Override
+    public int getAge() {
+        return Period.between(dateNaissance, LocalDate.now()).getYears();
+    }
+}
+
+public class Etudiant extends Adherent {
+    public Etudiant(String nom, String prenom, String numeroCarte) {
+        super(nom, prenom, numeroCarte);
+    }
+    
+    @Override
+    public int getQuotaMaxEmprunts() { return 5; }
+    
+    @Override
+    public int getAge() { return 20; } // Majeur par défaut
+}
+
+public class Adulte extends Adherent {
+    public Adulte(String nom, String prenom, String numeroCarte) {
+        super(nom, prenom, numeroCarte);
+    }
+    
+    @Override
+    public int getQuotaMaxEmprunts() { return 4; }
+    
+    @Override
+    public int getAge() { return 30; }
+}
+
+public class Senior extends Adherent {
+    public Senior(String nom, String prenom, String numeroCarte) {
+        super(nom, prenom, numeroCarte);
+    }
+    
+    @Override
+    public int getQuotaMaxEmprunts() { return 6; }
+    
+    @Override
+    public int getAge() { return 70; }
+}
+```
+
+#### La classe Emprunt mise à jour
+
+```java
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+public class Emprunt {
+    private Document document;
+    private Adherent adherent;
+    private LocalDate dateEmprunt;
+    private LocalDate dateRetourPrevue;
+    
+    public Emprunt(Document document, Adherent adherent, LocalDate dateEmprunt) {
+        this.document = document;
+        this.adherent = adherent;
+        this.dateEmprunt = dateEmprunt;
+        this.dateRetourPrevue = document.calculerDateRetour(dateEmprunt);
+    }
+    
+    public boolean estEnRetard(LocalDate date) {
+        return date.isAfter(dateRetourPrevue);
+    }
+    
+    public long calculerJoursRetard(LocalDate dateRetour) {
+        if (dateRetour.isAfter(dateRetourPrevue)) {
+            return ChronoUnit.DAYS.between(dateRetourPrevue, dateRetour);
+        }
+        return 0;
+    }
+    
+    // Getters...
+}
+```
+
+**Points clés :**
+- Les **exceptions** permettent de savoir **pourquoi** un emprunt échoue
+- Le **polymorphisme** évite les switch/if sur les types d'adhérents
+- L'**enum** `ClassificationDVD` est plus sûr qu'une String
+- Pour ajouter une catégorie "Famille", il suffit de créer une nouvelle sous-classe
+
+</article>
 
 ---
 
@@ -338,7 +869,6 @@ Le client vous rappelle :
 
 **Question piège :** Comment allez-vous gérer la combinaison de critères sans avoir un nombre explosif de méthodes de recherche ?
 
-> **Point pédagogique pour l'enseignant :**
 > C'est le moment d'introduire le pattern **Specification** ou l'utilisation d'**interfaces fonctionnelles** (Predicate) pour créer des filtres composables.
 
 #### Extension 2.2 : Notifications

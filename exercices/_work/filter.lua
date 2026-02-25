@@ -21,11 +21,11 @@ function remove_blockquotes(blocks)
 end
 
 -- Applying the filter to the Pandoc document
+-- Le filtre supprime les blocs <article> pour TOUS les formats.
+-- Pour générer un corrigé (avec réponses), ne pas utiliser ce filtre.
 function Pandoc(doc)
   print(FORMAT)
-  if not FORMAT:match 'latex' then
-    doc.blocks = remove_blockquotes(doc.blocks)
-  end
+  doc.blocks = remove_blockquotes(doc.blocks)
   return doc
 end
 -- Base64 encoding function

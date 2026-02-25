@@ -763,4 +763,308 @@ interface Volant { void voler(); }   // Interface : capacité</p><p>class Gardie
     </responsetemplate>
     <tags><tag><text>poo-conception-zoo</text></tag></tags>
   </question>
+  <question type="essay">
+    <name><text>Mémoire Heap et Stack</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Quand on écrit <code>Personne p = new Personne("Jean");</code>, où sont stockés la variable <code>p</code> et l'objet <code>Personne</code> ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>- La <strong>variable <code>p</code></strong> (qui contient une référence/adresse) est stockée sur la <strong>pile (stack)</strong>
+- L'<strong>objet <code>Personne</code></strong> lui-même est stocké dans le <strong>tas (heap)</strong></p><p>La pile contient les références (comme des "numéros de casier"), le tas contient les objets réels (le contenu des casiers).</p><p>En Java, le <strong>Garbage Collector</strong> se charge de libérer automatiquement la mémoire du heap quand un objet n'est plus référencé.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-heap-stack</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Objet vide vs null</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Quelle est la différence entre une liste vide (<code>new ArrayList<>()</code>) et une référence <code>null</code> ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>- <strong>Liste vide</strong> : L'objet <strong>existe</strong> en mémoire, il contient simplement 0 éléments. On peut appeler ses méthodes (<code>list.size()</code> retourne 0).</p><p>- <strong>null</strong> : Il n'y a <strong>aucun objet</strong>. La variable ne pointe vers rien. Appeler une méthode sur <code>null</code> provoque une <code>NullPointerException</code>.</p><p>Exemple :
+``<code>java
+List<String> liste = new ArrayList<>();  // Objet existe, 0 éléments
+liste.size();  // OK, retourne 0</p><p>List<String> nulle = null;  // Aucun objet
+nulle.size();  // NullPointerException !
+</code>``</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-objet-vide-vs-null</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>EnumMap pour les compétences</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Dans un jeu RPG, on veut gérer les compétences d'un personnage (FORCE, AGILITE, INTELLIGENCE). Pourquoi utiliser une <code>EnumMap<Competence, Integer></code> plutôt que des attributs séparés <code>int force, int agilite, int intelligence</code> ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Avantages de <code>EnumMap<Competence, Integer></code> :</p><p>1. <strong>Moins de code répétitif</strong> : pas besoin de créer un getter/setter par compétence</p><p>2. <strong>Méthode générique</strong> : <code>augmenterCompetence(Competence c, int valeur)</code> fonctionne pour toutes les compétences</p><p>3. <strong>Évolutivité</strong> : ajouter une nouvelle compétence (ex: CHARISME) ne nécessite que de modifier l'enum</p><p>4. <strong>Itération facile</strong> : on peut parcourir toutes les compétences avec une boucle</p><p>5. <strong>Type-safe</strong> : seules les clés de l'enum sont acceptées (pas de faute de frappe possible)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-enummap-usage</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Polymorphisme avec une liste</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Expliquez ce qui se passe dans ce code et pourquoi c'est utile :</p><p>``<code>java
+List<Personnage> equipe = new ArrayList<>();
+equipe.add(new Mercenaire("Rex"));
+equipe.add(new SuperMutant("Grok"));
+equipe.add(new Scientifique("Ada"));</p><p>for (Personnage p : equipe) {
+    p.attaqueSpeciale();
+}
+</code>``</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Grâce au <strong>polymorphisme</strong>, on peut stocker différents types de personnages dans une même liste de type <code>Personnage</code>.</p><p>À chaque tour de boucle, <code>p.attaqueSpeciale()</code> appelle la méthode <strong>du type réel</strong> de l'objet :
+- Pour Rex : comportement du Mercenaire
+- Pour Grok : comportement du SuperMutant
+- Pour Ada : comportement du Scientifique</p><p><strong>Utilité</strong> : On peut traiter uniformément des objets différents sans connaître leur type exact. Ajouter un nouveau type (ex: <code>Robot</code>) ne change pas le code de la boucle !</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-polymorphisme-liste</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Tester les exceptions</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Comment tester qu'une méthode lève bien une exception dans un test unitaire JUnit ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>En JUnit 5, on utilise <code>assertThrows</code> :</p><p>``<code>java
+@Test
+void testCompetenceHorsLimite() {
+    Personnage p = new Mercenaire("Test");
+    
+    assertThrows(IllegalArgumentException.class, () -> {
+        p.augmenterCompetence(Competence.FORCE, 20);
+    });
+}
+</code>`<code></p><p>Cela vérifie que le code dans la lambda <strong>lève bien</strong> une </code>IllegalArgumentException`. Si aucune exception n'est levée ou si c'est une autre exception, le test échoue.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-test-exception</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Composition avec des objets Item</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Dans un RPG, un <code>Personnage</code> peut porter une <code>Arme</code> et une <code>Armure</code>. Implémentez les méthodes <code>equiperArme()</code> et <code>getArme()</code> en respectant l'encapsulation.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>``<code>java
+class Personnage {
+    private Arme arme;  // Composition : le personnage A une arme
+    
+    public void equiperArme(Arme nouvelleArme) {
+        if (nouvelleArme == null) {
+            throw new IllegalArgumentException("L'arme ne peut pas être null");
+        }
+        this.arme = nouvelleArme;
+    }
+    
+    public Arme getArme() {
+        return this.arme;
+    }
+    
+    public boolean estArme() {
+        return this.arme != null;
+    }
+}
+</code>`<code></p><p>L'attribut </code>arme` est <strong>privé</strong> (encapsulation) et les méthodes publiques contrôlent l'accès.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-composition-item</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Chaînage de constructeurs</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Expliquez comment le chaînage de constructeurs fonctionne avec <code>this(...)</code> :</p><p>``<code>java
+class Personnage {
+    Personnage(String nom, int niveau) {
+        this.nom = nom;
+        this.niveau = niveau;
+    }
+    
+    Personnage(String nom) {
+        this(nom, 1);  // ???
+    }
+}
+</code>``</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Le constructeur <code>Personnage(String nom)</code> appelle <strong>l'autre constructeur</strong> de la même classe via <code>this(nom, 1)</code>.</p><p>C'est le <strong>chaînage de constructeurs</strong> (constructor chaining). Avantages :
+- Évite la duplication de code d'initialisation
+- Le constructeur simplifié utilise des valeurs par défaut (ici niveau = 1)
+- Un seul endroit contient la logique d'initialisation</p><p><code>this(...)</code> doit être la <strong>première instruction</strong> du constructeur.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-chaining-constructeurs</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Redéfinir equals()</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Pourquoi et comment redéfinir la méthode <code>equals()</code> pour une classe <code>Etudiant</code> ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Par défaut, <code>equals()</code> compare les <strong>références</strong> (comme <code>==</code>). Si on veut comparer le <strong>contenu</strong>, il faut redéfinir <code>equals()</code>.</p><p>``<code>java
+class Etudiant {
+    private String nom;
+    private int numero;
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Etudiant other = (Etudiant) obj;
+        return numero == other.numero 
+            && Objects.equals(nom, other.nom);
+    }
+}
+</code>``</p><p>Deux étudiants sont "égaux" s'ils ont le même nom et numéro, même si ce sont deux objets distincts en mémoire.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-equals-personnalise</text></tag></tags>
+  </question>
+  <question type="essay">
+    <name><text>Modélisation Client en POO</text></name>
+    <questiontext format="html">
+      <text><![CDATA[<p>En entreprise, on manipule des concepts comme "Client", "Facture", "Commande". Comment la POO permet-elle de modéliser ces concepts ?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Chaque concept du monde réel devient une <strong>classe</strong> en POO :</p><p>``<code>java
+class Client {
+    private String nom;
+    private String email;
+    private List<Commande> commandes;
+    
+    void passerCommande() { ... }
+    void consulterFactures() { ... }
+}</p><p>class Facture {
+    private Client client;
+    private double montant;
+    private Date date;
+}
+</code>``</p><p><strong>Avantages</strong> :
+- Le code "parle" le même langage que le métier
+- Les données et comportements sont regroupés dans la même entité
+- C'est la base du <strong>Domain-Driven Design</strong> (DDD)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+    <tags><tag><text>poo-client-poo</text></tag></tags>
+  </question>
 </quiz>

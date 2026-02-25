@@ -2,9 +2,6 @@
 title: "POO - Wooclap Séance 1"
 output: html_document
 produce:
-  html: false
-  pdf: false
-  moodle: false
   wooclap: true
 ---
 

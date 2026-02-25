@@ -1,3 +1,14 @@
+---
+title: "TP 2 — Application de Gestion du Bureau Des Étudiants (BDE)"
+author: "Alexis PICOT"
+produce:
+  pdf: true
+  md: true
+  html: true
+  create_answers: true
+---
+
+
 # TP 2 — Application de Gestion du Bureau Des Étudiants (BDE)
 
 ## Contexte
@@ -87,6 +98,162 @@ Inscription réussie !
 - Comment faire le lien entre un adhérent et les événements auxquels il participe ?
 - Que se passe-t-il si on essaie d'inscrire quelqu'un qui n'existe pas ?
 
+
+
+### Utilisation de l'IA : 
+
+A cette étape, si vous avez bien créé des méthodes plutôt que de mettre votre comportement dans le menu 🙃, vous devriez vous retrouver avec des méthodes `creerAdherent()`, `payerCotisation()`, `creerEvenement()`, etc.
+
+Vous pouvez demander à l'IA de vous générer un bloc de code pour faciliter vos tests, car sinon à chaque fois vous devez recréer les adhérents etc. Comme vous ne savez pas encore comment lire depuis une BDD (du moins dans ce cours, ne soyez pas trop tentés de le faire maitenant vous risqueriez d'y passer 3h, demandez moi si toutefois vous souhaiteriez vous lancer quand même)
+
+Le code généré par l'IA pourrait ressembler à ça :
+
+```java
+
+public void generateData() {
+   creerAdherent("Dupont", "Marie", "marie.dupont@cpe.fr", "3ICS");
+   creerAdherent("Martin", "Thomas", "thomas.martin@cpe.fr", "3ICS");
+   creerAdherent("Bernard", "Sophie", "sophie.bernard@cpe.fr", "4ETI");
+   creerAdherent("Lefevre", "Antoine", "antoine.lefevre@cpe.fr", "3ICS");
+   creerAdherent("Moreau", "Laura", "laura.moreau@external.fr", "External");
+   creerAdherent("Dubois", "Pierre", "pierre.dubois@cpe.fr", "Bureau");
+   
+   payerCotisation("marie.dupont@cpe.fr");
+   payerCotisation("thomas.martin@cpe.fr");
+   payerCotisation("sophie.bernard@cpe.fr");
+   
+   creerEvenement("Soirée d'intégration", "15/09/2026", "Le Ninkasi", 15);
+   creerEvenement("Gala du BDE", "10/11/2026", "Amphithéâtre CPE", 20);
+   creerEvenement("Tournoi de foot", "22/10/2026", "Stade Gerland", 10);
+
+   inscrireEvenement("marie.dupont@cpe.fr", "Soirée d'intégration");
+   inscrireEvenement("thomas.martin@cpe.fr", "Soirée d'intégration");
+   inscrireEvenement("sophie.bernard@cpe.fr", "Tournoi de foot");
+}
+```        
+
+<article>
+
+### Correction Étape 1
+
+À ce stade, vous devriez avoir des classes simples mais bien structurées :
+
+```java
+public class Adherent {
+    private String nom;
+    private String prenom;
+    private String email;
+    private String promotion;
+    private boolean cotisationPayee;
+    
+    public Adherent(String nom, String prenom, String email, String promotion) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.promotion = promotion;
+        this.cotisationPayee = false;
+    }
+    
+    public String getEmail() { return email; }
+    public String getNom() { return nom; }
+    public String getPrenom() { return prenom; }
+    public boolean isCotisationPayee() { return cotisationPayee; }
+    
+    public void payerCotisation() {
+        this.cotisationPayee = true;
+    }
+    
+    @Override
+    public String toString() {
+        String statut = cotisationPayee ? "Cotisation payée" : "Cotisation non payée";
+        return prenom + " " + nom + " (" + promotion + ") - " + statut;
+    }
+}
+```
+
+```java
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Evenement {
+    private String nom;
+    private LocalDate date;
+    private String lieu;
+    private double prix;
+    private List<Adherent> participants;
+    
+    public Evenement(String nom, LocalDate date, String lieu, double prix) {
+        this.nom = nom;
+        this.date = date;
+        this.lieu = lieu;
+        this.prix = prix;
+        this.participants = new ArrayList<>();
+    }
+    
+    public String getNom() { return nom; }
+    public double getPrix() { return prix; }
+    
+    public void inscrire(Adherent adherent) {
+        if (!participants.contains(adherent)) {
+            participants.add(adherent);
+        }
+    }
+    
+    public List<Adherent> getParticipants() {
+        return new ArrayList<>(participants);
+    }
+    
+    @Override
+    public String toString() {
+        return nom + " - " + date + " @ " + lieu + " (" + prix + "€)";
+    }
+}
+```
+
+```java
+import java.util.*;
+
+public class BDE {
+    private List<Adherent> adherents;
+    private List<Evenement> evenements;
+    
+    public BDE() {
+        this.adherents = new ArrayList<>();
+        this.evenements = new ArrayList<>();
+    }
+    
+    public void ajouterAdherent(Adherent adherent) {
+        adherents.add(adherent);
+    }
+    
+    public void creerEvenement(Evenement evenement) {
+        evenements.add(evenement);
+    }
+    
+    public Adherent trouverAdherent(String email) {
+        return adherents.stream()
+            .filter(a -> a.getEmail().equals(email))
+            .findFirst()
+            .orElse(null);
+    }
+    
+    public Evenement trouverEvenement(String nom) {
+        return evenements.stream()
+            .filter(e -> e.getNom().equals(nom))
+            .findFirst()
+            .orElse(null);
+    }
+}
+```
+
+**Points importants :**
+- L'`Adherent` sait payer sa cotisation
+- L'`Événement` gère sa propre liste de participants
+- Le `BDE` orchestre mais ne contient pas toute la logique
+
+</article>
+
 ---
 
 ## Étape 2 — Le trésorier s'en mêle
@@ -147,6 +314,128 @@ if (adherent.getType().equals("CPE")) {
 
 **STOP !** Appelez l'enseignant. Ce code va devenir un cauchemar à maintenir.
 
+<article>
+
+### Correction Étape 2
+
+C'est le moment d'introduire l'**héritage** pour les types d'adhérents :
+
+```java
+public abstract class Adherent {
+    private String nom;
+    private String prenom;
+    private String email;
+    private String promotion;
+    private boolean cotisationPayee;
+    
+    public Adherent(String nom, String prenom, String email, String promotion) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.promotion = promotion;
+        this.cotisationPayee = false;
+    }
+    
+    // Chaque type d'adhérent définit son prix de cotisation
+    public abstract double getPrixCotisation();
+    
+    // Chaque type d'adhérent définit sa réduction sur les événements
+    public abstract double getReductionEvenement();
+    
+    public boolean isCotisationPayee() { return cotisationPayee; }
+    public String getEmail() { return email; }
+    
+    public double payerCotisation() {
+        this.cotisationPayee = true;
+        return getPrixCotisation(); // Retourne le montant pour la comptabilité
+    }
+    
+    // Calcule le prix d'un événement pour cet adhérent
+    public double calculerPrixEvenement(double prixBase) {
+        if (!cotisationPayee) {
+            return prixBase; // Plein tarif si pas adhérent
+        }
+        return prixBase * (1 - getReductionEvenement());
+    }
+}
+```
+
+```java
+public class EtudiantCPE extends Adherent {
+    public EtudiantCPE(String nom, String prenom, String email, String promotion) {
+        super(nom, prenom, email, promotion);
+    }
+    
+    @Override
+    public double getPrixCotisation() { return 30.0; }
+    
+    @Override
+    public double getReductionEvenement() { return 0.20; } // -20%
+}
+```
+
+```java
+public class Exterieur extends Adherent {
+    public Exterieur(String nom, String prenom, String email, String promotion) {
+        super(nom, prenom, email, promotion);
+    }
+    
+    @Override
+    public double getPrixCotisation() { return 50.0; }
+    
+    @Override
+    public double getReductionEvenement() { return 0.20; } // -20%
+}
+```
+
+```java
+public class MembreBureau extends Adherent {
+    private String role; // Président, Trésorier, etc.
+    
+    public MembreBureau(String nom, String prenom, String email, String role) {
+        super(nom, prenom, email, "Bureau");
+        this.role = role;
+    }
+    
+    @Override
+    public double getPrixCotisation() { return 0.0; } // Gratuit
+    
+    @Override
+    public double getReductionEvenement() { return 1.0; } // 100% = gratuit
+}
+```
+
+```java
+public class ComptaBDE {
+    private double solde;
+    private List<Transaction> historique;
+    
+    public ComptaBDE() {
+        this.solde = 0;
+        this.historique = new ArrayList<>();
+    }
+    
+    public void enregistrerRecette(double montant, String description) {
+        solde += montant;
+        historique.add(new Transaction(montant, description, true));
+    }
+    
+    public void enregistrerDepense(double montant, String description) {
+        solde -= montant;
+        historique.add(new Transaction(montant, description, false));
+    }
+    
+    public double getSolde() { return solde; }
+}
+```
+
+**Points clés :**
+- Le **polymorphisme** évite les switch/if sur le type d'adhérent
+- Chaque adhérent **sait** calculer son prix
+- Pour ajouter "Ancien élève", il suffit de créer une nouvelle sous-classe
+
+</article>
+
 ---
 
 ## Étape 3 — Les clubs entrent en jeu
@@ -199,6 +488,147 @@ C'est le moment de repenser votre conception.
 - Comment éviter de dupliquer le code de gestion des événements ?
 - Comment gérer élégamment le fait qu'un adhérent peut avoir des "droits" venant de différentes sources ?
 
+<article>
+
+### Correction Étape 3
+
+C'est le moment d'introduire les **interfaces** ! Un organisateur peut être le BDE ou un Club :
+
+```java
+public interface Organisateur {
+    String getNom();
+    double getBudget();
+    void debiterBudget(double montant);
+    boolean estMembre(Adherent adherent);
+}
+```
+
+```java
+public class BDE implements Organisateur {
+    private List<Adherent> adherents;
+    private List<Evenement> evenements;
+    private ComptaBDE compta;
+    private List<MembreBureau> bureau;
+    
+    @Override
+    public String getNom() { return "BDE"; }
+    
+    @Override
+    public double getBudget() { return compta.getSolde(); }
+    
+    @Override
+    public void debiterBudget(double montant) {
+        compta.enregistrerDepense(montant, "Organisation événement");
+    }
+    
+    @Override
+    public boolean estMembre(Adherent adherent) {
+        return adherent instanceof MembreBureau;
+    }
+}
+```
+
+```java
+public class Club implements Organisateur {
+    private String nom;
+    private Adherent president;
+    private double budget;
+    private List<Adherent> membres;
+    
+    public Club(String nom, Adherent president, double budgetInitial) {
+        this.nom = nom;
+        this.president = president;
+        this.budget = budgetInitial;
+        this.membres = new ArrayList<>();
+        this.membres.add(president);
+    }
+    
+    @Override
+    public String getNom() { return nom; }
+    
+    @Override
+    public double getBudget() { return budget; }
+    
+    @Override
+    public void debiterBudget(double montant) {
+        this.budget -= montant;
+    }
+    
+    @Override
+    public boolean estMembre(Adherent adherent) {
+        return membres.contains(adherent);
+    }
+    
+    public void ajouterMembre(Adherent adherent) {
+        if (!membres.contains(adherent)) {
+            membres.add(adherent);
+        }
+    }
+}
+```
+
+```java
+import java.util.*;
+
+public class Evenement {
+    private String nom;
+    private LocalDate date;
+    private String lieu;
+    private double prixBase;
+    private double coutOrganisation;
+    private List<Organisateur> organisateurs; // Peut avoir plusieurs !
+    private List<Adherent> participants;
+    
+    public Evenement(String nom, LocalDate date, String lieu, 
+                     double prixBase, double coutOrganisation) {
+        this.nom = nom;
+        this.date = date;
+        this.lieu = lieu;
+        this.prixBase = prixBase;
+        this.coutOrganisation = coutOrganisation;
+        this.organisateurs = new ArrayList<>();
+        this.participants = new ArrayList<>();
+    }
+    
+    public void ajouterOrganisateur(Organisateur org) {
+        organisateurs.add(org);
+    }
+    
+    // Répartit les frais entre tous les organisateurs
+    public void repartirFrais() {
+        double partChacun = coutOrganisation / organisateurs.size();
+        for (Organisateur org : organisateurs) {
+            org.debiterBudget(partChacun);
+        }
+    }
+    
+    // Vérifie si l'adhérent a l'événement gratuit
+    public boolean estGratuitPour(Adherent adherent) {
+        for (Organisateur org : organisateurs) {
+            if (org.estMembre(adherent)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    // Calcule le prix pour un adhérent
+    public double calculerPrixPour(Adherent adherent) {
+        if (estGratuitPour(adherent)) {
+            return 0;
+        }
+        return adherent.calculerPrixEvenement(prixBase);
+    }
+}
+```
+
+**Points clés :**
+- L'**interface** `Organisateur` permet de traiter BDE et Club de la même façon
+- Un événement peut avoir **plusieurs** organisateurs (co-organisation)
+- Le polymorphisme vérifie automatiquement l'appartenance
+
+</article>
+
 ---
 
 ## Étape 4 — La boutique de goodies
@@ -239,6 +669,162 @@ Un pack contient des choses très différentes : des objets physiques (goodies) 
 Comment représenter cette situation en POO ?
 
 > 💡 **Indice pédagogique** : C'est le moment de découvrir (ou redécouvrir) la notion d'interface. Si vous n'y arrivez pas, appelez l'enseignant pour une explication sur les interfaces.
+
+<article>
+
+### Correction Étape 4
+
+Une **interface** `Achetable` permet de traiter articles et places événements uniformément :
+
+```java
+public interface Achetable {
+    String getNom();
+    double getPrix();
+    boolean estDisponible();
+    void consommer(); // Décrémente stock ou inscrit à l'événement
+}
+```
+
+```java
+public class Article implements Achetable {
+    private String nom;
+    private double prix;
+    private int stock;
+    private boolean reserveAuxAdherents;
+    
+    public Article(String nom, double prix, int stock, boolean reserveAuxAdherents) {
+        this.nom = nom;
+        this.prix = prix;
+        this.stock = stock;
+        this.reserveAuxAdherents = reserveAuxAdherents;
+    }
+    
+    @Override
+    public String getNom() { return nom; }
+    
+    @Override
+    public double getPrix() { return prix; }
+    
+    @Override
+    public boolean estDisponible() { return stock > 0; }
+    
+    @Override
+    public void consommer() {
+        if (stock > 0) stock--;
+    }
+    
+    public boolean isReserveAuxAdherents() { return reserveAuxAdherents; }
+}
+```
+
+```java
+public class PlaceEvenement implements Achetable {
+    private Evenement evenement;
+    private Adherent pourAdherent; // Pour qui on achète la place
+    
+    public PlaceEvenement(Evenement evenement, Adherent pourAdherent) {
+        this.evenement = evenement;
+        this.pourAdherent = pourAdherent;
+    }
+    
+    @Override
+    public String getNom() { return "Place: " + evenement.getNom(); }
+    
+    @Override
+    public double getPrix() {
+        return evenement.calculerPrixPour(pourAdherent);
+    }
+    
+    @Override
+    public boolean estDisponible() {
+        return !evenement.getParticipants().contains(pourAdherent);
+    }
+    
+    @Override
+    public void consommer() {
+        evenement.inscrire(pourAdherent);
+    }
+}
+```
+
+```java
+import java.util.*;
+
+public class Pack implements Achetable {
+    private String nom;
+    private List<Achetable> elements;
+    private double reduction; // ex: 0.30 pour -30%
+    
+    public Pack(String nom, double reduction) {
+        this.nom = nom;
+        this.elements = new ArrayList<>();
+        this.reduction = reduction;
+    }
+    
+    public void ajouter(Achetable element) {
+        elements.add(element);
+    }
+    
+    @Override
+    public String getNom() { return nom; }
+    
+    @Override
+    public double getPrix() {
+        double total = elements.stream()
+            .mapToDouble(Achetable::getPrix)
+            .sum();
+        return total * (1 - reduction);
+    }
+    
+    @Override
+    public boolean estDisponible() {
+        // Tous les éléments doivent être disponibles
+        return elements.stream().allMatch(Achetable::estDisponible);
+    }
+    
+    @Override
+    public void consommer() {
+        // Consomme tous les éléments
+        elements.forEach(Achetable::consommer);
+    }
+}
+```
+
+```java
+public class Boutique {
+    private List<Article> catalogue;
+    private ComptaBDE compta;
+    
+    public double vendre(Achetable achat, Adherent acheteur) {
+        if (!achat.estDisponible()) {
+            throw new RuntimeException("Article indisponible");
+        }
+        
+        double prix = achat.getPrix();
+        
+        // Appliquer réduction adhérent sur les articles
+        if (achat instanceof Article && acheteur.isCotisationPayee()) {
+            if (acheteur instanceof MembreBureau) {
+                prix *= 0.5; // -50%
+            } else {
+                prix *= 0.9; // -10%
+            }
+        }
+        
+        achat.consommer();
+        compta.enregistrerRecette(prix, "Vente: " + achat.getNom());
+        
+        return prix;
+    }
+}
+```
+
+**Points clés :**
+- L'**interface** `Achetable` unifie articles, places et packs
+- Le `Pack` implémente aussi `Achetable` (composition récursive possible)
+- Une seule méthode `vendre()` gère tous les types d'achats
+
+</article>
 
 ---
 
@@ -297,6 +883,160 @@ Ce code est :
 - Illisible (le "else if" va faire 50 lignes)
 
 Comment faire mieux ?
+
+<article>
+
+### Correction Étape 5
+
+Une **énumération** avec héritage de comportement pour les niveaux de partenariat :
+
+```java
+import java.util.*;
+
+public enum NiveauPartenariat {
+    BRONZE(500, List.of("Logo sur affiches")),
+    SILVER(1000, List.of("Logo sur affiches", "Stand aux événements")),
+    GOLD(2000, List.of("Logo sur affiches", "Stand aux événements", 
+                       "Publication réseaux sociaux")),
+    PLATINUM(5000, List.of("Logo sur affiches", "Stand aux événements", 
+                          "Publication réseaux sociaux", "Naming événement",
+                          "Places gratuites employés"));
+    
+    private final double montant;
+    private final List<String> avantages;
+    
+    NiveauPartenariat(double montant, List<String> avantages) {
+        this.montant = montant;
+        this.avantages = avantages;
+    }
+    
+    public double getMontant() { return montant; }
+    public List<String> getAvantages() { return avantages; }
+    
+    // Vérifie si ce niveau a un avantage spécifique
+    public boolean aAvantage(String avantage) {
+        return avantages.contains(avantage);
+    }
+}
+```
+
+```java
+import java.util.*;
+
+public class Partenaire {
+    private String nom;
+    private NiveauPartenariat niveau;
+    private List<ReductionPartenaire> reductions;
+    
+    public Partenaire(String nom, NiveauPartenariat niveau) {
+        this.nom = nom;
+        this.niveau = niveau;
+        this.reductions = new ArrayList<>();
+    }
+    
+    public String getNom() { return nom; }
+    public NiveauPartenariat getNiveau() { return niveau; }
+    
+    public void ajouterReduction(String description, double pourcentage) {
+        reductions.add(new ReductionPartenaire(this, description, pourcentage));
+    }
+    
+    public List<ReductionPartenaire> getReductions() {
+        return new ArrayList<>(reductions);
+    }
+    
+    // Les avantages sont délégués à l'enum
+    public List<String> getAvantages() {
+        return niveau.getAvantages();
+    }
+    
+    public boolean peutAvoirNaming() {
+        return niveau.aAvantage("Naming événement");
+    }
+}
+```
+
+```java
+public class ReductionPartenaire {
+    private Partenaire partenaire;
+    private String description;
+    private double pourcentage;
+    
+    public ReductionPartenaire(Partenaire partenaire, String description, 
+                               double pourcentage) {
+        this.partenaire = partenaire;
+        this.description = description;
+        this.pourcentage = pourcentage;
+    }
+    
+    public String getDescription() {
+        return partenaire.getNom() + ": " + description + 
+               " (-" + (pourcentage * 100) + "%)";
+    }
+}
+```
+
+```java
+import java.util.*;
+
+public class CarteAvantages {
+    private Adherent adherent;
+    private List<String> avantages;
+    
+    public CarteAvantages(Adherent adherent, BDE bde) {
+        this.adherent = adherent;
+        this.avantages = new ArrayList<>();
+        generer(bde);
+    }
+    
+    private void generer(BDE bde) {
+        // 1. Réductions partenaires (pour tous les adhérents à jour)
+        if (adherent.isCotisationPayee()) {
+            for (Partenaire p : bde.getPartenaires()) {
+                for (ReductionPartenaire r : p.getReductions()) {
+                    avantages.add(r.getDescription());
+                }
+            }
+        }
+        
+        // 2. Événements gratuits (membre bureau)
+        if (adherent instanceof MembreBureau) {
+            avantages.add("Tous les événements BDE gratuits");
+        }
+        
+        // 3. Événements des clubs
+        for (Club club : bde.getClubs()) {
+            if (club.estMembre(adherent)) {
+                avantages.add("Événements " + club.getNom() + " gratuits");
+            }
+        }
+        
+        // 4. Réductions boutique
+        if (adherent.isCotisationPayee()) {
+            if (adherent instanceof MembreBureau) {
+                avantages.add("Boutique: -50%");
+            } else {
+                avantages.add("Boutique: -10%");
+            }
+        }
+    }
+    
+    public void afficher() {
+        System.out.println("=== Carte Avantages ===");
+        System.out.println("Adhérent: " + adherent);
+        for (String avantage : avantages) {
+            System.out.println("  • " + avantage);
+        }
+    }
+}
+```
+
+**Points clés :**
+- L'**enum** `NiveauPartenariat` encapsule les avantages par niveau
+- Pas de chaîne de if/else, les avantages sont dans l'enum
+- Pour ajouter "Diamond", il suffit d'ajouter une ligne à l'enum
+
+</article>
 
 ---
 

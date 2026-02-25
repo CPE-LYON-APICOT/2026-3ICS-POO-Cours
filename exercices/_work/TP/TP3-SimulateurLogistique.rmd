@@ -1,3 +1,16 @@
+---
+title: "TP 3 — Simulateur de Centre de Distribution LogiTech Express"
+author: "Alexis PICOT"
+produce:
+  html: 
+    remove_answers: true
+  md: 
+    remove_answers: true
+  pdf:
+    remove_answers: true
+---
+
+
 # TP 3 — LogiTech Express : Simulateur de Centre de Distribution
 
 ## Contexte

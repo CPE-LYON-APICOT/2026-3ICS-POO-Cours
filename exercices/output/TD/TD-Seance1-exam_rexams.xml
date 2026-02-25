@@ -51,19 +51,9 @@
 <shuffleanswers>true</shuffleanswers>
 <single>false</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="-50" format="html">
-<text><![CDATA[<p>
-Compiler (exécuter le code)
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
 <answer fraction="33.33333" format="html">
 <text><![CDATA[<p>
-Ranger (organiser le code)
+Protéger (éviter les erreurs)
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -81,9 +71,19 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+Compiler (exécuter le code)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
 <answer fraction="33.33333" format="html">
 <text><![CDATA[<p>
-Protéger (éviter les erreurs)
+Généraliser (réutiliser le code)
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -93,7 +93,7 @@ Correct.
 </answer>
 <answer fraction="33.33333" format="html">
 <text><![CDATA[<p>
-Généraliser (réutiliser le code)
+Ranger (organiser le code)
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -180,7 +180,7 @@ Correct.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-1 objet
+3 objets
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -190,7 +190,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-3 objets
+1 objet
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -310,13 +310,13 @@ Incorrect.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="100" format="html">
+<answer fraction="0" format="html">
 <text><![CDATA[<p>
-Java alloue de la mémoire, appelle le constructeur, et retourne une référence
+Java crée une variable locale sans allocer de mémoire
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Correct.
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -332,7 +332,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Java crée une variable locale sans allocer de mémoire
+Java copie une instance existante de Personne
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -340,13 +340,13 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="0" format="html">
+<answer fraction="100" format="html">
 <text><![CDATA[<p>
-Java copie une instance existante de Personne
+Java alloue de la mémoire, appelle le constructeur, et retourne une référence
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Incorrect.
+Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -405,7 +405,7 @@ Incorrect.
 <answernumbering>abc</answernumbering>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Une exception sera levée à l’exécution
+Java crée automatiquement un constructeur sans paramètres
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -415,7 +415,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Java crée automatiquement un constructeur sans paramètres
+Une exception sera levée à l’exécution
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -511,16 +511,6 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Erreur de compilation
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
 Affiche une chaîne vide
 </p>]]></text>
 <feedback format="html">
@@ -536,6 +526,16 @@ Lance une NullPointerException
 <feedback format="html">
 <text><![CDATA[<p>
 Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -602,27 +602,17 @@ Correct.
 <answernumbering>abc</answernumbering>
 <answer fraction="33.33333" format="html">
 <text><![CDATA[<p>
-a.equals(c)
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="33.33333" format="html">
-<text><![CDATA[<p>
-a.equals(b)
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="33.33333" format="html">
-<text><![CDATA[<p>
 a == c
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+a.equals(c)
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -637,6 +627,16 @@ a == b
 <feedback format="html">
 <text><![CDATA[<p>
 Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+a.equals(b)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -706,7 +706,7 @@ Correct.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-<code>nom == "admin"</code>
+<code>nom.compareTo("admin") == 0</code>
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -716,7 +716,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-<code>nom.compareTo("admin") == 0</code>
+<code>nom == "admin"</code>
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -787,6 +787,16 @@ Incorrect.
 <shuffleanswers>true</shuffleanswers>
 <single>false</single>
 <answernumbering>abc</answernumbering>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+static
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
 <answer fraction="25" format="html">
 <text><![CDATA[<p>
 protected
@@ -797,16 +807,6 @@ Correct.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="-50" format="html">
-<text><![CDATA[<p>
-final
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
 <answer fraction="25" format="html">
 <text><![CDATA[<p>
 public
@@ -814,16 +814,6 @@ public
 <feedback format="html">
 <text><![CDATA[<p>
 Correct.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="-50" format="html">
-<text><![CDATA[<p>
-static
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -844,6 +834,16 @@ private
 <feedback format="html">
 <text><![CDATA[<p>
 Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+final
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -920,7 +920,27 @@ Correct.
 <answernumbering>abc</answernumbering>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
+La classe et ses sous-classes
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
 Partout dans le programme
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+La classe et le même package
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -935,26 +955,6 @@ La classe elle-même uniquement
 <feedback format="html">
 <text><![CDATA[<p>
 Correct.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-La classe et le même package
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-La classe et ses sous-classes
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1024,16 +1024,6 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="50" format="html">
-<text><![CDATA[<p>
-Les sous-classes (même dans d’autres packages)
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
-</p>]]></text>
-</feedback>
-</answer>
 <answer fraction="-50" format="html">
 <text><![CDATA[<p>
 Les classes du même package
@@ -1041,6 +1031,16 @@ Les classes du même package
 <feedback format="html">
 <text><![CDATA[<p>
 Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+Les sous-classes (même dans d’autres packages)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1109,19 +1109,19 @@ Correct.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="100" format="html">
+<answer fraction="0" format="html">
 <text><![CDATA[<p>
-Elle permet au compilateur de vérifier qu’on redéfinit bien une méthode du parent
+Elle améliore les performances de la méthode
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Correct.
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Elle améliore les performances de la méthode
+Elle rend la méthode publique
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1139,13 +1139,13 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="0" format="html">
+<answer fraction="100" format="html">
 <text><![CDATA[<p>
-Elle rend la méthode publique
+Elle permet au compilateur de vérifier qu’on redéfinit bien une méthode du parent
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Incorrect.
+Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1204,7 +1204,7 @@ Incorrect.
 <answernumbering>abc</answernumbering>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-N’importe où dans le constructeur
+Après l’initialisation des attributs de la classe fille
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1212,19 +1212,9 @@ Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="100" format="html">
-<text><![CDATA[<p>
-En première instruction du constructeur
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
-</p>]]></text>
-</feedback>
-</answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Après l’initialisation des attributs de la classe fille
+N’importe où dans le constructeur
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1239,6 +1229,16 @@ En dernière instruction du constructeur
 <feedback format="html">
 <text><![CDATA[<p>
 Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+En première instruction du constructeur
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1391,7 +1391,27 @@ Incorrect.
 <answernumbering>abc</answernumbering>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
+Aucune, l’héritage n’existe pas en Java
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
 Autant de classes que souhaité
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Deux classes maximum
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1406,26 +1426,6 @@ Une seule classe
 <feedback format="html">
 <text><![CDATA[<p>
 Correct.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-Deux classes maximum
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-Aucune, l’héritage n’existe pas en Java
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1487,13 +1487,13 @@ Incorrect.
 <shuffleanswers>true</shuffleanswers>
 <single>false</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="33.33333" format="html">
+<answer fraction="-50" format="html">
 <text><![CDATA[<p>
-“Un Chien est un Animal” → Héritage
+“Un Rectangle a une Forme” → Composition
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Correct.
+Incorrect.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1509,7 +1509,7 @@ Correct.
 </answer>
 <answer fraction="33.33333" format="html">
 <text><![CDATA[<p>
-“Un Maître a un Animal” → Composition
+“Un Chien est un Animal” → Héritage
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1517,13 +1517,13 @@ Correct.
 </p>]]></text>
 </feedback>
 </answer>
-<answer fraction="-50" format="html">
+<answer fraction="33.33333" format="html">
 <text><![CDATA[<p>
-“Un Rectangle a une Forme” → Composition
+“Un Maître a un Animal” → Composition
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
-Incorrect.
+Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1592,26 +1592,6 @@ Incorrect.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-Toujours utiliser l’héritage, c’est plus simple
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
-Utiliser l’héritage pour les attributs, la composition pour les méthodes
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
 <answer fraction="100" format="html">
 <text><![CDATA[<p>
 Si “X est un Y” → Héritage ; Si “X a un Y” → Composition
@@ -1625,6 +1605,26 @@ Correct.
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
 Toujours utiliser la composition, c’est plus moderne
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Toujours utiliser l’héritage, c’est plus simple
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Utiliser l’héritage pour les attributs, la composition pour les méthodes
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1688,16 +1688,6 @@ Incorrect.
 <answernumbering>abc</answernumbering>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-inherits
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="0" format="html">
-<text><![CDATA[<p>
 extends
 </p>]]></text>
 <feedback format="html">
@@ -1709,6 +1699,16 @@ Incorrect.
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
 uses
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+inherits
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1792,7 +1792,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Oui, mais seulement si les interfaces n’ont pas de méthodes en commun
+Non, une seule interface par classe
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1802,7 +1802,7 @@ Incorrect.
 </answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
-Non, une seule interface par classe
+Oui, mais seulement si les interfaces n’ont pas de méthodes en commun
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
@@ -1875,6 +1875,16 @@ Correct.
 <shuffleanswers>true</shuffleanswers>
 <single>true</single>
 <answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+class X extends Y implements I1, I2
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
 L’ordre n’a pas d’importance
@@ -1892,16 +1902,6 @@ class X implements I1, I2 extends Y
 <feedback format="html">
 <text><![CDATA[<p>
 Incorrect.
-</p>]]></text>
-</feedback>
-</answer>
-<answer fraction="100" format="html">
-<text><![CDATA[<p>
-class X extends Y implements I1, I2
-</p>]]></text>
-<feedback format="html">
-<text><![CDATA[<p>
-Correct.
 </p>]]></text>
 </feedback>
 </answer>
@@ -1992,6 +1992,496 @@ Incorrect.
 <answer fraction="0" format="html">
 <text><![CDATA[<p>
 NullPointerException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Classes et Objets</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q22 : poo-garbage-collector </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>À quoi sert le Garbage Collector en Java ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Le <strong>Garbage Collector</strong> (GC) surveille la mémoire et supprime automatiquement les objets qui ne sont plus référencés par aucune variable.</p>
+<p>Contrairement au C/C++, le développeur Java n’a pas à gérer manuellement la libération de la mémoire (pas de <code>free()</code> ou <code>delete</code>).</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+À optimiser les performances du code
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+À compiler le code Java en bytecode
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+À libérer automatiquement la mémoire des objets non référencés
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+À vérifier les types à l’exécution
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Encapsulation</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q23 : poo-exception-validation </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Dans une classe <code>Personnage</code>, comment valider qu’une compétence reste entre 3 et 15 ?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="dt">void</span> <span class="fu">augmenterCompetence</span><span class="op">(</span>Competence c<span class="op">,</span> <span class="dt">int</span> valeur<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="co">// ???</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>La bonne pratique est de <strong>lever une exception</strong> pour signaler une erreur :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="dt">void</span> <span class="fu">augmenterCompetence</span><span class="op">(</span>Competence c<span class="op">,</span> <span class="dt">int</span> valeur<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>valeur <span class="op">&lt;</span> <span class="dv">3</span> <span class="op">||</span> valeur <span class="op">&gt;</span> <span class="dv">15</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IllegalArgumentException</span><span class="op">(</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>            <span class="st">&quot;La compétence doit être entre 3 et 15&quot;</span><span class="op">);</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>    competences<span class="op">.</span><span class="fu">put</span><span class="op">(</span>c<span class="op">,</span> valeur<span class="op">);</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Cela garantit l’intégrité des données et informe clairement l’appelant de son erreur.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Lever une IllegalArgumentException si la valeur est hors limites
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Ne rien vérifier, l’utilisateur sait ce qu’il fait
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Retourner false si la valeur est invalide
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Ignorer silencieusement les valeurs invalides
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Héritage</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q24 : poo-abstract-method </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Soit une classe <code>abstract class Personnage</code> avec <code>abstract void attaqueSpeciale();</code>. Que doit faire une classe <code>Mercenaire extends Personnage</code> ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Une classe qui hérite d’une classe abstraite <strong>doit implémenter toutes les méthodes abstraites</strong>, sinon elle doit elle-même être déclarée abstraite.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Mercenaire <span class="kw">extends</span> Personnage <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">attaqueSpeciale</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Tir de précision !&quot;</span><span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Appeler super.attaqueSpeciale()
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Déclarer aussi la méthode comme abstract
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Implémenter obligatoirement la méthode attaqueSpeciale()
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Rien, la méthode est héritée automatiquement
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Encapsulation</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q25 : poo-try-catch </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Quel est le rôle du bloc <code>catch</code> dans un <code>try-catch</code> ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Le bloc <code>catch</code> <strong>intercepte</strong> les exceptions levées dans le bloc <code>try</code> et permet de les <strong>traiter</strong> (afficher un message, corriger l’erreur, etc.) au lieu que le programme plante.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    personnage<span class="op">.</span><span class="fu">augmenterCompetence</span><span class="op">(</span>Competence<span class="op">.</span><span class="fu">FORCE</span><span class="op">,</span> <span class="dv">20</span><span class="op">);</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IllegalArgumentException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Erreur : &quot;</span> <span class="op">+</span> e<span class="op">.</span><span class="fu">getMessage</span><span class="op">());</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Lever une nouvelle exception
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Exécuter du code après le try, qu’il y ait erreur ou non
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Empêcher les exceptions de se produire
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Intercepter et traiter une exception levée dans le bloc try
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance1-exam_rexams/Héritage</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q26 : poo-super-initialisation </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Pourquoi appeler <code>super()</code> dans le constructeur d’une classe fille ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><code>super()</code> appelle le constructeur de la classe mère pour <strong>initialiser les attributs hérités</strong>.</p>
+<p>Le parent doit être construit <strong>avant</strong> l’enfant. Si vous oubliez <code>super()</code>, Java appelle automatiquement <code>super()</code> sans arguments (ce qui échoue si le parent n’a pas de constructeur sans paramètres).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Mercenaire <span class="kw">extends</span> Personnage <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="fu">Mercenaire</span><span class="op">(</span><span class="bu">String</span> nom<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>        <span class="kw">super</span><span class="op">(</span>nom<span class="op">);</span>  <span class="co">// Initialise les attributs de Personnage</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>        <span class="fu">augmenterCompetence</span><span class="op">(</span>Competence<span class="op">.</span><span class="fu">AGILITE</span><span class="op">,</span> <span class="dv">5</span><span class="op">);</span>  <span class="co">// Bonus du Mercenaire</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Pour copier les attributs de la classe mère
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Pour créer une nouvelle instance de la classe mère
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Pour initialiser la partie héritée de l’objet via le constructeur parent
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+C’est optionnel et ne sert à rien
 </p>]]></text>
 <feedback format="html">
 <text><![CDATA[<p>
