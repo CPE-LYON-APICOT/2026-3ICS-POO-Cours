@@ -1,0 +1,4296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Révisions</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q01 : s2-rev-compilation-1 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Le code suivant compile-t-il ? Si non, pourquoi ?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Vehicule <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> marque<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="fu">Vehicule</span><span class="op">(</span><span class="bu">String</span> marque<span class="op">)</span> <span class="op">{</span> <span class="kw">this</span><span class="op">.</span><span class="fu">marque</span> <span class="op">=</span> marque<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="kw">class</span> Voiture <span class="kw">extends</span> Vehicule <span class="op">{</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">int</span> nbPortes<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>    <span class="fu">Voiture</span><span class="op">(</span><span class="bu">String</span> marque<span class="op">,</span> <span class="dt">int</span> nbPortes<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">nbPortes</span> <span class="op">=</span> nbPortes<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Le constructeur de <code>Voiture</code> n’appelle pas <code>super(marque)</code>. Java tente alors d’appeler <code>super()</code> implicitement, mais <code>Vehicule</code> n’a <strong>pas</strong> de constructeur sans paramètres (il n’en a qu’un avec <code>String</code>). Le code ne compile pas.</p>
+<p>Il faut ajouter <code>super(marque);</code> en première ligne du constructeur de <code>Voiture</code>.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Non, car le constructeur de Voiture n’appelle pas super(marque)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, car marque est private dans Vehicule
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui, il compile sans erreur
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, car Vehicule n’a pas de constructeur par défaut et Voiture ne l’appelle pas (les deux dernières réponses)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Révisions</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q02 : s2-rev-equals-piege </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Que produit ce code ?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">String</span> a <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span><span class="st">&quot;test&quot;</span><span class="op">);</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">String</span> b <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span><span class="st">&quot;test&quot;</span><span class="op">);</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">==</span> b<span class="op">);</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a<span class="op">.</span><span class="fu">equals</span><span class="op">(</span>b<span class="op">));</span></span></code></pre></div>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><code>a == b</code> compare les <strong>références</strong> : deux objets distincts créés par <code>new</code>, donc <code>false</code>.</p>
+<p><code>a.equals(b)</code> compare le <strong>contenu</strong> : les deux contiennent “test”, donc <code>true</code>.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+false puis false
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+true puis false
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+true puis true
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+false puis true
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Révisions</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q03 : s2-rev-protected-scope </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Un attribut <code>protected int age;</code> déclaré dans la classe <code>Personne</code> (package <code>modele</code>) est accessible depuis :</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><code>protected</code> donne accès à :
+1. La classe elle-même ✅
+2. Les sous-classes (même dans un autre package) ✅
+3. Les classes du même package ✅
+4. PAS les classes d’un autre package sans relation d’héritage ❌</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+N’importe quelle classe dans n’importe quel package
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+Une méthode de la classe Personne elle-même
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+Une classe Etudiant qui extends Personne (même si dans un autre package)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+Une classe Adresse dans le même package modele (sans héritage)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Révisions</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q04 : s2-rev-composition-vs-heritage </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Pour modéliser qu’une <code>Bibliotheque</code> contient plusieurs <code>Livre</code>, quelle relation est correcte ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Une bibliothèque <strong>a des</strong> livres → c’est de la <strong>composition</strong>.</p>
+<p>“Une bibliothèque est un livre” ne veut rien dire, donc l’héritage est absurde ici.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>class Bibliotheque extends Livre</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+<code>class Bibliotheque { private List&lt;Livre&gt; livres; }</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>class Livre extends Bibliotheque</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>interface Bibliotheque extends Livre</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Polymorphisme</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q05 : s2-poly-liaison-dynamique </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> <span class="bu">Instrument</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="bu">String</span> <span class="fu">jouer</span><span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> <span class="st">&quot;...&quot;</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="kw">class</span> Guitare <span class="kw">extends</span> <span class="bu">Instrument</span> <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="bu">String</span> <span class="fu">jouer</span><span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> <span class="st">&quot;Gratte gratte&quot;</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="kw">class</span> Piano <span class="kw">extends</span> <span class="bu">Instrument</span> <span class="op">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>    <span class="bu">String</span> <span class="fu">jouer</span><span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> <span class="st">&quot;Plink plonk&quot;</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="bu">Instrument</span> i <span class="op">=</span> <span class="kw">new</span> <span class="fu">Guitare</span><span class="op">();</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i<span class="op">.</span><span class="fu">jouer</span><span class="op">());</span></span></code></pre></div>
+<p>Qu’affiche ce code ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>La <strong>liaison dynamique</strong> fait que la méthode appelée est celle du type réel de l’objet (<code>Guitare</code>), pas du type de la variable (<code>Instrument</code>).</p>
+<p>Le compilateur vérifie que <code>jouer()</code> existe dans <code>Instrument</code> (type statique) ✅, puis à l’exécution Java appelle <code>Guitare.jouer()</code> → “Gratte gratte”.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>...</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>Plink plonk</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+<code>Gratte gratte</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Polymorphisme</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q06 : s2-poly-surcharge-vs-redef </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Base <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">afficher</span><span class="op">(</span><span class="bu">String</span> msg<span class="op">)</span> <span class="op">{</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Base: &quot;</span> <span class="op">+</span> msg<span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="kw">class</span> Derivee <span class="kw">extends</span> Base <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">afficher</span><span class="op">(</span><span class="dt">int</span> code<span class="op">)</span> <span class="op">{</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Derivee: &quot;</span> <span class="op">+</span> code<span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>La méthode <code>afficher(int)</code> de <code>Derivee</code> est-elle une redéfinition ou une surcharge ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>C’est une <strong>surcharge</strong> (overload) car la <strong>signature est différente</strong> : <code>afficher(String)</code> ≠ <code>afficher(int)</code>.</p>
+<p>Pour être une redéfinition, il faudrait <strong>exactement</strong> la même signature (<code>void afficher(String msg)</code>).</p>
+<p><code>Derivee</code> possède donc <strong>deux</strong> méthodes <code>afficher</code> : celle héritée de <code>Base</code> (avec <code>String</code>) et la sienne (avec <code>int</code>).</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Les deux à la fois
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Surcharge (overload) — signature différente
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Ni l’un ni l’autre, erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Redéfinition (<span class="citation">@Override</span>)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Polymorphisme</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q07 : s2-poly-methode-accessible </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Animal <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">manger</span><span class="op">()</span> <span class="op">{</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;mange&quot;</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="kw">class</span> Chien <span class="kw">extends</span> Animal <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">aboyer</span><span class="op">()</span> <span class="op">{</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Wouaf&quot;</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>Animal a <span class="op">=</span> <span class="kw">new</span> <span class="fu">Chien</span><span class="op">();</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>a<span class="op">.</span><span class="fu">aboyer</span><span class="op">();</span>  <span class="co">// ???</span></span></code></pre></div>
+<p>Que se passe-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Erreur de compilation.</strong> Le compilateur vérifie les méthodes disponibles sur le <strong>type statique</strong> (<code>Animal</code>). La méthode <code>aboyer()</code> n’existe pas dans <code>Animal</code>, donc le code ne compile pas.</p>
+<p>Même si l’objet réel est un <code>Chien</code>, le compilateur ne regarde que le type déclaré. Pour appeler <code>aboyer()</code>, il faudrait un downcast : <code>((Chien) a).aboyer();</code></p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Erreur de compilation : aboyer() n’existe pas dans Animal
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+NullPointerException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Affiche “Wouaf”
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Affiche “mange”
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Casting</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q08 : s2-cast-classcast-exception </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Animal <span class="op">{}</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="kw">class</span> Chien <span class="kw">extends</span> Animal <span class="op">{}</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="kw">class</span> Chat <span class="kw">extends</span> Animal <span class="op">{}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>Animal a <span class="op">=</span> <span class="kw">new</span> <span class="fu">Chien</span><span class="op">();</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>Chat c <span class="op">=</span> <span class="op">(</span>Chat<span class="op">)</span> a<span class="op">;</span></span></code></pre></div>
+<p>Que se passe-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Le code <strong>compile</strong> car le compilateur voit que <code>Animal</code> pourrait théoriquement être un <code>Chat</code>. Mais à l’exécution, <code>a</code> pointe vers un <code>Chien</code>, pas un <code>Chat</code> → <strong>ClassCastException</strong>.</p>
+<p>Le compilateur ne peut pas toujours détecter les casts invalides. C’est pourquoi il faut toujours vérifier avec <code>instanceof</code> avant un downcast.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Ça fonctionne, c est un Chat vide
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>c</code> est null
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+ClassCastException à l’exécution
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Casting</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q09 : s2-cast-compilation-ou-execution </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">String</span> s <span class="op">=</span> <span class="st">&quot;Hello&quot;</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">Integer</span> i <span class="op">=</span> <span class="op">(</span><span class="bu">Integer</span><span class="op">)</span> s<span class="op">;</span></span></code></pre></div>
+<p>Que se passe-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Erreur de compilation.</strong> <code>String</code> et <code>Integer</code> n’ont <strong>aucune relation d’héritage</strong> entre eux. Le compilateur sait qu’un <code>String</code> ne peut jamais être un <code>Integer</code>, donc il refuse le cast.</p>
+<p>Un cast n’est autorisé que si les types ont une relation parent-enfant (le compilateur “doute” que ça pourrait marcher).</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Ça fonctionne
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+i vaut null
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Erreur de compilation : types incompatibles
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+ClassCastException à l’exécution
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Casting</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q10 : s2-cast-enchaine </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> A <span class="op">{}</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="kw">class</span> B <span class="kw">extends</span> A <span class="op">{}</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="kw">class</span> C <span class="kw">extends</span> B <span class="op">{}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>A obj <span class="op">=</span> <span class="kw">new</span> <span class="fu">C</span><span class="op">();</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>B b <span class="op">=</span> <span class="op">(</span>B<span class="op">)</span> obj<span class="op">;</span>   <span class="co">// Ligne 1</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>C c <span class="op">=</span> <span class="op">(</span>C<span class="op">)</span> b<span class="op">;</span>     <span class="co">// Ligne 2</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>A a2 <span class="op">=</span> c<span class="op">;</span>        <span class="co">// Ligne 3</span></span></code></pre></div>
+<p>Quelles lignes compilent et s’exécutent sans erreur ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Tout fonctionne :
+- <strong>Ligne 1</strong> : <code>obj</code> (type réel <code>C</code>) → cast en <code>B</code> ✅ (<code>C</code> est un <code>B</code>, car <code>C extends B</code>)
+- <strong>Ligne 2</strong> : <code>b</code> (type réel <code>C</code>) → cast en <code>C</code> ✅ (c’est bien un <code>C</code>)
+- <strong>Ligne 3</strong> : upcasting implicite <code>C</code> → <code>A</code> ✅ (toujours sûr)</p>
+<p>L’objet est un <code>C</code> du début à la fin, on ne fait que changer le “prisme” à travers lequel on le voit.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>4</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Ligne 3 ne compile pas
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Les trois lignes fonctionnent sans erreur
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Ligne 1 lance ClassCastException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Ligne 2 lance ClassCastException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Casting</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q11 : s2-cast-instanceof-null </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Que retourne <code>null instanceof Animal</code> ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><code>null instanceof &lt;n'importe quel type&gt;</code> retourne toujours <strong>false</strong>, sans exception.</p>
+<p>C’est une propriété utile : <code>instanceof</code> est “null-safe”, contrairement à l’appel de méthode sur null.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+false
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+NullPointerException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+true
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Autoboxing</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q12 : s2-box-wrapper-table </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Quelles associations sont correctes ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Les wrappers Java suivent une convention simple :
+- <code>int</code> → <code>Integer</code> (nom complet, pas juste la majuscule)
+- <code>char</code> → <code>Character</code> (nom complet également)
+- <code>boolean</code> → <code>Boolean</code> (pas “Bool”)
+- <code>double</code> → <code>Double</code>
+- <code>float</code> → <code>Float</code> (pas “Floating”)</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+char → Character
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+float → Floating
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+boolean → Bool
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+double → Double
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+int → Integer
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Autoboxing</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q13 : s2-box-cache-piege-127 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">Integer</span> a <span class="op">=</span> <span class="dv">127</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">Integer</span> b <span class="op">=</span> <span class="dv">127</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">==</span> b<span class="op">);</span></span></code></pre></div>
+<p>Qu’affiche ce code ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>true.</strong> Java maintient un <strong>cache</strong> pour les Integer de -128 à 127. <code>Integer.valueOf(127)</code> retourne le même objet en mémoire pour les deux variables.</p>
+<p>Donc <code>a</code> et <code>b</code> pointent vers le <strong>même objet</strong> → <code>==</code> retourne <code>true</code>.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+true
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+false
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Comportement indéfini
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Autoboxing</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q14 : s2-box-cache-piege-128 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">Integer</span> a <span class="op">=</span> <span class="dv">128</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">Integer</span> b <span class="op">=</span> <span class="dv">128</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">==</span> b<span class="op">);</span></span></code></pre></div>
+<p>Qu’affiche ce code ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>false.</strong> 128 est <strong>hors du cache</strong> (-128 à 127). Java crée <strong>deux objets distincts</strong> en mémoire. <code>==</code> compare les références → deux objets différents → <code>false</code>.</p>
+<p>C’est un piège classique. Il faut <strong>toujours utiliser <code>.equals()</code></strong> pour comparer des wrappers :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a<span class="op">.</span><span class="fu">equals</span><span class="op">(</span>b<span class="op">));</span>  <span class="co">// true</span></span></code></pre></div>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+true
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+NullPointerException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+false
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Autoboxing</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q15 : s2-box-null-unboxing </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">Integer</span> x <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="dt">int</span> y <span class="op">=</span> x<span class="op">;</span></span></code></pre></div>
+<p>Que se passe-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>NullPointerException.</strong> Java tente de faire l’unboxing de <code>x</code> (appelle <code>x.intValue()</code>), mais <code>x</code> est <code>null</code> → NPE.</p>
+<p>C’est un piège courant : l’unboxing est silencieux dans le code mais peut exploser sur un <code>null</code>. Toujours vérifier avant de déboxer.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+y vaut null
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+y vaut 0
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+NullPointerException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Autoboxing</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q16 : s2-box-generics-primitifs </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Pourquoi écrit-on <code>List&lt;Integer&gt;</code> et pas <code>List&lt;int&gt;</code> ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Les génériques Java utilisent l’<strong>effacement de type</strong> (type erasure) et ne fonctionnent qu’avec des <strong>types objets</strong> (classes). Les types primitifs (<code>int</code>, <code>double</code>, etc.) ne sont pas des objets.</p>
+<p>C’est pourquoi on utilise les wrappers : <code>List&lt;Integer&gt;</code>, <code>Map&lt;String, Double&gt;</code>, etc.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+C’est une convention de style
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Les génériques Java ne supportent que les types objets, pas les primitifs
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Les deux fonctionnent
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>int</code> est trop petit pour une liste
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Autoboxing</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q17 : s2-box-equals-wrapper </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="dt">int</span> a <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">Integer</span> b <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>a <span class="op">==</span> b<span class="op">);</span></span></code></pre></div>
+<p>Qu’affiche ce code ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>true.</strong> Quand on compare un primitif et un wrapper avec <code>==</code>, Java fait l’<strong>unboxing</strong> du wrapper. La comparaison devient <code>42 == 42</code> (deux primitifs) → <code>true</code>.</p>
+<p>Le piège du cache ne s’applique que quand on compare <strong>deux wrappers</strong> entre eux.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+NullPointerException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+true
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+false
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Records</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q18 : s2-record-immutable </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">record</span> <span class="fu">Etudiant</span><span class="op">(</span><span class="bu">String</span> nom<span class="op">,</span> <span class="dt">int</span> age<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>Etudiant e <span class="op">=</span> <span class="kw">new</span> <span class="fu">Etudiant</span><span class="op">(</span><span class="st">&quot;Alice&quot;</span><span class="op">,</span> <span class="dv">20</span><span class="op">);</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>e<span class="op">.</span><span class="fu">age</span> <span class="op">=</span> <span class="dv">21</span><span class="op">;</span>  <span class="co">// ???</span></span></code></pre></div>
+<p>Que se passe-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Erreur de compilation.</strong> Les champs d’un record sont implicitement <code>private final</code>. Un record est <strong>immuable</strong> : une fois créé, ses valeurs ne changent plus.</p>
+<p>Pour “modifier” un record, on en crée un nouveau :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>Etudiant e2 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Etudiant</span><span class="op">(</span><span class="st">&quot;Alice&quot;</span><span class="op">,</span> <span class="dv">21</span><span class="op">);</span></span></code></pre></div>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+UnsupportedOperationException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Ça fonctionne mais c’est déconseillé
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+L’âge passe à 21
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Erreur de compilation : les champs d’un record sont final
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Records</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q19 : s2-record-equals </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">record</span> <span class="bu">Point</span><span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> <span class="dt">int</span> y<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">Point</span> p1 <span class="op">=</span> <span class="kw">new</span> <span class="bu">Point</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">);</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="bu">Point</span> p2 <span class="op">=</span> <span class="kw">new</span> <span class="bu">Point</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>p1<span class="op">.</span><span class="fu">equals</span><span class="op">(</span>p2<span class="op">));</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>p1 <span class="op">==</span> p2<span class="op">);</span></span></code></pre></div>
+<p>Qu’affiche ce code ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li><code>p1.equals(p2)</code> → <strong>true</strong> : les records génèrent un <code>equals()</code> qui compare les valeurs de tous les champs (3==3 et 4==4)</li>
+<li><code>p1 == p2</code> → <strong>false</strong> : ce sont deux objets distincts en mémoire (deux <code>new</code>)</li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+true puis true
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+true puis false
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+false puis true
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+false puis false
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Records</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q20 : s2-record-interface </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Un record peut-il implémenter une interface ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Oui ! Un record peut implémenter des interfaces :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">public</span> <span class="kw">record</span> <span class="fu">Cercle</span><span class="op">(</span><span class="dt">double</span> rayon<span class="op">)</span> <span class="kw">implements</span> Forme <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">surface</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">PI</span> <span class="op">*</span> rayon <span class="op">*</span> rayon<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>En revanche, un record <strong>ne peut pas</strong> hériter d’une classe (il hérite implicitement de <code>java.lang.Record</code>).</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Oui
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Seulement Serializable
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Seulement les interfaces fonctionnelles
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Records</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q21 : s2-record-heritage </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">record</span> <span class="bu">Point2D</span><span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> <span class="dt">int</span> y<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="kw">record</span> <span class="fu">Point3D</span><span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> <span class="dt">int</span> y<span class="op">,</span> <span class="dt">int</span> z<span class="op">)</span> <span class="kw">extends</span> <span class="bu">Point2D</span> <span class="op">{}</span></span></code></pre></div>
+<p>Ce code compile-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Non.</strong> Un record hérite implicitement de <code>java.lang.Record</code> et ne peut pas hériter d’une autre classe ou d’un autre record.</p>
+<p>Les records sont des conteneurs de données “plats”. Si vous avez besoin d’héritage, utilisez des classes classiques.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, mais ça fonctionne avec une classe abstraite
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Non, un record ne peut pas hériter d’un autre record
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui, mais seulement avec des records
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Records</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q22 : s2-record-quand-utiliser </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Quand est-il pertinent d’utiliser un record ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Les records sont idéaux pour les <strong>conteneurs de données immuables</strong> :
+- DTO, valeurs de retour groupées, clés composites ✅
+- PAS pour les objets mutables (pas de setters) ❌
+- PAS pour les classes avec beaucoup de logique métier (même si on peut ajouter des méthodes) ❌</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+Pour une entité mutable avec des setters (ex: Compte bancaire)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+Pour un DTO simple (Data Transfer Object) comme Point, Coordonnees
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+Pour des résultats de méthode groupant plusieurs valeurs
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+Pour une classe avec beaucoup de logique métier
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+Pour des clés de Map composites
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Exceptions</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q23 : s2-exc-try-catch-flow </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;A&quot;</span><span class="op">);</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;B&quot;</span><span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">ArithmeticException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;C&quot;</span><span class="op">);</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="op">}</span> <span class="cf">finally</span> <span class="op">{</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;D&quot;</span><span class="op">);</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;E&quot;</span><span class="op">);</span></span></code></pre></div>
+<p>Qu’affiche ce code ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ol style="list-style-type: decimal">
+<li><code>"A"</code> s’affiche</li>
+<li><code>10 / 0</code> lance <code>ArithmeticException</code> → on saute <code>"B"</code></li>
+<li>Le catch attrape l’exception → <code>"C"</code> s’affiche</li>
+<li>Le finally s’exécute toujours → <code>"D"</code> s’affiche</li>
+<li>L’exception est traitée, le programme continue → <code>"E"</code> s’affiche</li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+A C D
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+A C D E
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+A D E
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+A B C D E
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Exceptions</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q24 : s2-exc-finally-guarantee </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span> <span class="cf">finally</span> <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;finally&quot;</span><span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Le <code>finally</code> s’exécute-t-il malgré le <code>return</code> dans le try ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Oui.</strong> Le <code>finally</code> s’exécute <strong>toujours</strong>, même en présence d’un <code>return</code>, d’un <code>break</code>, ou d’une exception non attrapée.</p>
+<p>Le seul cas où <code>finally</code> ne s’exécute pas est <code>System.exit()</code> ou un crash de la JVM.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, return quitte immédiatement
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Oui, finally s’exécute avant le return effectif
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Comportement indéfini
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Exceptions</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q25 : s2-exc-checked-vs-unchecked </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Classez ces exceptions : checked ou unchecked ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li><code>IOException</code> → <strong>Checked</strong> ✅ (extends Exception)</li>
+<li><code>NullPointerException</code> → <strong>Unchecked</strong> ✅ (extends RuntimeException)</li>
+<li><code>ArrayIndexOutOfBoundsException</code> → <strong>Unchecked</strong> (extends RuntimeException)</li>
+<li><code>FileNotFoundException</code> → <strong>Checked</strong> ✅ (extends IOException)</li>
+<li><code>IllegalArgumentException</code> → <strong>Unchecked</strong> (extends RuntimeException)</li>
+</ul>
+<p>Règle : si ça hérite de <code>RuntimeException</code> → unchecked. Sinon → checked.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+IOException → Checked
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+IllegalArgumentException → Checked
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+NullPointerException → Unchecked
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="33.33333" format="html">
+<text><![CDATA[<p>
+FileNotFoundException → Checked
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+ArrayIndexOutOfBoundsException → Checked
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Exceptions</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q26 : s2-exc-multi-catch </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="co">// code</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> <span class="op">|</span> <span class="bu">SQLException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>e<span class="op">.</span><span class="fu">getMessage</span><span class="op">());</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Que signifie cette syntaxe ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Le <strong>multi-catch</strong> (Java 7+) permet de traiter plusieurs types d’exceptions avec le même bloc. Le <code>|</code> signifie “OU”.</p>
+<p>C’est équivalent à deux blocs catch séparés mais évite la duplication de code. La variable <code>e</code> est de type <code>IOException | SQLException</code> (le plus petit type commun).</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+On attrape IOException ET SQLException en même temps
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de syntaxe
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+On attrape IOException OU SQLException avec le même traitement
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+IOException doit être suivie de SQLException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Exceptions</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q27 : s2-exc-catch-order </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="co">// code risqué</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;A&quot;</span><span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;B&quot;</span><span class="op">);</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Que se passe-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Erreur de compilation.</strong> <code>Exception</code> est le parent de <code>IOException</code>. Le premier catch attrape <strong>toutes</strong> les exceptions, y compris les <code>IOException</code>. Le second catch n’est jamais atteint → le compilateur refuse.</p>
+<p>Il faut mettre les exceptions <strong>les plus spécifiques en premier</strong> :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span>      <span class="co">// spécifique d&#39;abord</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span>        <span class="co">// général ensuite</span></span></code></pre></div>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Fonctionne normalement
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Affiche “A” pour les Exception et “B” pour les IOException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Erreur de compilation : IOException déjà attrapée par catch(Exception)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Affiche “B” puis “A”
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Static</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q28 : s2-static-this-interdit </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> MaClasse <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="dt">static</span> <span class="dt">void</span> <span class="fu">afficher</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">x</span><span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Que se passe-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Erreur de compilation.</strong> Dans une méthode <code>static</code>, il n’y a <strong>pas d’objet courant</strong> (pas de <code>this</code>). Une méthode static est appelée sur la classe, pas sur une instance.</p>
+<p>On ne peut accéder qu’à d’autres membres <code>static</code> depuis un contexte <code>static</code>.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Affiche null
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Erreur de compilation : this ne peut pas être utilisé dans un contexte static
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Affiche 10
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+NullPointerException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Static</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q29 : s2-static-methode-utilitaire </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Pour une méthode <code>double convertirEnKm(double miles)</code> qui ne dépend d’aucun attribut d’instance, faut-il la déclarer <code>static</code> ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Oui.</strong> Si une méthode n’accède à aucun attribut d’instance et ne dépend d’aucun état de l’objet, elle devrait être <code>static</code>.</p>
+<p>Avantages :
+- Pas besoin de créer un objet inutile pour l’appeler
+- Indique clairement que la méthode est “sans état”
+- <code>double km = Convertisseur.convertirEnKm(10.0);</code></p>
+<p>C’est le principe des classes utilitaires comme <code>Math.sqrt()</code>, <code>Collections.sort()</code>.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, il faut créer un objet pour l’utiliser
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, les méthodes statiques sont déconseillées
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Ça dépend du contexte
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Oui, car elle n’a pas besoin d’instance pour fonctionner
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Static</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q30 : s2-static-access-instance </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Depuis une méthode <code>static</code>, peut-on accéder à un attribut non-static ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>On ne peut <strong>pas</strong> accéder directement à un attribut d’instance depuis un contexte static (pas de <code>this</code>).</p>
+<p>Mais on <strong>peut</strong> y accéder si on dispose d’une référence :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="dt">static</span> <span class="dt">void</span> <span class="fu">afficher</span><span class="op">(</span>Produit p<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>p<span class="op">.</span><span class="fu">nom</span><span class="op">);</span>  <span class="co">// via la référence p</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Non, sauf si on a une référence vers une instance
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui, avec this
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui, directement
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, jamais
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/SOLID</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q31 : s2-solid-srp-identification </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Quelles classes violent le SRP ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<ul>
+<li><code>Commande</code> : calcul + email + persistence = <strong>3 responsabilités</strong> → viole SRP ✅</li>
+<li><code>Calculatrice</code> : toutes les méthodes sont liées au calcul = <strong>1 responsabilité</strong> → OK ❌</li>
+<li><code>Utilisateur</code> : authentification + facturation + notification = <strong>3 responsabilités</strong> → viole SRP ✅</li>
+<li><code>Logger</code> : toutes les méthodes sont liées au logging = <strong>1 responsabilité</strong> → OK ❌</li>
+</ul>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+<code>class Commande { void calculerTotal(); void envoyerEmail(); void sauvegarder(); }</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+<code>class Logger { void info(String msg); void warn(String msg); void error(String msg); }</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="50" format="html">
+<text><![CDATA[<p>
+<code>class Utilisateur { void seConnecter(); void genererFacture(); void envoyerSMS(); }</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+<code>class Calculatrice { int additionner(int a, int b); int soustraire(int a, int b); }</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/SOLID</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q32 : s2-solid-lsp-quiz </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Oiseau <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">voler</span><span class="op">()</span> <span class="op">{</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Je vole&quot;</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="kw">class</span> Autruche <span class="kw">extends</span> Oiseau <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">voler</span><span class="op">()</span> <span class="op">{</span> <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">UnsupportedOperationException</span><span class="op">(</span><span class="st">&quot;Je ne vole pas&quot;</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="dt">void</span> <span class="fu">faireFaireTourDuParc</span><span class="op">(</span>Oiseau o<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>    o<span class="op">.</span><span class="fu">voler</span><span class="op">();</span>  <span class="co">// tous les oiseaux volent... non ?</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Quel principe SOLID est violé ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>LSP</strong> est violé. La méthode <code>faireFaireTourDuParc</code> s’attend à ce que tout <code>Oiseau</code> puisse <code>voler()</code>. L’<code>Autruche</code> lance une exception → elle ne se comporte pas comme un <code>Oiseau</code> normal → elle ne peut pas être substituée.</p>
+<p>Solution : séparer <code>interface Volant</code> de la classe <code>Oiseau</code>. Seuls les oiseaux qui volent implémentent <code>Volant</code>.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+SRP
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+LSP (Liskov Substitution)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+OCP
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+DIP
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/SOLID</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q33 : s2-solid-identify-principle </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> RapportVente <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">calculerStatistiques</span><span class="op">()</span> <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">genererPDF</span><span class="op">()</span> <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">envoyerParEmail</span><span class="op">()</span> <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">sauvegarderEnBDD</span><span class="op">()</span> <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Quel principe SOLID est principalement violé ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>SRP</strong> : cette classe a <strong>4 responsabilités</strong> distinctes : statistiques, génération PDF, envoi email, persistance.</p>
+<p>Chacune de ces responsabilités peut changer pour une raison différente (nouveau format de rapport, changement de serveur email, etc.). Il faudrait 4 classes.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+LSP (Liskov)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+OCP (Open/Closed)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+DIP (Dependency Inversion)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+SRP (Single Responsibility)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/SOLID</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q34 : s2-solid-ocp-application </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Pour calculer des réductions selon le type de client (Standard, Premium, VIP), quelle approche respecte OCP ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>L’interface <code>Reduction</code> avec des implémentations respecte OCP :
+- Pour ajouter un nouveau type (ex: <code>ReductionEmploye</code>), on crée une nouvelle classe
+- On ne modifie <strong>aucun code existant</strong>
+- Le code qui utilise <code>Reduction</code> fonctionne automatiquement avec le nouveau type (polymorphisme)</p>
+<p>Les <code>switch</code> et <code>if/else</code> nécessitent de modifier du code existant → violent OCP.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Des <code>if/else</code> avec <code>instanceof</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Une interface <code>Reduction</code> avec des implémentations <code>ReductionStandard</code>, <code>ReductionPremium</code>, <code>ReductionVIP</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Une seule classe avec un attribut <code>typeClient</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Un <code>switch</code> sur le type de client dans la méthode <code>calculerReduction()</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Refactoring</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q35 : s2-refact-code-smells </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<p>Quels éléments sont des “code smells” (indicateurs de mauvaise conception) ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Les code smells :
+- <strong>Méthode longue</strong> (200 lignes) → Extract Method ✅
+- <strong>God Class</strong> (“Manager” avec 30 méthodes) → Extract Class ✅
+- Classe avec 3 attributs : c’est <strong>normal</strong> ❌
+- <strong>Code dupliqué</strong> (5 copies) → Extract Method ou classe partagée ✅
+- <strong>Trop de paramètres</strong> (10) → regrouper dans un objet (Parameter Object) ✅</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+Une méthode avec 10 paramètres
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+Dupliquer le même bloc de code dans 5 méthodes
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+Une classe nommée “Manager” ou “Handler” avec 30 méthodes
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-50" format="html">
+<text><![CDATA[<p>
+Une classe avec 3 attributs private et des getters/setters
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="25" format="html">
+<text><![CDATA[<p>
+Une méthode de 200 lignes
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Synthèse</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q36 : s2-synth-compilation-1 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">record</span> <span class="fu">Produit</span><span class="op">(</span><span class="bu">String</span> nom<span class="op">,</span> <span class="dt">double</span> prix<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>Produit p <span class="op">=</span> <span class="kw">new</span> <span class="fu">Produit</span><span class="op">(</span><span class="st">&quot;Café&quot;</span><span class="op">,</span> <span class="fl">2.50</span><span class="op">);</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>p <span class="op">=</span> <span class="kw">new</span> <span class="fu">Produit</span><span class="op">(</span><span class="st">&quot;Thé&quot;</span><span class="op">,</span> <span class="fl">1.80</span><span class="op">);</span></span></code></pre></div>
+<p>Ce code compile-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Oui, ça compile.</strong> L’<strong>immuabilité</strong> d’un record signifie qu’on ne peut pas modifier ses <strong>champs</strong> une fois créé. Mais la <strong>variable</strong> <code>p</code> n’est pas <code>final</code>, donc on peut la faire pointer vers un <strong>nouvel objet</strong>.</p>
+<p>Le premier <code>Produit("Café", 2.50)</code> reste inchangé en mémoire (mais n’est plus référencé).</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, on ne peut pas créer deux records
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, les records sont immuables donc p ne peut pas changer
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Oui, on crée un nouveau record (la variable p n’est pas final)
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui, mais le premier objet est modifié
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Synthèse</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q37 : s2-synth-compilation-2 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> MonService <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">traiter</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IOException</span><span class="op">(</span><span class="st">&quot;Fichier manquant&quot;</span><span class="op">);</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Ce code compile-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Erreur de compilation.</strong> <code>IOException</code> est une <strong>checked exception</strong>. Le compilateur exige qu’elle soit soit attrapée (<code>try/catch</code>), soit déclarée dans la signature (<code>throws IOException</code>).</p>
+<p>Correction :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="dt">void</span> <span class="fu">traiter</span><span class="op">()</span> <span class="kw">throws</span> <span class="bu">IOException</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IOException</span><span class="op">(</span><span class="st">&quot;Fichier manquant&quot;</span><span class="op">);</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui, mais avec un warning
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Non, IOException est checked et doit être déclarée avec throws
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, on ne peut pas instancier IOException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Synthèse</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q38 : s2-synth-compilation-3 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Compteur <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="dt">int</span> valeur <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="dt">static</span> <span class="dt">void</span> <span class="fu">incrementer</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>        valeur<span class="op">++;</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Ce code compile-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Erreur de compilation.</strong> <code>valeur</code> est un attribut d’<strong>instance</strong> (pas <code>static</code>). La méthode <code>incrementer()</code> est <code>static</code> et n’a pas de <code>this</code> → elle ne peut pas accéder à <code>valeur</code>.</p>
+<p>Solutions :
+- Rendre <code>valeur</code> static : <code>static int valeur = 0;</code>
+- Ou rendre <code>incrementer()</code> non-static : <code>void incrementer()</code></p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui, mais valeur ne sera pas incrémentée
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, il manque le constructeur
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Non, une méthode static ne peut pas accéder à un attribut non-static
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Synthèse</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q39 : s2-synth-piege-1 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">record</span> <span class="fu">Personne</span><span class="op">(</span><span class="bu">String</span> nom<span class="op">,</span> <span class="dt">int</span> age<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>Personne p <span class="op">=</span> <span class="kw">new</span> <span class="fu">Personne</span><span class="op">(</span><span class="st">&quot;Alice&quot;</span><span class="op">,</span> <span class="dv">20</span><span class="op">);</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>p<span class="op">);</span></span></code></pre></div>
+<p>Qu’affiche ce code ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Les records génèrent automatiquement un <code>toString()</code> lisible au format <code>NomRecord[champ1=valeur1, champ2=valeur2]</code>.</p>
+<p>Pas besoin de le redéfinir manuellement (contrairement aux classes classiques qui affichent l’adresse mémoire par défaut).</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>Alice, 20</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+<code>Personne@7a81197d</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+<code>Personne[nom=Alice, age=20]</code>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Synthèse</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q40 : s2-synth-piege-2 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">Integer</span> a <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">Integer</span> b <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">Integer</span> c <span class="op">=</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>c <span class="op">==</span> <span class="dv">3</span><span class="op">);</span></span></code></pre></div>
+<p>Qu’affiche ce code ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>true.</strong> Voici ce qui se passe :
+1. <code>a + b</code> : unboxing de <code>a</code> et <code>b</code> → <code>1 + 2 = 3</code> (primitif <code>int</code>)
+2. <code>c = 3</code> : autoboxing → <code>Integer.valueOf(3)</code>
+3. <code>c == 3</code> : comparaison Integer avec int primitif → unboxing de <code>c</code> → <code>3 == 3</code> → <strong>true</strong></p>
+<p>3 est dans le cache (-128 à 127) mais ici c’est la comparaison avec un primitif qui compte.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+NullPointerException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+true
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+false
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Synthèse</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q41 : s2-synth-final-qcm-1 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> A <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="bu">String</span> <span class="fu">m</span><span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> <span class="st">&quot;A&quot;</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="kw">class</span> B <span class="kw">extends</span> A <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="bu">String</span> <span class="fu">m</span><span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> <span class="st">&quot;B&quot;</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="kw">class</span> C <span class="kw">extends</span> B <span class="op">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>    <span class="bu">String</span> <span class="fu">m</span><span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> <span class="st">&quot;C&quot;</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>A obj <span class="op">=</span> <span class="kw">new</span> <span class="fu">C</span><span class="op">();</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>obj<span class="op">.</span><span class="fu">m</span><span class="op">());</span></span></code></pre></div>
+<p>Qu’affiche ce code ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>C.</strong> La liaison dynamique fait que <code>obj.m()</code> appelle la méthode du type réel (<code>C</code>), pas du type déclaré (<code>A</code>).</p>
+<p>La chaîne d’héritage A → B → C signifie que C a redéfini <code>m()</code> en dernier, c’est donc sa version qui s’exécute.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Erreur de compilation
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+B
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+A
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+C
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Synthèse</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q42 : s2-synth-final-qcm-2 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Fichier <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="fu">Fichier</span><span class="op">(</span><span class="bu">String</span> path<span class="op">)</span> <span class="kw">throws</span> <span class="bu">IOException</span> <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(!</span><span class="kw">new</span> <span class="bu">File</span><span class="op">(</span>path<span class="op">).</span><span class="fu">exists</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IOException</span><span class="op">(</span><span class="st">&quot;Fichier introuvable : &quot;</span> <span class="op">+</span> path<span class="op">);</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co">// Dans main :</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>Fichier f <span class="op">=</span> <span class="kw">new</span> <span class="fu">Fichier</span><span class="op">(</span><span class="st">&quot;data.txt&quot;</span><span class="op">);</span></span></code></pre></div>
+<p>Ce code dans <code>main</code> compile-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Non.</strong> <code>IOException</code> est une checked exception. Le constructeur de <code>Fichier</code> la déclare avec <code>throws</code>. L’appelant (main) <strong>doit</strong> soit l’attraper, soit la propager :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co">// Option 1 :</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>    Fichier f <span class="op">=</span> <span class="kw">new</span> <span class="fu">Fichier</span><span class="op">(</span><span class="st">&quot;data.txt&quot;</span><span class="op">);</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">// Option 2 :</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="kw">throws</span> <span class="bu">IOException</span> <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span></code></pre></div>
+<p>Un constructeur <strong>peut</strong> tout à fait lancer des exceptions — c’est même courant pour la validation.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>3</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui, mais avec un warning
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, un constructeur ne peut pas lancer d’exception
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Non, main doit soit try/catch soit déclarer throws IOException
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+
+<question type="category">
+<category>
+<text>$course$/TD-Seance2-exam_rexams/Synthèse</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q43 : s2-synth-final-qcm-3 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<style type="text/css" rel="stylesheet">
+/* tables with alternating shading */
+.table_shade {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+.table_shade th {
+    border:1px solid #FFFFFF;
+    background: #D5D5D5;
+}
+.table_shade td {
+    border:1px solid #FFFFFF;
+}
+.table_shade .odd {
+    background: #EEEEEE;
+}
+.table_shade .even {
+    background: #FBFBFB;
+}
+</style>
+<p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">record</span> <span class="bu">Point</span><span class="op">(</span><span class="dt">int</span> x<span class="op">,</span> <span class="dt">int</span> y<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">Point</span> p <span class="op">=</span> <span class="kw">new</span> <span class="bu">Point</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">);</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>p<span class="op">.</span><span class="fu">getX</span><span class="op">());</span></span></code></pre></div>
+<p>Ce code compile-t-il ?</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p><strong>Erreur de compilation.</strong> Les records génèrent des accesseurs <strong>sans préfixe get</strong> :
+- <code>p.x()</code> au lieu de <code>p.getX()</code>
+- <code>p.y()</code> au lieu de <code>p.getY()</code></p>
+<p>C’est une différence importante avec les classes traditionnelles JavaBeans.</p>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>2</defaultgrade>
+<shuffleanswers>true</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui, mais affiche null
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+Non, les accesseurs d’un record n’ont pas de préfixe get (c’est p.x())
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Correct.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Non, les records n’ont pas d’accesseurs
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="0" format="html">
+<text><![CDATA[<p>
+Oui, affiche 3
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+Incorrect.
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+</quiz>

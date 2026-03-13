@@ -12,9 +12,7 @@ produce:
 :::question
 id: poo-kahoot-classe
 type: schoice
-title: Mot-clé pour déclarer une classe
-
-Quel mot-clé déclare une classe en Java ?
+title: Quel mot-clé déclare une classe en Java ?
 
 :::answers
 - [ ] Class
@@ -30,9 +28,7 @@ En Java, le mot-clé `class` (minuscule) permet de déclarer une classe.
 :::question
 id: poo-match-visibilite
 type: matching
-title: Modificateurs et portées
-
-Associez chaque modificateur à sa portée :
+title: Associez chaque modificateur à sa portée :
 
 :::answers
 - private --- Classe uniquement
@@ -48,9 +44,7 @@ Les 4 niveaux de visibilité en Java avec leur portée respective.
 :::question
 id: poo-fill-classe
 type: cloze
-title: Déclaration de classe
-
-Complétez la déclaration de classe :
+title: Complétez la déclaration de classe :
 
 :::answers
 public [class] Voiture [extends] Vehicule { }
@@ -60,38 +54,11 @@ public [class] Voiture [extends] Vehicule { }
 
 ---
 
-:::question
-id: poo-erreur-1
-type: schoice
-title: Erreur dans le code 1
-
-Quel est le problème dans ce code ?
-
-```java
-class Personne {
-    private String nom;
-}
-Personne p = new Personne();
-System.out.println(p.nom);
-```
-
-:::answers
-- [ ] Il manque le mot-clé public
-- [x] L'attribut nom est private donc inaccessible
-- [ ] Il faut utiliser Personne.nom
-- [ ] La classe n'a pas de constructeur
-
-:::solution
-L'attribut `nom` est `private`, on ne peut pas y accéder depuis l'extérieur. Il faut un getter.
-
----
 
 :::question
 id: poo-kahoot-new
 type: schoice
-title: Mot-clé pour créer un objet
-
-Quel mot-clé permet de créer un objet ?
+title: Quel mot-clé permet de créer un objet ?
 
 :::answers
 - [ ] create
@@ -107,9 +74,7 @@ Le mot-clé `new` permet d'instancier un objet en Java.
 :::question
 id: poo-match-concepts
 type: matching
-title: Concepts POO et définitions
-
-Associez chaque concept POO à sa définition :
+title: Associez chaque concept POO à sa définition :
 
 :::answers
 - Encapsulation --- Cacher les détails internes
@@ -125,9 +90,7 @@ Les 4 piliers de la POO et leurs définitions.
 :::question
 id: poo-fill-interface
 type: cloze
-title: Implémentation d'interface
-
-Complétez l'implémentation d'interface :
+title: Complétez l'implémentation d'interface :
 
 :::answers
 public class Canard [implements] Volant { }
@@ -138,36 +101,9 @@ public class Canard [implements] Volant { }
 ---
 
 :::question
-id: poo-erreur-2
-type: schoice
-title: Erreur dans le code 2
-
-Quel est le problème dans ce code ?
-
-```java
-abstract class Animal {
-    abstract void crier();
-}
-Animal a = new Animal();
-```
-
-:::answers
-- [x] On ne peut pas instancier une classe abstraite
-- [ ] La méthode crier() n'a pas de corps
-- [ ] Il manque le mot-clé public
-- [ ] Animal doit être une interface
-
-:::solution
-Une classe `abstract` ne peut PAS être instanciée avec `new`.
-
----
-
-:::question
 id: poo-kahoot-private
 type: schoice
-title: Portée de private
-
-Un attribut `private` est accessible depuis...
+title: Un attribut `private` est accessible depuis...
 
 :::answers
 - [x] Sa propre classe uniquement
@@ -183,9 +119,7 @@ Un attribut `private` est accessible depuis...
 :::question
 id: poo-match-motsclés
 type: matching
-title: Mots-clés et usages
-
-Associez chaque mot-clé à son usage :
+title: Associez chaque mot-clé à son usage :
 
 :::answers
 - extends --- Hériter d'une classe
@@ -201,9 +135,7 @@ Les mots-clés essentiels de la POO Java.
 :::question
 id: poo-fill-constructeur
 type: cloze
-title: Constructeur avec this
-
-Complétez le constructeur :
+title: Complétez le constructeur :
 
 :::answers
 public Personne(String nom) { [this].nom = nom; }
@@ -213,38 +145,11 @@ public Personne(String nom) { [this].nom = nom; }
 
 ---
 
-:::question
-id: poo-erreur-3
-type: schoice
-title: Erreur dans le code 3
-
-Quel est le problème dans ce code ?
-
-```java
-class Voiture extends Vehicule {
-    public Voiture(String marque) {
-        this.marque = marque;
-    }
-}
-```
-
-:::answers
-- [ ] Il faut utiliser extends autrement
-- [ ] this.marque est incorrect
-- [x] Il faut appeler super() en premier
-- [ ] Le constructeur doit être private
-
-:::solution
-Le constructeur de la classe parente doit être appelé en premier avec `super(marque)`.
-
----
 
 :::question
 id: poo-kahoot-heritage
 type: schoice
-title: Mot-clé pour hériter
-
-Quel mot-clé permet d'hériter d'une classe ?
+title: Quel mot-clé permet d'hériter d'une classe ?
 
 :::answers
 - [ ] inherits
@@ -260,9 +165,7 @@ Quel mot-clé permet d'hériter d'une classe ?
 :::question
 id: poo-match-methodes
 type: matching
-title: Méthodes Object et rôles
-
-Associez chaque méthode Object à son rôle :
+title: Associez chaque méthode Object à son rôle :
 
 :::answers
 - equals() --- Comparer le contenu
@@ -278,9 +181,7 @@ Méthodes héritées de Object utilisées fréquemment.
 :::question
 id: poo-fill-heritage
 type: cloze
-title: Appel au constructeur parent
-
-Complétez l'appel au constructeur parent :
+title: Complétez l'appel au constructeur parent :
 
 :::answers
 public Voiture(String marque) { [super](marque); }
@@ -291,37 +192,9 @@ public Voiture(String marque) { [super](marque); }
 ---
 
 :::question
-id: poo-erreur-4
-type: schoice
-title: Erreur dans le code 4
-
-Quel est le problème dans ce code ?
-
-```java
-String a = "hello";
-String b = "hello";
-if (a == b) {
-    System.out.println("égaux");
-}
-```
-
-:::answers
-- [ ] Il faut utiliser a.compareTo(b)
-- [x] Il faut utiliser a.equals(b) pour comparer le contenu
-- [ ] Les String ne peuvent pas être comparés
-- [ ] Il manque des accolades
-
-:::solution
-`==` compare les références, pas le contenu. Pour comparer le contenu de deux objets, utiliser `equals()`.
-
----
-
-:::question
 id: poo-kahoot-interface
 type: schoice
-title: Mot-clé pour implémenter
-
-Quel mot-clé permet d'implémenter une interface ?
+title: Quel mot-clé permet d'implémenter une interface ?
 
 :::answers
 - [ ] extends
@@ -337,9 +210,7 @@ Quel mot-clé permet d'implémenter une interface ?
 :::question
 id: poo-match-relations
 type: matching
-title: Relations UML et exemples
-
-Associez chaque relation UML à son exemple :
+title: Associez chaque relation UML à son exemple :
 
 :::answers
 - Est-un --- Voiture extends Vehicule
@@ -355,9 +226,7 @@ Les différentes relations entre classes en POO.
 :::question
 id: poo-fill-getter
 type: cloze
-title: Getter
-
-Complétez le getter :
+title: Complétez le getter :
 
 :::answers
 public String getNom() { [return] this.nom; }
@@ -367,38 +236,11 @@ Un getter utilise `return` pour retourner la valeur.
 
 ---
 
-:::question
-id: poo-erreur-5
-type: schoice
-title: Erreur dans le code 5
-
-Quel est le problème dans ce code ?
-
-```java
-interface Volant {
-    void voler() {
-        System.out.println("Je vole");
-    }
-}
-```
-
-:::answers
-- [ ] Il faut utiliser class au lieu de interface
-- [x] Une méthode d'interface ne peut pas avoir de corps (sauf default)
-- [ ] void n'est pas autorisé dans une interface
-- [ ] Il manque le mot-clé public
-
-:::solution
-Les méthodes d'interface sont abstraites par défaut. Pour avoir un corps, il faut utiliser `default void voler()`.
-
----
 
 :::question
 id: poo-kahoot-this
 type: schoice
-title: Mot-clé this
-
-À quoi sert le mot-clé `this` ?
+title: À quoi sert le mot-clé `this` ?
 
 :::answers
 - [ ] Créer un objet
@@ -414,9 +256,7 @@ title: Mot-clé this
 :::question
 id: poo-match-erreurs
 type: matching
-title: Erreurs et causes
-
-Associez chaque erreur à sa cause probable :
+title: Associez chaque erreur à sa cause probable :
 
 :::answers
 - NullPointerException --- Appel de méthode sur null
@@ -432,9 +272,7 @@ Les erreurs courantes en Java et leurs causes.
 :::question
 id: poo-fill-instanciation
 type: cloze
-title: Création d'objet
-
-Complétez la création d'objet :
+title: Complétez la création d'objet :
 
 :::answers
 Voiture v = [new] Voiture("Peugeot");
@@ -447,9 +285,7 @@ Voiture v = [new] Voiture("Peugeot");
 :::question
 id: poo-erreur-6
 type: schoice
-title: Erreur dans le code 6
-
-Quel est le problème dans ce code ?
+title: Quel est le problème dans ce code ?
 
 ```java
 class Enfant extends Parent {
@@ -475,9 +311,7 @@ Pour redéfinir une méthode, la signature doit être identique. Ici c'est une s
 :::question
 id: poo-kahoot-super
 type: schoice
-title: Mot-clé super
-
-À quoi sert le mot-clé `super` ?
+title: À quoi sert le mot-clé `super` ?
 
 :::answers
 - [ ] Créer un objet
@@ -493,9 +327,7 @@ title: Mot-clé super
 :::question
 id: poo-match-types
 type: matching
-title: Types et valeurs par défaut
-
-Associez chaque type à sa valeur par défaut :
+title: Associez chaque type à sa valeur par défaut :
 
 :::answers
 - int --- 0
@@ -511,9 +343,7 @@ Les valeurs par défaut des types primitifs et objets en Java.
 :::question
 id: poo-fill-override
 type: cloze
-title: Redéfinition de méthode
-
-Complétez la redéfinition de méthode :
+title: Complétez la redéfinition de méthode :
 
 :::answers
 [@Override] public String toString() { return this.nom; }
@@ -524,39 +354,9 @@ Complétez la redéfinition de méthode :
 ---
 
 :::question
-id: poo-erreur-7
-type: schoice
-title: Erreur dans le code 7
-
-Quel est le problème dans ce code ?
-
-```java
-public class Test {
-    private int valeur = 10;
-    
-    public static void afficher() {
-        System.out.println(valeur);
-    }
-}
-```
-
-:::answers
-- [ ] valeur doit être public
-- [ ] Il manque un constructeur
-- [x] Une méthode static ne peut pas accéder à un attribut non-static
-- [ ] println ne peut pas afficher un int
-
-:::solution
-Les méthodes `static` n'ont pas accès aux attributs d'instance. Il faut soit rendre `valeur` static, soit rendre la méthode non-static.
-
----
-
-:::question
 id: poo-kahoot-null
 type: schoice
-title: Référence non initialisée
-
-Que vaut une référence non initialisée ?
+title: Que vaut une référence non initialisée ?
 
 :::answers
 - [ ] 0
@@ -572,9 +372,7 @@ Une référence non initialisée vaut `null` en Java.
 :::question
 id: poo-match-modificateurs
 type: matching
-title: Modificateurs et effets
-
-Associez chaque modificateur à son effet :
+title: Associez chaque modificateur à son effet :
 
 :::answers
 - final (classe) --- Ne peut pas être héritée
@@ -590,9 +388,7 @@ Le mot-clé `final` a différents effets selon le contexte.
 :::question
 id: poo-fill-setter
 type: cloze
-title: Setter
-
-Complétez le setter :
+title: Complétez le setter :
 
 :::answers
 public void setNom(String nom) { [this].nom = nom; }
@@ -602,36 +398,11 @@ Un setter modifie la valeur d'un attribut.
 
 ---
 
-:::question
-id: poo-erreur-8
-type: schoice
-title: Erreur dans le code 8
-
-Quel est le problème dans ce code ?
-
-```java
-List<Animal> animaux = new ArrayList<>();
-animaux.add(new Chien());
-Chien c = animaux.get(0);
-```
-
-:::answers
-- [ ] ArrayList ne peut pas contenir d'Animal
-- [ ] add() ne fonctionne pas avec Chien
-- [x] Il faut caster : (Chien) animaux.get(0)
-- [ ] get(0) retourne null
-
-:::solution
-`animaux.get(0)` retourne un `Animal`, pas un `Chien`. Il faut un cast explicite.
-
----
 
 :::question
 id: poo-kahoot-getter
 type: schoice
-title: Méthode qui retourne un attribut
-
-Comment nomme-t-on une méthode qui retourne un attribut ?
+title: Comment nomme-t-on une méthode qui retourne un attribut ?
 
 :::answers
 - [x] Getter
@@ -647,9 +418,7 @@ Un getter (ou accesseur) retourne la valeur d'un attribut.
 :::question
 id: poo-match-collections
 type: matching
-title: Collections et caractéristiques
-
-Associez chaque collection à sa caractéristique :
+title: Associez chaque collection à sa caractéristique :
 
 :::answers
 - List --- Éléments ordonnés avec doublons
@@ -665,9 +434,7 @@ Les principales collections Java et leurs caractéristiques.
 :::question
 id: poo-fill-abstract
 type: cloze
-title: Classe abstraite
-
-Complétez la déclaration de classe abstraite :
+title: Complétez la déclaration de classe abstraite :
 
 :::answers
 public [abstract] class Animal { [abstract] void crier(); }
@@ -678,39 +445,9 @@ public [abstract] class Animal { [abstract] void crier(); }
 ---
 
 :::question
-id: poo-erreur-9
-type: schoice
-title: Erreur dans le code 9
-
-Quel est le problème dans ce code ?
-
-```java
-public class Cercle {
-    private final double rayon;
-    
-    public void setRayon(double r) {
-        this.rayon = r;
-    }
-}
-```
-
-:::answers
-- [ ] rayon doit être public
-- [x] Un attribut final ne peut pas être modifié après initialisation
-- [ ] Il faut un getter avant le setter
-- [ ] double n'accepte pas les décimaux
-
-:::solution
-Un attribut `final` ne peut être assigné qu'une fois (dans le constructeur ou à la déclaration).
-
----
-
-:::question
 id: poo-kahoot-abstract
 type: schoice
-title: Instanciation d'une classe abstraite
-
-Une classe `abstract` peut-elle être instanciée ?
+title: Une classe `abstract` peut-elle être instanciée ?
 
 :::answers
 - [ ] Oui toujours
@@ -726,9 +463,7 @@ Une classe abstraite ne peut PAS être instanciée directement.
 :::question
 id: poo-match-heritage
 type: matching
-title: Héritage et mots-clés
-
-Associez chaque situation à l'utilisation correcte :
+title: Associez chaque situation à l'utilisation correcte :
 
 :::answers
 - Classe hérite de classe --- extends
@@ -744,9 +479,7 @@ Les différentes formes d'héritage en Java.
 :::question
 id: poo-fill-interface-impl
 type: cloze
-title: Interface avec méthode
-
-Complétez l'interface :
+title: Complétez l'interface :
 
 :::answers
 public interface Comparable { int [compareTo](Object o); }
@@ -757,38 +490,9 @@ Une interface définit des signatures de méthodes.
 ---
 
 :::question
-id: poo-erreur-10
-type: schoice
-title: Erreur dans le code 10
-
-Quel est le problème dans ce code ?
-
-```java
-class A { }
-class B extends A { }
-class C extends A { }
-
-B b = new B();
-C c = (C) b;
-```
-
-:::answers
-- [ ] B et C ne peuvent pas hériter de A
-- [ ] Le cast (C) est syntaxiquement incorrect
-- [x] B ne peut pas être casté en C (ClassCastException)
-- [ ] Il faut utiliser instanceof
-
-:::solution
-B et C sont des classes sœurs, pas dans une relation d'héritage direct. Le cast échouera à l'exécution.
-
----
-
-:::question
 id: poo-kahoot-equals
 type: schoice
-title: Comparaison de contenu
-
-Quelle méthode compare le contenu de deux objets ?
+title: Quelle méthode compare le contenu de deux objets ?
 
 :::answers
 - [ ] ==
@@ -804,9 +508,7 @@ Quelle méthode compare le contenu de deux objets ?
 :::question
 id: poo-match-constructeur
 type: matching
-title: Constructeurs et règles
-
-Associez chaque situation à la règle :
+title: Associez chaque situation à la règle :
 
 :::answers
 - Pas de constructeur défini --- Java crée un constructeur par défaut
@@ -822,9 +524,7 @@ Les règles importantes sur les constructeurs.
 :::question
 id: poo-fill-polymorphisme
 type: cloze
-title: Polymorphisme
-
-Complétez le code polymorphe :
+title: Complétez le code polymorphe :
 
 :::answers
 Animal a = new [Chien](); a.[aboyer]();
@@ -837,9 +537,7 @@ Le polymorphisme permet de manipuler un objet via son type parent.
 :::question
 id: poo-kahoot-encapsulation
 type: schoice
-title: Principe d'encapsulation
-
-L'encapsulation consiste à...
+title: L'encapsulation consiste à...
 
 :::answers
 - [x] Cacher les détails internes
@@ -855,9 +553,7 @@ L'encapsulation cache l'implémentation et expose une interface publique.
 :::question
 id: poo-match-poo-principes
 type: matching
-title: Principes POO et exemples
-
-Associez chaque principe à son exemple :
+title: Associez chaque principe à son exemple :
 
 :::answers
 - Encapsulation --- Attributs private + getters/setters
@@ -873,9 +569,7 @@ Les principes fondamentaux de la POO avec des exemples concrets.
 :::question
 id: poo-fill-exception
 type: cloze
-title: Gestion d'exception
-
-Complétez la gestion d'exception :
+title: Complétez la gestion d'exception :
 
 :::answers
 [try] { risque(); } [catch](Exception e) { traiter(); }
@@ -888,9 +582,7 @@ Complétez la gestion d'exception :
 :::question
 id: poo-kahoot-polymorphisme
 type: schoice
-title: Principe du polymorphisme
-
-Le polymorphisme permet...
+title: Le polymorphisme permet...
 
 :::answers
 - [ ] De créer des classes
@@ -906,9 +598,7 @@ Le polymorphisme permet de traiter différents objets via un type commun.
 :::question
 id: poo-fill-instanceof
 type: cloze
-title: Vérification de type
-
-Complétez la vérification de type :
+title: Complétez la vérification de type :
 
 :::answers
 if (animal [instanceof] Chien) { Chien c = (Chien) animal; }
@@ -921,9 +611,7 @@ if (animal [instanceof] Chien) { Chien c = (Chien) animal; }
 :::question
 id: poo-match-static
 type: matching
-title: Static vs Instance
-
-Associez chaque caractéristique au bon type :
+title: Associez chaque caractéristique au bon type :
 
 :::answers
 - Partagé par toutes les instances --- static

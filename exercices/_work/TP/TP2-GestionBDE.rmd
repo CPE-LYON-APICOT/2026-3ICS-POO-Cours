@@ -96,7 +96,9 @@ Inscription réussie !
 
 - Comment allez-vous stocker les adhérents ? Les événements ?
 - Comment faire le lien entre un adhérent et les événements auxquels il participe ?
-- Que se passe-t-il si on essaie d'inscrire quelqu'un qui n'existe pas ?
+- Que se passe-t-il si on essaie d'inscrire quelqu'un qui n'existe pas ? **Renvoyer `null` n'est pas une réponse acceptable.** Pensez aux **exceptions**.
+- Comment identifier un adhérent de manière unique ? Un simple email ? Un identifiant auto-incrémenté ?
+- Si deux adhérents ont le même email, que se passe-t-il ?
 
 
 
@@ -136,10 +138,15 @@ public void generateData() {
 
 ### Correction Étape 1
 
-À ce stade, vous devriez avoir des classes simples mais bien structurées :
+À ce stade, vous devriez avoir des classes simples mais bien structurées.
+
+> 💡 **Concept : `static` pour les identifiants** — On utilise un attribut `static` pour générer automatiquement un identifiant unique pour chaque adhérent. Le compteur appartient à la **classe** (partagé entre toutes les instances), pas à une instance particulière.
 
 ```java
 public class Adherent {
+    private static int prochainId = 1; // static : partagé entre toutes les instances
+    
+    private int id;
     private String nom;
     private String prenom;
     private String email;
@@ -147,6 +154,7 @@ public class Adherent {
     private boolean cotisationPayee;
     
     public Adherent(String nom, String prenom, String email, String promotion) {
+        this.id = prochainId++; // chaque adhérent a un ID unique
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -154,6 +162,7 @@ public class Adherent {
         this.cotisationPayee = false;
     }
     
+    public int getId() { return id; }
     public String getEmail() { return email; }
     public String getNom() { return nom; }
     public String getPrenom() { return prenom; }
@@ -166,7 +175,7 @@ public class Adherent {
     @Override
     public String toString() {
         String statut = cotisationPayee ? "Cotisation payée" : "Cotisation non payée";
-        return prenom + " " + nom + " (" + promotion + ") - " + statut;
+        return "[" + id + "] " + prenom + " " + nom + " (" + promotion + ") - " + statut;
     }
 }
 ```
@@ -235,14 +244,30 @@ public class BDE {
         return adherents.stream()
             .filter(a -> a.getEmail().equals(email))
             .findFirst()
-            .orElse(null);
+            .orElseThrow(() -> new AdherentIntrouvableException(email));
     }
     
     public Evenement trouverEvenement(String nom) {
         return evenements.stream()
             .filter(e -> e.getNom().equals(nom))
             .findFirst()
-            .orElse(null);
+            .orElseThrow(() -> new EvenementIntrouvableException(nom));
+    }
+}
+```
+
+> 💡 **Concept : Exceptions personnalisées** — Plutôt que de renvoyer `null` (ce qui cause des `NullPointerException` mystérieuses), on lance des exceptions parlantes. L'appelant sait exactement ce qui s'est passé.
+
+```java
+public class AdherentIntrouvableException extends RuntimeException {
+    public AdherentIntrouvableException(String email) {
+        super("Aucun adhérent trouvé avec l'email : " + email);
+    }
+}
+
+public class EvenementIntrouvableException extends RuntimeException {
+    public EvenementIntrouvableException(String nom) {
+        super("Aucun événement trouvé avec le nom : " + nom);
     }
 }
 ```
@@ -251,6 +276,7 @@ public class BDE {
 - L'`Adherent` sait payer sa cotisation
 - L'`Événement` gère sa propre liste de participants
 - Le `BDE` orchestre mais ne contient pas toute la logique
+- Les exceptions personnalisées remplacent les `return null` dangereux
 
 </article>
 
@@ -322,6 +348,9 @@ C'est le moment d'introduire l'**héritage** pour les types d'adhérents :
 
 ```java
 public abstract class Adherent {
+    private static int prochainId = 1;
+    
+    private int id;
     private String nom;
     private String prenom;
     private String email;
@@ -329,6 +358,7 @@ public abstract class Adherent {
     private boolean cotisationPayee;
     
     public Adherent(String nom, String prenom, String email, String promotion) {
+        this.id = prochainId++;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -429,12 +459,73 @@ public class ComptaBDE {
 }
 ```
 
+> 💡 **Concept : `record`** — La classe `Transaction` ne fait que stocker des données immuables. C'est le cas parfait pour un **record** Java (Java 14+) : pas de setter, `equals`/`hashCode`/`toString` générés automatiquement.
+
+```java
+// Un record remplace une classe entière avec constructeur, getters, equals, hashCode, toString
+public record Transaction(double montant, String description, boolean estRecette) {
+    // Compact constructor pour validation
+    public Transaction {
+        if (montant < 0) throw new IllegalArgumentException("Le montant ne peut pas être négatif");
+    }
+}
+```
+
+> 💡 **Concept : SOLID en action** — Ce code applique plusieurs principes SOLID :
+> - **SRP** : Chaque classe a une responsabilité unique (l'adhérent connaît son prix, la compta gère les finances)
+> - **OCP** : Pour ajouter un nouveau type d'adhérent, on crée une sous-classe sans modifier le code existant
+> - **LSP** : Un `MembreBureau` peut remplacer un `Adherent` partout où un `Adherent` est attendu
+
+On peut aussi enrichir la gestion des erreurs avec des exceptions dédiées :
+
+```java
+public class CotisationDejaPayeeException extends RuntimeException {
+    public CotisationDejaPayeeException(Adherent adherent) {
+        super(adherent.getPrenom() + " " + adherent.getNom() + " a déjà payé sa cotisation");
+    }
+}
+
+public class InscriptionDupliqueeException extends RuntimeException {
+    public InscriptionDupliqueeException(Adherent adherent, Evenement evenement) {
+        super(adherent.getPrenom() + " est déjà inscrit à " + evenement.getNom());
+    }
+}
+```
+
 **Points clés :**
 - Le **polymorphisme** évite les switch/if sur le type d'adhérent
 - Chaque adhérent **sait** calculer son prix
 - Pour ajouter "Ancien élève", il suffit de créer une nouvelle sous-classe
+- Le `record Transaction` remplace avantageusement une classe complète pour des données immuables
+- Le compteur `static` génère des IDs uniques sans passer par une base de données
 
 </article>
+
+---
+
+## Pause Refactoring — Avant de continuer
+
+Avant de passer à l'étape 3, prenez 15 minutes pour examiner votre code :
+
+### Check-list SOLID
+
+- [ ] **SRP** : Votre classe `BDE` fait-elle trop de choses ? Si elle dépasse 200 lignes, c'était probablement le cas.
+- [ ] **OCP** : Si on vous demandait d'ajouter un type "Ancien élève" avec cotisation à 40€, combien de fichiers devriez-vous modifier ? (Réponse idéale : 1 seul, la nouvelle classe)
+- [ ] **LSP** : Partout où vous utilisez `Adherent`, est-ce que ça marcherait si c'était un `MembreBureau` ? Un `Exterieur` ?
+
+### Check-list gestion d'erreurs
+
+- [ ] Créez-vous des **exceptions personnalisées** (`AdherentIntrouvableException`, `CotisationDejaPayeeException`, `InscriptionDupliqueeException`) ?
+- [ ] Votre méthode `inscrire()` vérifie-t-elle les cas d'erreur (adhérent déjà inscrit, événement complet) ?
+- [ ] Avez-vous un `try/catch` dans votre menu console pour gérer les erreurs de saisie ?
+
+### Check-list bonnes pratiques
+
+- [ ] Utilisez-vous un `record` pour `Transaction` ?
+- [ ] Vos adhérents ont-ils un ID généré automatiquement (attribut `static`) ?
+- [ ] Votre méthode `payerCotisation()` vérifie-t-elle que la cotisation n'est pas déjà payée ?
+
+> Si vous répondez "non" à plus de 3 cases, prenez le temps de refactorer **maintenant**. Ça sera beaucoup plus douloureux après.
 
 ---
 
@@ -668,7 +759,7 @@ Un pack contient des choses très différentes : des objets physiques (goodies) 
 
 Comment représenter cette situation en POO ?
 
-> 💡 **Indice pédagogique** : C'est le moment de découvrir (ou redécouvrir) la notion d'interface. Si vous n'y arrivez pas, appelez l'enseignant pour une explication sur les interfaces.
+> 💡 **Indice** : C'est le moment de découvrir (ou redécouvrir) la notion d'**interface**. Si vous n'y arrivez pas, appelez l'enseignant.
 
 <article>
 
@@ -797,17 +888,22 @@ public class Boutique {
     
     public double vendre(Achetable achat, Adherent acheteur) {
         if (!achat.estDisponible()) {
-            throw new RuntimeException("Article indisponible");
+            throw new ArticleIndisponibleException(achat.getNom());
         }
         
         double prix = achat.getPrix();
         
-        // Appliquer réduction adhérent sur les articles
-        if (achat instanceof Article && acheteur.isCotisationPayee()) {
-            if (acheteur instanceof MembreBureau) {
-                prix *= 0.5; // -50%
+        // Pattern matching instanceof (Java 16+)
+        // Plus lisible que instanceof + cast séparés
+        if (achat instanceof Article article && acheteur.isCotisationPayee()) {
+            if (acheteur instanceof MembreBureau mb) {
+                prix *= 0.5; // -50% pour le bureau
             } else {
-                prix *= 0.9; // -10%
+                prix *= 0.9; // -10% pour les adhérents
+            }
+            
+            if (article.isReserveAuxAdherents() && !acheteur.isCotisationPayee()) {
+                throw new ArticleReserveException(article.getNom());
             }
         }
         
@@ -823,6 +919,8 @@ public class Boutique {
 - L'**interface** `Achetable` unifie articles, places et packs
 - Le `Pack` implémente aussi `Achetable` (composition récursive possible)
 - Une seule méthode `vendre()` gère tous les types d'achats
+- Le **pattern matching `instanceof`** (Java 16+) évite les casts manuels : `if (achat instanceof Article article)` équivaut à `if (achat instanceof Article) { Article article = (Article) achat; ... }` mais en plus sûr et lisible
+- Les **exceptions personnalisées** (`ArticleIndisponibleException`, `ArticleReserveException`) remplacent les `RuntimeException` génériques
 
 </article>
 
@@ -1099,7 +1197,7 @@ public double calculerPrixCotisation(Adherent a) {
 - Ce switch va se dupliquer partout (prix cotisation, réduction événement, réduction boutique...)
 - Le compilateur ne vous préviendra pas si vous oubliez un cas
 
-> 💡 **Point pédagogique** : L'enseignant peut expliquer ici le polymorphisme. Chaque type d'adhérent devrait savoir calculer son propre prix de cotisation.
+> 💡 **Indice** : C'est l'occasion de mettre en pratique le **polymorphisme**. Chaque type d'adhérent devrait savoir calculer son propre prix de cotisation.
 
 ### Piège 2 : Le modèle anémique
 
@@ -1132,7 +1230,7 @@ public class GestionAdherents {
 - Toute la logique est dispersée dans des classes utilitaires
 - Impossible de profiter du polymorphisme
 
-> 💡 **Point pédagogique** : Un objet doit encapsuler ses données ET ses comportements. Un adhérent devrait savoir calculer ce qu'il doit payer.
+> 💡 **À retenir** : Un objet doit encapsuler ses données ET ses comportements. Un adhérent devrait savoir calculer ce qu'il doit payer.
 
 ### Piège 3 : L'organisateur en String
 
@@ -1147,7 +1245,7 @@ public class Evenement {
 - Comment accéder au budget de l'organisateur pour déduire les frais ?
 - Comment vérifier si un adhérent est membre de l'organisateur ?
 
-> 💡 **Point pédagogique** : L'enseignant peut introduire ici la notion d'interface. Un organisateur est "quelque chose qui peut organiser des événements et qui a un budget".
+> 💡 **Indice** : Pensez aux **interfaces**. Un organisateur, c'est « quelque chose qui peut organiser des événements et qui a un budget ».
 
 ### Piège 4 : La duplication Article / Place événement
 
@@ -1186,7 +1284,7 @@ public class Pack {
 - Si on ajoute un nouveau type d'élément (ex: abonnement), il faut tout modifier
 - Le pack "sait" comment fonctionnent les articles et les événements
 
-> 💡 **Point pédagogique** : Interface ! Un "élément achetable" sait donner son prix et dire s'il est disponible.
+> 💡 **Indice** : Pensez **interface** ! Un « élément achetable » sait donner son prix et dire s'il est disponible.
 
 ### Piège 5 : Les niveaux de partenariat en chaîne de if
 
@@ -1213,7 +1311,7 @@ public List<String> getAvantages(Partenaire p) {
 - Impossible à maintenir
 - Risque d'erreur élevé
 
-> 💡 **Point pédagogique** : On peut utiliser l'héritage ou la composition pour modéliser cette hiérarchie d'avantages.
+> 💡 **Indice** : Pensez héritage ou composition pour modéliser cette hiérarchie d'avantages.
 
 ### Piège 6 : Pas de gestion d'erreurs
 
@@ -1226,16 +1324,44 @@ public void inscrireEvenement(String email, String nomEvenement) {
 ```
 
 **Que se passe-t-il si :**
-- L'email n'existe pas ?
-- L'événement n'existe pas ?
-- L'adhérent est déjà inscrit ?
-- Il n'y a plus de places ?
+- L'email n'existe pas ? → `AdherentIntrouvableException`
+- L'événement n'existe pas ? → `EvenementIntrouvableException`
+- L'adhérent est déjà inscrit ? → `InscriptionDupliqueeException`
+- Il n'y a plus de places ? → `CapaciteMaxAtteinteException`
 
-> 💡 **Point pédagogique** : Introduction aux exceptions. Certaines erreurs sont "attendues" (adhérent pas trouvé) et doivent être gérées proprement.
+> 💡 **À retenir** : Les exceptions ne sont pas un bonus, elles sont **obligatoires** pour un code professionnel. Chaque méthode doit gérer ses cas d'erreur avec des exceptions personnalisées et des messages clairs.
+
+Voici comment structurer vos exceptions :
+
+```java
+// Exception de base pour le BDE (optionnel mais propre)
+public abstract class BDEException extends RuntimeException {
+    public BDEException(String message) { super(message); }
+}
+
+// Exceptions spécifiques
+public class AdherentIntrouvableException extends BDEException {
+    public AdherentIntrouvableException(String email) {
+        super("Aucun adhérent trouvé avec l'email : " + email);
+    }
+}
+
+public class InscriptionDupliqueeException extends BDEException {
+    public InscriptionDupliqueeException(Adherent a, Evenement e) {
+        super(a.getPrenom() + " est déjà inscrit à " + e.getNom());
+    }
+}
+
+public class ArticleIndisponibleException extends BDEException {
+    public ArticleIndisponibleException(String nom) {
+        super("L'article " + nom + " n'est plus disponible");
+    }
+}
+```
 
 ---
 
-## Étapes facultatives (différenciation pédagogique)
+## Pour aller plus loin
 
 ### Niveau 1 — Pour ceux qui terminent rapidement
 
@@ -1323,7 +1449,7 @@ Comment implémenter ce système de permissions de manière extensible ?
 
 ---
 
-## Limites pédagogiques à annoncer aux étudiants
+## Règles du jeu
 
 ### Ce qui est INTERDIT
 
@@ -1358,124 +1484,102 @@ Comment implémenter ce système de permissions de manière extensible ?
    - Ne passez pas à l'étape suivante si l'étape actuelle ne marche pas
    - Créez un jeu de test (quelques adhérents, quelques événements)
 
-4. **Gérer les erreurs proprement**
+4. **Gérer les erreurs avec des exceptions personnalisées**
    - Pas de `return null` silencieux
-   - Utilisez des exceptions avec des messages clairs
+   - Créez des classes d'exception dédiées (`AdherentIntrouvableException`, `InscriptionDupliqueeException`, etc.)
+   - Utilisez des messages clairs
+
+5. **Utiliser les concepts vus en cours**
+   - `static` pour les compteurs d'ID et méthodes utilitaires
+   - `record` pour les données immuables (transactions, résumés)
+   - Pattern matching `instanceof` quand vous devez vérifier un type
+   - Nommer les principes SOLID que vous appliquez
 
 ---
 
-## Suggestions d'improvisation pour l'enseignant
+```{r, echo=FALSE}
 
-### Au début du TP
+# ## Notes enseignant — Improvisation en séance
 
-- Demander aux étudiants de dessiner leur conception avant de coder
-- Faire un tour de table pour voir les différentes approches
+# ### Au début du TP
+# - Demander aux étudiants de dessiner leur conception avant de coder
+# - Faire un tour de table pour voir les différentes approches
 
-### Après l'étape 1
+# ### Après l'étape 1
+# > « Tiens, j'ai oublié de vous dire, on a un partenariat avec une école de commerce.
+# > Leurs étudiants peuvent aussi adhérer, mais ils paient le tarif extérieur.
+# > Ah, et les anciens élèves, ils ont un tarif intermédiaire de 40€. »
+# Observer les réactions : ceux qui ont fait du polymorphisme ajoutent une classe,
+# ceux qui ont fait du switch pleurent.
 
-> « Tiens, j'ai oublié de vous dire, on a un partenariat avec une école de commerce. Leurs étudiants peuvent aussi adhérer, mais ils paient le tarif extérieur. Ah, et les anciens élèves, ils ont un tarif intermédiaire de 40€. »
+# ### Après l'étape 2
+# > « Le club escalade veut organiser un événement avec le club rando. Comment on gère ça ? »
+# Révéler les faiblesses des conceptions monolithiques.
 
-Observer les réactions : ceux qui ont fait du polymorphisme ajoutent une classe, ceux qui ont fait du switch pleurent.
+# ### Pendant l'étape 4
+# > « Ah, on veut aussi vendre des services ! Genre des cours de soutien ou des covoiturages.
+# > C'est comme un article mais sans stock. »
+# Tester si leur abstraction "chose achetable" est vraiment générique.
 
-### Après l'étape 2
+# ### Pour pimenter
+# > « Le président veut un rapport : combien chaque adhérent a-t-il dépensé au total cette année ? »
+# Ceux qui n'ont pas centralisé leurs transactions vont souffrir.
+#
+# > « Un club veut quitter le BDE et devenir une association indépendante.
+# > Il emporte ses événements passés et ses membres. »
+# Tester les dépendances entre objets.
+#
+# > « On veut faire un événement gratuit mais uniquement pour les 50 premiers inscrits.
+# > Les suivants paient plein tarif. »
+# Complexifier les règles de tarification.
 
-> « Le club escalade veut organiser un événement avec le club rando. Comment on gère ça ? »
+# ### Pour le fun
+# > « Le club memes veut organiser un événement où le prix dépend du nombre
+# > de followers Instagram des participants. Plus t'as de followers, plus tu paies. »
+# Absurde, mais ça force à réfléchir à l'extensibilité.
 
-Révéler les faiblesses des conceptions monolithiques.
+```
 
-### Pendant l'étape 4
 
-> « Ah, on veut aussi vendre des services ! Genre des cours de soutien ou des covoiturages. C'est comme un article mais sans stock. »
 
-Tester si leur abstraction "chose achetable" est vraiment générique.
+```{r, echo=FALSE}
 
-### Pour pimenter
+# ## Notes enseignant — Objectifs et timing
 
-> « Le président veut un rapport : combien chaque adhérent a-t-il dépensé au total cette année ? »
+# ### Objectifs pédagogiques
+# 1. Faire ressentir la douleur du mauvais design
+#    - Les étudiants qui font des switch vont souffrir à chaque évolution
+#    - L'objectif est qu'ils comprennent POURQUOI la POO aide
+# 2. Introduire les interfaces naturellement
+#    - Le besoin des packs (articles + événements) pousse vers les interfaces
+#    - Le concept d'organisateur (BDE ou club) pousse vers les interfaces
+# 3. Montrer l'intérêt de l'encapsulation
+#    - Les calculs de prix deviennent ingérables sans encapsulation
+#    - Les réductions empilées (adhérent + membre bureau + membre club) deviennent un cauchemar
+# 4. Pratiquer la refactorisation
+#    - Le code de l'étape 1 n'est probablement pas adapté à l'étape 3
+#    - Apprendre à remettre en question son design
 
-Ceux qui n'ont pas centralisé leurs transactions vont souffrir.
+# ### Timing
+# - Étape 1 : 45 minutes
+# - Étape 2 : 1 heure
+# - Étape 3 : 1 heure
+# - Étape 4 : 45 minutes
+# - Étape 5 : 30 minutes
+# - Refactoring et discussion : 1 heure
 
-> « Un club veut quitter le BDE et devenir une association indépendante. Il emporte ses événements passés et ses membres. »
+# ### Points d'attention
+# - Certains étudiants voudront tout coder avant de réfléchir → les freiner
+# - D'autres voudront faire le design parfait avant d'écrire une ligne → les pousser à itérer
+# - Encourager le dessin sur papier pour la conception
+# - Faire des points collectifs après chaque étape pour comparer les approches
 
-Tester les dépendances entre objets.
+# ### Solution(s) attendue(s)
+# Plusieurs designs sont valables. L'important est la cohérence et l'extensibilité :
+# - Une interface Organisateur implémentée par BDE et Club
+# - Une interface Achetable implémentée par Article, PlaceEvenement, Pack
+# - Une hiérarchie de classes pour les types d'adhérents
+# - Une classe abstraite ou interface pour les niveaux de partenariat
+# - Un système central de gestion des transactions
 
-> « On veut faire un événement gratuit mais uniquement pour les 50 premiers inscrits. Les suivants paient plein tarif. »
-
-Complexifier les règles de tarification.
-
-### Pour le fun
-
-> « Le club memes veut organiser un événement où le prix dépend du nombre de followers Instagram des participants. Plus t'as de followers, plus tu paies. »
-
-Absurde, mais ça force à réfléchir à l'extensibilité.
-
----
-
-## Critères d'évaluation suggérés
-
-### Fonctionnel (40%)
-- L'application répond aux besoins demandés
-- Les calculs de prix sont corrects
-- La gestion financière est cohérente
-
-### Conception (40%)
-- Utilisation appropriée de l'héritage
-- Utilisation appropriée des interfaces
-- Pas de duplication de code
-- Encapsulation respectée
-- Code extensible
-
-### Qualité du code (20%)
-- Nommage explicite
-- Gestion des erreurs
-- Code lisible et bien structuré
-
----
-
-## Notes pour l'enseignant
-
-### Objectifs pédagogiques de ce TP
-
-1. **Faire ressentir la douleur du mauvais design**
-   - Les étudiants qui font des switch vont souffrir à chaque évolution
-   - L'objectif est qu'ils comprennent POURQUOI la POO aide
-
-2. **Introduire les interfaces naturellement**
-   - Le besoin des packs (articles + événements) pousse vers les interfaces
-   - Le concept d'organisateur (BDE ou club) pousse vers les interfaces
-
-3. **Montrer l'intérêt de l'encapsulation**
-   - Les calculs de prix deviennent ingérables sans encapsulation
-   - Les réductions empilées (adhérent + membre bureau + membre club) deviennent un cauchemar
-
-4. **Pratiquer la refactorisation**
-   - Le code de l'étape 1 n'est probablement pas adapté à l'étape 3
-   - Apprendre à remettre en question son design
-
-### Timing suggéré
-
-- Étape 1 : 45 minutes
-- Étape 2 : 1 heure
-- Étape 3 : 1 heure
-- Étape 4 : 45 minutes
-- Étape 5 : 30 minutes
-- Refactoring et discussion : 1 heure
-
-### Points d'attention
-
-- Certains étudiants voudront tout coder avant de réfléchir → les freiner
-- D'autres voudront faire le design parfait avant d'écrire une ligne → les pousser à itérer
-- Encourager le dessin sur papier pour la conception
-- Faire des points collectifs après chaque étape pour comparer les approches
-
-### Solution(s) attendue(s)
-
-Plusieurs designs sont valables. L'important est la cohérence et l'extensibilité :
-
-- Une interface `Organisateur` implémentée par `BDE` et `Club`
-- Une interface `Achetable` implémentée par `Article`, `PlaceEvenement`, `Pack`
-- Une hiérarchie de classes pour les types d'adhérents
-- Une classe abstraite ou interface pour les niveaux de partenariat
-- Un système central de gestion des transactions
-
-Le TP est réussi si les étudiants peuvent expliquer pourquoi leur conception facilite l'ajout de nouvelles fonctionnalités.
+```

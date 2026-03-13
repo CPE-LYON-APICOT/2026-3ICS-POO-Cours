@@ -228,6 +228,20 @@ right connector from last child*/
 .tree li a + ul ul::before {
 	border-color: #94a0b4;
 }
+
+.idle-bg {
+  height: 100%;
+  background: linear-gradient(270deg,#0f0c29,#302b63,#24243e);
+  background-size: 600% 600%;
+  animation: slowMove 20s ease infinite;
+}
+
+@keyframes slowMove {
+  0% {background-position:0% 50%}
+  50% {background-position:100% 50%}
+  100% {background-position:0% 50%}
+}
+
 .print-pdf {
 	section.stack h3 {
 		@apply hidden;

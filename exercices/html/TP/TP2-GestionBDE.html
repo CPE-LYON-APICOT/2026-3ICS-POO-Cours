@@ -374,6 +374,12 @@ display: none;
 <li><a href="#réflexions-imposées" id="toc-réflexions-imposées">Réflexions imposées</a></li>
 <li><a href="#attention" id="toc-attention">Attention !</a></li>
 </ul></li>
+<li><a href="#pause-refactoring-avant-de-continuer" id="toc-pause-refactoring-avant-de-continuer">Pause Refactoring — Avant de continuer</a>
+<ul>
+<li><a href="#check-list-solid" id="toc-check-list-solid">Check-list SOLID</a></li>
+<li><a href="#check-list-gestion-derreurs" id="toc-check-list-gestion-derreurs">Check-list gestion d’erreurs</a></li>
+<li><a href="#check-list-bonnes-pratiques" id="toc-check-list-bonnes-pratiques">Check-list bonnes pratiques</a></li>
+</ul></li>
 <li><a href="#étape-3-les-clubs-entrent-en-jeu" id="toc-étape-3-les-clubs-entrent-en-jeu">Étape 3 — Les clubs entrent en jeu</a>
 <ul>
 <li><a href="#nouvelles-fonctionnalités" id="toc-nouvelles-fonctionnalités">Nouvelles fonctionnalités</a></li>
@@ -408,38 +414,16 @@ display: none;
 <li><a href="#piège-5-les-niveaux-de-partenariat-en-chaîne-de-if" id="toc-piège-5-les-niveaux-de-partenariat-en-chaîne-de-if">Piège 5 : Les niveaux de partenariat en chaîne de if</a></li>
 <li><a href="#piège-6-pas-de-gestion-derreurs" id="toc-piège-6-pas-de-gestion-derreurs">Piège 6 : Pas de gestion d’erreurs</a></li>
 </ul></li>
-<li><a href="#étapes-facultatives-différenciation-pédagogique" id="toc-étapes-facultatives-différenciation-pédagogique">Étapes facultatives (différenciation pédagogique)</a>
+<li><a href="#pour-aller-plus-loin" id="toc-pour-aller-plus-loin">Pour aller plus loin</a>
 <ul>
 <li><a href="#niveau-1-pour-ceux-qui-terminent-rapidement" id="toc-niveau-1-pour-ceux-qui-terminent-rapidement">Niveau 1 — Pour ceux qui terminent rapidement</a></li>
 <li><a href="#niveau-2-pour-ceux-qui-vont-très-vite" id="toc-niveau-2-pour-ceux-qui-vont-très-vite">Niveau 2 — Pour ceux qui vont très vite</a></li>
 <li><a href="#niveau-3-pour-les-très-rapides" id="toc-niveau-3-pour-les-très-rapides">Niveau 3 — Pour les très rapides</a></li>
 </ul></li>
-<li><a href="#limites-pédagogiques-à-annoncer-aux-étudiants" id="toc-limites-pédagogiques-à-annoncer-aux-étudiants">Limites pédagogiques à annoncer aux étudiants</a>
+<li><a href="#règles-du-jeu" id="toc-règles-du-jeu">Règles du jeu</a>
 <ul>
 <li><a href="#ce-qui-est-interdit" id="toc-ce-qui-est-interdit">Ce qui est INTERDIT</a></li>
 <li><a href="#ce-qui-est-obligatoire" id="toc-ce-qui-est-obligatoire">Ce qui est OBLIGATOIRE</a></li>
-</ul></li>
-<li><a href="#suggestions-dimprovisation-pour-lenseignant" id="toc-suggestions-dimprovisation-pour-lenseignant">Suggestions d’improvisation pour l’enseignant</a>
-<ul>
-<li><a href="#au-début-du-tp" id="toc-au-début-du-tp">Au début du TP</a></li>
-<li><a href="#après-létape-1" id="toc-après-létape-1">Après l’étape 1</a></li>
-<li><a href="#après-létape-2" id="toc-après-létape-2">Après l’étape 2</a></li>
-<li><a href="#pendant-létape-4" id="toc-pendant-létape-4">Pendant l’étape 4</a></li>
-<li><a href="#pour-pimenter" id="toc-pour-pimenter">Pour pimenter</a></li>
-<li><a href="#pour-le-fun" id="toc-pour-le-fun">Pour le fun</a></li>
-</ul></li>
-<li><a href="#critères-dévaluation-suggérés" id="toc-critères-dévaluation-suggérés">Critères d’évaluation suggérés</a>
-<ul>
-<li><a href="#fonctionnel-40" id="toc-fonctionnel-40">Fonctionnel (40%)</a></li>
-<li><a href="#conception-40" id="toc-conception-40">Conception (40%)</a></li>
-<li><a href="#qualité-du-code-20" id="toc-qualité-du-code-20">Qualité du code (20%)</a></li>
-</ul></li>
-<li><a href="#notes-pour-lenseignant" id="toc-notes-pour-lenseignant">Notes pour l’enseignant</a>
-<ul>
-<li><a href="#objectifs-pédagogiques-de-ce-tp" id="toc-objectifs-pédagogiques-de-ce-tp">Objectifs pédagogiques de ce TP</a></li>
-<li><a href="#timing-suggéré" id="toc-timing-suggéré">Timing suggéré</a></li>
-<li><a href="#points-dattention" id="toc-points-dattention">Points d’attention</a></li>
-<li><a href="#solutions-attendues" id="toc-solutions-attendues">Solution(s) attendue(s)</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -538,7 +522,9 @@ Inscription réussie !</code></pre>
 <ul>
 <li>Comment allez-vous stocker les adhérents ? Les événements ?</li>
 <li>Comment faire le lien entre un adhérent et les événements auxquels il participe ?</li>
-<li>Que se passe-t-il si on essaie d’inscrire quelqu’un qui n’existe pas ?</li>
+<li>Que se passe-t-il si on essaie d’inscrire quelqu’un qui n’existe pas ? <strong>Renvoyer <code>null</code> n’est pas une réponse acceptable.</strong> Pensez aux <strong>exceptions</strong>.</li>
+<li>Comment identifier un adhérent de manière unique ? Un simple email ? Un identifiant auto-incrémenté ?</li>
+<li>Si deux adhérents ont le même email, que se passe-t-il ?</li>
 </ul>
 </div>
 <div id="utilisation-de-lia" class="section level3">
@@ -635,6 +621,38 @@ Réponse :
 <p><strong>STOP !</strong> Appelez l’enseignant. Ce code va devenir un cauchemar à maintenir.</p>
 <blockquote>
 Réponse :
+</blockquote>
+<hr />
+</div>
+</div>
+<div id="pause-refactoring-avant-de-continuer" class="section level2">
+<h2>Pause Refactoring — Avant de continuer</h2>
+<p>Avant de passer à l’étape 3, prenez 15 minutes pour examiner votre code :</p>
+<div id="check-list-solid" class="section level3">
+<h3>Check-list SOLID</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input><strong>SRP</strong> : Votre classe <code>BDE</code> fait-elle trop de choses ? Si elle dépasse 200 lignes, c’était probablement le cas.</label></li>
+<li><label><input type="checkbox"></input><strong>OCP</strong> : Si on vous demandait d’ajouter un type “Ancien élève” avec cotisation à 40€, combien de fichiers devriez-vous modifier ? (Réponse idéale : 1 seul, la nouvelle classe)</label></li>
+<li><label><input type="checkbox"></input><strong>LSP</strong> : Partout où vous utilisez <code>Adherent</code>, est-ce que ça marcherait si c’était un <code>MembreBureau</code> ? Un <code>Exterieur</code> ?</label></li>
+</ul>
+</div>
+<div id="check-list-gestion-derreurs" class="section level3">
+<h3>Check-list gestion d’erreurs</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Créez-vous des <strong>exceptions personnalisées</strong> (<code>AdherentIntrouvableException</code>, <code>CotisationDejaPayeeException</code>, <code>InscriptionDupliqueeException</code>) ?</label></li>
+<li><label><input type="checkbox"></input>Votre méthode <code>inscrire()</code> vérifie-t-elle les cas d’erreur (adhérent déjà inscrit, événement complet) ?</label></li>
+<li><label><input type="checkbox"></input>Avez-vous un <code>try/catch</code> dans votre menu console pour gérer les erreurs de saisie ?</label></li>
+</ul>
+</div>
+<div id="check-list-bonnes-pratiques" class="section level3">
+<h3>Check-list bonnes pratiques</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Utilisez-vous un <code>record</code> pour <code>Transaction</code> ?</label></li>
+<li><label><input type="checkbox"></input>Vos adhérents ont-ils un ID généré automatiquement (attribut <code>static</code>) ?</label></li>
+<li><label><input type="checkbox"></input>Votre méthode <code>payerCotisation()</code> vérifie-t-elle que la cotisation n’est pas déjà payée ?</label></li>
+</ul>
+<blockquote>
+<p>Si vous répondez “non” à plus de 3 cases, prenez le temps de refactorer <strong>maintenant</strong>. Ça sera beaucoup plus douloureux après.</p>
 </blockquote>
 <hr />
 </div>
@@ -744,7 +762,7 @@ Réponse :
 <p>Un pack contient des choses très différentes : des objets physiques (goodies) et des choses immatérielles (inscriptions à des événements). Pourtant, on veut pouvoir les manipuler de manière uniforme (calculer un prix, vérifier la disponibilité, “consommer” l’achat).</p>
 <p>Comment représenter cette situation en POO ?</p>
 <blockquote>
-<p>💡 <strong>Indice pédagogique</strong> : C’est le moment de découvrir (ou redécouvrir) la notion d’interface. Si vous n’y arrivez pas, appelez l’enseignant pour une explication sur les interfaces.</p>
+<p>💡 <strong>Indice</strong> : C’est le moment de découvrir (ou redécouvrir) la notion d’<strong>interface</strong>. Si vous n’y arrivez pas, appelez l’enseignant.</p>
 </blockquote>
 <blockquote>
 Réponse :
@@ -881,7 +899,7 @@ Réponse :
 }</code></pre>
 <p><strong>Pourquoi c’est un problème ?</strong> - Chaque fois qu’on ajoute un type, il faut modifier ce switch - Ce switch va se dupliquer partout (prix cotisation, réduction événement, réduction boutique…) - Le compilateur ne vous préviendra pas si vous oubliez un cas</p>
 <blockquote>
-<p>💡 <strong>Point pédagogique</strong> : L’enseignant peut expliquer ici le polymorphisme. Chaque type d’adhérent devrait savoir calculer son propre prix de cotisation.</p>
+<p>💡 <strong>Indice</strong> : C’est l’occasion de mettre en pratique le <strong>polymorphisme</strong>. Chaque type d’adhérent devrait savoir calculer son propre prix de cotisation.</p>
 </blockquote>
 </div>
 <div id="piège-2-le-modèle-anémique" class="section level3">
@@ -904,7 +922,7 @@ Réponse :
 }</code></pre>
 <p><strong>Pourquoi c’est un problème ?</strong> - L’adhérent ne “sait” rien faire, il est juste un sac de données - Toute la logique est dispersée dans des classes utilitaires - Impossible de profiter du polymorphisme</p>
 <blockquote>
-<p>💡 <strong>Point pédagogique</strong> : Un objet doit encapsuler ses données ET ses comportements. Un adhérent devrait savoir calculer ce qu’il doit payer.</p>
+<p>💡 <strong>À retenir</strong> : Un objet doit encapsuler ses données ET ses comportements. Un adhérent devrait savoir calculer ce qu’il doit payer.</p>
 </blockquote>
 </div>
 <div id="piège-3-lorganisateur-en-string" class="section level3">
@@ -914,7 +932,7 @@ Réponse :
 }</code></pre>
 <p><strong>Pourquoi c’est un problème ?</strong> - Comment gérer un événement co-organisé ? - Comment accéder au budget de l’organisateur pour déduire les frais ? - Comment vérifier si un adhérent est membre de l’organisateur ?</p>
 <blockquote>
-<p>💡 <strong>Point pédagogique</strong> : L’enseignant peut introduire ici la notion d’interface. Un organisateur est “quelque chose qui peut organiser des événements et qui a un budget”.</p>
+<p>💡 <strong>Indice</strong> : Pensez aux <strong>interfaces</strong>. Un organisateur, c’est « quelque chose qui peut organiser des événements et qui a un budget ».</p>
 </blockquote>
 </div>
 <div id="piège-4-la-duplication-article-place-événement" class="section level3">
@@ -947,7 +965,7 @@ Réponse :
 }</code></pre>
 <p><strong>Pourquoi c’est un problème ?</strong> - Code dupliqué entre les deux boucles - Si on ajoute un nouveau type d’élément (ex: abonnement), il faut tout modifier - Le pack “sait” comment fonctionnent les articles et les événements</p>
 <blockquote>
-<p>💡 <strong>Point pédagogique</strong> : Interface ! Un “élément achetable” sait donner son prix et dire s’il est disponible.</p>
+<p>💡 <strong>Indice</strong> : Pensez <strong>interface</strong> ! Un « élément achetable » sait donner son prix et dire s’il est disponible.</p>
 </blockquote>
 </div>
 <div id="piège-5-les-niveaux-de-partenariat-en-chaîne-de-if" class="section level3">
@@ -969,7 +987,7 @@ Réponse :
 }</code></pre>
 <p><strong>Pourquoi c’est un problème ?</strong> - Duplication des conditions - Impossible à maintenir - Risque d’erreur élevé</p>
 <blockquote>
-<p>💡 <strong>Point pédagogique</strong> : On peut utiliser l’héritage ou la composition pour modéliser cette hiérarchie d’avantages.</p>
+<p>💡 <strong>Indice</strong> : Pensez héritage ou composition pour modéliser cette hiérarchie d’avantages.</p>
 </blockquote>
 </div>
 <div id="piège-6-pas-de-gestion-derreurs" class="section level3">
@@ -979,15 +997,39 @@ Réponse :
     Evenement e = trouverEvenement(nomEvenement);
     e.ajouterParticipant(a);
 }</code></pre>
-<p><strong>Que se passe-t-il si :</strong> - L’email n’existe pas ? - L’événement n’existe pas ? - L’adhérent est déjà inscrit ? - Il n’y a plus de places ?</p>
+<p><strong>Que se passe-t-il si :</strong> - L’email n’existe pas ? → <code>AdherentIntrouvableException</code> - L’événement n’existe pas ? → <code>EvenementIntrouvableException</code> - L’adhérent est déjà inscrit ? → <code>InscriptionDupliqueeException</code> - Il n’y a plus de places ? → <code>CapaciteMaxAtteinteException</code></p>
 <blockquote>
-<p>💡 <strong>Point pédagogique</strong> : Introduction aux exceptions. Certaines erreurs sont “attendues” (adhérent pas trouvé) et doivent être gérées proprement.</p>
+<p>💡 <strong>À retenir</strong> : Les exceptions ne sont pas un bonus, elles sont <strong>obligatoires</strong> pour un code professionnel. Chaque méthode doit gérer ses cas d’erreur avec des exceptions personnalisées et des messages clairs.</p>
 </blockquote>
+<p>Voici comment structurer vos exceptions :</p>
+<pre class="java"><code>// Exception de base pour le BDE (optionnel mais propre)
+public abstract class BDEException extends RuntimeException {
+    public BDEException(String message) { super(message); }
+}
+
+// Exceptions spécifiques
+public class AdherentIntrouvableException extends BDEException {
+    public AdherentIntrouvableException(String email) {
+        super(&quot;Aucun adhérent trouvé avec l&#39;email : &quot; + email);
+    }
+}
+
+public class InscriptionDupliqueeException extends BDEException {
+    public InscriptionDupliqueeException(Adherent a, Evenement e) {
+        super(a.getPrenom() + &quot; est déjà inscrit à &quot; + e.getNom());
+    }
+}
+
+public class ArticleIndisponibleException extends BDEException {
+    public ArticleIndisponibleException(String nom) {
+        super(&quot;L&#39;article &quot; + nom + &quot; n&#39;est plus disponible&quot;);
+    }
+}</code></pre>
 <hr />
 </div>
 </div>
-<div id="étapes-facultatives-différenciation-pédagogique" class="section level2">
-<h2>Étapes facultatives (différenciation pédagogique)</h2>
+<div id="pour-aller-plus-loin" class="section level2">
+<h2>Pour aller plus loin</h2>
 <div id="niveau-1-pour-ceux-qui-terminent-rapidement" class="section level3">
 <h3>Niveau 1 — Pour ceux qui terminent rapidement</h3>
 <div id="historique-des-transactions" class="section level4">
@@ -1047,8 +1089,8 @@ Réponse :
 </div>
 </div>
 </div>
-<div id="limites-pédagogiques-à-annoncer-aux-étudiants" class="section level2">
-<h2>Limites pédagogiques à annoncer aux étudiants</h2>
+<div id="règles-du-jeu" class="section level2">
+<h2>Règles du jeu</h2>
 <div id="ce-qui-est-interdit" class="section level3">
 <h3>Ce qui est INTERDIT</h3>
 <ol style="list-style-type: decimal">
@@ -1093,157 +1135,21 @@ Réponse :
 <li>Ne passez pas à l’étape suivante si l’étape actuelle ne marche pas</li>
 <li>Créez un jeu de test (quelques adhérents, quelques événements)</li>
 </ul></li>
-<li><strong>Gérer les erreurs proprement</strong>
+<li><strong>Gérer les erreurs avec des exceptions personnalisées</strong>
 <ul>
 <li>Pas de <code>return null</code> silencieux</li>
-<li>Utilisez des exceptions avec des messages clairs</li>
+<li>Créez des classes d’exception dédiées (<code>AdherentIntrouvableException</code>, <code>InscriptionDupliqueeException</code>, etc.)</li>
+<li>Utilisez des messages clairs</li>
+</ul></li>
+<li><strong>Utiliser les concepts vus en cours</strong>
+<ul>
+<li><code>static</code> pour les compteurs d’ID et méthodes utilitaires</li>
+<li><code>record</code> pour les données immuables (transactions, résumés)</li>
+<li>Pattern matching <code>instanceof</code> quand vous devez vérifier un type</li>
+<li>Nommer les principes SOLID que vous appliquez</li>
 </ul></li>
 </ol>
 <hr />
-</div>
-</div>
-<div id="suggestions-dimprovisation-pour-lenseignant" class="section level2">
-<h2>Suggestions d’improvisation pour l’enseignant</h2>
-<div id="au-début-du-tp" class="section level3">
-<h3>Au début du TP</h3>
-<ul>
-<li>Demander aux étudiants de dessiner leur conception avant de coder</li>
-<li>Faire un tour de table pour voir les différentes approches</li>
-</ul>
-</div>
-<div id="après-létape-1" class="section level3">
-<h3>Après l’étape 1</h3>
-<blockquote>
-<p>« Tiens, j’ai oublié de vous dire, on a un partenariat avec une école de commerce. Leurs étudiants peuvent aussi adhérer, mais ils paient le tarif extérieur. Ah, et les anciens élèves, ils ont un tarif intermédiaire de 40€. »</p>
-</blockquote>
-<p>Observer les réactions : ceux qui ont fait du polymorphisme ajoutent une classe, ceux qui ont fait du switch pleurent.</p>
-</div>
-<div id="après-létape-2" class="section level3">
-<h3>Après l’étape 2</h3>
-<blockquote>
-<p>« Le club escalade veut organiser un événement avec le club rando. Comment on gère ça ? »</p>
-</blockquote>
-<p>Révéler les faiblesses des conceptions monolithiques.</p>
-</div>
-<div id="pendant-létape-4" class="section level3">
-<h3>Pendant l’étape 4</h3>
-<blockquote>
-<p>« Ah, on veut aussi vendre des services ! Genre des cours de soutien ou des covoiturages. C’est comme un article mais sans stock. »</p>
-</blockquote>
-<p>Tester si leur abstraction “chose achetable” est vraiment générique.</p>
-</div>
-<div id="pour-pimenter" class="section level3">
-<h3>Pour pimenter</h3>
-<blockquote>
-<p>« Le président veut un rapport : combien chaque adhérent a-t-il dépensé au total cette année ? »</p>
-</blockquote>
-<p>Ceux qui n’ont pas centralisé leurs transactions vont souffrir.</p>
-<blockquote>
-<p>« Un club veut quitter le BDE et devenir une association indépendante. Il emporte ses événements passés et ses membres. »</p>
-</blockquote>
-<p>Tester les dépendances entre objets.</p>
-<blockquote>
-<p>« On veut faire un événement gratuit mais uniquement pour les 50 premiers inscrits. Les suivants paient plein tarif. »</p>
-</blockquote>
-<p>Complexifier les règles de tarification.</p>
-</div>
-<div id="pour-le-fun" class="section level3">
-<h3>Pour le fun</h3>
-<blockquote>
-<p>« Le club memes veut organiser un événement où le prix dépend du nombre de followers Instagram des participants. Plus t’as de followers, plus tu paies. »</p>
-</blockquote>
-<p>Absurde, mais ça force à réfléchir à l’extensibilité.</p>
-<hr />
-</div>
-</div>
-<div id="critères-dévaluation-suggérés" class="section level2">
-<h2>Critères d’évaluation suggérés</h2>
-<div id="fonctionnel-40" class="section level3">
-<h3>Fonctionnel (40%)</h3>
-<ul>
-<li>L’application répond aux besoins demandés</li>
-<li>Les calculs de prix sont corrects</li>
-<li>La gestion financière est cohérente</li>
-</ul>
-</div>
-<div id="conception-40" class="section level3">
-<h3>Conception (40%)</h3>
-<ul>
-<li>Utilisation appropriée de l’héritage</li>
-<li>Utilisation appropriée des interfaces</li>
-<li>Pas de duplication de code</li>
-<li>Encapsulation respectée</li>
-<li>Code extensible</li>
-</ul>
-</div>
-<div id="qualité-du-code-20" class="section level3">
-<h3>Qualité du code (20%)</h3>
-<ul>
-<li>Nommage explicite</li>
-<li>Gestion des erreurs</li>
-<li>Code lisible et bien structuré</li>
-</ul>
-<hr />
-</div>
-</div>
-<div id="notes-pour-lenseignant" class="section level2">
-<h2>Notes pour l’enseignant</h2>
-<div id="objectifs-pédagogiques-de-ce-tp" class="section level3">
-<h3>Objectifs pédagogiques de ce TP</h3>
-<ol style="list-style-type: decimal">
-<li><strong>Faire ressentir la douleur du mauvais design</strong>
-<ul>
-<li>Les étudiants qui font des switch vont souffrir à chaque évolution</li>
-<li>L’objectif est qu’ils comprennent POURQUOI la POO aide</li>
-</ul></li>
-<li><strong>Introduire les interfaces naturellement</strong>
-<ul>
-<li>Le besoin des packs (articles + événements) pousse vers les interfaces</li>
-<li>Le concept d’organisateur (BDE ou club) pousse vers les interfaces</li>
-</ul></li>
-<li><strong>Montrer l’intérêt de l’encapsulation</strong>
-<ul>
-<li>Les calculs de prix deviennent ingérables sans encapsulation</li>
-<li>Les réductions empilées (adhérent + membre bureau + membre club) deviennent un cauchemar</li>
-</ul></li>
-<li><strong>Pratiquer la refactorisation</strong>
-<ul>
-<li>Le code de l’étape 1 n’est probablement pas adapté à l’étape 3</li>
-<li>Apprendre à remettre en question son design</li>
-</ul></li>
-</ol>
-</div>
-<div id="timing-suggéré" class="section level3">
-<h3>Timing suggéré</h3>
-<ul>
-<li>Étape 1 : 45 minutes</li>
-<li>Étape 2 : 1 heure</li>
-<li>Étape 3 : 1 heure</li>
-<li>Étape 4 : 45 minutes</li>
-<li>Étape 5 : 30 minutes</li>
-<li>Refactoring et discussion : 1 heure</li>
-</ul>
-</div>
-<div id="points-dattention" class="section level3">
-<h3>Points d’attention</h3>
-<ul>
-<li>Certains étudiants voudront tout coder avant de réfléchir → les freiner</li>
-<li>D’autres voudront faire le design parfait avant d’écrire une ligne → les pousser à itérer</li>
-<li>Encourager le dessin sur papier pour la conception</li>
-<li>Faire des points collectifs après chaque étape pour comparer les approches</li>
-</ul>
-</div>
-<div id="solutions-attendues" class="section level3">
-<h3>Solution(s) attendue(s)</h3>
-<p>Plusieurs designs sont valables. L’important est la cohérence et l’extensibilité :</p>
-<ul>
-<li>Une interface <code>Organisateur</code> implémentée par <code>BDE</code> et <code>Club</code></li>
-<li>Une interface <code>Achetable</code> implémentée par <code>Article</code>, <code>PlaceEvenement</code>, <code>Pack</code></li>
-<li>Une hiérarchie de classes pour les types d’adhérents</li>
-<li>Une classe abstraite ou interface pour les niveaux de partenariat</li>
-<li>Un système central de gestion des transactions</li>
-</ul>
-<p>Le TP est réussi si les étudiants peuvent expliquer pourquoi leur conception facilite l’ajout de nouvelles fonctionnalités.</p>
 </div>
 </div>
 </div>

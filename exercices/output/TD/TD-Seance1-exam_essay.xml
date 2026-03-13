@@ -3,10 +3,19 @@
   <question type="essay">
     <name><text>Procédural vs Orienté Objet</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Expliquez la différence fondamentale entre la programmation procédurale et la programmation orientée objet en termes d'organisation des données et des traitements.</p>]]></text>
+      <text><![CDATA[<p>Expliquez la différence fondamentale entre la programmation
+procédurale et la programmation orientée objet en termes d’organisation
+des données et des traitements.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>En <strong>programmation procédurale</strong>, les données et les traitements sont séparés. Les fonctions peuvent accéder à n'importe quelle donnée globale, ce qui rend difficile de savoir "qui fait quoi".</p><p>En <strong>POO</strong>, les données (attributs) et les traitements (méthodes) sont regroupés dans des objets. Chaque objet est responsable de lui-même et ses méthodes n'accèdent qu'à ses propres données. Le code est mieux organisé et plus modulaire.</p>]]></text>
+      <text><![CDATA[<p>En <strong>programmation procédurale</strong>, les données et les
+traitements sont séparés. Les fonctions peuvent accéder à n’importe
+quelle donnée globale, ce qui rend difficile de savoir “qui fait
+quoi”.</p>
+<p>En <strong>POO</strong>, les données (attributs) et les traitements
+(méthodes) sont regroupés dans des objets. Chaque objet est responsable
+de lui-même et ses méthodes n’accèdent qu’à ses propres données. Le code
+est mieux organisé et plus modulaire.</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -27,14 +36,21 @@
   <question type="essay">
     <name><text>Avantage du regroupement</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Pourquoi est-il problématique d'avoir des variables "en vrac" comme <code>nomClient</code>, <code>ageClient</code>, <code>emailClient</code>, <code>nomProduit</code>, <code>prixProduit</code> plutôt que des objets <code>Client</code> et <code>Produit</code> ?</p>]]></text>
+      <text><![CDATA[<p>Pourquoi est-il problématique d’avoir des variables “en vrac” comme
+<code>nomClient</code>, <code>ageClient</code>,
+<code>emailClient</code>, <code>nomProduit</code>,
+<code>prixProduit</code> plutôt que des objets <code>Client</code> et
+<code>Produit</code> ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Avec des variables "en vrac" :
-- Rien n'indique que <code>nomClient</code> va avec <code>ageClient</code> et <code>emailClient</code>
-- On peut facilement passer le mauvais paramètre à une fonction (ex: l'âge de Marie à Jean)
-- Quand le code grossit, c'est le chaos : on ne sait plus quelle variable va avec quelle autre
-- Pas de validation des données cohérente</p><p>Avec des objets, chaque "boîte" contient ce qui lui appartient et garantit la cohérence.</p>]]></text>
+      <text><![CDATA[<p>Avec des variables “en vrac” : - Rien n’indique que
+<code>nomClient</code> va avec <code>ageClient</code> et
+<code>emailClient</code> - On peut facilement passer le mauvais
+paramètre à une fonction (ex: l’âge de Marie à Jean) - Quand le code
+grossit, c’est le chaos : on ne sait plus quelle variable va avec quelle
+autre - Pas de validation des données cohérente</p>
+<p>Avec des objets, chaque “boîte” contient ce qui lui appartient et
+garantit la cohérence.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -55,10 +71,21 @@
   <question type="essay">
     <name><text>Classe vs Objet</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p><strong>Qu'est-ce qu'une classe ? Qu'est-ce qu'un objet ?</strong></p><p>Expliquez la différence entre ces deux concepts fondamentaux de la POO et donnez une analogie du monde réel.</p>]]></text>
+      <text><![CDATA[<p><strong>Qu’est-ce qu’une classe ? Qu’est-ce qu’un objet
+?</strong></p>
+<p>Expliquez la différence entre ces deux concepts fondamentaux de la
+POO et donnez une analogie du monde réel.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Une <strong>classe</strong> est un modèle ou un plan qui définit les attributs (données) et les méthodes (comportements) que possèderont les objets créés à partir de cette classe.</p><p>Un <strong>objet</strong> est une instance concrète d'une classe. Chaque objet possède ses propres valeurs d'attributs mais partage les mêmes méthodes définies dans la classe.</p><p><strong>Analogie</strong> : La classe est le plan d'une maison, l'objet est une maison construite à partir de ce plan. On peut construire plusieurs maisons à partir du même plan.</p>]]></text>
+      <text><![CDATA[<p>Une <strong>classe</strong> est un modèle ou un plan qui définit les
+attributs (données) et les méthodes (comportements) que possèderont les
+objets créés à partir de cette classe.</p>
+<p>Un <strong>objet</strong> est une instance concrète d’une classe.
+Chaque objet possède ses propres valeurs d’attributs mais partage les
+mêmes méthodes définies dans la classe.</p>
+<p><strong>Analogie</strong> : La classe est le plan d’une maison,
+l’objet est une maison construite à partir de ce plan. On peut
+construire plusieurs maisons à partir du même plan.</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -79,10 +106,17 @@
   <question type="essay">
     <name><text>Le mot-clé this</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Qu'est-ce que le mot-clé <code>this</code> en Java ? Dans quel cas est-il particulièrement utile dans un constructeur ?</p>]]></text>
+      <text><![CDATA[<p>Qu’est-ce que le mot-clé <code>this</code> en Java ? Dans quel cas
+est-il particulièrement utile dans un constructeur ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p><code>this</code> est une référence à l'<strong>objet courant</strong> (l'instance en cours de manipulation).</p><p>Dans le constructeur, <code>this.nom</code> fait référence à l'attribut de l'objet, tandis que <code>nom</code> (sans <code>this</code>) fait référence au paramètre du constructeur.</p><p>Sans <code>this</code>, le paramètre "masque" l'attribut (shadowing). <code>this</code> permet de lever l'ambiguïté.</p>]]></text>
+      <text><![CDATA[<p><code>this</code> est une référence à l’<strong>objet
+courant</strong> (l’instance en cours de manipulation).</p>
+<p>Dans le constructeur, <code>this.nom</code> fait référence à
+l’attribut de l’objet, tandis que <code>nom</code> (sans
+<code>this</code>) fait référence au paramètre du constructeur.</p>
+<p>Sans <code>this</code>, le paramètre “masque” l’attribut (shadowing).
+<code>this</code> permet de lever l’ambiguïté.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -103,14 +137,20 @@
   <question type="essay">
     <name><text>Surcharge de constructeurs</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Qu'est-ce que la surcharge de constructeurs ? Expliquez l'intérêt de <code>this(...)</code> dans un constructeur.</p>]]></text>
+      <text><![CDATA[<p>Qu’est-ce que la surcharge de constructeurs ? Expliquez l’intérêt de
+<code>this(...)</code> dans un constructeur.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>La <strong>surcharge de constructeurs</strong> permet à une classe d'avoir plusieurs constructeurs avec des paramètres différents.</p><p><code>this(...)</code> permet d'appeler un autre constructeur de la même classe. C'est utile pour éviter la duplication de code : le constructeur simplifié peut appeler le constructeur complet avec des valeurs par défaut.</p><p>``<code>java
-public Personne(String nom) {
-    this(nom, "Inconnu", 0);  // Appelle le constructeur complet
-}
-</code>``</p>]]></text>
+      <text><![CDATA[<p>La <strong>surcharge de constructeurs</strong> permet à une classe
+d’avoir plusieurs constructeurs avec des paramètres différents.</p>
+<p><code>this(...)</code> permet d’appeler un autre constructeur de la
+même classe. C’est utile pour éviter la duplication de code : le
+constructeur simplifié peut appeler le constructeur complet avec des
+valeurs par défaut.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">public</span> <span class="fu">Personne</span><span class="op">(</span><span class="bu">String</span> nom<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="kw">this</span><span class="op">(</span>nom<span class="op">,</span> <span class="st">&quot;Inconnu&quot;</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span>  <span class="co">// Appelle le constructeur complet</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -131,10 +171,15 @@ public Personne(String nom) {
   <question type="essay">
     <name><text>Définition de null</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Qu'est-ce que <code>null</code> en Java ? Est-ce un objet vide ?</p>]]></text>
+      <text><![CDATA[<p>Qu’est-ce que <code>null</code> en Java ? Est-ce un objet vide ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p><code>null</code> est une valeur spéciale qui signifie "<strong>absence d'objet</strong>" ou "aucune référence".</p><p>Une variable contenant <code>null</code> ne pointe vers aucun objet en mémoire.</p><p>Ce n'est <strong>PAS</strong> un objet vide. C'est l'absence totale d'objet.</p>]]></text>
+      <text><![CDATA[<p><code>null</code> est une valeur spéciale qui signifie
+“<strong>absence d’objet</strong>” ou “aucune référence”.</p>
+<p>Une variable contenant <code>null</code> ne pointe vers aucun objet
+en mémoire.</p>
+<p>Ce n’est <strong>PAS</strong> un objet vide. C’est l’absence totale
+d’objet.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -155,10 +200,24 @@ public Personne(String nom) {
   <question type="essay">
     <name><text>Prévenir les NPE</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Comment peut-on prévenir les NullPointerException dans son code ? Donnez au moins 2 techniques.</p>]]></text>
+      <text><![CDATA[<p>Comment peut-on prévenir les NullPointerException dans son code ?
+Donnez au moins 2 techniques.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>1. <strong>Vérifier avant d'utiliser</strong> : <code>if (obj != null) { obj.methode(); }</code></p><p>2. <strong>Pattern "constante à gauche"</strong> : <code>"valeur".equals(variable)</code> au lieu de <code>variable.equals("valeur")</code></p><p>3. <strong>Utiliser Optional</strong> (Java 8+) pour représenter explicitement l'absence de valeur</p><p>4. <strong>Initialiser les attributs</strong> dans le constructeur plutôt que de les laisser à null</p><p>5. <strong>Annotations @NotNull</strong> pour documenter et vérifier les invariants</p>]]></text>
+      <text><![CDATA[<ol style="list-style-type: decimal">
+<li><p><strong>Vérifier avant d’utiliser</strong> :
+<code>if (obj != null) { obj.methode(); }</code></p></li>
+<li><p><strong>Pattern “constante à gauche”</strong> :
+<code>"valeur".equals(variable)</code> au lieu de
+<code>variable.equals("valeur")</code></p></li>
+<li><p><strong>Utiliser Optional</strong> (Java 8+) pour représenter
+explicitement l’absence de valeur</p></li>
+<li><p><strong>Initialiser les attributs</strong> dans le constructeur
+plutôt que de les laisser à null</p></li>
+<li><p><strong>Annotations <span
+class="citation">@NotNull</span></strong> pour documenter et vérifier
+les invariants</p></li>
+</ol>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -179,10 +238,21 @@ public Personne(String nom) {
   <question type="essay">
     <name><text>Différence == et equals</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Expliquez la différence entre <code>==</code> et <code>.equals()</code> pour comparer deux objets en Java.</p>]]></text>
+      <text><![CDATA[<p>Expliquez la différence entre <code>==</code> et
+<code>.equals()</code> pour comparer deux objets en Java.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>- <code>==</code> compare les <strong>références</strong> (adresses mémoire) : vérifie si les deux variables pointent vers le <strong>même objet</strong> en mémoire.</p><p>- <code>.equals()</code> compare le <strong>contenu</strong> des objets : vérifie si les deux objets sont "égaux" selon la logique définie dans la méthode <code>equals()</code>.</p><p>Par défaut, <code>equals()</code> fait la même chose que <code>==</code>, mais les classes comme <code>String</code> redéfinissent <code>equals()</code> pour comparer le contenu.</p>]]></text>
+      <text><![CDATA[<ul>
+<li><p><code>==</code> compare les <strong>références</strong> (adresses
+mémoire) : vérifie si les deux variables pointent vers le <strong>même
+objet</strong> en mémoire.</p></li>
+<li><p><code>.equals()</code> compare le <strong>contenu</strong> des
+objets : vérifie si les deux objets sont “égaux” selon la logique
+définie dans la méthode <code>equals()</code>.</p></li>
+</ul>
+<p>Par défaut, <code>equals()</code> fait la même chose que
+<code>==</code>, mais les classes comme <code>String</code>
+redéfinissent <code>equals()</code> pour comparer le contenu.</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -203,14 +273,20 @@ public Personne(String nom) {
   <question type="essay">
     <name><text>Définition de l&apos;encapsulation</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Qu'est-ce que l'encapsulation et pourquoi est-elle importante en POO ?</p>]]></text>
+      <text><![CDATA[<p>Qu’est-ce que l’encapsulation et pourquoi est-elle importante en POO
+?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>L'encapsulation consiste à <strong>cacher les détails internes</strong> d'une classe et à ne fournir qu'une <strong>interface publique</strong> pour interagir avec elle.</p><p><strong>Importance</strong> :
-- <strong>Protection des données</strong> : on peut valider les modifications (ex: empêcher un âge négatif)
-- <strong>Maintenabilité</strong> : on peut changer l'implémentation interne sans affecter les utilisateurs
-- <strong>Cohérence</strong> : on empêche les états incohérents
-- <strong>Évolutivité</strong> : on peut ajouter de la logique (logging, notification) sans changer l'interface</p>]]></text>
+      <text><![CDATA[<p>L’encapsulation consiste à <strong>cacher les détails
+internes</strong> d’une classe et à ne fournir qu’une <strong>interface
+publique</strong> pour interagir avec elle.</p>
+<p><strong>Importance</strong> : - <strong>Protection des
+données</strong> : on peut valider les modifications (ex: empêcher un
+âge négatif) - <strong>Maintenabilité</strong> : on peut changer
+l’implémentation interne sans affecter les utilisateurs -
+<strong>Cohérence</strong> : on empêche les états incohérents -
+<strong>Évolutivité</strong> : on peut ajouter de la logique (logging,
+notification) sans changer l’interface</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -231,10 +307,25 @@ public Personne(String nom) {
   <question type="essay">
     <name><text>Intérêt des getters/setters</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Pourquoi utiliser des getters et setters plutôt que des attributs publics, même si le setter ne fait que <code>this.x = x</code> ?</p>]]></text>
+      <text><![CDATA[<p>Pourquoi utiliser des getters et setters plutôt que des attributs
+publics, même si le setter ne fait que <code>this.x = x</code> ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Même un getter/setter "trivial" apporte des avantages :</p><p>1. <strong>Évolutivité</strong> : On peut ajouter de la logique plus tard (validation, logging, notification) sans changer l'interface publique</p><p>2. <strong>Contrôle</strong> : On peut rendre un attribut en lecture seule (getter sans setter)</p><p>3. <strong>Débogage</strong> : On peut mettre un point d'arrêt dans le setter pour tracer les modifications</p><p>4. <strong>Frameworks</strong> : Beaucoup de frameworks (Spring, Hibernate) utilisent les getters/setters par réflexion</p><p>5. <strong>Maintenance</strong> : Si l'attribut est modifié à 50 endroits et qu'on veut ajouter un comportement, avec un setter on ne change qu'un seul endroit</p>]]></text>
+      <text><![CDATA[<p>Même un getter/setter “trivial” apporte des avantages :</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Évolutivité</strong> : On peut ajouter de la logique plus
+tard (validation, logging, notification) sans changer l’interface
+publique</p></li>
+<li><p><strong>Contrôle</strong> : On peut rendre un attribut en lecture
+seule (getter sans setter)</p></li>
+<li><p><strong>Débogage</strong> : On peut mettre un point d’arrêt dans
+le setter pour tracer les modifications</p></li>
+<li><p><strong>Frameworks</strong> : Beaucoup de frameworks (Spring,
+Hibernate) utilisent les getters/setters par réflexion</p></li>
+<li><p><strong>Maintenance</strong> : Si l’attribut est modifié à 50
+endroits et qu’on veut ajouter un comportement, avec un setter on ne
+change qu’un seul endroit</p></li>
+</ol>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -255,25 +346,25 @@ public Personne(String nom) {
   <question type="essay">
     <name><text>Exemple du compte bancaire</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Pourquoi est-il crucial que l'attribut <code>solde</code> d'une classe <code>CompteBancaire</code> soit privé avec des méthodes <code>deposer()</code> et <code>retirer()</code> plutôt que public ?</p>]]></text>
+      <text><![CDATA[<p>Pourquoi est-il crucial que l’attribut <code>solde</code> d’une
+classe <code>CompteBancaire</code> soit privé avec des méthodes
+<code>deposer()</code> et <code>retirer()</code> plutôt que public ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Si <code>solde</code> était public, n'importe qui pourrait écrire :
-``<code>java
-compte.solde = -1000000;  // Catastrophe !
-</code>`<code></p><p>Avec des méthodes :
-</code>`<code>java
-void retirer(double montant) {
-    if (montant > 0 && montant <= solde) {
-        solde -= montant;
-    }
-}
-</code>``</p><p>On peut :
-- Valider que le montant est positif
-- Vérifier que le solde est suffisant
-- Ajouter des limites de retrait
-- Logger les opérations pour l'audit
-- Notifier le client en cas de découvert</p>]]></text>
+      <text><![CDATA[<p>Si <code>solde</code> était public, n’importe qui pourrait écrire
+:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>compte<span class="op">.</span><span class="fu">solde</span> <span class="op">=</span> <span class="op">-</span><span class="dv">1000000</span><span class="op">;</span>  <span class="co">// Catastrophe !</span></span></code></pre></div>
+<p>Avec des méthodes :</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="dt">void</span> <span class="fu">retirer</span><span class="op">(</span><span class="dt">double</span> montant<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>montant <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> montant <span class="op">&lt;=</span> solde<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>        solde <span class="op">-=</span> montant<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>On peut : - Valider que le montant est positif - Vérifier que le
+solde est suffisant - Ajouter des limites de retrait - Logger les
+opérations pour l’audit - Notifier le client en cas de découvert</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -294,12 +385,18 @@ void retirer(double montant) {
   <question type="essay">
     <name><text>Définition de l&apos;héritage</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Qu'est-ce que l'héritage en POO ? Quel mot-clé utilise-t-on en Java ?</p>]]></text>
+      <text><![CDATA[<p>Qu’est-ce que l’héritage en POO ? Quel mot-clé utilise-t-on en Java
+?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>L'héritage permet de créer une nouvelle classe (classe fille) à partir d'une classe existante (classe mère).</p><p>La classe fille <strong>hérite</strong> de tous les attributs et méthodes de la classe mère, et peut :
-- Ajouter de nouveaux attributs/méthodes
-- <strong>Redéfinir</strong> (override) des méthodes existantes</p><p>On utilise le mot-clé <code>extends</code> : <code>class Chien extends Animal</code></p>]]></text>
+      <text><![CDATA[<p>L’héritage permet de créer une nouvelle classe (classe fille) à
+partir d’une classe existante (classe mère).</p>
+<p>La classe fille <strong>hérite</strong> de tous les attributs et
+méthodes de la classe mère, et peut : - Ajouter de nouveaux
+attributs/méthodes - <strong>Redéfinir</strong> (override) des méthodes
+existantes</p>
+<p>On utilise le mot-clé <code>extends</code> :
+<code>class Chien extends Animal</code></p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -320,17 +417,18 @@ void retirer(double montant) {
   <question type="essay">
     <name><text>Redéfinition vs Surcharge</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Quelle est la différence entre la redéfinition (override) et la surcharge (overload) de méthodes ?</p>]]></text>
+      <text><![CDATA[<p>Quelle est la différence entre la redéfinition (override) et la
+surcharge (overload) de méthodes ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p><strong>Redéfinition (Override)</strong> :
-- Même signature (nom + paramètres) que la méthode du parent
-- Comportement différent dans la classe fille
-- Utilise <code>@Override</code>
-- Se produit entre classe mère et classe fille</p><p><strong>Surcharge (Overload)</strong> :
-- Même nom mais signatures différentes (nombre/type de paramètres)
-- Peut se produire dans la même classe
-- Le compilateur choisit la bonne méthode selon les paramètres</p>]]></text>
+      <text><![CDATA[<p><strong>Redéfinition (Override)</strong> : - Même signature (nom +
+paramètres) que la méthode du parent - Comportement différent dans la
+classe fille - Utilise <code>@Override</code> - Se produit entre classe
+mère et classe fille</p>
+<p><strong>Surcharge (Overload)</strong> : - Même nom mais signatures
+différentes (nombre/type de paramètres) - Peut se produire dans la même
+classe - Le compilateur choisit la bonne méthode selon les
+paramètres</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -351,15 +449,23 @@ void retirer(double montant) {
   <question type="essay">
     <name><text>Le mot-clé super</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Qu'est-ce que <code>super</code> et dans quels cas l'utilise-t-on ?</p>]]></text>
+      <text><![CDATA[<p>Qu’est-ce que <code>super</code> et dans quels cas l’utilise-t-on
+?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p><code>super</code> est une référence à la <strong>classe mère</strong>.</p><p><strong>Utilisations</strong> :
-1. <strong>Appeler le constructeur parent</strong> : <code>super(paramètres)</code>
-   - Doit être la première instruction du constructeur
-   
-2. <strong>Appeler une méthode du parent</strong> : <code>super.methode()</code>
-   - Utile quand on redéfinit une méthode mais qu'on veut quand même exécuter le comportement parent en plus</p>]]></text>
+      <text><![CDATA[<p><code>super</code> est une référence à la <strong>classe
+mère</strong>.</p>
+<p><strong>Utilisations</strong> : 1. <strong>Appeler le constructeur
+parent</strong> : <code>super(paramètres)</code> - Doit être la première
+instruction du constructeur</p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Appeler une méthode du parent</strong> :
+<code>super.methode()</code>
+<ul>
+<li>Utile quand on redéfinit une méthode mais qu’on veut quand même
+exécuter le comportement parent en plus</li>
+</ul></li>
+</ol>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -380,14 +486,19 @@ void retirer(double montant) {
   <question type="essay">
     <name><text>Classes abstraites</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Qu'est-ce qu'une classe abstraite ? Dans quel cas est-elle utile ?</p>]]></text>
+      <text><![CDATA[<p>Qu’est-ce qu’une classe abstraite ? Dans quel cas est-elle utile
+?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Une classe abstraite est une classe qui <strong>ne peut pas être instanciée</strong>. Elle est destinée à être héritée.</p><p>Elle peut contenir :
-- Des méthodes abstraites (sans implémentation) que les classes filles DOIVENT implémenter
-- Des méthodes concrètes (avec implémentation) partagées par toutes les classes filles</p><p><strong>Utilité</strong> :
-- Définir un <strong>contrat</strong> que les classes filles doivent respecter
-- Quand instancier la classe n'a pas de sens (ex: on ne peut pas calculer la surface d'une "Forme" générique)</p>]]></text>
+      <text><![CDATA[<p>Une classe abstraite est une classe qui <strong>ne peut pas être
+instanciée</strong>. Elle est destinée à être héritée.</p>
+<p>Elle peut contenir : - Des méthodes abstraites (sans implémentation)
+que les classes filles DOIVENT implémenter - Des méthodes concrètes
+(avec implémentation) partagées par toutes les classes filles</p>
+<p><strong>Utilité</strong> : - Définir un <strong>contrat</strong> que
+les classes filles doivent respecter - Quand instancier la classe n’a
+pas de sens (ex: on ne peut pas calculer la surface d’une “Forme”
+générique)</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -408,28 +519,38 @@ void retirer(double montant) {
   <question type="essay">
     <name><text>Polymorphisme</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Analysez le code suivant et expliquez ce qui s'affiche et pourquoi :</p><p>``<code>java
-class Animal {
-    void crier() { System.out.println("..."); }
-}</p><p>class Chien extends Animal {
-    @Override
-    void crier() { System.out.println("Wouaf!"); }
-}</p><p>class Chat extends Animal {
-    @Override
-    void crier() { System.out.println("Miaou!"); }
-}</p><p>// Dans le main :
-Animal a1 = new Chien();
-Animal a2 = new Chat();
-a1.crier();
-a2.crier();
-</code>``</p>]]></text>
+      <text><![CDATA[<p>Analysez le code suivant et expliquez ce qui s’affiche et pourquoi
+:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Animal <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">crier</span><span class="op">()</span> <span class="op">{</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;...&quot;</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="kw">class</span> Chien <span class="kw">extends</span> Animal <span class="op">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">crier</span><span class="op">()</span> <span class="op">{</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Wouaf!&quot;</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="kw">class</span> Chat <span class="kw">extends</span> Animal <span class="op">{</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">crier</span><span class="op">()</span> <span class="op">{</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Miaou!&quot;</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co">// Dans le main :</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>Animal a1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Chien</span><span class="op">();</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a>Animal a2 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Chat</span><span class="op">();</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>a1<span class="op">.</span><span class="fu">crier</span><span class="op">();</span></span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a>a2<span class="op">.</span><span class="fu">crier</span><span class="op">();</span></span></code></pre></div>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Résultat :
-``<code>
-Wouaf!
-Miaou!
-</code>`<code></p><p>C'est le <strong>polymorphisme</strong> : même si les variables sont de type </code>Animal`, c'est la méthode de la <strong>classe réelle</strong> de l'objet qui est appelée (liaison dynamique).</p><p>À l'exécution, Java regarde le type réel de l'objet, pas le type de la variable.</p>]]></text>
+      <text><![CDATA[<p>Résultat :</p>
+<pre><code>Wouaf!
+Miaou!</code></pre>
+<p>C’est le <strong>polymorphisme</strong> : même si les variables sont
+de type <code>Animal</code>, c’est la méthode de la <strong>classe
+réelle</strong> de l’objet qui est appelée (liaison dynamique).</p>
+<p>À l’exécution, Java regarde le type réel de l’objet, pas le type de
+la variable.</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
@@ -450,16 +571,21 @@ Miaou!
   <question type="essay">
     <name><text>Définition de la composition</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Qu'est-ce que la composition en POO ? Donnez un exemple.</p>]]></text>
+      <text><![CDATA[<p>Qu’est-ce que la composition en POO ? Donnez un exemple.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>La composition permet de créer des objets complexes en combinant des objets plus simples.</p><p>En POO, cela consiste à avoir des <strong>instances de classes en tant qu'attributs</strong> d'une autre classe.</p><p><strong>Exemple</strong> : Une <code>Voiture</code> <strong>a un</strong> <code>Moteur</code> et <strong>a</strong> 4 <code>Roue</code>.
-``<code>java
-class Voiture {
-    private Moteur moteur;
-    private Roue[] roues;
-}
-</code>``</p>]]></text>
+      <text><![CDATA[<p>La composition permet de créer des objets complexes en combinant des
+objets plus simples.</p>
+<p>En POO, cela consiste à avoir des <strong>instances de classes en
+tant qu’attributs</strong> d’une autre classe.</p>
+<p><strong>Exemple</strong> : Une <code>Voiture</code> <strong>a
+un</strong> <code>Moteur</code> et <strong>a</strong> 4
+<code>Roue</code>.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Voiture <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="kw">private</span> Moteur moteur<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="kw">private</span> Roue<span class="op">[]</span> roues<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -480,12 +606,24 @@ class Voiture {
   <question type="essay">
     <name><text>Avantage de la composition</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Pourquoi dit-on souvent "préférez la composition à l'héritage" (composition over inheritance) ?</p>]]></text>
+      <text><![CDATA[<p>Pourquoi dit-on souvent “préférez la composition à l’héritage”
+(composition over inheritance) ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>La composition offre plus de <strong>flexibilité</strong> :</p><p>1. <strong>Couplage faible</strong> : On peut changer le composant sans modifier la classe contenante
-   
-2. <strong>Changement à l'exécution</strong> : On peut remplacer un moteur essence par un moteur électrique sans changer la classe Voiture</p><p>3. <strong>Évite les hiérarchies profondes</strong> : L'héritage crée des arbres rigides difficiles à modifier</p><p>4. <strong>Réutilisation</strong> : Un même Moteur peut être composé dans différents véhicules</p><p>5. <strong>Pas de problème d'héritage multiple</strong> : On peut composer autant d'objets qu'on veut</p>]]></text>
+      <text><![CDATA[<p>La composition offre plus de <strong>flexibilité</strong> :</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Couplage faible</strong> : On peut changer le composant
+sans modifier la classe contenante</p></li>
+<li><p><strong>Changement à l’exécution</strong> : On peut remplacer un
+moteur essence par un moteur électrique sans changer la classe
+Voiture</p></li>
+<li><p><strong>Évite les hiérarchies profondes</strong> : L’héritage
+crée des arbres rigides difficiles à modifier</p></li>
+<li><p><strong>Réutilisation</strong> : Un même Moteur peut être composé
+dans différents véhicules</p></li>
+<li><p><strong>Pas de problème d’héritage multiple</strong> : On peut
+composer autant d’objets qu’on veut</p></li>
+</ol>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -506,19 +644,25 @@ class Voiture {
   <question type="essay">
     <name><text>Délégation</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Dans le code suivant, expliquez ce qu'est la "délégation" :</p><p>``<code>java
-class Voiture {
-    private Moteur moteur;
-    
-    void conduire() {
-        moteur.demarrer();  // ???
-        System.out.println("La voiture roule");
-    }
-}
-</code>``</p>]]></text>
+      <text><![CDATA[<p>Dans le code suivant, expliquez ce qu’est la “délégation” :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Voiture <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="kw">private</span> Moteur moteur<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    </span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">conduire</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>        moteur<span class="op">.</span><span class="fu">demarrer</span><span class="op">();</span>  <span class="co">// ???</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;La voiture roule&quot;</span><span class="op">);</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>La <strong>délégation</strong> consiste à confier une tâche à un objet composé plutôt que de la faire soi-même.</p><p>Ici, la <code>Voiture</code> ne sait pas comment démarrer un moteur. Elle <strong>délègue</strong> cette responsabilité à son attribut <code>moteur</code> en appelant <code>moteur.demarrer()</code>.</p><p>C'est un principe clé : chaque classe fait ce qu'elle sait faire et délègue le reste.</p>]]></text>
+      <text><![CDATA[<p>La <strong>délégation</strong> consiste à confier une tâche à un
+objet composé plutôt que de la faire soi-même.</p>
+<p>Ici, la <code>Voiture</code> ne sait pas comment démarrer un moteur.
+Elle <strong>délègue</strong> cette responsabilité à son attribut
+<code>moteur</code> en appelant <code>moteur.demarrer()</code>.</p>
+<p>C’est un principe clé : chaque classe fait ce qu’elle sait faire et
+délègue le reste.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -539,15 +683,20 @@ class Voiture {
   <question type="essay">
     <name><text>Définition d&apos;une interface</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Qu'est-ce qu'une interface en Java ? En quoi diffère-t-elle d'une classe abstraite ?</p>]]></text>
+      <text><![CDATA[<p>Qu’est-ce qu’une interface en Java ? En quoi diffère-t-elle d’une
+classe abstraite ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Une interface est un type de référence qui ne contient que des <strong>signatures de méthodes</strong> (pas d'implémentation par défaut).</p><p><strong>Différences avec une classe abstraite</strong> :
-- Interface : que des méthodes abstraites (sauf méthodes <code>default</code> depuis Java 8)
-- Classe abstraite : peut avoir des méthodes concrètes ET abstraites
-- On peut <strong>implémenter plusieurs interfaces</strong> mais hériter d'<strong>une seule classe</strong>
-- Interface = contrat de "capacité" (peut faire)
-- Classe abstraite = contrat d'identité (est un)</p>]]></text>
+      <text><![CDATA[<p>Une interface est un type de référence qui ne contient que des
+<strong>signatures de méthodes</strong> (pas d’implémentation par
+défaut).</p>
+<p><strong>Différences avec une classe abstraite</strong> : - Interface
+: que des méthodes abstraites (sauf méthodes <code>default</code> depuis
+Java 8) - Classe abstraite : peut avoir des méthodes concrètes ET
+abstraites - On peut <strong>implémenter plusieurs interfaces</strong>
+mais hériter d’<strong>une seule classe</strong> - Interface = contrat
+de “capacité” (peut faire) - Classe abstraite = contrat d’identité (est
+un)</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -568,16 +717,22 @@ class Voiture {
   <question type="essay">
     <name><text>Interface vs Classe abstraite</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Comment choisir entre une interface et une classe abstraite ? Donnez un exemple pour chaque cas.</p>]]></text>
+      <text><![CDATA[<p>Comment choisir entre une interface et une classe abstraite ? Donnez
+un exemple pour chaque cas.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p><strong>Classe abstraite</strong> si on peut dire "X <strong>est un</strong> Y" :
-- Relation d'identité
-- Partage de code entre classes liées
-- Exemple : <code>Chien extends Animal</code> (un chien EST un animal)</p><p><strong>Interface</strong> si on peut dire "X <strong>peut faire</strong> Y" :
-- Capacité/comportement
-- Classes sans lien commun peuvent partager l'interface
-- Exemple : <code>Avion implements Volant</code> et <code>Oiseau implements Volant</code> (les deux PEUVENT voler mais n'ont rien en commun)</p><p><strong>Règle</strong> : Dans le doute, préférez l'interface (plus flexible).</p>]]></text>
+      <text><![CDATA[<p><strong>Classe abstraite</strong> si on peut dire “X <strong>est
+un</strong> Y” : - Relation d’identité - Partage de code entre classes
+liées - Exemple : <code>Chien extends Animal</code> (un chien EST un
+animal)</p>
+<p><strong>Interface</strong> si on peut dire “X <strong>peut
+faire</strong> Y” : - Capacité/comportement - Classes sans lien commun
+peuvent partager l’interface - Exemple :
+<code>Avion implements Volant</code> et
+<code>Oiseau implements Volant</code> (les deux PEUVENT voler mais n’ont
+rien en commun)</p>
+<p><strong>Règle</strong> : Dans le doute, préférez l’interface (plus
+flexible).</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
@@ -598,17 +753,28 @@ class Voiture {
   <question type="essay">
     <name><text>Polymorphisme avec interfaces</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Expliquez comment le code suivant utilise le polymorphisme grâce aux interfaces :</p><p>``<code>java
-void faireNager(Nageur nageur) {
-    nageur.nager();
-}</p><p>// Appels possibles :
-faireNager(new Dauphin());
-faireNager(new Crocodile());
-faireNager(new Humain());
-</code>``</p>]]></text>
+      <text><![CDATA[<p>Expliquez comment le code suivant utilise le polymorphisme grâce aux
+interfaces :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="dt">void</span> <span class="fu">faireNager</span><span class="op">(</span>Nageur nageur<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    nageur<span class="op">.</span><span class="fu">nager</span><span class="op">();</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">// Appels possibles :</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="fu">faireNager</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Dauphin</span><span class="op">());</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="fu">faireNager</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Crocodile</span><span class="op">());</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="fu">faireNager</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Humain</span><span class="op">());</span></span></code></pre></div>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>La méthode <code>faireNager</code> accepte n'importe quel objet qui implémente l'interface <code>Nageur</code>.</p><p>Elle ne sait pas (et n'a pas besoin de savoir) si c'est un Dauphin, un Crocodile ou un Humain. Elle sait juste que l'objet <strong>peut nager</strong>.</p><p>C'est le polymorphisme : un même code fonctionne avec différents types d'objets, tant qu'ils respectent le contrat (l'interface).</p><p>Demain, si on ajoute une classe <code>Robot</code> qui implémente <code>Nageur</code>, le code fonctionne sans modification !</p>]]></text>
+      <text><![CDATA[<p>La méthode <code>faireNager</code> accepte n’importe quel objet qui
+implémente l’interface <code>Nageur</code>.</p>
+<p>Elle ne sait pas (et n’a pas besoin de savoir) si c’est un Dauphin,
+un Crocodile ou un Humain. Elle sait juste que l’objet <strong>peut
+nager</strong>.</p>
+<p>C’est le polymorphisme : un même code fonctionne avec différents
+types d’objets, tant qu’ils respectent le contrat (l’interface).</p>
+<p>Demain, si on ajoute une classe <code>Robot</code> qui implémente
+<code>Nageur</code>, le code fonctionne sans modification !</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -629,18 +795,26 @@ faireNager(new Humain());
   <question type="essay">
     <name><text>Interface marqueur</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Qu'est-ce qu'une interface marqueur ? Donnez un exemple d'utilisation.</p>]]></text>
+      <text><![CDATA[<p>Qu’est-ce qu’une interface marqueur ? Donnez un exemple
+d’utilisation.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Une interface marqueur est une interface <strong>sans aucune méthode</strong>. Elle sert à "étiqueter" une classe.</p><p><strong>Exemple</strong> :
-``<code>java
-interface IConfidentiel {}</p><p>class DossierMedical implements IConfidentiel {}</p><p>void logger(Object obj) {
-    if (obj instanceof IConfidentiel) {
-        return;  // On ne logge pas les données confidentielles
-    }
-    // Logger normalement...
-}
-</code>`<code></p><p>Aujourd'hui, on préfère souvent les <strong>annotations</strong> (</code>@Confidential`) qui sont plus flexibles.</p>]]></text>
+      <text><![CDATA[<p>Une interface marqueur est une interface <strong>sans aucune
+méthode</strong>. Elle sert à “étiqueter” une classe.</p>
+<p><strong>Exemple</strong> :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">interface</span> IConfidentiel <span class="op">{}</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="kw">class</span> DossierMedical <span class="kw">implements</span> IConfidentiel <span class="op">{}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="dt">void</span> <span class="fu">logger</span><span class="op">(</span><span class="bu">Object</span> obj<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>obj <span class="kw">instanceof</span> IConfidentiel<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span>  <span class="co">// On ne logge pas les données confidentielles</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>    <span class="co">// Logger normalement...</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Aujourd’hui, on préfère souvent les <strong>annotations</strong>
+(<code>@Confidential</code>) qui sont plus flexibles.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -661,18 +835,21 @@ interface IConfidentiel {}</p><p>class DossierMedical implements IConfidentiel {
   <question type="essay">
     <name><text>Les deux relations fondamentales</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Récapitulez les deux types de relations fondamentales en POO avec leurs caractéristiques et un exemple pour chacune.</p>]]></text>
+      <text><![CDATA[<p>Récapitulez les deux types de relations fondamentales en POO avec
+leurs caractéristiques et un exemple pour chacune.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p><strong>1. Relation "est un" (is-a) → Héritage</strong>
-- Relation d'identité/spécialisation
-- Mot-clé : <code>extends</code>
-- Une seule classe parente possible
-- Exemple : <code>class Chien extends Animal</code> (un chien EST un animal)</p><p><strong>2. Relation "a un" (has-a) → Composition</strong>
-- Relation de possession/agrégation
-- Attribut de type objet
-- Autant de composants que souhaité
-- Exemple : <code>class Voiture { private Moteur moteur; }</code> (une voiture A un moteur)</p><p>Ces deux relations constituent l'architecture d'une application orientée objet.</p>]]></text>
+      <text><![CDATA[<p><strong>1. Relation “est un” (is-a) → Héritage</strong> - Relation
+d’identité/spécialisation - Mot-clé : <code>extends</code> - Une seule
+classe parente possible - Exemple :
+<code>class Chien extends Animal</code> (un chien EST un animal)</p>
+<p><strong>2. Relation “a un” (has-a) → Composition</strong> - Relation
+de possession/agrégation - Attribut de type objet - Autant de composants
+que souhaité - Exemple :
+<code>class Voiture { private Moteur moteur; }</code> (une voiture A un
+moteur)</p>
+<p>Ces deux relations constituent l’architecture d’une application
+orientée objet.</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
@@ -693,25 +870,28 @@ interface IConfidentiel {}</p><p>class DossierMedical implements IConfidentiel {
   <question type="essay">
     <name><text>Erreur classique d&apos;héritage</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Pourquoi le code suivant est-il une mauvaise idée ?</p><p>``<code>java
-class Pile extends ArrayList {
-    void empiler(Object o) { add(o); }
-    Object depiler() { return remove(size() - 1); }
-}
-</code>``</p>]]></text>
+      <text><![CDATA[<p>Pourquoi le code suivant est-il une mauvaise idée ?</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Pile <span class="kw">extends</span> <span class="bu">ArrayList</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">empiler</span><span class="op">(</span><span class="bu">Object</span> o<span class="op">)</span> <span class="op">{</span> <span class="fu">add</span><span class="op">(</span>o<span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="bu">Object</span> <span class="fu">depiler</span><span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> <span class="fu">remove</span><span class="op">(</span><span class="fu">size</span><span class="op">()</span> <span class="op">-</span> <span class="dv">1</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>C'est un <strong>abus d'héritage</strong> ! Une <code>Pile</code> n'EST PAS une <code>ArrayList</code>.</p><p><strong>Problèmes</strong> :
-1. La Pile hérite de toutes les méthodes d'ArrayList (add, remove, get à n'importe quel index...)
-2. Un utilisateur peut contourner <code>empiler/depiler</code> et briser l'invariant de pile (LIFO)
-3. La Pile <strong>utilise</strong> une ArrayList, elle n'en EST pas une</p><p><strong>Solution</strong> : Composition
-``<code>java
-class Pile {
-    private ArrayList data = new ArrayList();  // A un ArrayList
-    void empiler(Object o) { data.add(o); }
-    Object depiler() { return data.remove(data.size() - 1); }
-}
-</code>``</p>]]></text>
+      <text><![CDATA[<p>C’est un <strong>abus d’héritage</strong> ! Une <code>Pile</code>
+n’EST PAS une <code>ArrayList</code>.</p>
+<p><strong>Problèmes</strong> : 1. La Pile hérite de toutes les méthodes
+d’ArrayList (add, remove, get à n’importe quel index…) 2. Un utilisateur
+peut contourner <code>empiler/depiler</code> et briser l’invariant de
+pile (LIFO) 3. La Pile <strong>utilise</strong> une ArrayList, elle n’en
+EST pas une</p>
+<p><strong>Solution</strong> : Composition</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Pile <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">ArrayList</span> data <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">();</span>  <span class="co">// A un ArrayList</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">empiler</span><span class="op">(</span><span class="bu">Object</span> o<span class="op">)</span> <span class="op">{</span> data<span class="op">.</span><span class="fu">add</span><span class="op">(</span>o<span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="bu">Object</span> <span class="fu">depiler</span><span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> data<span class="op">.</span><span class="fu">remove</span><span class="op">(</span>data<span class="op">.</span><span class="fu">size</span><span class="op">()</span> <span class="op">-</span> <span class="dv">1</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -732,20 +912,30 @@ class Pile {
   <question type="essay">
     <name><text>Exercice de conception</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Concevez les classes pour modéliser un zoo avec : des Animaux (Lion, Dauphin, Aigle), certains peuvent Nager, d'autres peuvent Voler, et un Gardien qui s'occupe de plusieurs animaux.</p><p>Indiquez pour chaque relation s'il s'agit d'héritage, de composition ou d'interface.</p>]]></text>
+      <text><![CDATA[<p>Concevez les classes pour modéliser un zoo avec : des Animaux (Lion,
+Dauphin, Aigle), certains peuvent Nager, d’autres peuvent Voler, et un
+Gardien qui s’occupe de plusieurs animaux.</p>
+<p>Indiquez pour chaque relation s’il s’agit d’héritage, de composition
+ou d’interface.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>``<code>
-abstract class Animal { ... }</p><p>class Lion extends Animal { }        // Héritage : Lion EST un Animal
+      <text><![CDATA[<pre><code>abstract class Animal { ... }
+
+class Lion extends Animal { }        // Héritage : Lion EST un Animal
 class Dauphin extends Animal implements Nageur { }  // Héritage + Interface
-class Aigle extends Animal implements Volant { }    // Héritage + Interface</p><p>interface Nageur { void nager(); }   // Interface : capacité
-interface Volant { void voler(); }   // Interface : capacité</p><p>class Gardien {
-    private List<Animal> animaux;    // Composition : Gardien A des Animaux
-}
-</code>``</p><p><strong>Justifications</strong> :
-- <strong>Héritage</strong> : Lion/Dauphin/Aigle SONT des Animaux
-- <strong>Interface</strong> : Nager et Voler sont des <strong>capacités</strong>, pas des identités
-- <strong>Composition</strong> : Le Gardien A des animaux (il les possède/gère)</p>]]></text>
+class Aigle extends Animal implements Volant { }    // Héritage + Interface
+
+interface Nageur { void nager(); }   // Interface : capacité
+interface Volant { void voler(); }   // Interface : capacité
+
+class Gardien {
+    private List&lt;Animal&gt; animaux;    // Composition : Gardien A des Animaux
+}</code></pre>
+<p><strong>Justifications</strong> : - <strong>Héritage</strong> :
+Lion/Dauphin/Aigle SONT des Animaux - <strong>Interface</strong> : Nager
+et Voler sont des <strong>capacités</strong>, pas des identités -
+<strong>Composition</strong> : Le Gardien A des animaux (il les
+possède/gère)</p>]]></text>
     </generalfeedback>
     <defaultgrade>5</defaultgrade>
     <penalty>0</penalty>
@@ -766,11 +956,22 @@ interface Volant { void voler(); }   // Interface : capacité</p><p>class Gardie
   <question type="essay">
     <name><text>Mémoire Heap et Stack</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Quand on écrit <code>Personne p = new Personne("Jean");</code>, où sont stockés la variable <code>p</code> et l'objet <code>Personne</code> ?</p>]]></text>
+      <text><![CDATA[<p>Quand on écrit <code>Personne p = new Personne("Jean");</code>, où
+sont stockés la variable <code>p</code> et l’objet <code>Personne</code>
+?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>- La <strong>variable <code>p</code></strong> (qui contient une référence/adresse) est stockée sur la <strong>pile (stack)</strong>
-- L'<strong>objet <code>Personne</code></strong> lui-même est stocké dans le <strong>tas (heap)</strong></p><p>La pile contient les références (comme des "numéros de casier"), le tas contient les objets réels (le contenu des casiers).</p><p>En Java, le <strong>Garbage Collector</strong> se charge de libérer automatiquement la mémoire du heap quand un objet n'est plus référencé.</p>]]></text>
+      <text><![CDATA[<ul>
+<li>La <strong>variable <code>p</code></strong> (qui contient une
+référence/adresse) est stockée sur la <strong>pile (stack)</strong></li>
+<li>L’<strong>objet <code>Personne</code></strong> lui-même est stocké
+dans le <strong>tas (heap)</strong></li>
+</ul>
+<p>La pile contient les références (comme des “numéros de casier”), le
+tas contient les objets réels (le contenu des casiers).</p>
+<p>En Java, le <strong>Garbage Collector</strong> se charge de libérer
+automatiquement la mémoire du heap quand un objet n’est plus
+référencé.</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -791,15 +992,26 @@ interface Volant { void voler(); }   // Interface : capacité</p><p>class Gardie
   <question type="essay">
     <name><text>Objet vide vs null</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Quelle est la différence entre une liste vide (<code>new ArrayList<>()</code>) et une référence <code>null</code> ?</p>]]></text>
+      <text><![CDATA[<p>Quelle est la différence entre une liste vide
+(<code>new ArrayList&lt;&gt;()</code>) et une référence
+<code>null</code> ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>- <strong>Liste vide</strong> : L'objet <strong>existe</strong> en mémoire, il contient simplement 0 éléments. On peut appeler ses méthodes (<code>list.size()</code> retourne 0).</p><p>- <strong>null</strong> : Il n'y a <strong>aucun objet</strong>. La variable ne pointe vers rien. Appeler une méthode sur <code>null</code> provoque une <code>NullPointerException</code>.</p><p>Exemple :
-``<code>java
-List<String> liste = new ArrayList<>();  // Objet existe, 0 éléments
-liste.size();  // OK, retourne 0</p><p>List<String> nulle = null;  // Aucun objet
-nulle.size();  // NullPointerException !
-</code>``</p>]]></text>
+      <text><![CDATA[<ul>
+<li><p><strong>Liste vide</strong> : L’objet <strong>existe</strong> en
+mémoire, il contient simplement 0 éléments. On peut appeler ses méthodes
+(<code>list.size()</code> retourne 0).</p></li>
+<li><p><strong>null</strong> : Il n’y a <strong>aucun objet</strong>. La
+variable ne pointe vers rien. Appeler une méthode sur <code>null</code>
+provoque une <code>NullPointerException</code>.</p></li>
+</ul>
+<p>Exemple :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">List</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> liste <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span>  <span class="co">// Objet existe, 0 éléments</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>liste<span class="op">.</span><span class="fu">size</span><span class="op">();</span>  <span class="co">// OK, retourne 0</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="bu">List</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> nulle <span class="op">=</span> <span class="kw">null</span><span class="op">;</span>  <span class="co">// Aucun objet</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>nulle<span class="op">.</span><span class="fu">size</span><span class="op">();</span>  <span class="co">// NullPointerException !</span></span></code></pre></div>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -820,10 +1032,26 @@ nulle.size();  // NullPointerException !
   <question type="essay">
     <name><text>EnumMap pour les compétences</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Dans un jeu RPG, on veut gérer les compétences d'un personnage (FORCE, AGILITE, INTELLIGENCE). Pourquoi utiliser une <code>EnumMap<Competence, Integer></code> plutôt que des attributs séparés <code>int force, int agilite, int intelligence</code> ?</p>]]></text>
+      <text><![CDATA[<p>Dans un jeu RPG, on veut gérer les compétences d’un personnage
+(FORCE, AGILITE, INTELLIGENCE). Pourquoi utiliser une
+<code>EnumMap&lt;Competence, Integer&gt;</code> plutôt que des attributs
+séparés <code>int force, int agilite, int intelligence</code> ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Avantages de <code>EnumMap<Competence, Integer></code> :</p><p>1. <strong>Moins de code répétitif</strong> : pas besoin de créer un getter/setter par compétence</p><p>2. <strong>Méthode générique</strong> : <code>augmenterCompetence(Competence c, int valeur)</code> fonctionne pour toutes les compétences</p><p>3. <strong>Évolutivité</strong> : ajouter une nouvelle compétence (ex: CHARISME) ne nécessite que de modifier l'enum</p><p>4. <strong>Itération facile</strong> : on peut parcourir toutes les compétences avec une boucle</p><p>5. <strong>Type-safe</strong> : seules les clés de l'enum sont acceptées (pas de faute de frappe possible)</p>]]></text>
+      <text><![CDATA[<p>Avantages de <code>EnumMap&lt;Competence, Integer&gt;</code> :</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Moins de code répétitif</strong> : pas besoin de créer un
+getter/setter par compétence</p></li>
+<li><p><strong>Méthode générique</strong> :
+<code>augmenterCompetence(Competence c, int valeur)</code> fonctionne
+pour toutes les compétences</p></li>
+<li><p><strong>Évolutivité</strong> : ajouter une nouvelle compétence
+(ex: CHARISME) ne nécessite que de modifier l’enum</p></li>
+<li><p><strong>Itération facile</strong> : on peut parcourir toutes les
+compétences avec une boucle</p></li>
+<li><p><strong>Type-safe</strong> : seules les clés de l’enum sont
+acceptées (pas de faute de frappe possible)</p></li>
+</ol>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -844,20 +1072,28 @@ nulle.size();  // NullPointerException !
   <question type="essay">
     <name><text>Polymorphisme avec une liste</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Expliquez ce qui se passe dans ce code et pourquoi c'est utile :</p><p>``<code>java
-List<Personnage> equipe = new ArrayList<>();
-equipe.add(new Mercenaire("Rex"));
-equipe.add(new SuperMutant("Grok"));
-equipe.add(new Scientifique("Ada"));</p><p>for (Personnage p : equipe) {
-    p.attaqueSpeciale();
-}
-</code>``</p>]]></text>
+      <text><![CDATA[<p>Expliquez ce qui se passe dans ce code et pourquoi c’est utile :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="bu">List</span><span class="op">&lt;</span>Personnage<span class="op">&gt;</span> equipe <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>equipe<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Mercenaire</span><span class="op">(</span><span class="st">&quot;Rex&quot;</span><span class="op">));</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>equipe<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">SuperMutant</span><span class="op">(</span><span class="st">&quot;Grok&quot;</span><span class="op">));</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>equipe<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Scientifique</span><span class="op">(</span><span class="st">&quot;Ada&quot;</span><span class="op">));</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span>Personnage p <span class="op">:</span> equipe<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    p<span class="op">.</span><span class="fu">attaqueSpeciale</span><span class="op">();</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Grâce au <strong>polymorphisme</strong>, on peut stocker différents types de personnages dans une même liste de type <code>Personnage</code>.</p><p>À chaque tour de boucle, <code>p.attaqueSpeciale()</code> appelle la méthode <strong>du type réel</strong> de l'objet :
-- Pour Rex : comportement du Mercenaire
-- Pour Grok : comportement du SuperMutant
-- Pour Ada : comportement du Scientifique</p><p><strong>Utilité</strong> : On peut traiter uniformément des objets différents sans connaître leur type exact. Ajouter un nouveau type (ex: <code>Robot</code>) ne change pas le code de la boucle !</p>]]></text>
+      <text><![CDATA[<p>Grâce au <strong>polymorphisme</strong>, on peut stocker différents
+types de personnages dans une même liste de type
+<code>Personnage</code>.</p>
+<p>À chaque tour de boucle, <code>p.attaqueSpeciale()</code> appelle la
+méthode <strong>du type réel</strong> de l’objet : - Pour Rex :
+comportement du Mercenaire - Pour Grok : comportement du SuperMutant -
+Pour Ada : comportement du Scientifique</p>
+<p><strong>Utilité</strong> : On peut traiter uniformément des objets
+différents sans connaître leur type exact. Ajouter un nouveau type (ex:
+<code>Robot</code>) ne change pas le code de la boucle !</p>]]></text>
     </generalfeedback>
     <defaultgrade>4</defaultgrade>
     <penalty>0</penalty>
@@ -878,19 +1114,23 @@ equipe.add(new Scientifique("Ada"));</p><p>for (Personnage p : equipe) {
   <question type="essay">
     <name><text>Tester les exceptions</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Comment tester qu'une méthode lève bien une exception dans un test unitaire JUnit ?</p>]]></text>
+      <text><![CDATA[<p>Comment tester qu’une méthode lève bien une exception dans un test
+unitaire JUnit ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>En JUnit 5, on utilise <code>assertThrows</code> :</p><p>``<code>java
-@Test
-void testCompetenceHorsLimite() {
-    Personnage p = new Mercenaire("Test");
-    
-    assertThrows(IllegalArgumentException.class, () -> {
-        p.augmenterCompetence(Competence.FORCE, 20);
-    });
-}
-</code>`<code></p><p>Cela vérifie que le code dans la lambda <strong>lève bien</strong> une </code>IllegalArgumentException`. Si aucune exception n'est levée ou si c'est une autre exception, le test échoue.</p>]]></text>
+      <text><![CDATA[<p>En JUnit 5, on utilise <code>assertThrows</code> :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="at">@Test</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="dt">void</span> <span class="fu">testCompetenceHorsLimite</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    Personnage p <span class="op">=</span> <span class="kw">new</span> <span class="fu">Mercenaire</span><span class="op">(</span><span class="st">&quot;Test&quot;</span><span class="op">);</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    </span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="fu">assertThrows</span><span class="op">(</span><span class="bu">IllegalArgumentException</span><span class="op">.</span><span class="fu">class</span><span class="op">,</span> <span class="op">()</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>        p<span class="op">.</span><span class="fu">augmenterCompetence</span><span class="op">(</span>Competence<span class="op">.</span><span class="fu">FORCE</span><span class="op">,</span> <span class="dv">20</span><span class="op">);</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    <span class="op">});</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Cela vérifie que le code dans la lambda <strong>lève bien</strong>
+une <code>IllegalArgumentException</code>. Si aucune exception n’est
+levée ou si c’est une autre exception, le test échoue.</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -911,29 +1151,33 @@ void testCompetenceHorsLimite() {
   <question type="essay">
     <name><text>Composition avec des objets Item</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Dans un RPG, un <code>Personnage</code> peut porter une <code>Arme</code> et une <code>Armure</code>. Implémentez les méthodes <code>equiperArme()</code> et <code>getArme()</code> en respectant l'encapsulation.</p>]]></text>
+      <text><![CDATA[<p>Dans un RPG, un <code>Personnage</code> peut porter une
+<code>Arme</code> et une <code>Armure</code>. Implémentez les méthodes
+<code>equiperArme()</code> et <code>getArme()</code> en respectant
+l’encapsulation.</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>``<code>java
-class Personnage {
-    private Arme arme;  // Composition : le personnage A une arme
-    
-    public void equiperArme(Arme nouvelleArme) {
-        if (nouvelleArme == null) {
-            throw new IllegalArgumentException("L'arme ne peut pas être null");
-        }
-        this.arme = nouvelleArme;
-    }
-    
-    public Arme getArme() {
-        return this.arme;
-    }
-    
-    public boolean estArme() {
-        return this.arme != null;
-    }
-}
-</code>`<code></p><p>L'attribut </code>arme` est <strong>privé</strong> (encapsulation) et les méthodes publiques contrôlent l'accès.</p>]]></text>
+      <text><![CDATA[<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Personnage <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="kw">private</span> Arme arme<span class="op">;</span>  <span class="co">// Composition : le personnage A une arme</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    </span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">equiperArme</span><span class="op">(</span>Arme nouvelleArme<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>nouvelleArme <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IllegalArgumentException</span><span class="op">(</span><span class="st">&quot;L&#39;arme ne peut pas être null&quot;</span><span class="op">);</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">arme</span> <span class="op">=</span> nouvelleArme<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>    </span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>    <span class="kw">public</span> Arme <span class="fu">getArme</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">arme</span><span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>    </span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">estArme</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">arme</span> <span class="op">!=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>L’attribut <code>arme</code> est <strong>privé</strong>
+(encapsulation) et les méthodes publiques contrôlent l’accès.</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -954,24 +1198,30 @@ class Personnage {
   <question type="essay">
     <name><text>Chaînage de constructeurs</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Expliquez comment le chaînage de constructeurs fonctionne avec <code>this(...)</code> :</p><p>``<code>java
-class Personnage {
-    Personnage(String nom, int niveau) {
-        this.nom = nom;
-        this.niveau = niveau;
-    }
-    
-    Personnage(String nom) {
-        this(nom, 1);  // ???
-    }
-}
-</code>``</p>]]></text>
+      <text><![CDATA[<p>Expliquez comment le chaînage de constructeurs fonctionne avec
+<code>this(...)</code> :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Personnage <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="fu">Personnage</span><span class="op">(</span><span class="bu">String</span> nom<span class="op">,</span> <span class="dt">int</span> niveau<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">nom</span> <span class="op">=</span> nom<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">niveau</span> <span class="op">=</span> niveau<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    </span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    <span class="fu">Personnage</span><span class="op">(</span><span class="bu">String</span> nom<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>        <span class="kw">this</span><span class="op">(</span>nom<span class="op">,</span> <span class="dv">1</span><span class="op">);</span>  <span class="co">// ???</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Le constructeur <code>Personnage(String nom)</code> appelle <strong>l'autre constructeur</strong> de la même classe via <code>this(nom, 1)</code>.</p><p>C'est le <strong>chaînage de constructeurs</strong> (constructor chaining). Avantages :
-- Évite la duplication de code d'initialisation
-- Le constructeur simplifié utilise des valeurs par défaut (ici niveau = 1)
-- Un seul endroit contient la logique d'initialisation</p><p><code>this(...)</code> doit être la <strong>première instruction</strong> du constructeur.</p>]]></text>
+      <text><![CDATA[<p>Le constructeur <code>Personnage(String nom)</code> appelle
+<strong>l’autre constructeur</strong> de la même classe via
+<code>this(nom, 1)</code>.</p>
+<p>C’est le <strong>chaînage de constructeurs</strong> (constructor
+chaining). Avantages : - Évite la duplication de code d’initialisation -
+Le constructeur simplifié utilise des valeurs par défaut (ici niveau =
+1) - Un seul endroit contient la logique d’initialisation</p>
+<p><code>this(...)</code> doit être la <strong>première
+instruction</strong> du constructeur.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0</penalty>
@@ -992,24 +1242,30 @@ class Personnage {
   <question type="essay">
     <name><text>Redéfinir equals()</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>Pourquoi et comment redéfinir la méthode <code>equals()</code> pour une classe <code>Etudiant</code> ?</p>]]></text>
+      <text><![CDATA[<p>Pourquoi et comment redéfinir la méthode <code>equals()</code> pour
+une classe <code>Etudiant</code> ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Par défaut, <code>equals()</code> compare les <strong>références</strong> (comme <code>==</code>). Si on veut comparer le <strong>contenu</strong>, il faut redéfinir <code>equals()</code>.</p><p>``<code>java
-class Etudiant {
-    private String nom;
-    private int numero;
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Etudiant other = (Etudiant) obj;
-        return numero == other.numero 
-            && Objects.equals(nom, other.nom);
-    }
-}
-</code>``</p><p>Deux étudiants sont "égaux" s'ils ont le même nom et numéro, même si ce sont deux objets distincts en mémoire.</p>]]></text>
+      <text><![CDATA[<p>Par défaut, <code>equals()</code> compare les
+<strong>références</strong> (comme <code>==</code>). Si on veut comparer
+le <strong>contenu</strong>, il faut redéfinir
+<code>equals()</code>.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Etudiant <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> nom<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">int</span> numero<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    </span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">equals</span><span class="op">(</span><span class="bu">Object</span> obj<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span> <span class="op">==</span> obj<span class="op">)</span> <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>obj <span class="op">==</span> <span class="kw">null</span> <span class="op">||</span> <span class="fu">getClass</span><span class="op">()</span> <span class="op">!=</span> obj<span class="op">.</span><span class="fu">getClass</span><span class="op">())</span> <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>        Etudiant other <span class="op">=</span> <span class="op">(</span>Etudiant<span class="op">)</span> obj<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>        <span class="cf">return</span> numero <span class="op">==</span> other<span class="op">.</span><span class="fu">numero</span> </span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>            <span class="op">&amp;&amp;</span> Objects<span class="op">.</span><span class="fu">equals</span><span class="op">(</span>nom<span class="op">,</span> other<span class="op">.</span><span class="fu">nom</span><span class="op">);</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Deux étudiants sont “égaux” s’ils ont le même nom et numéro, même si
+ce sont deux objets distincts en mémoire.</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>
@@ -1030,26 +1286,30 @@ class Etudiant {
   <question type="essay">
     <name><text>Modélisation Client en POO</text></name>
     <questiontext format="html">
-      <text><![CDATA[<p>En entreprise, on manipule des concepts comme "Client", "Facture", "Commande". Comment la POO permet-elle de modéliser ces concepts ?</p>]]></text>
+      <text><![CDATA[<p>En entreprise, on manipule des concepts comme “Client”, “Facture”,
+“Commande”. Comment la POO permet-elle de modéliser ces concepts ?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>Chaque concept du monde réel devient une <strong>classe</strong> en POO :</p><p>``<code>java
-class Client {
-    private String nom;
-    private String email;
-    private List<Commande> commandes;
-    
-    void passerCommande() { ... }
-    void consulterFactures() { ... }
-}</p><p>class Facture {
-    private Client client;
-    private double montant;
-    private Date date;
-}
-</code>``</p><p><strong>Avantages</strong> :
-- Le code "parle" le même langage que le métier
-- Les données et comportements sont regroupés dans la même entité
-- C'est la base du <strong>Domain-Driven Design</strong> (DDD)</p>]]></text>
+      <text><![CDATA[<p>Chaque concept du monde réel devient une <strong>classe</strong> en
+POO :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">class</span> Client <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> nom<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> email<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">List</span><span class="op">&lt;</span>Commande<span class="op">&gt;</span> commandes<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>    </span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">passerCommande</span><span class="op">()</span> <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">consulterFactures</span><span class="op">()</span> <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="kw">class</span> Facture <span class="op">{</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>    <span class="kw">private</span> Client client<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">double</span> montant<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">Date</span> date<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Avantages</strong> : - Le code “parle” le même langage que le
+métier - Les données et comportements sont regroupés dans la même entité
+- C’est la base du <strong>Domain-Driven Design</strong> (DDD)</p>]]></text>
     </generalfeedback>
     <defaultgrade>3</defaultgrade>
     <penalty>0</penalty>

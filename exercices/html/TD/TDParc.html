@@ -9,10 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Alexis PICOT" />
 
 
-<title>TP 1 — Système de Gestion de Bibliothèque Municipale</title>
+<title>TD Parc</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,467 +348,73 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">TP 1 — Système de Gestion de Bibliothèque Municipale</h1>
-<h4 class="author">Alexis PICOT</h4>
+<h1 class="title toc-ignore">TD Parc</h1>
 
 </div>
 
-<div id="TOC">
-<ul>
-<li><a href="#tp-1-système-de-gestion-de-bibliothèque-municipale" id="toc-tp-1-système-de-gestion-de-bibliothèque-municipale">TP 1 — Système de Gestion de Bibliothèque Municipale</a>
-<ul>
-<li><a href="#contexte" id="toc-contexte">Contexte</a></li>
-<li><a href="#étape-1-le-besoin-initial-version-simple" id="toc-étape-1-le-besoin-initial-version-simple">Étape 1 — Le besoin initial (version “simple”)</a>
-<ul>
-<li><a href="#ce-que-vous-devez-réaliser" id="toc-ce-que-vous-devez-réaliser">Ce que vous devez réaliser</a></li>
-<li><a href="#contraintes-techniques" id="toc-contraintes-techniques">Contraintes techniques</a></li>
-<li><a href="#questions-à-vous-poser-avant-de-coder" id="toc-questions-à-vous-poser-avant-de-coder">Questions à vous poser AVANT de coder</a></li>
-</ul></li>
-<li><a href="#étape-2-première-évolution-ah-oui-javais-oublié" id="toc-étape-2-première-évolution-ah-oui-javais-oublié">Étape 2 — Première évolution : “Ah oui, j’avais oublié…”</a>
-<ul>
-<li><a href="#nouveau-cahier-des-charges" id="toc-nouveau-cahier-des-charges">Nouveau cahier des charges</a></li>
-<li><a href="#ce-que-vous-devez-adapter" id="toc-ce-que-vous-devez-adapter">Ce que vous devez adapter</a></li>
-<li><a href="#questions-à-vous-poser" id="toc-questions-à-vous-poser">Questions à vous poser</a></li>
-</ul></li>
-<li><a href="#étape-3-deuxième-évolution-le-conseil-municipal-a-décidé" id="toc-étape-3-deuxième-évolution-le-conseil-municipal-a-décidé">Étape 3 — Deuxième évolution : “Le conseil municipal a décidé…”</a>
-<ul>
-<li><a href="#nouvelles-règles-à-implémenter" id="toc-nouvelles-règles-à-implémenter">Nouvelles règles à implémenter</a></li>
-<li><a href="#ce-que-vous-devez-adapter-1" id="toc-ce-que-vous-devez-adapter-1">Ce que vous devez adapter</a></li>
-<li><a href="#questions-à-vous-poser-1" id="toc-questions-à-vous-poser-1">Questions à vous poser</a></li>
-</ul></li>
-<li><a href="#attendus-fonctionnels" id="toc-attendus-fonctionnels">Attendus fonctionnels</a>
-<ul>
-<li><a href="#gestion-des-documents" id="toc-gestion-des-documents">Gestion des documents</a></li>
-<li><a href="#gestion-des-adhérents" id="toc-gestion-des-adhérents">Gestion des adhérents</a></li>
-<li><a href="#gestion-des-emprunts" id="toc-gestion-des-emprunts">Gestion des emprunts</a></li>
-<li><a href="#gestion-des-pénalités" id="toc-gestion-des-pénalités">Gestion des pénalités</a></li>
-</ul></li>
-<li><a href="#pièges-classiques-dans-lesquels-vous-allez-probablement-tomber" id="toc-pièges-classiques-dans-lesquels-vous-allez-probablement-tomber">Pièges classiques dans lesquels vous allez probablement tomber</a>
-<ul>
-<li><a href="#piège-n1-la-classe-document-fourre-tout" id="toc-piège-n1-la-classe-document-fourre-tout">Piège n°1 : La classe “Document” fourre-tout</a></li>
-<li><a href="#piège-n2-la-classe-adhérent-avec-des-ifelse-pour-les-règles" id="toc-piège-n2-la-classe-adhérent-avec-des-ifelse-pour-les-règles">Piège n°2 : La classe Adhérent avec des if/else pour les règles</a></li>
-<li><a href="#piège-n3-le-modèle-anémique" id="toc-piège-n3-le-modèle-anémique">Piège n°3 : Le modèle anémique</a></li>
-<li><a href="#piège-n4-la-gestion-des-erreurs-par-des-retours-de-booléens" id="toc-piège-n4-la-gestion-des-erreurs-par-des-retours-de-booléens">Piège n°4 : La gestion des erreurs par des retours de booléens</a></li>
-<li><a href="#piège-n5-la-duplication-de-code" id="toc-piège-n5-la-duplication-de-code">Piège n°5 : La duplication de code</a></li>
-</ul></li>
-<li><a href="#pour-aller-plus-loin" id="toc-pour-aller-plus-loin">Pour aller plus loin</a>
-<ul>
-<li><a href="#niveau-1-pour-ceux-qui-terminent-létape-3" id="toc-niveau-1-pour-ceux-qui-terminent-létape-3">Niveau 1 — Pour ceux qui terminent l’étape 3</a></li>
-<li><a href="#niveau-2-pour-ceux-qui-vont-vite" id="toc-niveau-2-pour-ceux-qui-vont-vite">Niveau 2 — Pour ceux qui vont vite</a></li>
-<li><a href="#niveau-3-pour-les-très-rapides" id="toc-niveau-3-pour-les-très-rapides">Niveau 3 — Pour les très rapides</a></li>
-</ul></li>
-<li><a href="#règles-du-jeu" id="toc-règles-du-jeu">Règles du jeu</a>
-<ul>
-<li><a href="#ce-qui-est-interdit" id="toc-ce-qui-est-interdit">Ce qui est INTERDIT</a></li>
-<li><a href="#ce-qui-est-obligatoire" id="toc-ce-qui-est-obligatoire">Ce qui est OBLIGATOIRE</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
 
-<div id="tp-1-système-de-gestion-de-bibliothèque-municipale" class="section level1">
-<h1>TP 1 — Système de Gestion de Bibliothèque Municipale</h1>
-<p><strong>Rappel :</strong> L’objectif n’est pas de finir le plus vite possible, mais de comprendre pourquoi la POO est nécessaire. Prenez le temps de réfléchir, de vous tromper, et d’apprendre de vos erreurs.</p>
-<p>Bon courage !</p>
-<hr />
-<div id="contexte" class="section level2">
-<h2>Contexte</h2>
-<p>Vous venez d’être embauché en tant que développeur junior dans une petite entreprise de services numériques. Votre premier client est la bibliothèque municipale de Villeurbanne qui souhaite moderniser son système de gestion.</p>
-<p>Le directeur de la bibliothèque, vous explique sa situation :</p>
 <blockquote>
-<p>“Actuellement, tout est géré sur papier et Excel. On a des livres, des adhérents, et on note les emprunts dans un cahier. C’est devenu ingérable avec nos 15 000 ouvrages et 3 000 adhérents. On voudrait un système simple pour gérer tout ça. Rien de compliqué, juste pouvoir enregistrer un emprunt et savoir qui a quoi.”</p>
+<p><strong>L’énoncé est volontairement décousu et vous met en situation professionnelle dans laquelle vous n’avez qu’un compte rendu de réunion pour modéliser l’application.</strong></p>
+<p><strong>Vous allez devoir faire et défaire votre diagramme de classes en fonction des demandes “clients”.</strong></p>
 </blockquote>
-<p>Le directeur n’est pas très technique. Il vous donne des informations au compte-gouttes et change régulièrement d’avis. Bienvenue dans le monde réel.</p>
+<p><strong>Instructions :</strong></p>
+<p>Vous devez obligatoirement répondre à l’aide de la syntaxe PlantUML. Vous pouvez utiliser un éditeur en ligne comme (lien :<a href="https://www.planttext.com?text=ZLEzJiCm4Duj-Hrk2mXrOs8gKWTOe18I-pMv9YTiNx2T2eHu7_8SUJ6S9YbAMubcI9pJsT_FVLw6Y3usrcWLtjZLwD52wQMf7rr5dYEwdE1MgoWrH86Dn2WM2lQKHnQdLSK5GMum1B0KAoc2LbfbiEhQBJlkco1rc8nT9B_5TDoh67HHg-CAV6a5wRc1dN2HNeRyrRLMt-TFn06MuDwnnQHWO37y_Ptr4Zsx4fpOgVA0coGiGZL-PwWMNNaPx3C7mWRU6uQgQvDN14KsebC4jhNfMaj9v47nm73SI1-HN74WtFTJtnvEx1WbnC-QLhGsZSMIPgJp2dilBs6z5WuX5S_HdWXEFKSCp_DvIcGavM56oE659awpgANn-xBOMW8FsHhOJ2tdu6UWkEdLN1QP7OyUd8ufHO03k8n2eeK16WSuJzX-y__pib9qFsREiUZQNCmys3t2Q37swr6mLcDH5ek32NSfjViRfjKopIRTt5y0">PlantText</a>) pour dessiner votre diagramme de classes. Ou bien, si vous ne l’avez pas déjà fait, vous pouvez installer l’extension PlantUML pour VS Code.</p>
+<p>Exemple :</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApEAAADfCAIAAAAhhB+pAAAAKnRFWHRjb3B5bGVmdABHZW5lcmF0ZWQgYnkgaHR0cHM6Ly9wbGFudHVtbC5jb212zsofAAACKGlUWHRwbGFudHVtbAABAAAAeJy9U9tu2kAQfd+vmDdAFVFCLo38RBuSthQalBDeB3vAq3p33b2gRlX/p3wHP9ZZMJRQpKAK1Q++jGfnnDNzpu08Wh9UIdxXqUu0qGBqTSg/6Zys9KhTggvhTQnewNh4bxRk0lLqpdEilxlBWqBzoMjnJnNC1KCzmE+kljED+H9Rk9qTnSCXGpkCtRe7AfghgK83MDMy41tBtt4QP/cVwxUewTstFRZihb762JR59FbqKWijqsBHHLMYD3n13IZTqKcH4N1LRxjgW5CQL+bcG4KsVuGSB6nKYjFXxMrWKlfUqnP03ZPONkxjOsVst9uCirt/LqlDgyIonNI23TTH2L1X+Q6MdI6D+whX1NYpO9z2MvnCNAwPfpuKxkMat+59aYJdho0qjVsmVjzWGXuAt+FwHEUc4IyZrHT/PRSetnSga+SYEDoIGvCFkZZnX52OMtniV/GCXbaYp6bYcm6sXXUU43ulUlQx02xuhCdsTF4dIdo8h7iNon38xTx46Y67Uv9hC47u5n+35ZFddJBXBrH2U78HM7IuAp+dtE5blyet+jAQdFHD6Vs4u07OL5PzK7i5HUL83RD1D4MeON5KtkQmHXMah+iehujiDOEhaC8VJXBfku52Pq8DcKtn0hodlYnuqP8n4eqi+V56eCTLTGDUFx2aYCg8n0hNxooTeBreNa9Fj/0RuN0JTKy4MVzXPidw9yB+Azp4LHwD86/XAABLh0lEQVR4Xu2dCXgURdrHORQFOVxETlFW5AgJOYCQg0AOEm6QQ5DjAwRWQEASjhDCohiOILABORPCLXdIOAMJJhzhBhUIoNxErsgRQnrd1RV15/s7RXo7NUdmMj090zPv75lnnp63qmt66q23/lXd1T2lNARBEARBqIFSvIEgCIIgCLuENJsgCIIg1AFpNkEQBEGoA9JsgiAIglAHpNkEQRAEoQ5IswmCIAhCHZBmEwShefr06dy5c2NjY2cR8jFz5szDhw/zdU0QFkCaTRCEZt68eXfv3hUIuUlKStqyZQtf3QRRUkizCYLQYFLIqw0hE6hbvroJoqSQZhMEQZptRebOnctXN0GUFNLskvDrr78uW7bsc0LCnDlzkpOT+ZoiVAJptvUgzSZkhDTbbP7zn/9ERkZeu3aND02nJykpKSsri68vQg1YQ7MLCgpS9+8dNX60f1ArFzeXmjVr4t0v0H94xMgd+3Y+LXjK7+CgkGYTMkKabTbx8fEk2HpBHx0bG8vXF6EGZNfsnam7/Fr7tfD3/lvUiLikhasOrEvJ3o13bMMCu0+Az9adSfxujghpNiEjpNlm8/nnn/NBSRQye/Zsvr4INSCjZufn54dPCHdv7vHJshjotKEXUps2dx8ePvLJkyd8EY4FaTYhI6TZZkOabQTSbJUil2ZDsHv26dW2a+jGk1t1dZp7IQ9ydu7VBXvxBTkQpNmEjJBmm42Fml1QUJCZmRk5cXJwUKibm0fNmjWbunm0DQmLjo6GHan8DqqCNFulyKXZ4yaOb9s1bNu5nboKrfeFnJDtkREf8QU5EKTZhIyQZpuNJZq9d+++gFZBPt5tRg6JWTznq/UJ51I338c7tkd/ON3fLzAoKDgtLY3fTT2QZqsUWTQbTdejueeGE8XPsKUv5Hdv7r5jzw6+OEeBNJuQEdJssymZZufn50eET/Jw954evR46beg1c+r6Fs1bRkVFqfRsIWm2SrFcswsKCtoEtTF0DXvLmeTZ6+dNWz5jefoqfEw6u0Oair382vibcpLpyZMnpmQTtDl5k/nIUghpNiEjpNlmUwLNhgD36P5+WHCvbWuu6uo090KeLp3e69evnxplmzRbpViu2ZmZmb4BvrpqjdfwqR9VfrVyqUIaeTQu+0LZ2HVzpXlatPLen7GfL7Qo8fHx2H369Ol8gg537txBzq+//ppPMIfLly+jkIsXL/IJZkKaTcgIabbZlECzx46JhGDv3nhHV6H1vpCza+f3MNvmC7J7SLNViuWaHTV58vDJI3UFe0jk36B8VV+v2nv4+x9MHBrQoXWZMmVgCY8dL832YdSIsRPD+UKL0qpVq9DQ0Hr16hU71X78+PGiRYssfII6aTZhh5Bmm425mr1r5z6Ppt5Jq4ufYUtfyO/dwkd117ZJs1WK5Zod0jYkbutCTrDXH99S7qVy1WpWW3XwS9H4f+GDoIXj5kRKc2Lf1sGt+UIlnDt3DmKP9woVKmzfvp0Z8/Lydu3a9eTJk5SUFMzCz5w5w+ywwP7gwQOWAe9JSUlLliyBDCP12LFj2D58+LBYODhx4sTSpUthP3nyJLOQZhN2CGm22Zil2ZgQ+PsFG7+Gbeg1d/rGkJAQ3SkFLHovs+Xn5z99auzZUk+18FZZIc1WKZZrdlP3plJhZq8J86Ige8MmD5ca12Zt7Ni3M5cZH5s0deULlTB+/Hh/f39s9O3bt3Pnzsx469YtlB8UFOTr64vU0qVLr127VpCcG2cZOnXqFBgY6OXlVbly5QkTJri4uCCyMAJYuXIlK2fgwIE1atTo169fWFgY7MuWLRNIswm7hDTbbMzS7LR9md7N2+jq8Ru139Fe2itC3ToNuGytA4IyMzO5Mk+dOoXMFy5ckBqvXLlSvnz5TZs2SY0cffr0GTJkCG8tDnzRjBkzeKsBSLNViuWaXbdu3aRvi6wsw2vwhKFoqzErZ3F23Rf2faNuXb7QQjAerV279uLFi7G9Z8+esmXLfv/990KhZkPOWbZBgwYFBAQIOpodHR0taMesKMTb25utFBk8eDC0HBvZ2dnVq1c/f/48K2TUqFGtWrUSSLMJu4Q022zM0uyPR0WNHDpdV7Mhz1K1ZkDIuWwTI2ay7kYKehzI84YNG6RG9FZsFmKEd955Z8mSJby1ODp27BgREcFbDUCarVIs12y98+yBER+gYc9YPVtXpLkX9nU1PM/etm3biy++ePr0aego1BoSO2nSJKFQsw8cOMCyxcXFubr+WQin2eJpcB8fH3GZyLRp0/z8/Ng2uH///qFDhxITE9u0aYMZuUCaTdglpNlmY5ZmB/i3XfT5fl3NFl9MrXXt7JUwf39oaChfqCC0aNFi4sSJ4kf0ZS+88MLBgwdFS1paGiYlu3fvFk+toxcrXbr0iRMnxAzQ7y1btjx69EjQjgPYZT92qQ9TeZYtNTUV/SPmMSb2XKTZKsVyzUZDXZC0iFPi8NjxaN4jPhmlK9LcK27rwsCQIL7QQrp27YoW/lIh0O+aNWuiuTJJFteHL1iwwMXFRdDRbDGDr6/vZ599xraxgY+CtvFjzo1iGzVq1Lt3786dO3t6egqk2YRdQpptNmZpdpPG7hsSzuuKsfgyrtkbl593d/fgCxWEYcOGhYWFiR87dOjQo0cPtp2bm4uJAqbUI0aMwJwjJCSEnQmEJFeoUAHbyBAQENCgQYMBAwY0b978rbfeunnzJrT8lVdeGT58eOvWrVEy+keMAx48eIC5Ow4P3fGePXvErzMCabZKsVyzo6Ojwz8ZxynxmqwNbA3aisy1onHTqaT2vTt+mlDkTu7hk0dGTdZ/owR0t1y5cphqi5YLFy5gAPrll1/KotkrVqyoWLFidnY2s0dGRpJmE3YLabbZmKXZb7xRd9eG27piLL6Mazb2fbPum3yhgrBo0aIaNWqw7X379qFHE6/GDRkyxMvL6/79+9iG6NaqVWvVqlXY/vTTT9nJc+wbFBT0+PFjQXuFr1q1auj7MLfGYSQkJLBCsFdiYiI2NmzY8PrrrzOjKZBmqxTLNTszMzOgTWtOs/H6W/QINK2XK7wc0j203+gB737Qs+abtWDp//FAaTbfAF/dpRuM2NhYtFJu3WVgYCDGprJodlxc3GuvvcZuDDt37hwaf5MmTQTSbMIuIc02G7M020rz7KysLOx19epVbGOu/NFHzx/XjH7nxRdf3L17t5izY8eOEyZMwEaXLl0+/vhjZrxx40Zqaur69eshsZhSp6WlQenFa3uPHj1CIfv3//mAi3HjxrVv376wsOIhzVYplmt2QUFBSEjI7MQiT0phr3GfT6z9Vh3W1EHFKpX6jOyXfG6XmOHTZTFBwUG6t0gwXF1dR4wYwRkxEkVRGRkZUkkumWbfu3fP29u7SpUq2BffFRMTU758+dzcXNJswg4hzTYbszTbStezmawmJyevW7eucuXKOTk5zL53796yZcvm5eWJOd3d3dEHCdqp85o1a9AtDh06FLOKTp06oR+EVJcpUwZ9loeHx8yZM9kumO6gkB9//BHbmMroLoIzAmm2SrFcswXtIgnvlt6bTibpyjZe8WkrY7+cu3DHUu4fRDac2NrMu7nNH0UAhb558yZvlQPSbEJGSLPNxizNNrRuXHwZ12y968YZbm5u06ZNa9iwIZNkxvbt219++WVxvpKdnQ1JPnLkyJUrV0ppbw+DzGMOce3aNZYBhWNi8fDhQ4wAxDOTc+bMYYtvUQ4GBNLriMVCmq1SZNFsEBUV9W6v7snn/zeHNv6Cfnfs3kmNj/wzHdJsQkZIs83GLM22xv3ZjAEDBmDqXKdOHSiuaLx16xY0e8WKFdjG5NvHx6dLly7Y3rhxI+bW2Ni0aVOlSpVu374taNeEV6hQoVevXviKF154QSynT58+gwYNErTX9nBU4tocUyDNVilyaXZ+fn6/fv169Oqx5VSyrkJzr40nt3bu0UWlj9Y3HdJsQkZIs83GLM029Bw0U+7PNvQcNAY6glKSVWMi69evr1q16jvvvIMp8sCBAx88eADjhAkT2DrzvLy84ODgKlWqNG7cuGPHjj169OjevTuKcnd3F0vAvgsXLsTG9evXq1WrhkHA3r17xVTjkGarFLk0W9DKNubNLVu2nL/qC12dFl+xiZ+3aNlCvX9hZzqk2YSMkGabjVmaLdjieeOPHz/GFJktHdfL5cuXjaRKQVFmXeQjzVYpMmo2A00Xo8M2gW0mTZu8YufqDVlbt2fv+fLw5vjtieM/mdA6sDVSS9a8VQdpNiEjpNlmY65mC/S/XoTdI7tmC9qTTJmZmdHR0WFhYR4eHjVr1sQ7tmGB3dAJJMeDNJuQEdJssymBZtP/ZxN2jjU0m2CQZhMyQpptNiXQbEEr2xHhkzzcvXWvbUtfM6eub9G8pXov8pFmqxTSbOtBmk3ICGm22ZRMsxl79+4LaBXk491m5JCYxXO+Wp9wDjqNd2yP/nC6v19gUJC6L/KRZqsU0mzrQZpNyAhpttlYotlC4UW+yImTg4NC3dz+vMjX1M2jbYiDXOQjzVYppNnWgzSbkBHSbLOxULMdG9JslQLNXrNmzSxCbtauXUuaTcgIabbZkGYbgTRbpcyiebbVIM0mZIQ022xIs41Amq1SSLOtB2k2ISOk2WZDmm0E0myVQpptPUizCRkhzTYbaDZd+dPL2rVrSbNVyizSbKtBmk3ICGm22dA82wik2SqFNNt6kGYTMkKabTak2UYgzVYppNnWgzSbkBHSbLMhzTYCabZKIc22HqTZhIyQZpsNabYRSLNViiyaffv27dOnT9+4cYNPMMCTJ094kyNCmk3ICGm22ZBmG4E0W6VYqNnXrl0LDQ0to6VUqVLNmjU7fvw4S9q1a1dqamrR7H9y584d5Pz666/5BIeDNJuQEdJssyHNNgJptkqxULPDwsL8/PzOnj1bUFBw+fLlrl271q5d++HDh0hq0KDBsmXL+B20f82+aNGiu3fv8gkOB2k2ISOk2WZDmm0E0myVYkSzt50/1CJ+dOVZ3fGObT5ZyyuvvLJq1Srx461bt+rXr3/06NGsrKw6deqEh4efOXMGIo05N0R65cqVx44de/LkCT4+ePAgLy8PG/iYkpISHx+PnJKChSNHjixevDgtLS0nJycjI0OaZHzH8+fPr1ixYvPmzbdv35bmx3tSUtKSJUswtoARR4Ltw4cPS/eVF9JsQkZIs82G7s82BN2frV5mGdBsiPRbcf+XeulEbt5DvGNbr2z7+vp6enqmp6c/ffpUah83blyFChXc3NygW9euXStVqhRyVq9evVevXuK5cQg8NoKCgpDk7+9funRpNCS2e0RERKVKlXr27Nm4cWN3d3dM2aWFG9lx2rRp+N5u3boFBATg67766isxf6dOnQIDA728vCpXrjxhwgQXF5eQkJAyZcpgJCEtXEZIswkZIc02G5pnG4E0W6UY0mzMrXdfPCZ+xDYskvTnXLx4EeoIRYQQtm/fPi4uDhNoliSeG2eaPXbsWEG7+ozT7PHjx7P8gwYNQlHYOHHiRNmyZTHPFrQn0r29vfVqtu6OJ0+ehH7v2bOH2SH8b7/9dn5+PssfHR0NI8YWtWvXRpnsj+oHDx4MLX9ertyQZhMyQpptNqTZRiDNVimGNLvKrO738/68LM3ANiyS9CKcP39+wYIF3bt3xxwX+gqNFHQ0W/x7eE6zDxw4wOzQe1dXV2xMnz69adOmz4sWhIULF+rVbN0dZ86cKc15+fJlZDt79izLL54G9/HxiYqKYtuYl/v5+Ym7yAtpNiEjpNlmQ5ptBNJslWJIs02ZZ9+8eXP37t1Sy5UrV2rWrDl16lRBR7PPnTvH8nCaLS4gh+q7uLhgY9KkSa1atXpeoiCsW7dOr2br7oiZtK+vr5gNM35kS09P5/Ijz2effca2sSHdRV5IswkZIc02G9JsI5BmqxRDmm3K9ey9e/eWLl360qVLUmNQUNDo0X+qe8OGDUum2cuXL4fws3PXYMqUKSZqdkJCQq1atcQr6ydOnEC27Oxs0mzCASDNNhvSbCOQZqsUQ5otmLBuHOro5ubm6uqK2XZubi7EGzHy4osvZmZmIhV2THwx2TVXs7FL9erVw8PDc3JyUlNTq1ataqJm//DDD3/5y1+YHqOQdu3atWjRQjc/aTahRkizzYY02wik2SrFiGabwpUrV7p27QqdLqXljTfeWLduHUuCYMPSoUMHczUbHDp0yNPT8+WXX/b29v7www8xMmB2hpEd9+3bV69evddee618+fIBAQHff/+9bn7SbEKNkGabDWm2EUizVYqFms3ApPb8+fNMIKXcu3fv8ePHnLFYoPHSB6hNmTIlJCREkl48GElcv36dtyoOaTYhI6TZZqOkZut9IHNBQYF4ka/E6C3ZOGfPnn2i5dtvv+XTCiHNVimyaLa8XLp0CRP3xMTEy5cv79mzp0aNGl988QWfSQ2QZhMyQpptNopptqEHMs+YMYNdnysx7O6Xixcv8gmGOXbsGLv5FWCD3TWrC2m2SrFDzQYbNmzw8vKqWrVq48aNY2NjMVrlc6gB0mxCRkizzUYxzTb0QGblNRt9pYeHR3p6Ovv41Vdf4aPeDpQ0W6XYp2Y7BqTZhIyQZpuNEc0udoUtOHz4sLgMR9A+QOrQoec5uSckiw9kZqlZWVmLFy9GZr2abXqxgo5mZ2dnL126FBkws2cW7tHQ27Zta9iwIUtiNGrUKDk5WWphkGarFNJs60GaTcgIabbZGNJsiHSdeX1H7Ij+NCMG79jWK9vh4eHSJ0W0b99+zJgxgr4nJEvPjYsPXoZYurm56Wq26cUKRTV74cKF5cuXR4agoKBatWqxk97co6G7dOkSGRkpFg7wsWvXrlILgzRbpZBmWw/SbEJGSLPNxpBmey4dMWx75MyDM9kL27DwmQQBGlymTBm2tvbGjRsvvPDCSS26T0jOyclhmn369GnscvDgQSQ9fPjQ1dVVV7NNLzY/P1/UbGxAsHfs2MEyTJ061cPDQyj6aGjMuStXrpySkvL8m7Rg5l2lShXuDyEE0mzVYqFmo1Fx10pMWSlpaCGkIbvpmFuCofyG7GZBmk3ICGm22RjS7Eozu32SESNqNrZh4TNp8fb2jomJEbQK5+XlJRh4QnJWVhbTbMT8O++8I6ZOnz5dV7MFk4s9e/asqNkrV67ELPzLQvDTYMdYQfpoaIwAdJfCnTlzBkb2QGkppNkqxULNrlu37owZM6SW1atXly1bVmrhYHdLSy/oMKSnl3bt2iW93UsXvRm4+7CLxXpHwiDNJmSENNtsDGm22+JhQ1MmipqNbVj4TFoWLVrE/swAk9q4uDjBwBOSk5OTWZcxZcoU6LGYGh8fr1ezTSw2PT1d1Gz01JhDdy7KhQsXpI+/yM7OZpnFcgDywIh3qVEgzVYt9qPZ0qWX4rPKDaE3g1yabfmRMEizCRkhzTYbQ5q95Vxmtc97DNse+WlGDN6xDQufScu9e/fKly+/cePGl156ia0L0/uE5GPHjrGuByJdo0YNMXXq1Kl6NdvEYqHBomZjbl2lShXxBCAmFpguoKuSanZubi62jx49Wvg9f8LOAfz4449So0CarVqMaLYpKyuL1Wy0vaVLly5ZsuTkyZPMwpTym2++SUlJgdpduXKF2cWll2hjderUCQ8PP3PmjN5CdDMwRM3et28fMmMvaaqSR8IgzSZkhDTbbAxpNtjwbXqjhYMqzOyCd2zzyRL69u1bs2bNnj17so96n5AsnprLycmBss6cOROp33//fe3atfVqtmBasYJkDRpkvnr16hEREQUFBeihBgwYUL9+fWg895hJ9Efoggu/5E9WrVr15ptvSi0M0myVYkizTfmPEKE4zR44cCAGnf369QsLCytTpgybjzKldHV1bdOmTWhoaOXKlffu3StIzkiPGzeuQoUKbm5u0Dy9hXAZRFjJaOr+/v7BwcHInJiYyJJ0CxHzW+NIGKTZhIyQZpuNEc02ndTUVHQH0oVduk9Ill5O27NnD2bMr7/+OjS4d+/ehjTblGKFouvGMzIyGjRo8Oqrr6LkJk2anDp1StD5C6ZhWsQywdChQ0eOHCm1MEizVYohzTblvzgFrWZXrFixugQoH9Ps7OxsfDx//jzLOWrUKHaDA1NKdncDmDBhQqNGjYSiV5HFE86GCtF7RpqVLN7pgKbLMhsqxHpHwiDNJmSENNtsZNFsQxh5QjLmwegpxNu1zcJIsQykIo/ex6SA48ePY7ggPjIaG9WqVRNPLUohzVYphjS7yqzu9/Meih+xDYsk/TnQ7MGDB6dIwNRTem78/v37hw4dwnwXc1m2QJIppfgcXGzgIxqhXqU0VIhepWQli4/qW7hwIdNghm4h1jsSBmk2ISOk2WZjVc22W7p165aQkMC24+Pju3fX03ELpNmqxZBmmz7PNnRuPD8/H3L+0ksvQTh79+7duXNnT09PoVApf/jhB5affcRAUK9SGipEr1Jya9AWLVrE7p4wVIj1joRBmk3ICGm22TinZl+9etXHxydPi7e3Nz7yObSQZqsUQ5pt+fXsFStWVKxYMTs7m9kjIyOlSikuEMvMzCxduvSPP/4oVcqGDRsyITRUiJhBiiHNNlSI9Y6EQZpNyAhpttk4p2abCGm2SjGk2YLF68bj4uJee+01dsfUuXPnatWq1aRJE6FQKbt06YJR4IMHD4KCgnr16iUUvYrs6uoaHR2NVEOFiBkk32xQsw0VYr0jYZBmEzJCmm02pNlGIM1WKUY02xSMaPa9e/e8vb2rVKni4uICYYuJiSlfvnxubi5TysGDB1eqVOmVV17x8/O7ceOGUFQpoYLY7tChg6FCxAzSrzak2YYKsd6RMEizCRkhzTabhISEa9eu8XFJaB9XSZqtUizU7GK5fPnyzZs3easWCOR3333HWwuBRoqLH/UWIs1gCnoLYVjpSEizCRkhzTabX3/9NSoqSl7ZPn78+OnTp3mrNcHX4Ut5q2UkJycfOXKEry9CDVhbs50Z0mxCRkizS8KzZ8+WL18+TyZGjBjx1ltvYYbKJ1gTfB2+FF/NJ5SU2NjYrVu38jVFqATSbOtBmk3ICGm2jVm5cmWdOnV69OjBJ1gffCm+GgfAJxDOB2m29SDNJmSENNtm/PHHH5988klgYODw4cPnz5/PJ1sffCm+GgeAw8DB8MmEM0GabT3mzJnDVzdBlBTSbNvw888/Dxky5L333kNIh4WFnTlzhs9hffCl+GocAA4DB4ND4nMQTgM029BT8AhLuHbt2vLly/nqJoiSQpptAx49etSxY8exY8c+e/YsPz+/YcOGv/32G5/J+uBL8dU4ABwGDgaHhAPjMxHOQVZWVlJSEi84Brh7967CSyY55F0Bahb44ezmbFPAcUZFRf366698dRNESSHNVhqEccuWLePi4tjH3bt3Dxw4sGgW5cBX4wDYNg4JB4bDK5qFcBZSUlLmFseYMWOCg4Pr1av397//nU9TiilTpvz1r3/FO5+gCPjh+PmoBFQFn6ZDQkICBsR8RROEBZBmK8rx48ebNm26bds20RIZGZmYmCjJoij4ahyA+BEHhsPDQUqyEITmxx9//OKLL3x8fNq2bVu/fv0lS5bwOZTijz/+eLcQWy3CwM9HJaAqUCGoFlQOn4MgrAZptnLoVUQ/P7/Lly9LLUqCr8YBSC26owrCafntt9/S0tIGDhzYuHHjqKio7OzsXbt2hYSE2ORSDgOjTKj177//jndbDXbx81EJqApUCKoFlYMqQkXZsFoI54E0WyH0nnm+e/euu7v7f//7X6lRSfDVOAAchtTInb0nnJCbN2/OmDEDbQPSmJSU9Msvv8AoCIKnp+c333zD51aKW7duubq64p3bVh5UAvtrEGyjclBFqChUFyoNVcfnJgj5IM22OkZWeG3atGnUqFGcUWFwADgMzihdJcclEQ6McfmJ0iK1KAk7Ky6dW7M5t63OkOvWht6BDkHIC2m2dRGM3kmlVy8VxtC4QXo3Gp9GOBzFnuaVzixtgq5C66q4khg666B7QYHLQBCWQJptRe7evWvkiSV6z0srj5Hz8+JTX2x+kISVKCgoWLVqVbHLqcQruHyCgjRv3jwrK4szwgI7Z1QM41f3pQv3UMmoaj4HQZgPaba1OH/+PIbhRp4Mqrv+y1YYXweHn4Afgp/DJxAq5+HDhy4uLt26dTt69CifVpQlS5b079+ftyqLvc2zGaiWYlfRo3pRyahqVDifRhBmQpptFR49euTq6jpo0CAj14O5+6xsiPH7zfAT8EPwc3SvxxNqJyMjw8PDIycnh0+QcPv27SZNmuCdT1AWXYXWVXHlMaVyUL2oZFQ1n0AQ5kOabS3u3r07ZMgQf3//gwcP8mlapM8zsS1GnuuCg8dPwA+h0+OOysaNG319ffPy8viEQkyZSiqD/awbl2L8JAQqFtWLSuYTCKJEkGZbF0OaJz43VGq0FXqfn1rsmINwGObNm9ehQwe9sm38kq3y2MP92RxGLvajSlGxqF4+gSBKCmm21Xn27FlMTMzbb7/9xRdfiKfK2f9zFM1oS6T/U4KDxKHigHHYRs7tE45Enz596tWr989//lNqNLQ02obYw3PQdNG7qB6ViSpFxUqNBGEhpNlKMHjw4OnTp0unrfPnz4eFz2c7cDDs/0DFEwOw4LD5fIQjsmLFCg8Pj27duo0fP15q170F2R64detWzZo17eGsuBTdukJlokqh5fS/XoSMkGZbnf379wcEBLAJq6iImNceOnSIz2o7cDA4JOmoAgeMw8bB81kJBwJT1alTpwYGBt67d+/f//639ESu3rmjnQDN5k22hjsnwS43oErv378fHBw8efLk33//vegeBFESSLOty88//+zt7X3s2DHRws48N2zYUO9TVmwFDgaHJD17D3DYOHi7Ok5CRqAogwcP7t27tyjM4oIpI9do7QE71GyN5No/t6zvp59+6tevX//+/bFRdA+CMBvSbOsye/ZsvU8Ze/r0KW+yNXoPCQePn8BbCfXz8OHD9u3bR0REcOvL2I1Jw4YNM7IW2ubYp2ZrtGvsUXW6t89hkj1p0iQoem5urtROEOZCmm1Frl+/7urqquoHKeDg8RPwQ/gEQs1cuXLF29t7wYIFfIKWc+fOwenG7zm2LXar2ag0VB0qkE/QkpCQ4OXldeHCBT6BIEyGNNuKIHRTUlJ4q9rATzDUBxFq5OjRo25ubsZbpt77vuwHu9VsTXFVl5aWhspPT0/nEwjCNEizCcKJ2LJlS9OmTU+ePMknqAp71uxiYU81tpObywnVQZpNEM7CnDlzfH19b9y4wSeoDVVrNrh3715wcHB0dDQtJifMhTSbIByfZ8+ejR49ukuXLsbP3KoFtWu2RruYvG/fvgMGDPjXv/7FpxGEYUizCcLBKSgo6Nmz59/+9rdffvmFT1MnDqDZGu1DTyMjI9u2bWvoL1AJQhfSbIJwZG7fvt26deuYmBj7edKn5TiGZjPi4+ObNWt28eJFPoEg9EGaLTM7duxw4D/VwE/DD+SthL1y9uxZT0/PNWvW8Akqx5E0G+zbt8/NzY2eOUiYAmm2nOTn57u7u1+6dIlPcBTw0/AD7eTvyAjjsNuKHPJvmx1MszW0mJwwGdJsOZk4ceInn3zCWx0L/ED8TN5K2Bno/R348R2Op9ka7WLyoKCgKVOm0GJywgik2bLx7bffYqTM/Zuh44EfiJ+JH8snEPYB+9sP9P7QAD7NUXBIzdZog+v999+nxeSEEUiz5QEdZVhYmPFnSzkM+Jn4sY60pslh+Pnnnz/44IPevXs79tjRUTVbQ4vJieIgzZaH1atX9+rVi7c6Lvix+Mm8lbApjx496tChQ3h4OPe3H46HA2s2Y9myZbSYnNALabY8YOp57do13uq44Mc6yUkFtQCPtGzZcv78+XyCI+Lwmq2hxeSEAUizCUL1HD9+vGnTpsnJyXyCg+IMmq3R/skQLSYnOEizCULdpKSkQLAh23yC4+Ikmq2hxeSEDqTZBKFiFixY4O3t7VTXZTTOpNkaWkxOFIU0myBUyW+//TZu3Lj27ds/fPiQT3N0nEqzNZLF5Lm5uXwa4WSQZhOE+vjpp58w9xo0aNC///1vPs0JgGZj0ulsj9GNj4934OfkECZCml1yZs+efevWLd7qfKASUBW8lbAamGwFBwc78zVOaPb169dLlXK67osWkxNO1+jl4ujRoy1btnSYPze0BFQCqgIVwicQVuDSpUvNmjVLSEjgE5wJp9VsDT2Z3OlxxkZvOc+ePWvdunV6ejqf4KygKlAhqBY+gZCVgwcPYpqVmprKJzgZomZv2rTJx8cHdbJ48WKWlJGR0aVLl4YNG3p4eMybN48ZFyxY4OXlBcvw4cOfPHnyv4LUyb1794KDg6Ojo532RIszQ5pdEtBBDBw4kLc6N6gQsd8krMGGDRugOl9//TWf4HyImv3+++9fuXIlJSWlbNmyFy5cuHv3bvny5Xfu3JmXl5eWllauXLlz584dOHCgfv36V69evX//fseOHUeOHMkXp0J++umnvn37DhgwABt8GuHQkGabDSK/SZMmt2/f5hOcG1QIqgWVwycQFvPf//43NjbW398/JyeHT3NKRM0W18y7uromJyc/ffr0yJEjzHLnzp033ngD+p2env76669D1/+pxWFW7WGSPWnSpJCQEFpM7lSQZpvNsGHD4uLieCuh0aBaUDm8lbCMX3/99aOPPuratSv9bbmI7vXs5s2bb968GRtLly5t2bJl1apVvby8KleuvGPHDox4Zs6cWaNGjRdffLFdu3YOtu46ISGBFpM7FaTZ5vHHH3+gU0A3yicQWnVB5dD/fclIQUFB9+7dhw8f/p///IdPc2IMaTYm09WqVTt8+DCrrrp160Kzf/7550ePHkG5z549O2jQIEy+/1eQQ5CWlubm5kbLa5wE0myCsFNu374dEBAwffp06A2f5twY0uzPP/8cG6y69uzZgwxbt25dvHhxs2bNmIonJyfXqVNH3MthyM7OxmybFpM7A6TZBGGPYFLo6em5du1aPoEwrNm5ubkuLi7vvPMOBKxnz57t27efNm0a1Prdd999/fXXPTw8ateuvW/fPklJjsP9+/eDg4MnT55Mi8kdG9JsgrA72NnOjIwMPoHQYuTZpZhk3717V3eh2dOnT3Nychxbz3766ad+/fr179+fFpM7MKTZBGFfrFy5EjPs7OxsPoEoxIhmOzkYlERFRYWEhNAdHI4KaTZB2At//PHHp59+GhgYiJkin0ZIIM02zvLly728vGjY55CQZhfPf/7zn3HjxtFacbNAdaHSaLWz6fzyyy9Dhw7t1auXIAh8GlEU0uxiYZdX8M4nECqHNLt45s2bN3z4cN5KFAcqTXx4JGGcvLy8zp07jxkzhp7/agqk2abAFpM7+aPpHQ/S7GLIyclp0qQJPWmoBKDSUHX06K5iuXnzpq+v79y5c/kEwgCk2SaCGAwJCYmKinLsxXdOBWl2MQwYMGDp0qW8lTANVB0qkLcSEk6fPt20adMtW7bwCYRhSLNN56effurfv3+/fv1oMbljQJptjLS0tMDAQDpdWWJQdahAuqhmiJ07d7q5uWVlZfEJhFFIs80Ck+zJkycHBwfTYnIHgDTbID///LO3t/fx48f5BMIcUIGoRlQmn+D0LF68uHnz5pcvX+YTiOIgzS4BiYmJXl5e58+f5xMIVUGabZCnT5+uW7eOtxLmg2pEZfJWJwbznsjIyLZt2/744498GmECpNklIz09nRaTqx3SbIJQlH/9618DBgzo378/Nvg0wjRIs0vMhQsXMNuOj4/nEwiVQJpNEMrx4MGD0NDQiRMn0jpeSyDNtoTc3Ny2bdtOmjTpt99+49MIu4c0myAU4vLlyy1atFi0aBGfQJgJabaFsJM9ffv2pcXkqoM0myCU4MiRI25ubjt27OATCPMhzbac33//PTo6Ojg4+N69e3waYceQZhOE1dm6dWvTpk1PnTrFJxAlgjRbLhITEz09PWkxuYogzS7ClStXZs2axVsJ+UD1opJ5q0Mzb948Hx+fGzdu8AlESSHNlpH9+/e7ubk56t+KOx6k2UXo0aPH2rVreSshH6heVDJvdVCePXv28ccfd+rU6fHjx3waYQGk2fJy8eLFZs2a0WJyVUCa/T+Sk5PbtWv3xx9/8AmEfKB6Ucmoaj7B4RAE4b333hsyZAg9T0Z2SLNl58cff2zbtm1kZCQtJrdzSLOfgx7W09Pz3LlzfAIhN6hkVLVj/+Pk3bt3AwMDP/nkExoCWgPSbGvAFpO///77//znP/k0wm4gzX7O3//+d4wxeSthHVDVqHDe6ihkZ2djULJixQo+gZAJ0mwr8fvvv0+ZMiUoKIgWk9stpNl/cunSJXd3d3q+pmKgqlHhqHY+Qf2wFT30eEirQpptVWgxuT1Dmv0n165dy8zM5K2ENUGFo9p5q8pZvXo1XWFRANJsa0OLye0W0myCkIE//vhj2rRpbdq0uXPnDp9GyA1ptgLQYnL7hDSbICzll19+GTZsWK9evRx7YZ39QJqtDOzJ5LSY3K4gzSYIi8jLy+vcufOYMWOePXvGpxHWgTRbMejJ5PYGaTZBlJwbN274+vrOnTuXTyCsCWm2ktCTye0K0myCKCEnT55s2rTp1q1b+QTCypBmKw8tJrcTnFez169fv3v3bt5K2AI4Au7grfZNSkoKBPvo0aN8AmF9SLNtAt3HaA84qWY/fPjQ1dX1+vXrfAJhC+AIuANO4RPslQULFnh7e1+9epVPIBSBNNtWXLhwwcvLKyEhgU8glMJJNXvUqFGzZ8/mrYTtgDvgFN5qfzx79iw8PLxDhw6PHj3i0wilIM22Ibm5uSEhIZMmTfr999/5NML6OKNmHz16FJMk+ucGuwLugFPs/FSzIAi9e/f+4IMPqPHYFtJs2/LTTz/179+/X79+tJhceZxOszFPCggI2L9/P59A2Bo4Ba6x2zum7t27R3/7YSeQZtscTLInT54cHBx8//59Po2wJk6n2QsXLhw8eDBvJewDuAYO4q12AP3th11Bmm0nLF++3MvLC9HBJxBWw+k0+8CBA/R0SbsFroGDeKut+fe//+3t7Z2ens4nEDaCNNt+SEtLQ3QgRvgEwjro1+ynT5/OnTs3NjZ2FmEZM2fOPHToEF+/VoMcZyViYmJ4kx1w5MgRvgVYE7RktGf+IJwVhUNbY8fRbZ/RoXbg6Hnz5uk+Dlm/ZiPr3bt3BUIOkpKStmzZwlexdSDHORXJycmKPdElJSUFLZk/AudGydDWUHQ7H3B3XFwc1wz0azZEnt+bsADUJ1/F1oEc52wodsvi559/zn83IQiYbfM1ZTUoup0Q3QAnzVaCOXPm8FVsHchxzgbmXnwjsA6k2XpRLLQ1FN1OCWm2bVAssMlxzgZptm1RLLQ1FN1Oie01u6CgYOe+XSPHfeQf5O/i5lKzZk28+we1GjV+1J79qUjld3AIFAts6znOQuDZPel7Ro0fDV9L/O4/YtxHO/ftdFS/K4A9azbcuv+r/R9PGBsQHODi1gROb+zm4hfo/2H48K17tuXlP+F3UCGKhbbGLqMbLk7dv5eLa7h4RMTIHft2Pi14yu9AmImNNTtp1zaf1r4t/L3/FjUiLmnhqgPrUrJ34x3bsMDu29pvx54d/G7qR7HAtpLjLAQ+hWeN+N0nwBdtg9+NMAG71ey9+/a2atOqRSuDTvcOaLk2eZ3au3XFQltjf9G9M3WXXzFx7bN1J61btAibaXZ+fv7IiI+aNnf/ZFkM/GrohVT35h5jxn+M/HwRakaxwJbdcRYCP2Ka5W6C39E20EIczO8KYIeaDSdOiJzg0dzTFKd/MGbog8cP+CLUg2KhrbGn6IaLx04IR19tiosx537yxBHOqdgE22g2HNy1V7e2XUM3ntyq61fuhTzI2aN3D0fqvhULbHkdZyHwIPxolt/RThzJ7wpgb5oN9/Xp2ye0WzvTnd6+e4cHjx/yBakExUJbYzfRDRf37NPTrLju3KsrxXXJsI1mjx43Bm7bdm6nrkf1vpAT+SMmRPAFqRbFAltex1kIPNi2a5i5fh81bjRfEGEYe9PsSZMmtXu3vblOHzJmqEpPkisW2hq7ie5xE8eXIK5HRnzEF0SYgA00e3fqbvfm7htOFD8ik76Q36O5x959e/ni1IligS2j4yxk3759Hs09S+B39+Yeu/fu5osjDGBXmp2WltbMu1kJnN60ufu65PV8cWpAsdDW2Ed0w8UljWt3h1yrZG2U1uyCggL/wFaGrnlsOZM8e/28actnLE9fhY9JZ3dIU7FX66DWpqwofvLkiYnZeJNSKBbYcjnOQuAO+K7EfkebMcWhjGvXrp08efL27duc3YbuVhL70Wy4LDgkeNqy6boeN8XpLVv7PHmq5/Rpfn4+1xjwsdgTrXq9r9doIYqFtsYOohs13yaoTYnj2q+Nf7FxDc8+0VKsi0Ws4Vb7QWnNzsjM8G7VUte7eA2f+lHlVyuXKqSRR+OyL5SNXTdXmqdlgE9mZiZfaFHi4+Ox+/Tp0/mEoty5cwfZvv76az5BERQLbLkcZyHwmk+Ar67TTfR7i1beX2Vm8IXqgG/x8vJCIeXKlcN7cHCw6F/bultJ7Eez4Y5WbVrpetx0pyfvTeELFYS6devOmDFDalm9enXZsmWlFo5bt27hW86dOyc1SpvErl27UlNTpam6mJJHUDC0NXYQ3ZbH9f6M/XyhRalatapYSOnSpd9+++2YmBgjSu/wka60Zo+LHPdh1AhdBw+J/BsquurrVXsPf/+DiUMDOrQuU6YMLOGx46XZsO+kqEl8oUVp1apVaGhovXr1jPgVPH78eNGiRbZ6Wq9igS2X4yxkUlTUh1EjLfF7ROQ4vtCioPt46aWXBgwYcPHiRXy8cOFC9+7dK1as+M033wi2dreS2I9mR0dHj/17hCVOHx4xgi9UPs2WNokGDRosW7ZMmqqLKXkEBUNbYwfRHTU5avhki+J67MRwvtCiQLPRkL7WcuLECTRv+Hrp0qV8vkIcPtKV1uw2wW3iti7kHLz++JZyL5WrVrPaqoNfisb/Cx8EH4+bEynNiX2D2wbzhUpAWKJx4L1ChQrbt29nxsOHD0vDFX36oUOHnjx5goHzgwfP7yo5f/78ihUrNm/eLJ5TzcvLQwZkS0lJwdz9zJkzYgmWo1hgy+U4C4HXLPQ7Wg5faFHc3d379OkjtWDQhgFc27ZtBe3pMtHdjx49SkpKgk8PHjwoHdhlZ2ejL0AbwFBdNAL0FLAvWbLk5MmTzIISUNrDh8/XNn/33XdoUf/bwabYj2Zj6Lw4eZklTvcL9OcLNUGzdf3FNBujN8QydPfKlSuCpElkZWXVqVMnPDxcjHHdEnTzGEKx0NbYQXSHtA2xMK5bFxfX0OwFCxZILWhXnTt3Fj9yXXexka7XqFuOYGUJKDFKa7ZrU1epI9lrwrwouHPY5OFS49qsjR37duYy46NbUze+UAnjx4/39/8zzvv27Sv6FZGGvlvM0759+zFjxkhPoUybNg0a361bt4CAgOrVq3/11VdCYZwHBQX5+vqizNKlS69du1YsxEIUC2y5HGch8JqFfkfL4QuVgHhDUWlpaZz9yy+/xBguJydHdHdubq6Li4ufn1///v1r166NxsByLly4sHz58mgD8HitWrWOHDnC7AMHDqxRo0a/fv3CwsJQFJtpXb58GaWxCT2AhLRo0YJt2xz70Wx3D/fVh9Zb4vTGbi58ocVptl5/sVh2dXVt06YNevzKlSvv3btXbBLjxo1D+Lu5uc2dO9dQCVweIygW2ho7iO6m7k0tjOsmRuNa0KfZPj4+CF62rdt1G490vUa95QhWloASo7RmI96Svi2yEgGvwROGompiVs7i7Lov7IsS+EILyc/PhxsWL16M7T179iCMv//+e2zDf4g9tn3jxo0XXngBw2fRtdiGM5CfFRIREfH222+jKOYwDAKYfdCgQXDn82+yGMUCWy7HWYhV/S5o/4MSRd28eZOzw7+wY0Atunvr1q2ISZZ64cKFdu3aYVgNDYZg79jxfBXr1KlTPTw8BO3MG5kxIGD2UaNGscEfabbGBM1+8803t53l7/8xy+lv1H2DL1TblipWrFhdAjSYabYhf7FYxkid2SdMmNCoUSPpqF08722oBGke4ygW2ho7iG7L4/oNo3EtaDV79OjRe7VgEjxkyBAUzrprvV03BuhGIl2vUW851paAEqO0Zuudbw2M+ABVM2P1bF2nci/si5EdX2gh27Zte/HFF0+fPo0uFQoN30ya9Pzit7e3d0xMjKD9wV5eXoJkqcLMmTMRjWIhrDs+e/Ysc9iBAweYPS4uDuN0MZuFKBbYcjnOQvSOx83yu6vR8yspKSko6urVq5z9+PHjsB86dEh0NzwLecZ8a/78+ZcuXWLZVq5ciVH2l4VAjZAZwc9S79+/jxISExOxF2s8pNkaEzQb456NWVsscbqLgXn24MGDUyRgEiw9N67rLxbL3377LcuADXw8c+YMaxKCjh7rlqCbxxCKhbbGDqJbjrguplOFZiM2q2rBlAxDqDVr1rAkvV13VlaWkUjXa9RbjrUloMQordlB+q5rhseOR9WM+GSUrlO5F/Zllyf10rVrV8yhXyoE+l2zZs28vDwkLVq0iFU3+hFUvSDR7OjoaF9fX7GQBw8ewJ6ens4cxkIaLFiwwMVFTw9SMhQLbLkcZyFtQ9ta6PegkCC+UAkYMpcqHH1LQXhz58YF7dXKgQMH1qpVC5YuXbrk5uailjBX61wUlImxNuQBbQnTst69e8Po6ekp6Gj29OnTSbN1CQ0NXbFjtSVObxWkZ1pj5Ny4IX+xWP7hhx9YfvYxIyNDbBKiHhsqQZrHOIqFtsYOohsunp+0yBIXBxqNa0HfuXERvV03O+VmKNL1GvWWY20JKDFKa/bkyZNHTP6I89yarA1szcKKzLWicdOppPa9O36aUOTOvzF/H4v65QvVgvotV64cptqiBX1u6dKlMW3C9r179zC82rhxI6KRLTEQO/GEhAT47+nT5w9dgkdhz87OtqrDFAtsuRxnIfDax38PL7Hfh0/+KGryZL7Qovj4+HDjuYKCAkySwsLCBIm7v//+e3HgnJmZWaVKlcWLF6ORYEO8rROZd+3a9fjx4xUrVlSsWBGNgdkjIyNZD44JfSnJvC0iIoI0Wxc4PTpmSomd/mHUiPCJEXyhRjXbkL9YLCO0mR1+R8/AnMgCvGHDhkyPDZUgzWMcxUJbYwfRDQ+HTx1XYhcPnzwyanIUX2hRjGi23q772LFjRiJdr1FvOdaWgBKjtGajmvxa+3E+xutv0SNQOy9XeDmke2i/0QPe/aBnzTf/HAf1/3igNFurNgGG7s+OjY2tVq0adzd9YGBgmzbP1yX27dsX0+6ePXuyj2InjtH3X/7yl88++0zQjrDatWvH+l+rOkyxwJbLcRaivVU3oMR+R5sx5HcRRBp620GDBn333XeCdlVajx49KlWqxJRVdPe6devQC7BO+cqVK3D9pk2bMKSrXr06pBcyjyY0YMCA+vXrI4bj4uJee+01dt/IuXPnENhNmjQRtAtKUTK72gJ77dq1SbN1gcsCgwJ3XEgtmdO9W7XUe1O+Ec025C8Wy5hUwXGI8aCgoF69eklPvbi6ukJ+kGSoBGke8Xv1olhoa+wguuHiAAvi2jfAt9i4NqLZertu45Gu16i3HMHKElBilNbsPx+NFKz/0UjjPp9Y+606pQqpWKVSn5H9ks/tEjPMWD47JCTE0F3XiKgRI/i7OVetWiVWempqKrZTUp4/pUEasfv27atXrx5iFXPxgIAAtlrNqg5TLLDlcpyFwGvw3azln5fA79PiZwSHBBvyu5STJ0+iO0YhZbRg2s1uzhYk7kY5w4YNe/nll998880KFSp8+OGHbHydkZHRoEGDV199FdGLbvrUqVOC9vSMt7c3BuNwPRoYRBothJ1hQ3vANjLXqVOH5tl6YU5fsnZpCZxu5KGHRjTbkL9YLA8ePBgjrVdeecXPz+/GjRvSHgBijO0OHToYKkGaR/rVuigW2ho7iG7m4tjEOSVw8afLYoKCg/S6WIoRzRb0dd3GI12vUW85gpUloMQordmC9vm0zb2bG3o+bXzaytgv5y7csZR74vzGk1u9W3rr3swjIxh2Xb9+nbdaB8UCW0bHWQh8Bw9uOpmk63Qjfkc7QWsxy+/oYTFDYv2sIZB69uxZdNCcHQ0AzYDrRy5fvqy7Il3QzrYxm7e3ByXaj2YLWqf7+Pjs+HqPrseNO92zhWeJ/1zAkL8E7W0j7DSMLmgMjx8/ZtuGSpDmMYRioa2xj+hmcb351DZd/xp3cTMz49oIRrpuvZGu1ygYLcd+sIFmg6ioqM49Opv1PzDder6LvfiCVItigS2v4ywEHoQfzfJ7px6dHcnvCmBXmi1ond6r93u7LuzT9a/eF5we1q3dxEmRfEEqQbHQ1thNdMPF7/bqnnz+f3No4y+4uGP3ThTXJcM2mp2fn9+vX78uPbqa8n+rm08lo0Egv+nPiLd/FAtseR1nIczv3Xt133RS/6hc+kLbQAtxML8rgL1pNnP6e73f2/nNXl0v6zq9/bsd3u/7vnqdrlhoa+wmugvjuseWU8m6PtV1ceceXSiuS4xtNFvQuhnjLO+W3rNXFHlqPPf6x6r53i1bIqeDOVixwJbdcRZS6PeW8Kyuu8VXbOIctA3H87sC2JtmC4VO9/HxWbJu2c4LBpU7Jn5Gc+/mkyZNUrXTFQttjT1FN3Nxy5Yt41Z9oetZ8RWb+HmLli0ori3BZprNSEtLCw4Obh3YZsKnkQnbV6zXPoFhQ9aWxB2rJk2LahPYBqlyXfOwKxQLbCs5zkKY3+FfeDlx56oNWX+eboH30QbQEloHtnZUvyuAHWo2gzk9MCgw+rMpa3av25i1deeF1HWHNizdnhAxdVxAmwDHcLpioa2xv+iWxPXkFTtXI663Z+/58vDm+O2J4z+ZSHEtCzbWbEG78jAzMzM6OjosLMzDw6NmzZp4xzYssBe7qlClKBbY1nOchTin3xXAbjVbcA6nKxbaGruMbmdwsW2xvWY7J4oFNjnO2bBnzXYGFAttDUW3U0KabRsUC2xynLNBmm1bFAttDUW3U0KabRsUC2xynLNBmm1bFAttDUW3U0KabRsUC2xynLNBmm1bFAttDUW3U2KGZq9Zs2YWIQdr165VLLBnkeOcCTQtJTWbmhaHkqGtoeh2PtDAzNBsXu4JC1AssMlxzoaSms1/N6FgaGsoup0S0mzboFhgk+OcDdJs26JYaGsoup0S0mzboFhgk+OcDdJs26JYaGsoup0S0mzboFhgk+OcDdJs26JYaGsoup0S0mzboFhgk+OcDdJs26JYaGsoup0S0mzboFhgk+OcDdJs26JYaGsoup0S0mzboFhgk+OcDdJs26JYaGsoup0SRTX79u3bp0+fvnHjBp9ggCdPnvAmG1FQUCD987g7d+7cvXtXkm72oSoW2E7uOBG474kWs/4E0MhedvgbGarTbLNal91Wu4hioa2h6C7ESJwaAZm5/yzh+nnrYUkdKqTZ165dCw0NLaOlVKlSzZo1O378OEvatWtXampq0ex/Al1Ezq+//ppPsAUzZsxo0aKF+HHhwoXly5e/efMm+3j58mUc6sWLF8UMxaJYYKvUcYYKLzFVq1YtVchLL73k6em5bt06PpMO0r1Kly799ttvx8TEILBL4HHFUJFmm9u6ZGlagoHC5UKx0NZQdBdSsuiuXLmyv7+/VLY3btyI3SVZrIKFdaiQZoeFhfn5+Z09e5b1d127dq1du/bDhw+R1KBBg2XLlvE7CMLjx48XLVrETWdtBafZYOzYsQsWLGDbJejBFQtslTrOUOElBlEdHR2NODlz5kxGRgbcBw1etWoVn68o4l7gxIkTkMOyZcsuXbq0BB5XDBVptrmtS5amJRgoXC4UC20NRXchJYtuaDaiWNqMldFsC+tQBs3edv5Qi/jRlWd1xzu2+WQtr7zyirQGb926Vb9+/aNHj2ZlZdWpUyc8PBx1jV+C8Rd+ycqVK48dO/bkyRN8fPDgQV5eHjbwMSUlJT4+HjklBQtHjhxZvHhxWlpaTk4OvCVNYjviPSkpacmSJWiUMKJkbB8+fFia8/z58ytWrNi8efPt27eldhweCj906BCn2dnZ2ei4kR8jJkGfZnMZdFEssNXoOGnh+C7pgBRVnZmZyUrGV2zYsCEhIeHq1auSvfVXPqJaHGMxRowYUatWLfFUmIl7YV7SuXNn0eOPHj3CkbBuDnz33XdoLYI5bQ9DAXwv7CdPnpTa9daP3oPksAfNNqVpCea3LtiZ34XCGtbbuvRWnYg1WpcUxUJbQ9FdiG6cmhLd0OzWrVuXL18eoxZm4TTbrNgUDHyLrriIdcjVrZFCpFiq2WgNb8X9X+qlE7l5D/GObb3tw9fX19PTMz09/enTp1L7uHHjKlSo4ObmNnfu3GvXrqEfRM7q1av36tVLPIGAloSNoKAgJPn7+2MAtXbtWrZ7REREpUqVevbs2bhxY3d3dwzfpIWzHTt16hQYGOjl5QUPTZgwwcXFJSQkpEyZMqgmlm3atGk4hm7dugUEBOCrv/rqK2YXC2/UqBGOUNRsdmIc+XFIaBbwH6fZuhmYXYpiga1Gx0kLnzJliqurq5jUp0+fYcOGsZKbN2/evn171DMy7969m2UwVPm6UX3q1CkUwhTU9L18fHz69+8vepxzvTi2M7HtDRw4sEaNGv369cOMB3Zx8qG3fgwdJIfNNdvEpiWY37rw21nTEgprWLd16a06Q4XL1bqkKBbaGopuw3FqSnQjKjFkQYTiJ7AakGq2WbEpGPgWveIi1iFXt4YK4bBUszGI233x+QABYBsWSfpz0KnhoHF8qCZ4Ii4ujg2WBcl5EvYDxo4dK2hHIlzjGD9+PMs/aNAgFCVoB0Fly5ZlvwoDFm9vb72aHR0djW24pHbt2sjDRl6DBw9Gf4oNDKDQ2vbs2cN2gT/efvtt5Dl9+jT8dPDgQRgxi0LDYn0x+mjU6Y4dO1j+qVOnenh4SDtuvRnYthTFAluNjhMkhWPmCkdgF2zn5uaibuEUVvLo0c8PGC7+61//KhitfN2oxg9BIevXrze+F75lrxaMfIcMGYJd0FpM1GzjbQ8DasQqhuFs31GjRrVq1UowUD9GDpLD5pptYtMSzG9drFalms21Lr1VxzJIkb11SVEstDUU3ZZFN3716tWrL126VLFiRVaTomabFZuCgWMzJC6cZot1q7cQti3FUs2uMqv7/bznJwYBtmGRpBcBVYCa7d69O4Ye+KnwjaDTONLS0lhmrnEcOHCA2dGw2NBs+vTpTZs2fV60doSiV7PFU5GYIUVFRbFtDH/8/PywMXPmTOlerAs+e/YsxoDvvPOOaMd3sb4YMyQc/JeFoNtCfvimVGHHrTdDTk6OWBRDscBWo+OEole8MORkzTo+Pr5Ro0ZCoWfFM1oXLlzAR4SZkco3EtXG90JSVS3QXcTtmjVrBMnVEOOabbztMe7fv3/o0KHExMQ2bdpgRi4YqB8jB8lhc802q2kJ5rQusWkJhTXMtS69VSd+FJG9dUlRLLQ1FN2WRTfTbKFwdvvtt99y58ZNjE3BQLc/ZcoUveLCabZYt3oL0W1glmq2KQO6mzdviic3GFeuXKlZsybGEYJO4zh37hzLwzUOFqgAvnFxccHGpEmT2NiHsW7dOq5xcDv6+vp+9tlnbBsb+ChoB3Fsg8E8nZ6ejurGGEq0oz2xvhj1AE93LkpGRkapwo5bbwY0O7EohmKBrUbHCUWjGk0ZeonZamBgYExMjFDoWXERB/vGY8eOGal83ag+evQo9sK7WXsxDGm2OLYzpe1hxI05N/oIdFW9e/fGl3p6egoG6sfIQXLYXLNNaVpCiVqXrmZzrUtv1YkfRWRvXVIUC20NRbfhODUlukXNBsHBwS1bttywYQPTbLNiUzDQ7X/00Ud6xYXTbLFu9Rai28As1WxTLpzs3bu3dOnSly5dkhoxvGJnPxo2bFiyxrF8+XK0MHGVATeoEXSiWm+/mZCQUKtWLfFyzokTJ0ppx3QQ6Ro1aoh2tGPWF2P4U6VKFfHuOhzkrl27kL9UYcetN8Pjx4/ZRxHFAluNjhMkhQvaaxOoUoRTuXLl0K0IhZ5lp9QAprNlypT54YcfjFS+blQPGzasbt26cLFZezFEqb569So2MEJn9oiICNM1e8WKFRUrVkTjYfbIyEjWL+itHyMHyWFzzTalaQklal3FarbeqmPbUmRvXVIUC20NRbfhODUluqWa/d1331WqVMnf359ptlmxKRjo9pcsWaJXXAxptt5CdBuYpZotmLBAEQft5ubm6uqKYV1ubi5aCaL9xRdfzMzMRCrsmOxiDGJu48Au1atXDw8Pz8nJSU1NhdtKoNloCn/5y1+YHQW2a9eO9bkoE9U3c+ZMbH///fcYCTL7vXv38KXomgsKClC5AwYMqF+/PvxdqlCz9WbglngICga2Gh0nSApnH4cOHfrGG2+Ehoayj6zkrl27okEj5sPCwjAgFYxWPr5l4sSJGK1j6I0vHTJkyAsvvLB58+Zi9zKu2Xl5eQh1Nj9ADYjtxJS2FxcX99prr7H5BPZFeDdp0kQwUD9GDpLD5potmNC0hBK1rmI1W2/VSb7zObK3LimKhbaGotuy6JZqNli0aFEp7e3dgpmxaehb8EP0ioshzdZbiG4Dk0GzTQEDKPgADaKUFnhIvOcdzoOlQ4cO5jYOcOjQIQx/Xn75ZW9v7w8//BBNkNkZpvSbYN++ffXq1YOHypcvHxAQAIVm9j179sBVr7/+Ouq9d+/e4rrxjIwM+OnVV1+FHY48deoUd4JUNwOzS1EssNXoOEFSOPt48OBBfGTXkoVCz/bs2RPjKgyH4bXr16+zJEOVX7XwqQuYW1SrVg3ziZ07d7Ik43sZ12xB+7vQcrBjnTp1zJpnI0Tx8/ETUC3oxSD8KAe9p2CgfgwdJIc9aLaJmNu6itVswUDVccjeuqQoFtoaim7LopvTbBASEsI029zYFAx8i15xMaTZhgrhUEizGRhrnD9/XhRFEVSQ7hmAYsEPlj5MZ8qUKahxSbp5oPmKLUMEgx0csDgelILM2AUDIj6hEOMZFAts9TpOWviRI0fQjsXboMX+4ubNm5e1tz5zGK98Q5RsL0F7rzDqRzypZRY4fvGBegzj9VPsQapIsxkyti7jVSfFeq1LsdDWUHSbQwn2Mjc2BQPfoldcjKC3EBFFNVteLl26hBFiYmIiahZz4ho1anzxxRd8JntFscBWu+MQM0lJSRiihoeHi0ZujO9gmFU/uqhOs2XE3KqzRutSLLQ1FN2KY9avsxIq1mywYcMGLy+vqlWrNm7cODY21tDAxA5RLLDV7jjMABAYoaGh9+/fF413795t0aIFt3zGkTC9fnRxZs0WzKw6a7QuxUJbQ9FtC0z/dVZC3ZqtXhQLbHKcs+Hkmm1zFAttDUW3U0KabRvmzp3LV7F1IMc5G//4xz/4RmAd2F0VBAdpNmFVMFbmmoF+zUZHUOL/ISE4tm3btn37dr6KrQM5zqlAu9qxYwffCKzDli1bkpKS+CNwbpQMbQ1Ft/MBdy9YsIBrBvo1W9CO3zGEnE1YzJEjR/j6tRrkOCfhcy1Hjx7lW4A1QUvmj8O5UTK0NRTdTgYcPX/+fDidawb6NZsgCIIgCHuDNJsgCIIg1AFpNkEQBEGoA9JsgiAIglAHpNkEQRAEoQ7+H/awyT+azsyLAAAAAElFTkSuQmCC" /></p>
+<p><strong>Travail à faire :</strong></p>
+<p>Dans cet exercice, nous allons essayer de modéliser une application, le but n’est pas de la coder, les méthodes nous importent peu, le plus important est de bien modéliser les héritages et les interfaces.</p>
 <hr />
-</div>
-<div id="étape-1-le-besoin-initial-version-simple" class="section level2">
-<h2>Étape 1 — Le besoin initial (version “simple”)</h2>
-<p>Le directeur vous envoie un premier mail :</p>
-<blockquote>
-<p>“Pour commencer, on voudrait juste pouvoir gérer nos livres. Un livre, c’est simple : un titre, un auteur, un ISBN, et on veut savoir s’il est disponible ou pas. On a aussi besoin de gérer les adhérents : nom, prénom, numéro de carte. Et bien sûr, les emprunts : qui a emprunté quoi et quand.”</p>
-</blockquote>
-<div id="ce-que-vous-devez-réaliser" class="section level3">
-<h3>Ce que vous devez réaliser</h3>
-<p>Créez un programme Java qui permet de :</p>
 <ol style="list-style-type: decimal">
-<li><strong>Créer des livres</strong> avec leurs informations de base</li>
-<li><strong>Créer des adhérents</strong> avec leurs informations</li>
-<li><strong>Enregistrer un emprunt</strong> : un adhérent emprunte un livre</li>
-<li><strong>Retourner un livre</strong> : l’adhérent rend le livre</li>
-<li><strong>Afficher l’état de la bibliothèque</strong> : liste des livres disponibles, liste des emprunts en cours</li>
+<li>Dans notre parc d’amusement, au départ nous avons qu’un seul type d’attraction : les manèges. Créez donc une classe abstraite Attraction puis une classe Manège qui en hérite.</li>
+<li>Les montagnes russes sont un type de manège. Créez une classe MontagnesRusses qui hérite de Manège.</li>
+<li>Vous avez la brillante idée d’installer des appareils photos sur les montagnes russes pour prendre des photos des visiteurs pendant le tour. Créez une interface AppareilPhoto avec une méthode prendrePhoto. Faites en sorte que MontagnesRusses implémente cette interface.</li>
+<li>Les spectacles sont une autre catégorie d’attractions. Créez une classe Spectacle.</li>
+<li>Vos visiteurs ont faim et ils veulent repartir avec un souvenir. Créez une hiérarchie de classes pertinentes pour modéliser les commerces de nourriture et de souvenirs.</li>
 </ol>
-</div>
-<div id="contraintes-techniques" class="section level3">
-<h3>Contraintes techniques</h3>
+<p>A partir de maintenant, les instructions seront moins guidées, immaginez vous en réunion client, il y a plein de gens qui ne connaissent rien à la programmation et qui ont des idées dans tous les sens. Utilisez PlantUML à votre avantage pour bien modéliser tout ça, l’avantage est que si vous vous trompez, vous pourrez facilement changer votre diagramme.</p>
 <ul>
-<li>Vous devez pouvoir créer au moins 10 livres et 5 adhérents pour tester</li>
-<li>Un livre ne peut être emprunté que s’il est disponible</li>
-<li>Un emprunt doit enregistrer la date d’emprunt</li>
-</ul>
-</div>
-<div id="questions-à-vous-poser-avant-de-coder" class="section level3">
-<h3>Questions à vous poser AVANT de coder</h3>
+<li>Il y a des spectacles avec des animaux</li>
+<li>Il y a des restaurants gastronomiques et des restaurants rapides</li>
+<li>Dans les restaurants gastronomiques, on ne sert pas de nourriture à emporter</li>
+<li>Il y a des expositions</li>
+<li>Il y a des boutiques de souvenirs</li>
+<li>Dans certaines boutiques de souvenirs, on peut acheter de la nourriture à emporter</li>
+<li>Il y a une taille minimale pour monter dans les manèges</li>
+<li>Il y a aussi une taille minimale pour le spectacle des dauphins</li>
+<li>Il y a une exposition sur les dinosaures et sur les reptiles</li>
+<li>Il y a des spectacles de dauphins et d’orques</li>
+<li>Pour être dans la tendance, nous avons des distractions “Vegan Friendly”, ça peut être des restaurants ou des spectacles</li>
+<li>Il y a aussi un spectacle son et lumière (qui n’est pas un spectacle de dauphins ou d’orques et qui donc est “Vegan Friendly”)</li>
+<li>Tous nos restaurants gastronomiques sont “Vegan Friendly”</li>
+<li>On peut voir des spectacles dans les attractions de type “Spectacle” mais on peut aussi voir des spectacles dans les restaurants gastronomiques</li>
+<li>On peut prendre des photos souvenir :
 <ul>
-<li>Comment allez-vous représenter un livre ?</li>
-<li>Comment allez-vous représenter un adhérent ?</li>
-<li>Comment allez-vous représenter un emprunt ?</li>
-<li>Comment allez-vous stocker tous ces éléments ?</li>
-<li>Comment allez-vous gérer le lien entre un emprunt, un livre et un adhérent ?</li>
+<li>Dans toutes les montagnes russes</li>
+<li>Dans l’expo sur les reptiles</li>
+<li>Dans tous les magasins de souvenirs</li>
+<li>Lors du spectacle sur les orques</li>
+</ul></li>
+<li>On va proposer une expérience au visiteurs d’optimisation du temps, pour cela, on aurait besoin de savoir le temps d’attente moyen pour chaque attraction et la durée de chaque attraction (donc à ce stade du TD, cela s’applique à toutes les attractions donc aussi aux Manèges et leurs dérivés, aux Spectacles et aux Expositions)</li>
+<li>Hum, on a oublié, il y a aussi des limites de capacités sur certaines distractions :
+<ul>
+<li>Tous les manèges</li>
+<li>Tous les spectacles</li>
+<li>L’expo sur les dinosaures</li>
+</ul></li>
+<li>C’est un peu la dèche en ce moment, on voudrait donc gagner de l’argent :
+<ul>
+<li>En vendant des photos prises dans les attractions</li>
+<li>L’exposition sur les dinosaures est payante</li>
+<li>Ca va de soi mais tout ce qui est vendu dans un commerce est payant (mais profitons-en puisque nous venons de créer une interface IPayant, faisons en sorte que tout ce qui est payant implémente cette interface)</li>
+</ul></li>
+<li>Aussi, jusqu’à présent la boutique de souvenir et les commerces ouvrent en même temps que le parc mais on aimerait bien que les attractions et les commerces aient une méthode “estOuvert”</li>
 </ul>
-<p><strong>Prenez le temps de réfléchir à votre structure AVANT de coder.</strong></p>
+<blockquote>
+<p>A titre indicatif, dans la correction il y a : - 9 interfaces - 5 classes abstraites - 10 classes concrètes <strong>Mais ce n’est probablement pas la seule solution, il y a probablement plusieurs façons de modéliser tout ça.</strong></p>
+</blockquote>
 <blockquote>
 Réponse :
 </blockquote>
-<hr />
-</div>
-</div>
-<div id="étape-2-première-évolution-ah-oui-javais-oublié" class="section level2">
-<h2>Étape 2 — Première évolution : “Ah oui, j’avais oublié…”</h2>
-<p>Deux jours plus tard, Le directeur vous rappelle :</p>
-<blockquote>
-<p>“En fait, on ne gère pas que des livres. On a aussi des DVD, des CD audio, et des magazines. Pour les DVD, on a besoin du réalisateur et de la durée. Pour les CD, c’est l’artiste et le nombre de pistes. Pour les magazines, c’est le numéro et la date de parution. Ah, et les durées d’emprunt ne sont pas les mêmes : 3 semaines pour les livres, 1 semaine pour les DVD et CD, et les magazines ne sont pas empruntables, on peut juste les consulter sur place.”</p>
-</blockquote>
-<div id="nouveau-cahier-des-charges" class="section level3">
-<h3>Nouveau cahier des charges</h3>
-<p>Votre système doit maintenant gérer :</p>
-<ol style="list-style-type: decimal">
-<li><strong>Livres</strong> : titre, auteur, ISBN, disponibilité — emprunt 21 jours</li>
-<li><strong>DVD</strong> : titre, réalisateur, durée (en minutes), disponibilité — emprunt 7 jours</li>
-<li><strong>CD Audio</strong> : titre, artiste, nombre de pistes, disponibilité — emprunt 7 jours</li>
-<li><strong>Magazines</strong> : titre, numéro, date de parution — consultation sur place uniquement (pas d’emprunt)</li>
-</ol>
-</div>
-<div id="ce-que-vous-devez-adapter" class="section level3">
-<h3>Ce que vous devez adapter</h3>
-<ul>
-<li>Votre système doit pouvoir gérer ces 4 types de documents</li>
-<li>L’emprunt doit calculer automatiquement la date de retour prévue selon le type de document</li>
-<li>Les magazines ne doivent PAS pouvoir être empruntés (le système doit refuser)</li>
-<li>L’affichage doit distinguer les différents types de documents</li>
-</ul>
-</div>
-<div id="questions-à-vous-poser" class="section level3">
-<h3>Questions à vous poser</h3>
-<ul>
-<li>Comment allez-vous adapter votre code existant ?</li>
-<li>Allez-vous créer 4 classes différentes ? Une seule classe avec un attribut “type” ?</li>
-<li>Comment allez-vous gérer le fait que les magazines ne sont pas empruntables ?</li>
-<li>Est-ce que votre code de l’étape 1 est facile à modifier ?</li>
-</ul>
-<p><strong>Si vous avez l’impression de faire beaucoup de copier-coller, c’est un signe que quelque chose ne va pas.</strong></p>
-<blockquote>
-Réponse :
-</blockquote>
-<hr />
-</div>
-</div>
-<div id="étape-3-deuxième-évolution-le-conseil-municipal-a-décidé" class="section level2">
-<h2>Étape 3 — Deuxième évolution : “Le conseil municipal a décidé…”</h2>
-<p>Une semaine plus tard, nouveau coup de fil :</p>
-<blockquote>
-<p>“Le conseil municipal a voté de nouvelles règles. Désormais, les adhérents sont classés en catégories : les enfants (moins de 12 ans), les étudiants, les adultes, et les seniors (plus de 65 ans). Les tarifs d’abonnement sont différents, mais surtout les règles d’emprunt changent : - Les enfants ne peuvent emprunter que 3 documents maximum en même temps - Les étudiants peuvent en emprunter 5 - Les adultes 4 - Les seniors 6</p>
-<p>Et les enfants n’ont pas le droit d’emprunter des DVD classés ‘adulte’. Ah, et il faut gérer les retards : si un document est rendu en retard, l’adhérent a une pénalité de 0.20€ par jour de retard. Au bout de 10€ de pénalités, il ne peut plus emprunter.”</p>
-</blockquote>
-<div id="nouvelles-règles-à-implémenter" class="section level3">
-<h3>Nouvelles règles à implémenter</h3>
-<ol style="list-style-type: decimal">
-<li><strong>Catégories d’adhérents</strong> avec des règles différentes :
-<ul>
-<li>Enfant (&lt; 12 ans) : max 3 emprunts simultanés</li>
-<li>Étudiant : max 5 emprunts simultanés</li>
-<li>Adulte : max 4 emprunts simultanés</li>
-<li>Senior (&gt; 65 ans) : max 6 emprunts simultanés</li>
-</ul></li>
-<li><strong>Restriction sur les DVD</strong> :
-<ul>
-<li>Ajouter un attribut “classification” aux DVD (Tout public, -12 ans, -16 ans, Adulte)</li>
-<li>Les enfants ne peuvent emprunter que les DVD “Tout public”</li>
-</ul></li>
-<li><strong>Gestion des pénalités</strong> :
-<ul>
-<li>Calculer le retard en jours à partir de la date de retour prévue</li>
-<li>Appliquer 0.20€ par jour de retard</li>
-<li>Bloquer les emprunts si pénalités &gt;= 10€</li>
-<li>Permettre de payer (tout ou partie) des pénalités</li>
-</ul></li>
-</ol>
-</div>
-<div id="ce-que-vous-devez-adapter-1" class="section level3">
-<h3>Ce que vous devez adapter</h3>
-<ul>
-<li>Gérer les différentes catégories d’adhérents</li>
-<li>Vérifier les règles avant chaque emprunt (nombre max, classification, pénalités)</li>
-<li>Calculer et stocker les pénalités</li>
-</ul>
-</div>
-<div id="questions-à-vous-poser-1" class="section level3">
-<h3>Questions à vous poser</h3>
-<ul>
-<li>Combien de <code>if/else</code> avez-vous dans votre code maintenant ?</li>
-<li>Si demain on ajoute une catégorie “Famille nombreuse” avec d’autres règles, combien de fichiers devrez-vous modifier ?</li>
-<li>Votre code est-il encore lisible et maintenable ?</li>
-</ul>
-<p><strong>C’est le moment de prendre du recul sur votre conception.</strong></p>
-<blockquote>
-Réponse :
-</blockquote>
-<hr />
-</div>
-</div>
-<div id="attendus-fonctionnels" class="section level2">
-<h2>Attendus fonctionnels</h2>
-<p>À la fin du TP, votre programme doit permettre de :</p>
-<div id="gestion-des-documents" class="section level3">
-<h3>Gestion des documents</h3>
-<ul class="task-list">
-<li><label><input type="checkbox"></input>Créer des livres, DVD, CD audio et magazines</label></li>
-<li><label><input type="checkbox"></input>Afficher les informations d’un document</label></li>
-<li><label><input type="checkbox"></input>Lister tous les documents disponibles</label></li>
-<li><label><input type="checkbox"></input>Lister tous les documents par type</label></li>
-<li><label><input type="checkbox"></input>Rechercher un document par titre (partiel)</label></li>
-</ul>
-</div>
-<div id="gestion-des-adhérents" class="section level3">
-<h3>Gestion des adhérents</h3>
-<ul class="task-list">
-<li><label><input type="checkbox"></input>Créer des adhérents de différentes catégories</label></li>
-<li><label><input type="checkbox"></input>Afficher les informations d’un adhérent (y compris ses emprunts en cours et ses pénalités)</label></li>
-<li><label><input type="checkbox"></input>Lister tous les adhérents</label></li>
-</ul>
-</div>
-<div id="gestion-des-emprunts" class="section level3">
-<h3>Gestion des emprunts</h3>
-<ul class="task-list">
-<li><label><input type="checkbox"></input>Enregistrer un emprunt (avec toutes les vérifications nécessaires)</label></li>
-<li><label><input type="checkbox"></input>Retourner un document (avec calcul des pénalités éventuelles)</label></li>
-<li><label><input type="checkbox"></input>Afficher les emprunts en cours</label></li>
-<li><label><input type="checkbox"></input>Afficher les emprunts en retard</label></li>
-</ul>
-</div>
-<div id="gestion-des-pénalités" class="section level3">
-<h3>Gestion des pénalités</h3>
-<ul class="task-list">
-<li><label><input type="checkbox"></input>Calculer les pénalités d’un adhérent</label></li>
-<li><label><input type="checkbox"></input>Enregistrer un paiement de pénalités</label></li>
-<li><label><input type="checkbox"></input>Bloquer les emprunts si pénalités trop élevées</label></li>
-</ul>
-<hr />
-</div>
-</div>
-<div id="pièges-classiques-dans-lesquels-vous-allez-probablement-tomber" class="section level2">
-<h2>Pièges classiques dans lesquels vous allez probablement tomber</h2>
-<div id="piège-n1-la-classe-document-fourre-tout" class="section level3">
-<h3>Piège n°1 : La classe “Document” fourre-tout</h3>
-<p>Vous pourriez être tenté de créer une seule classe <code>Document</code> avec un attribut <code>type</code> (une String ou un enum) et tous les attributs possibles (auteur, réalisateur, artiste, durée, nombre de pistes…).</p>
-<pre><code>Document:
-- type: String (&quot;LIVRE&quot;, &quot;DVD&quot;, &quot;CD&quot;, &quot;MAGAZINE&quot;)
-- titre: String
-- auteur: String (null si pas un livre)
-- realisateur: String (null si pas un DVD)
-- artiste: String (null si pas un CD)
-- duree: int (0 si pas un DVD)
-- nombrePistes: int (0 si pas un CD)
-- numero: int (0 si pas un magazine)
-- dateParution: Date (null si pas un magazine)
-- ...</code></pre>
-<p><strong>Pourquoi c’est un piège ?</strong> - Beaucoup d’attributs sont null ou à 0 selon le type - Le code est rempli de <code>if (type.equals(&quot;LIVRE&quot;))</code> partout - Ajouter un nouveau type de document nécessite de modifier cette classe et TOUS les endroits qui l’utilisent - Les bugs sont faciles à introduire (oublier un cas dans un switch)</p>
-<blockquote>
-<p><strong>Indice</strong> <strong>héritage</strong> et <strong>polymorphisme</strong>. Une classe abstraite <code>Document</code> avec des sous-classes spécialisées permet d’éviter ces problèmes. Chaque sous-classe ne contient que les attributs qui la concernent, et le polymorphisme évite les switch/if sur le type.</p>
-</blockquote>
-</div>
-<div id="piège-n2-la-classe-adhérent-avec-des-ifelse-pour-les-règles" class="section level3">
-<h3>Piège n°2 : La classe Adhérent avec des if/else pour les règles</h3>
-<p>Vous pourriez avoir du code comme :</p>
-<pre><code>if (adherent.getCategorie().equals(&quot;ENFANT&quot;)) {
-    if (adherent.getNombreEmprunts() &gt;= 3) {
-        // refuser
-    }
-} else if (adherent.getCategorie().equals(&quot;ETUDIANT&quot;)) {
-    if (adherent.getNombreEmprunts() &gt;= 5) {
-        // refuser
-    }
-} else if ...</code></pre>
-<p><strong>Pourquoi c’est un piège ?</strong> - Code difficile à lire et à maintenir - Ajouter une catégorie = modifier tous les if/else - Risque d’oublier des cas - Les règles sont dispersées dans le code au lieu d’être centralisées</p>
-<blockquote>
-<p><strong>Indice</strong> <strong>héritage</strong> ou <strong>composition</strong> avec des <strong>stratégies</strong> peut résoudre ce problème. Chaque type d’adhérent peut avoir sa propre logique de vérification. Les <strong>strategies</strong> sont un type de design pattern, vous les verrez plus tard dans le cours.</p>
-</blockquote>
-</div>
-<div id="piège-n3-le-modèle-anémique" class="section level3">
-<h3>Piège n°3 : Le modèle anémique</h3>
-<p>Vous pourriez créer des classes qui ne contiennent que des attributs et des getters/setters, puis mettre toute la logique dans une classe “BibliothequeService” ou “GestionnaireEmprunts”.</p>
-<pre><code>class Livre {
-    private String titre;
-    private String auteur;
-    // getters et setters uniquement
-}
-
-class BibliothequeService {
-    public void emprunter(Livre l, Adherent a) {
-        // TOUTE la logique ici
-    }
-}</code></pre>
-<p><strong>Pourquoi c’est un piège ?</strong> - Les objets ne sont que des “sacs de données” - Toute l’intelligence est dans les services - On n’utilise pas les avantages de la POO - Le code des services devient énorme et difficile à maintenir</p>
-<blockquote>
-<p><strong>Indice</strong> <strong>encapsulation</strong>. Un objet doit savoir faire des choses, pas juste contenir des données. Par exemple, un <code>Document</code> devrait savoir s’il est empruntable, calculer sa date de retour, etc.</p>
-</blockquote>
-</div>
-<div id="piège-n4-la-gestion-des-erreurs-par-des-retours-de-booléens" class="section level3">
-<h3>Piège n°4 : La gestion des erreurs par des retours de booléens</h3>
-<p>Vous pourriez écrire :</p>
-<pre><code>public boolean emprunter(Document doc, Adherent adh) {
-    if (!doc.isDisponible()) return false;
-    if (adh.getPenalites() &gt;= 10) return false;
-    if (adh.getNombreEmprunts() &gt;= adh.getMaxEmprunts()) return false;
-    // ...
-    return true;
-}</code></pre>
-<p><strong>Pourquoi c’est un piège ?</strong> - Impossible de savoir POURQUOI l’emprunt a échoué - L’utilisateur reçoit juste “false” sans explication - Difficile de déboguer - Pas de distinction entre les différents types d’erreurs</p>
-<blockquote>
-<p><strong>Indice</strong> <strong>exceptions</strong>. Elles permettent de gérer les cas d’erreur de manière plus explicite. On peut créer des exceptions spécifiques : <code>DocumentIndisponibleException</code>, <code>PenalitesExcessivesException</code>, etc.</p>
-</blockquote>
-</div>
-<div id="piège-n5-la-duplication-de-code" class="section level3">
-<h3>Piège n°5 : La duplication de code</h3>
-<p>Vous pourriez avoir le même code copié-collé à plusieurs endroits : - Vérification de disponibilité dans plusieurs méthodes - Calcul de pénalités dupliqué - Logique d’affichage répétée pour chaque type de document</p>
-<p><strong>Pourquoi c’est un piège ?</strong> - Une modification doit être faite à plusieurs endroits - Risque d’oublier un endroit - Code plus long et plus difficile à lire - Bugs difficiles à corriger</p>
-<blockquote>
-<p><strong>Indice</strong> <strong>DRY</strong> (Don’t Repeat Yourself) <strong>héritage</strong>, <strong>composition</strong> et <strong>méthodes utilitaires</strong> permettent de factoriser le code.</p>
-</blockquote>
-<hr />
-</div>
-</div>
-<div id="pour-aller-plus-loin" class="section level2">
-<h2>Pour aller plus loin</h2>
-<div id="niveau-1-pour-ceux-qui-terminent-létape-3" class="section level3">
-<h3>Niveau 1 — Pour ceux qui terminent l’étape 3</h3>
-<div id="extension-1.1-réservations" class="section level4">
-<h4>Extension 1.1 : Réservations</h4>
-<p>Le client vous rappelle :</p>
-<blockquote>
-<p>“J’ai oublié de vous dire : on voudrait pouvoir faire des réservations. Si un document n’est pas disponible, un adhérent peut le réserver. Quand le document est retourné, le premier qui l’a réservé est notifié et a 3 jours pour venir le chercher, sinon on passe au suivant.”</p>
-</blockquote>
-<p><strong>Ce que vous devez implémenter :</strong> - Système de file d’attente de réservations par document - Notification lors du retour (simulée par un affichage console) - Délai de 3 jours avant passage au suivant - Un adhérent ne peut pas réserver un document qu’il a déjà emprunté</p>
-</div>
-<div id="extension-1.2-historique-des-emprunts" class="section level4">
-<h4>Extension 1.2 : Historique des emprunts</h4>
-<blockquote>
-<p>“On voudrait aussi voir l’historique complet des emprunts d’un adhérent, pas juste les emprunts en cours. Et l’historique d’un document aussi : qui l’a emprunté et quand.”</p>
-</blockquote>
-<p><strong>Ce que vous devez implémenter :</strong> - Conserver l’historique des emprunts terminés - Afficher l’historique d’un adhérent (avec dates et documents) - Afficher l’historique d’un document (avec dates et emprunteurs)</p>
-</div>
-</div>
-<div id="niveau-2-pour-ceux-qui-vont-vite" class="section level3">
-<h3>Niveau 2 — Pour ceux qui vont vite</h3>
-<div id="extension-2.1-recherche-avancée" class="section level4">
-<h4>Extension 2.1 : Recherche avancée</h4>
-<blockquote>
-<p>“Les usagers voudraient pouvoir chercher des documents par différents critères : par auteur, par genre, par année de parution… Et combiner les critères !”</p>
-</blockquote>
-<p><strong>Ce que vous devez implémenter :</strong> - Ajouter un attribut “genre” aux documents (Roman, SF, Documentaire, Thriller, Comédie, Drame…) - Ajouter une année de parution/sortie - Permettre la recherche par : - Titre (partiel) - Auteur/Réalisateur/Artiste (partiel) - Genre (exact) - Année (exact ou intervalle) - Disponibilité - Permettre de combiner plusieurs critères (ET logique)</p>
-<p><strong>Question piège :</strong> Comment allez-vous gérer la combinaison de critères sans avoir un nombre explosif de méthodes de recherche ?</p>
-<blockquote>
-<p>C’est le moment d’introduire le pattern <strong>Specification</strong> ou l’utilisation d’<strong>interfaces fonctionnelles</strong> (Predicate) pour créer des filtres composables.</p>
-</blockquote>
-</div>
-<div id="extension-2.2-notifications" class="section level4">
-<h4>Extension 2.2 : Notifications</h4>
-<blockquote>
-<p>“On voudrait envoyer des rappels aux adhérents : quand un emprunt arrive à échéance dans 2 jours, quand il est en retard, quand une réservation est disponible…”</p>
-</blockquote>
-<p><strong>Ce que vous devez implémenter :</strong> - Système de notification (simulé par affichage console) - Différents types de notifications (rappel, retard, réservation disponible) - Possibilité pour un adhérent de configurer ses préférences de notification</p>
-<p><strong>Question piège :</strong> Comment éviter que le code de notification soit dispersé partout dans votre application ?</p>
-<blockquote>
-<p><strong>Indice</strong> DP <strong>Observer</strong> ou d’utiliser des <strong>événements</strong> pour découpler la logique métier de la logique de notification. A priori vous ne devriez pas encore connaitre cette manière de faire mais vous pouvez essayer !</p>
-</blockquote>
-</div>
-</div>
-<div id="niveau-3-pour-les-très-rapides" class="section level3">
-<h3>Niveau 3 — Pour les très rapides</h3>
-<div id="extension-3.1-multi-sites" class="section level4">
-<h4>Extension 3.1 : Multi-sites</h4>
-<blockquote>
-<p>“En fait, la bibliothèque a 3 sites dans la ville. Un document appartient à un site. Un adhérent peut emprunter dans n’importe quel site mais doit rendre dans le site d’origine. Si un document réservé est dans un autre site, il faut prévoir un transfert.”</p>
-</blockquote>
-<p><strong>Ce que vous devez implémenter :</strong> - Gestion de plusieurs sites - Chaque document appartient à un site - Les adhérents peuvent emprunter dans tous les sites - Retour obligatoire dans le site d’origine (ou gestion des retours inter-sites) - Transfert de documents entre sites pour les réservations - Statistiques par site</p>
-</div>
-<div id="extension-3.2-gestion-des-exemplaires-multiples" class="section level4">
-<h4>Extension 3.2 : Gestion des exemplaires multiples</h4>
-<blockquote>
-<p>“Ah oui, j’avais oublié : on peut avoir plusieurs exemplaires du même livre. Par exemple, on a 5 exemplaires de Harry Potter. Quand un adhérent emprunte, il emprunte UN exemplaire, pas LE livre.”</p>
-</blockquote>
-<p><strong>Ce que vous devez implémenter :</strong> - Distinction entre “œuvre” (le livre Harry Potter) et “exemplaire” (un exemplaire physique) - Un emprunt concerne un exemplaire, pas une œuvre - Gestion de la disponibilité par exemplaire - État de l’exemplaire (neuf, bon état, usé, à réparer, perdu) - Possibilité de mettre un exemplaire en “indisponible temporairement” (en réparation)</p>
-<p><strong>Question piège :</strong> Comment adapter votre modèle pour distinguer œuvre et exemplaire sans tout casser ?</p>
-</div>
-<div id="extension-3.3-importexport" class="section level4">
-<h4>Extension 3.3 : Import/Export</h4>
-<blockquote>
-<p>“On aimerait pouvoir exporter la liste des documents au format CSV, et aussi pouvoir importer des documents depuis un fichier CSV fourni par nos fournisseurs.”</p>
-</blockquote>
-<p><strong>Ce que vous devez implémenter :</strong> - Export CSV de la liste des documents (avec toutes leurs informations) - Import CSV de nouveaux documents - Gestion des erreurs d’import (format invalide, doublons…) - Possibilité d’exporter les emprunts en cours, les retards, etc.</p>
-<hr />
-</div>
-</div>
-</div>
-<div id="règles-du-jeu" class="section level2">
-<h2>Règles du jeu</h2>
-<div id="ce-qui-est-interdit" class="section level3">
-<h3>Ce qui est INTERDIT</h3>
-<ol style="list-style-type: decimal">
-<li><strong>Pas de gros switch/if-else sur les types</strong>
-<ul>
-<li>Si vous avez plus de 3 branches dans un switch ou if-else qui teste un type, c’est un signe de mauvaise conception</li>
-<li>Demandez à l’enseignant de valider votre approche</li>
-</ul></li>
-<li><strong>Pas de classes “données pures”</strong>
-<ul>
-<li>Une classe qui n’a que des attributs et des getters/setters est probablement mal conçue</li>
-<li>Vos objets doivent avoir des comportements, pas juste des données</li>
-</ul></li>
-<li><strong>Pas de copier-coller</strong>
-<ul>
-<li>Si vous copiez-collez du code, c’est qu’il y a une opportunité de factorisation</li>
-<li>Trouvez un moyen de mutualiser le code</li>
-</ul></li>
-<li><strong>Refactorisation obligatoire entre les étapes</strong>
-<ul>
-<li>Avant de passer à l’étape suivante, prenez le temps de refactoriser votre code</li>
-<li>L’enseignant peut vous demander d’expliquer votre conception</li>
-</ul></li>
-<li><strong>Validation du design avant de continuer</strong>
-<ul>
-<li>Après l’étape 2, faites valider votre design par l’enseignant</li>
-<li>Expliquez vos choix et soyez prêt à les remettre en question</li>
-</ul></li>
-</ol>
-</div>
-<div id="ce-qui-est-obligatoire" class="section level3">
-<h3>Ce qui est OBLIGATOIRE</h3>
-<ol style="list-style-type: decimal">
-<li><strong>Nommer correctement vos classes et méthodes</strong>
-<ul>
-<li>Pas de <code>Classe1</code>, <code>methode1</code>, etc.</li>
-<li>Les noms doivent refléter le métier</li>
-</ul></li>
-<li><strong>Commenter les choix de conception</strong>
-<ul>
-<li>Expliquez pourquoi vous avez fait tel ou tel choix</li>
-<li>Les commentaires techniques sont moins importants que les commentaires de conception</li>
-</ul></li>
-<li><strong>Tester manuellement chaque fonctionnalité</strong>
-<ul>
-<li>Créez un programme de test avec des données réalistes</li>
-<li>Testez les cas nominaux ET les cas d’erreur</li>
-</ul></li>
-<li><strong>Gérer les erreurs proprement</strong>
-<ul>
-<li>Pas de <code>return null</code> ou <code>return false</code> sans explication</li>
-<li>Utilisez des exceptions quand c’est approprié</li>
-</ul></li>
-</ol>
-<hr />
-</div>
-</div>
-</div>
 
 
 

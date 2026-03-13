@@ -250,7 +250,7 @@ Vous pourriez avoir le même code copié-collé à plusieurs endroits : - Vérif
 
 ------------------------------------------------------------------------
 
-## Étapes facultatives
+## Pour aller plus loin
 
 ### Niveau 1 --- Pour ceux qui terminent l'étape 3
 
@@ -314,7 +314,7 @@ Le client vous rappelle :
 
 ------------------------------------------------------------------------
 
-## Limites pédagogiques
+## Règles du jeu
 
 ### Ce qui est INTERDIT
 

@@ -2,12 +2,10 @@
 ---
 title: "TD Parc"
 produce:
-    html: 
-        remove_answers: false
-    pdf: 
-        remove_answers: false
-    md: 
-        remove_answers: true
+  pdf: true
+  md: true
+  html: true
+  create_answers: true
 ---
 
 
@@ -17,8 +15,60 @@ produce:
 
 **Instructions :**
 
-Vous devez obligatoirement répondre à l'aide de la syntaxe PlantUML. Vous pouvez utiliser un éditeur en ligne comme [PlantText](https://www.planttext.com/) pour dessiner votre diagramme de classes.
-Ou bien, si vous ne l'avez pas déjà fait, vous pouvez installer l'extension PlantUML pour VS Code. (Voir Tuto)
+Vous devez obligatoirement répondre à l'aide de la syntaxe PlantUML. Vous pouvez utiliser un éditeur en ligne comme (lien :[PlantText](https://www.planttext.com?text=ZLEzJiCm4Duj-Hrk2mXrOs8gKWTOe18I-pMv9YTiNx2T2eHu7_8SUJ6S9YbAMubcI9pJsT_FVLw6Y3usrcWLtjZLwD52wQMf7rr5dYEwdE1MgoWrH86Dn2WM2lQKHnQdLSK5GMum1B0KAoc2LbfbiEhQBJlkco1rc8nT9B_5TDoh67HHg-CAV6a5wRc1dN2HNeRyrRLMt-TFn06MuDwnnQHWO37y_Ptr4Zsx4fpOgVA0coGiGZL-PwWMNNaPx3C7mWRU6uQgQvDN14KsebC4jhNfMaj9v47nm73SI1-HN74WtFTJtnvEx1WbnC-QLhGsZSMIPgJp2dilBs6z5WuX5S_HdWXEFKSCp_DvIcGavM56oE659awpgANn-xBOMW8FsHhOJ2tdu6UWkEdLN1QP7OyUd8ufHO03k8n2eeK16WSuJzX-y__pib9qFsREiUZQNCmys3t2Q37swr6mLcDH5ek32NSfjViRfjKopIRTt5y0)) pour dessiner votre diagramme de classes.
+Ou bien, si vous ne l'avez pas déjà fait, vous pouvez installer l'extension PlantUML pour VS Code.
+
+Exemple : 
+
+```plantuml
+@startuml
+skinparam groupInheritance 4
+top to bottom direction
+hide class methods
+
+' Définition de l'interface Volant
+interface Volant {
+    + void voler()
+}
+
+' Définition de la classe Animal
+class Animal {
+    + String nom
+    + Habitat habitat 
+    + void manger()
+}
+
+' Définition de la classe Oiseau qui hérite d'Animal et implémente Volant
+class Oiseau extends Animal implements Volant {
+    + String typeDePlumage
+    + void chanter()
+}
+
+' Définition de la classe Poisson qui hérite d'Animal
+class Poisson extends Animal {
+    + String typeDeNageoire
+    + void nager()
+}
+
+' Définition de la classe Habitat pour la composition
+class Habitat {
+    + String type
+    + void abriter()
+}
+
+' Définition de la classe Avion qui implémente Volant mais n'est pas un animal
+class Avion implements Volant {
+    + String modèle
+    + void décoller()
+}
+
+'  un Animal a un Habitat
+Animal o-- Habitat : has
+
+
+
+@enduml
+```
 
 **Travail à faire :**
 

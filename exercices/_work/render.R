@@ -400,13 +400,17 @@ generate_moodle_essay_xml <- function(essay_questions) {
     text
   }
   md_to_html <- function(text) {
-    if (is.null(text)) return("")
-    text <- gsub("```([a-z]*)\\n(.*?)```", "<pre><code>\\2</code></pre>", text, perl = TRUE)
-    text <- gsub("`([^`]+)`", "<code>\\1</code>", text)
-    text <- gsub("\\*\\*([^*]+)\\*\\*", "<strong>\\1</strong>", text)
-    text <- gsub("\\*([^*]+)\\*", "<em>\\1</em>", text)
-    text <- gsub("\n\n", "</p><p>", text)
-    paste0("<p>", text, "</p>")
+    if (is.null(text) || text == "") return("")
+    tmp_md   <- tempfile(fileext = ".md")
+    tmp_html <- tempfile(fileext = ".html")
+    writeLines(text, tmp_md, useBytes = TRUE)
+    rmarkdown::pandoc_convert(
+      input = tmp_md, from = "markdown", to = "html",
+      output = tmp_html
+    )
+    result <- paste(readLines(tmp_html, encoding = "UTF-8", warn = FALSE), collapse = "\n")
+    unlink(c(tmp_md, tmp_html))
+    result
   }
 
   xml_lines <- c('<?xml version="1.0" encoding="UTF-8"?>', '<quiz>')

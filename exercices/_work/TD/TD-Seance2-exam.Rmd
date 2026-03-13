@@ -1,0 +1,3085 @@
+---
+title: "TD Séance 2 - Polymorphisme, Exceptions, SOLID et Java moderne"
+author: "CPE Lyon"
+produce:
+  html: false
+  pdf: false
+  moodle: true
+---
+
+# Partie 1 : Révisions rapides (Séance 1)
+
+---
+
+:::question
+id: s2-rev-compilation-1
+type: schoice
+title: Compilation — héritage et constructeur
+points: 2
+section: Révisions
+
+Le code suivant compile-t-il ? Si non, pourquoi ?
+
+```java
+class Vehicule {
+    private String marque;
+    Vehicule(String marque) { this.marque = marque; }
+}
+
+class Voiture extends Vehicule {
+    private int nbPortes;
+    Voiture(String marque, int nbPortes) {
+        this.nbPortes = nbPortes;
+    }
+}
+```
+
+:::answers
+- [ ] Oui, il compile sans erreur
+- [x] Non, car le constructeur de Voiture n'appelle pas super(marque)
+- [ ] Non, car marque est private dans Vehicule
+- [ ] Non, car Vehicule n'a pas de constructeur par défaut et Voiture ne l'appelle pas (les deux dernières réponses)
+
+:::solution
+Le constructeur de `Voiture` n'appelle pas `super(marque)`. Java tente alors d'appeler `super()` implicitement, mais `Vehicule` n'a **pas** de constructeur sans paramètres (il n'en a qu'un avec `String`). Le code ne compile pas.
+
+Il faut ajouter `super(marque);` en première ligne du constructeur de `Voiture`.
+
+---
+
+:::question
+id: s2-rev-equals-piege
+type: schoice
+title: Piège == vs equals sur String
+points: 2
+section: Révisions
+
+Que produit ce code ?
+
+```java
+String a = new String("test");
+String b = new String("test");
+System.out.println(a == b);
+System.out.println(a.equals(b));
+```
+
+:::answers
+- [ ] true puis true
+- [x] false puis true
+- [ ] true puis false
+- [ ] false puis false
+
+:::solution
+`a == b` compare les **références** : deux objets distincts créés par `new`, donc `false`.
+
+`a.equals(b)` compare le **contenu** : les deux contiennent "test", donc `true`.
+
+---
+
+:::question
+id: s2-rev-protected-scope
+type: mchoice
+title: Portée de protected
+points: 2
+section: Révisions
+
+Un attribut `protected int age;` déclaré dans la classe `Personne` (package `modele`) est accessible depuis :
+
+:::answers
+- [x] Une méthode de la classe Personne elle-même
+- [x] Une classe Etudiant qui extends Personne (même si dans un autre package)
+- [x] Une classe Adresse dans le même package modele (sans héritage)
+- [ ] N'importe quelle classe dans n'importe quel package
+
+:::solution
+`protected` donne accès à :
+1. La classe elle-même ✅
+2. Les sous-classes (même dans un autre package) ✅
+3. Les classes du même package ✅
+4. PAS les classes d'un autre package sans relation d'héritage ❌
+
+---
+
+:::question
+id: s2-rev-composition-vs-heritage
+type: schoice
+title: Choix conception — Bibliothèque
+points: 2
+section: Révisions
+
+Pour modéliser qu'une `Bibliotheque` contient plusieurs `Livre`, quelle relation est correcte ?
+
+:::answers
+- [ ] `class Bibliotheque extends Livre`
+- [ ] `class Livre extends Bibliotheque`
+- [x] `class Bibliotheque { private List<Livre> livres; }`
+- [ ] `interface Bibliotheque extends Livre`
+
+:::solution
+Une bibliothèque **a des** livres → c'est de la **composition**.
+
+"Une bibliothèque est un livre" ne veut rien dire, donc l'héritage est absurde ici.
+
+---
+
+:::question
+id: s2-rev-interface-abstract
+type: essay
+title: Interface vs classe abstraite
+points: 3
+section: Révisions
+
+Dans un système de paiement, on a des classes `CarteBancaire`, `PayPal`, `Virement`. Elles doivent toutes proposer `payer(double montant)` et `rembourser(double montant)`.
+
+Faut-il utiliser une interface `MoyenPaiement` ou une classe abstraite `MoyenPaiement` ? Justifiez.
+
+:::solution
+**Interface** `MoyenPaiement` est préférable ici :
+
+1. `CarteBancaire`, `PayPal` et `Virement` n'ont **rien en commun** en termes d'attributs ou d'implémentation interne
+2. Ils partagent un **contrat** (capacité de payer/rembourser), pas une identité
+3. On dit "CarteBancaire **peut** payer", pas "CarteBancaire **est un** MoyenPaiement générique"
+4. Une classe `CarteBancaire` pourrait aussi implémenter d'autres interfaces (`Serializable`, `Auditable`...)
+
+Si les trois partageaient du code commun (ex: un attribut `devise`, un log des transactions), une classe abstraite pourrait se justifier.
+
+---
+
+# Partie 2 : Polymorphisme — Type statique vs type dynamique
+
+---
+
+:::question
+id: s2-poly-types-definition
+type: essay
+title: Type statique et type dynamique
+points: 3
+section: Polymorphisme
+
+Expliquez la différence entre le type statique et le type dynamique d'une variable. Illustrez avec un exemple.
+
+:::solution
+- **Type statique** : le type déclaré de la variable, connu à la **compilation**
+- **Type dynamique** : le type réel de l'objet pointé, connu à l'**exécution**
+
+```java
+Animal a = new Chien();
+//  ^ type statique    ^ type dynamique
+```
+
+Ici, `a` est de type statique `Animal` mais de type dynamique `Chien`. Le compilateur vérifie que les méthodes appelées existent dans `Animal`, mais à l'exécution, c'est la version de `Chien` qui est exécutée (liaison dynamique).
+
+---
+
+:::question
+id: s2-poly-liaison-dynamique
+type: schoice
+title: Liaison dynamique
+points: 2
+section: Polymorphisme
+
+```java
+class Instrument {
+    String jouer() { return "..."; }
+}
+class Guitare extends Instrument {
+    @Override
+    String jouer() { return "Gratte gratte"; }
+}
+class Piano extends Instrument {
+    @Override
+    String jouer() { return "Plink plonk"; }
+}
+
+Instrument i = new Guitare();
+System.out.println(i.jouer());
+```
+
+Qu'affiche ce code ?
+
+:::answers
+- [ ] `...`
+- [x] `Gratte gratte`
+- [ ] `Plink plonk`
+- [ ] Erreur de compilation
+
+:::solution
+La **liaison dynamique** fait que la méthode appelée est celle du type réel de l'objet (`Guitare`), pas du type de la variable (`Instrument`).
+
+Le compilateur vérifie que `jouer()` existe dans `Instrument` (type statique) ✅, puis à l'exécution Java appelle `Guitare.jouer()` → "Gratte gratte".
+
+---
+
+:::question
+id: s2-poly-collection-heterogene
+type: essay
+title: Collection hétérogène et polymorphisme
+points: 4
+section: Polymorphisme
+
+Analysez le code suivant. Qu'affiche-t-il ? Expliquez chaque ligne.
+
+```java
+abstract class Forme {
+    abstract double surface();
+}
+class Cercle extends Forme {
+    double rayon;
+    Cercle(double r) { this.rayon = r; }
+    @Override
+    double surface() { return Math.PI * rayon * rayon; }
+}
+class Rectangle extends Forme {
+    double l, h;
+    Rectangle(double l, double h) { this.l = l; this.h = h; }
+    @Override
+    double surface() { return l * h; }
+}
+
+List<Forme> formes = List.of(
+    new Cercle(1),
+    new Rectangle(3, 4),
+    new Cercle(2)
+);
+
+double total = 0;
+for (Forme f : formes) {
+    total += f.surface();
+}
+System.out.printf("%.2f%n", total);
+```
+
+:::solution
+Le code calcule la somme des surfaces :
+1. `Cercle(1)` → π × 1² = **3.14159...**
+2. `Rectangle(3,4)` → 3 × 4 = **12.0**
+3. `Cercle(2)` → π × 2² = **12.56637...**
+
+Total = 3.14159 + 12.0 + 12.56637 ≈ **27.71**
+
+C'est le **polymorphisme** : la boucle appelle `f.surface()` sans savoir si `f` est un Cercle ou un Rectangle. Chaque objet exécute sa propre version de `surface()` grâce à la liaison dynamique.
+
+---
+
+:::question
+id: s2-poly-surcharge-vs-redef
+type: schoice
+title: Surcharge vs redéfinition
+points: 2
+section: Polymorphisme
+
+```java
+class Base {
+    void afficher(String msg) { System.out.println("Base: " + msg); }
+}
+class Derivee extends Base {
+    void afficher(int code) { System.out.println("Derivee: " + code); }
+}
+```
+
+La méthode `afficher(int)` de `Derivee` est-elle une redéfinition ou une surcharge ?
+
+:::answers
+- [ ] Redéfinition (@Override)
+- [x] Surcharge (overload) — signature différente
+- [ ] Ni l'un ni l'autre, erreur de compilation
+- [ ] Les deux à la fois
+
+:::solution
+C'est une **surcharge** (overload) car la **signature est différente** : `afficher(String)` ≠ `afficher(int)`.
+
+Pour être une redéfinition, il faudrait **exactement** la même signature (`void afficher(String msg)`).
+
+`Derivee` possède donc **deux** méthodes `afficher` : celle héritée de `Base` (avec `String`) et la sienne (avec `int`).
+
+---
+
+:::question
+id: s2-poly-methode-accessible
+type: schoice
+title: Méthode accessible via type statique
+points: 3
+section: Polymorphisme
+
+```java
+class Animal {
+    void manger() { System.out.println("mange"); }
+}
+class Chien extends Animal {
+    void aboyer() { System.out.println("Wouaf"); }
+}
+
+Animal a = new Chien();
+a.aboyer();  // ???
+```
+
+Que se passe-t-il ?
+
+:::answers
+- [ ] Affiche "Wouaf"
+- [ ] Affiche "mange"
+- [x] Erreur de compilation : aboyer() n'existe pas dans Animal
+- [ ] NullPointerException
+
+:::solution
+**Erreur de compilation.** Le compilateur vérifie les méthodes disponibles sur le **type statique** (`Animal`). La méthode `aboyer()` n'existe pas dans `Animal`, donc le code ne compile pas.
+
+Même si l'objet réel est un `Chien`, le compilateur ne regarde que le type déclaré. Pour appeler `aboyer()`, il faudrait un downcast : `((Chien) a).aboyer();`
+
+---
+
+# Partie 3 : Upcasting, Downcasting, Pattern Matching
+
+---
+
+:::question
+id: s2-cast-upcast-def
+type: essay
+title: Définition upcasting et downcasting
+points: 3
+section: Casting
+
+Expliquez la différence entre upcasting et downcasting. Lequel est implicite ? Lequel est risqué ?
+
+:::solution
+**Upcasting** : conversion d'un type enfant vers un type parent.
+- **Implicite** et toujours sûr
+- `Animal a = new Chien();` — un Chien EST un Animal
+- On "perd" l'accès aux méthodes spécifiques de Chien
+
+**Downcasting** : conversion d'un type parent vers un type enfant.
+- **Explicite** (nécessite un cast) et **risqué**
+- `Chien c = (Chien) animal;` — l'animal est-il vraiment un Chien ?
+- Peut lancer `ClassCastException` si le type réel ne correspond pas
+
+---
+
+:::question
+id: s2-cast-classcast-exception
+type: schoice
+title: ClassCastException
+points: 3
+section: Casting
+
+```java
+class Animal {}
+class Chien extends Animal {}
+class Chat extends Animal {}
+
+Animal a = new Chien();
+Chat c = (Chat) a;
+```
+
+Que se passe-t-il ?
+
+:::answers
+- [ ] Erreur de compilation
+- [ ] `c` est null
+- [x] ClassCastException à l'exécution
+- [ ] Ça fonctionne, c est un Chat vide
+
+:::solution
+Le code **compile** car le compilateur voit que `Animal` pourrait théoriquement être un `Chat`. Mais à l'exécution, `a` pointe vers un `Chien`, pas un `Chat` → **ClassCastException**.
+
+Le compilateur ne peut pas toujours détecter les casts invalides. C'est pourquoi il faut toujours vérifier avec `instanceof` avant un downcast.
+
+---
+
+:::question
+id: s2-cast-instanceof-classique
+type: essay
+title: Sécuriser un downcast
+points: 2
+section: Casting
+
+Écrivez le code qui affiche "Le chien rapporte la balle" seulement si `animal` est bien un `Chien`, en utilisant `instanceof` et un cast.
+
+:::solution
+```java
+if (animal instanceof Chien) {
+    Chien c = (Chien) animal;
+    System.out.println("Le chien rapporte la balle");
+    // ou c.rapporter();
+}
+```
+
+On vérifie d'abord le type avec `instanceof`, puis on effectue le cast en toute sécurité.
+
+---
+
+:::question
+id: s2-cast-pattern-matching
+type: essay
+title: Pattern matching instanceof (Java 16+)
+points: 3
+section: Casting
+
+Réécrivez le code suivant en utilisant le pattern matching `instanceof` de Java 16+ :
+
+```java
+if (forme instanceof Cercle) {
+    Cercle c = (Cercle) forme;
+    System.out.println("Rayon : " + c.getRayon());
+} else if (forme instanceof Rectangle) {
+    Rectangle r = (Rectangle) forme;
+    System.out.println("Aire : " + r.getLargeur() * r.getHauteur());
+}
+```
+
+:::solution
+```java
+if (forme instanceof Cercle c) {
+    System.out.println("Rayon : " + c.getRayon());
+} else if (forme instanceof Rectangle r) {
+    System.out.println("Aire : " + r.getLargeur() * r.getHauteur());
+}
+```
+
+Le pattern matching combine le test `instanceof` et la déclaration de variable en une seule expression. Plus concis, plus lisible, et pas de cast explicite.
+
+---
+
+:::question
+id: s2-cast-compilation-ou-execution
+type: schoice
+title: Erreur de compilation ou d'exécution ?
+points: 3
+section: Casting
+
+```java
+String s = "Hello";
+Integer i = (Integer) s;
+```
+
+Que se passe-t-il ?
+
+:::answers
+- [x] Erreur de compilation : types incompatibles
+- [ ] ClassCastException à l'exécution
+- [ ] i vaut null
+- [ ] Ça fonctionne
+
+:::solution
+**Erreur de compilation.** `String` et `Integer` n'ont **aucune relation d'héritage** entre eux. Le compilateur sait qu'un `String` ne peut jamais être un `Integer`, donc il refuse le cast.
+
+Un cast n'est autorisé que si les types ont une relation parent-enfant (le compilateur "doute" que ça pourrait marcher).
+
+---
+
+:::question
+id: s2-cast-enchaine
+type: schoice
+title: Chaîne de casts
+points: 4
+section: Casting
+
+```java
+class A {}
+class B extends A {}
+class C extends B {}
+
+A obj = new C();
+B b = (B) obj;   // Ligne 1
+C c = (C) b;     // Ligne 2
+A a2 = c;        // Ligne 3
+```
+
+Quelles lignes compilent et s'exécutent sans erreur ?
+
+:::answers
+- [x] Les trois lignes fonctionnent sans erreur
+- [ ] Ligne 1 lance ClassCastException
+- [ ] Ligne 2 lance ClassCastException
+- [ ] Ligne 3 ne compile pas
+
+:::solution
+Tout fonctionne :
+- **Ligne 1** : `obj` (type réel `C`) → cast en `B` ✅ (`C` est un `B`, car `C extends B`)
+- **Ligne 2** : `b` (type réel `C`) → cast en `C` ✅ (c'est bien un `C`)
+- **Ligne 3** : upcasting implicite `C` → `A` ✅ (toujours sûr)
+
+L'objet est un `C` du début à la fin, on ne fait que changer le "prisme" à travers lequel on le voit.
+
+---
+
+:::question
+id: s2-cast-instanceof-null
+type: schoice
+title: instanceof avec null
+points: 2
+section: Casting
+
+Que retourne `null instanceof Animal` ?
+
+:::answers
+- [ ] true
+- [x] false
+- [ ] NullPointerException
+- [ ] Erreur de compilation
+
+:::solution
+`null instanceof <n'importe quel type>` retourne toujours **false**, sans exception.
+
+C'est une propriété utile : `instanceof` est "null-safe", contrairement à l'appel de méthode sur null.
+
+---
+
+# Partie 4 : Autoboxing et types wrappers
+
+---
+
+:::question
+id: s2-box-wrapper-table
+type: mchoice
+title: Correspondance primitif/wrapper
+points: 2
+section: Autoboxing
+
+Quelles associations sont correctes ?
+
+:::answers
+- [x] int → Integer
+- [x] char → Character
+- [ ] boolean → Bool
+- [x] double → Double
+- [ ] float → Floating
+
+:::solution
+Les wrappers Java suivent une convention simple :
+- `int` → `Integer` (nom complet, pas juste la majuscule)
+- `char` → `Character` (nom complet également)
+- `boolean` → `Boolean` (pas "Bool")
+- `double` → `Double`
+- `float` → `Float` (pas "Floating")
+
+---
+
+:::question
+id: s2-box-autoboxing-def
+type: essay
+title: Autoboxing et unboxing
+points: 2
+section: Autoboxing
+
+Qu'est-ce que l'autoboxing et l'unboxing ? Donnez un exemple de chaque.
+
+:::solution
+**Autoboxing** : conversion automatique d'un type primitif vers son wrapper.
+```java
+Integer x = 42;  // int 42 → Integer.valueOf(42)
+```
+
+**Unboxing** : conversion automatique d'un wrapper vers son type primitif.
+```java
+int y = x;  // Integer → x.intValue()
+```
+
+Java effectue ces conversions automatiquement depuis Java 5, ce qui simplifie l'utilisation des collections (qui ne peuvent contenir que des objets, pas des primitifs).
+
+---
+
+:::question
+id: s2-box-cache-piege-127
+type: schoice
+title: Piège du cache Integer (127)
+points: 3
+section: Autoboxing
+
+```java
+Integer a = 127;
+Integer b = 127;
+System.out.println(a == b);
+```
+
+Qu'affiche ce code ?
+
+:::answers
+- [x] true
+- [ ] false
+- [ ] Erreur de compilation
+- [ ] Comportement indéfini
+
+:::solution
+**true.** Java maintient un **cache** pour les Integer de -128 à 127. `Integer.valueOf(127)` retourne le même objet en mémoire pour les deux variables.
+
+Donc `a` et `b` pointent vers le **même objet** → `==` retourne `true`.
+
+---
+
+:::question
+id: s2-box-cache-piege-128
+type: schoice
+title: Piège du cache Integer (128)
+points: 3
+section: Autoboxing
+
+```java
+Integer a = 128;
+Integer b = 128;
+System.out.println(a == b);
+```
+
+Qu'affiche ce code ?
+
+:::answers
+- [ ] true
+- [x] false
+- [ ] Erreur de compilation
+- [ ] NullPointerException
+
+:::solution
+**false.** 128 est **hors du cache** (-128 à 127). Java crée **deux objets distincts** en mémoire. `==` compare les références → deux objets différents → `false`.
+
+C'est un piège classique. Il faut **toujours utiliser `.equals()`** pour comparer des wrappers :
+```java
+System.out.println(a.equals(b));  // true
+```
+
+---
+
+:::question
+id: s2-box-null-unboxing
+type: schoice
+title: Unboxing de null
+points: 3
+section: Autoboxing
+
+```java
+Integer x = null;
+int y = x;
+```
+
+Que se passe-t-il ?
+
+:::answers
+- [ ] y vaut 0
+- [ ] Erreur de compilation
+- [x] NullPointerException
+- [ ] y vaut null
+
+:::solution
+**NullPointerException.** Java tente de faire l'unboxing de `x` (appelle `x.intValue()`), mais `x` est `null` → NPE.
+
+C'est un piège courant : l'unboxing est silencieux dans le code mais peut exploser sur un `null`. Toujours vérifier avant de déboxer.
+
+---
+
+:::question
+id: s2-box-generics-primitifs
+type: schoice
+title: Pourquoi les wrappers avec les collections
+points: 2
+section: Autoboxing
+
+Pourquoi écrit-on `List<Integer>` et pas `List<int>` ?
+
+:::answers
+- [ ] `int` est trop petit pour une liste
+- [x] Les génériques Java ne supportent que les types objets, pas les primitifs
+- [ ] C'est une convention de style
+- [ ] Les deux fonctionnent
+
+:::solution
+Les génériques Java utilisent l'**effacement de type** (type erasure) et ne fonctionnent qu'avec des **types objets** (classes). Les types primitifs (`int`, `double`, etc.) ne sont pas des objets.
+
+C'est pourquoi on utilise les wrappers : `List<Integer>`, `Map<String, Double>`, etc.
+
+---
+
+:::question
+id: s2-box-performance
+type: essay
+title: Impact performance autoboxing
+points: 2
+section: Autoboxing
+
+Pourquoi le code suivant est-il problématique en termes de performance ?
+
+```java
+Long somme = 0L;
+for (int i = 0; i < 1_000_000; i++) {
+    somme += i;
+}
+```
+
+:::solution
+Le problème est que `somme` est un `Long` (wrapper), pas un `long` (primitif).
+
+À chaque itération, `somme += i` fait :
+1. **Unboxing** de `somme` → `long`
+2. Addition `long + int`
+3. **Autoboxing** du résultat → nouveau `Long`
+
+Soit **2 millions** de conversions et **1 million d'objets temporaires** créés pour rien.
+
+Solution : utiliser `long somme = 0L;` (primitif).
+
+---
+
+:::question
+id: s2-box-equals-wrapper
+type: schoice
+title: Comparaison mixte primitif/wrapper
+points: 3
+section: Autoboxing
+
+```java
+int a = 42;
+Integer b = 42;
+System.out.println(a == b);
+```
+
+Qu'affiche ce code ?
+
+:::answers
+- [x] true
+- [ ] false
+- [ ] Erreur de compilation
+- [ ] NullPointerException
+
+:::solution
+**true.** Quand on compare un primitif et un wrapper avec `==`, Java fait l'**unboxing** du wrapper. La comparaison devient `42 == 42` (deux primitifs) → `true`.
+
+Le piège du cache ne s'applique que quand on compare **deux wrappers** entre eux.
+
+---
+
+# Partie 5 : Records
+
+---
+
+:::question
+id: s2-record-verbosity
+type: essay
+title: Problème de verbosité
+points: 2
+section: Records
+
+Listez tout ce qu'il faut écrire manuellement en Java pour une simple classe de données `Point` avec deux attributs `x` et `y` (int).
+
+:::solution
+Pour une classe de données classique, il faut écrire :
+1. Déclaration des **attributs** `private final int x, y;`
+2. **Constructeur** `Point(int x, int y)`
+3. **Getters** `getX()` et `getY()`
+4. **equals()** pour comparer deux Points
+5. **hashCode()** pour la cohérence avec equals
+6. **toString()** pour l'affichage lisible
+
+Soit environ **25-30 lignes** de code pour un simple conteneur de 2 données. C'est de la "cérémonie" sans valeur ajoutée.
+
+---
+
+:::question
+id: s2-record-syntax
+type: essay
+title: Syntaxe record
+points: 2
+section: Records
+
+Réécrivez la classe `Point(int x, int y)` en utilisant un record Java. Que génère-t-il automatiquement ?
+
+:::solution
+```java
+public record Point(int x, int y) { }
+```
+
+Une seule ligne ! Le record génère automatiquement :
+- Attributs `private final int x` et `private final int y`
+- Constructeur `Point(int x, int y)`
+- Accesseurs `x()` et `y()` (pas de préfixe `get`)
+- `equals()` basé sur tous les champs
+- `hashCode()` basé sur tous les champs
+- `toString()` → `Point[x=3, y=4]`
+
+---
+
+:::question
+id: s2-record-immutable
+type: schoice
+title: Mutabilité d'un record
+points: 2
+section: Records
+
+```java
+record Etudiant(String nom, int age) {}
+
+Etudiant e = new Etudiant("Alice", 20);
+e.age = 21;  // ???
+```
+
+Que se passe-t-il ?
+
+:::answers
+- [ ] L'âge passe à 21
+- [x] Erreur de compilation : les champs d'un record sont final
+- [ ] UnsupportedOperationException
+- [ ] Ça fonctionne mais c'est déconseillé
+
+:::solution
+**Erreur de compilation.** Les champs d'un record sont implicitement `private final`. Un record est **immuable** : une fois créé, ses valeurs ne changent plus.
+
+Pour "modifier" un record, on en crée un nouveau :
+```java
+Etudiant e2 = new Etudiant("Alice", 21);
+```
+
+---
+
+:::question
+id: s2-record-compact-constructor
+type: essay
+title: Constructeur compact
+points: 3
+section: Records
+
+Écrivez un record `Email(String adresse)` avec un constructeur compact qui valide que l'adresse contient un `@`. Levez une `IllegalArgumentException` sinon.
+
+:::solution
+```java
+public record Email(String adresse) {
+    public Email {  // constructeur compact : pas de parenthèses ni d'affectation
+        if (adresse == null || !adresse.contains("@")) {
+            throw new IllegalArgumentException("Adresse email invalide : " + adresse);
+        }
+        // pas besoin de this.adresse = adresse; → fait automatiquement
+    }
+}
+```
+
+Le constructeur compact n'a pas de parenthèses de paramètres et l'affectation `this.adresse = adresse` est faite automatiquement **après** le bloc. On ne peut qu'ajouter de la **validation**.
+
+---
+
+:::question
+id: s2-record-equals
+type: schoice
+title: Equals sur records
+points: 2
+section: Records
+
+```java
+record Point(int x, int y) {}
+
+Point p1 = new Point(3, 4);
+Point p2 = new Point(3, 4);
+System.out.println(p1.equals(p2));
+System.out.println(p1 == p2);
+```
+
+Qu'affiche ce code ?
+
+:::answers
+- [ ] true puis true
+- [x] true puis false
+- [ ] false puis false
+- [ ] false puis true
+
+:::solution
+- `p1.equals(p2)` → **true** : les records génèrent un `equals()` qui compare les valeurs de tous les champs (3==3 et 4==4)
+- `p1 == p2` → **false** : ce sont deux objets distincts en mémoire (deux `new`)
+
+---
+
+:::question
+id: s2-record-interface
+type: schoice
+title: Record et interface
+points: 2
+section: Records
+
+Un record peut-il implémenter une interface ?
+
+:::answers
+- [x] Oui
+- [ ] Non
+- [ ] Seulement Serializable
+- [ ] Seulement les interfaces fonctionnelles
+
+:::solution
+Oui ! Un record peut implémenter des interfaces :
+```java
+public record Cercle(double rayon) implements Forme {
+    @Override
+    public double surface() {
+        return Math.PI * rayon * rayon;
+    }
+}
+```
+
+En revanche, un record **ne peut pas** hériter d'une classe (il hérite implicitement de `java.lang.Record`).
+
+---
+
+:::question
+id: s2-record-heritage
+type: schoice
+title: Record et héritage
+points: 2
+section: Records
+
+```java
+record Point2D(int x, int y) {}
+record Point3D(int x, int y, int z) extends Point2D {}
+```
+
+Ce code compile-t-il ?
+
+:::answers
+- [ ] Oui
+- [x] Non, un record ne peut pas hériter d'un autre record
+- [ ] Oui, mais seulement avec des records
+- [ ] Non, mais ça fonctionne avec une classe abstraite
+
+:::solution
+**Non.** Un record hérite implicitement de `java.lang.Record` et ne peut pas hériter d'une autre classe ou d'un autre record.
+
+Les records sont des conteneurs de données "plats". Si vous avez besoin d'héritage, utilisez des classes classiques.
+
+---
+
+:::question
+id: s2-record-quand-utiliser
+type: mchoice
+title: Quand utiliser un record
+points: 2
+section: Records
+
+Quand est-il pertinent d'utiliser un record ?
+
+:::answers
+- [x] Pour un DTO simple (Data Transfer Object) comme Point, Coordonnees
+- [x] Pour des résultats de méthode groupant plusieurs valeurs
+- [ ] Pour une entité mutable avec des setters (ex: Compte bancaire)
+- [x] Pour des clés de Map composites
+- [ ] Pour une classe avec beaucoup de logique métier
+
+:::solution
+Les records sont idéaux pour les **conteneurs de données immuables** :
+- DTO, valeurs de retour groupées, clés composites ✅
+- PAS pour les objets mutables (pas de setters) ❌
+- PAS pour les classes avec beaucoup de logique métier (même si on peut ajouter des méthodes) ❌
+
+---
+
+# Partie 6 : Exceptions
+
+---
+
+:::question
+id: s2-exc-hierarchie
+type: essay
+title: Hiérarchie des exceptions
+points: 3
+section: Exceptions
+
+Dessinez (ou décrivez) la hiérarchie des exceptions Java à partir de `Throwable`. Quelle est la différence entre `Error`, checked exceptions et unchecked exceptions ?
+
+:::solution
+```
+Throwable
+├── Error (erreurs système, irréparables)
+│   ├── OutOfMemoryError
+│   └── StackOverflowError
+└── Exception (erreurs applicatives)
+    ├── RuntimeException (unchecked)
+    │   ├── NullPointerException
+    │   ├── ArrayIndexOutOfBoundsException
+    │   ├── ClassCastException
+    │   └── IllegalArgumentException
+    └── Checked exceptions
+        ├── IOException
+        ├── SQLException
+        └── FileNotFoundException
+```
+
+- **Error** : erreurs graves du système, on ne les traite pas
+- **Checked** : le compilateur oblige à les traiter (try/catch ou throws)
+- **Unchecked** (RuntimeException) : bugs de programmation, pas obligé de les traiter
+
+---
+
+:::question
+id: s2-exc-try-catch-flow
+type: schoice
+title: Flux d'exécution try/catch
+points: 3
+section: Exceptions
+
+```java
+try {
+    System.out.println("A");
+    int x = 10 / 0;
+    System.out.println("B");
+} catch (ArithmeticException e) {
+    System.out.println("C");
+} finally {
+    System.out.println("D");
+}
+System.out.println("E");
+```
+
+Qu'affiche ce code ?
+
+:::answers
+- [ ] A B C D E
+- [ ] A C D
+- [x] A C D E
+- [ ] A D E
+
+:::solution
+1. `"A"` s'affiche
+2. `10 / 0` lance `ArithmeticException` → on saute `"B"`
+3. Le catch attrape l'exception → `"C"` s'affiche
+4. Le finally s'exécute toujours → `"D"` s'affiche
+5. L'exception est traitée, le programme continue → `"E"` s'affiche
+
+---
+
+:::question
+id: s2-exc-finally-guarantee
+type: schoice
+title: Garantie de finally
+points: 2
+section: Exceptions
+
+```java
+try {
+    return 1;
+} finally {
+    System.out.println("finally");
+}
+```
+
+Le `finally` s'exécute-t-il malgré le `return` dans le try ?
+
+:::answers
+- [x] Oui, finally s'exécute avant le return effectif
+- [ ] Non, return quitte immédiatement
+- [ ] Erreur de compilation
+- [ ] Comportement indéfini
+
+:::solution
+**Oui.** Le `finally` s'exécute **toujours**, même en présence d'un `return`, d'un `break`, ou d'une exception non attrapée.
+
+Le seul cas où `finally` ne s'exécute pas est `System.exit()` ou un crash de la JVM.
+
+---
+
+:::question
+id: s2-exc-checked-vs-unchecked
+type: mchoice
+title: Checked vs Unchecked
+points: 3
+section: Exceptions
+
+Classez ces exceptions : checked ou unchecked ?
+
+:::answers
+- [x] IOException → Checked
+- [x] NullPointerException → Unchecked
+- [ ] ArrayIndexOutOfBoundsException → Checked
+- [x] FileNotFoundException → Checked
+- [ ] IllegalArgumentException → Checked
+
+:::solution
+- `IOException` → **Checked** ✅ (extends Exception)
+- `NullPointerException` → **Unchecked** ✅ (extends RuntimeException)
+- `ArrayIndexOutOfBoundsException` → **Unchecked** (extends RuntimeException)
+- `FileNotFoundException` → **Checked** ✅ (extends IOException)
+- `IllegalArgumentException` → **Unchecked** (extends RuntimeException)
+
+Règle : si ça hérite de `RuntimeException` → unchecked. Sinon → checked.
+
+---
+
+:::question
+id: s2-exc-throw-vs-throws
+type: essay
+title: throw vs throws
+points: 2
+section: Exceptions
+
+Expliquez la différence entre `throw` et `throws` avec un exemple.
+
+:::solution
+**`throw`** : lance une exception (dans le corps de la méthode).
+```java
+throw new IllegalArgumentException("Montant négatif");
+```
+
+**`throws`** : déclare qu'une méthode peut lancer une exception (dans la signature).
+```java
+void lireFichier(String path) throws IOException {
+    // code qui peut lancer IOException
+}
+```
+
+`throw` = action de lancer. `throws` = avertissement dans la signature.
+
+---
+
+:::question
+id: s2-exc-custom-exception
+type: essay
+title: Exception personnalisée complète
+points: 4
+section: Exceptions
+
+Créez une exception `SoldeInsuffisantException` (checked) qui stocke le montant demandé et le solde actuel. Écrivez ensuite une méthode `retirer(double montant)` dans une classe `Compte` qui l'utilise.
+
+:::solution
+```java
+public class SoldeInsuffisantException extends Exception {
+    private final double montantDemande;
+    private final double soldeActuel;
+
+    public SoldeInsuffisantException(double montantDemande, double soldeActuel) {
+        super("Solde insuffisant : demandé " + montantDemande 
+              + ", disponible " + soldeActuel);
+        this.montantDemande = montantDemande;
+        this.soldeActuel = soldeActuel;
+    }
+
+    public double getMontantDemande() { return montantDemande; }
+    public double getSoldeActuel() { return soldeActuel; }
+}
+
+public class Compte {
+    private double solde;
+
+    public void retirer(double montant) throws SoldeInsuffisantException {
+        if (montant > solde) {
+            throw new SoldeInsuffisantException(montant, solde);
+        }
+        solde -= montant;
+    }
+}
+```
+
+L'exception extends `Exception` (checked), donc l'appelant **doit** la traiter.
+
+---
+
+:::question
+id: s2-exc-multi-catch
+type: schoice
+title: Multi-catch
+points: 2
+section: Exceptions
+
+```java
+try {
+    // code
+} catch (IOException | SQLException e) {
+    System.out.println(e.getMessage());
+}
+```
+
+Que signifie cette syntaxe ?
+
+:::answers
+- [ ] On attrape IOException ET SQLException en même temps
+- [x] On attrape IOException OU SQLException avec le même traitement
+- [ ] IOException doit être suivie de SQLException
+- [ ] Erreur de syntaxe
+
+:::solution
+Le **multi-catch** (Java 7+) permet de traiter plusieurs types d'exceptions avec le même bloc. Le `|` signifie "OU".
+
+C'est équivalent à deux blocs catch séparés mais évite la duplication de code. La variable `e` est de type `IOException | SQLException` (le plus petit type commun).
+
+---
+
+:::question
+id: s2-exc-try-with-resources
+type: essay
+title: Try-with-resources
+points: 3
+section: Exceptions
+
+Expliquez ce que fait le `try-with-resources`. Réécrivez le code suivant en l'utilisant :
+
+```java
+FileReader reader = null;
+try {
+    reader = new FileReader("data.txt");
+    // lecture...
+} catch (IOException e) {
+    e.printStackTrace();
+} finally {
+    if (reader != null) {
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+:::solution
+Le `try-with-resources` (Java 7+) ferme automatiquement les ressources `AutoCloseable` à la fin du bloc :
+
+```java
+try (FileReader reader = new FileReader("data.txt")) {
+    // lecture...
+} catch (IOException e) {
+    e.printStackTrace();
+}
+// reader est automatiquement fermé ici, même en cas d'exception
+```
+
+7 lignes au lieu de 14. La ressource déclarée dans les parenthèses du `try` est automatiquement fermée (appel à `close()`) à la fin du bloc, qu'il y ait eu une exception ou non.
+
+---
+
+:::question
+id: s2-exc-catch-order
+type: schoice
+title: Ordre des catch
+points: 3
+section: Exceptions
+
+```java
+try {
+    // code risqué
+} catch (Exception e) {
+    System.out.println("A");
+} catch (IOException e) {
+    System.out.println("B");
+}
+```
+
+Que se passe-t-il ?
+
+:::answers
+- [ ] Affiche "A" pour les Exception et "B" pour les IOException
+- [ ] Affiche "B" puis "A"
+- [x] Erreur de compilation : IOException déjà attrapée par catch(Exception)
+- [ ] Fonctionne normalement
+
+:::solution
+**Erreur de compilation.** `Exception` est le parent de `IOException`. Le premier catch attrape **toutes** les exceptions, y compris les `IOException`. Le second catch n'est jamais atteint → le compilateur refuse.
+
+Il faut mettre les exceptions **les plus spécifiques en premier** :
+```java
+catch (IOException e) { ... }      // spécifique d'abord
+catch (Exception e) { ... }        // général ensuite
+```
+
+---
+
+:::question
+id: s2-exc-rethrow
+type: essay
+title: Relancer une exception
+points: 2
+section: Exceptions
+
+Pourquoi et comment relancer une exception après l'avoir attrapée ? Donnez un exemple.
+
+:::solution
+On relance quand on veut faire un traitement local (log, nettoyage) puis laisser l'appelant gérer :
+
+```java
+public void traiterFichier(String path) throws IOException {
+    try {
+        // lecture du fichier
+    } catch (IOException e) {
+        System.err.println("Erreur sur " + path);  // log local
+        throw e;  // relance pour l'appelant
+    }
+}
+```
+
+Alternative avec wrapping :
+```java
+catch (IOException e) {
+    throw new ServiceException("Erreur traitement", e);  // encapsule la cause
+}
+```
+
+---
+
+:::question
+id: s2-exc-analyse-code
+type: essay
+title: Analyse de code — flux d'exception
+points: 4
+section: Exceptions
+
+Tracez l'exécution complète et donnez la sortie de ce code :
+
+```java
+public static int calculer() {
+    try {
+        System.out.println("1");
+        int[] tab = {1, 2, 3};
+        System.out.println(tab[5]);
+        System.out.println("2");
+        return 10;
+    } catch (NullPointerException e) {
+        System.out.println("3");
+        return 20;
+    } catch (ArrayIndexOutOfBoundsException e) {
+        System.out.println("4");
+        return 30;
+    } finally {
+        System.out.println("5");
+    }
+}
+
+public static void main(String[] args) {
+    System.out.println(calculer());
+}
+```
+
+:::solution
+Exécution pas à pas :
+1. `"1"` s'affiche
+2. `tab[5]` → lance `ArrayIndexOutOfBoundsException`
+3. On saute `"2"` et le `return 10`
+4. Premier catch (`NullPointerException`) → ne correspond pas, on passe
+5. Deuxième catch (`ArrayIndexOutOfBoundsException`) → **correspond** ! `"4"` s'affiche
+6. `return 30` est préparé mais **pas encore exécuté**
+7. `finally` s'exécute → `"5"` s'affiche
+8. Le `return 30` s'exécute
+
+Sortie :
+```
+1
+4
+5
+30
+```
+
+---
+
+# Partie 7 : Membres statiques
+
+---
+
+:::question
+id: s2-static-definition
+type: essay
+title: Static — définition
+points: 2
+section: Static
+
+Qu'est-ce qu'un membre `static` en Java ? En quoi diffère-t-il d'un membre d'instance ?
+
+:::solution
+Un membre `static` appartient à la **classe elle-même**, pas à une instance particulière.
+
+- **Attribut static** : partagé par toutes les instances (une seule copie en mémoire)
+- **Attribut d'instance** : chaque objet a sa propre copie
+
+```java
+class Compteur {
+    static int total = 0;     // partagé par tous
+    int numero;               // propre à chaque objet
+    Compteur() { total++; numero = total; }
+}
+```
+
+Après `new Compteur(); new Compteur();` → `total = 2`, mais chaque objet a son propre `numero`.
+
+---
+
+:::question
+id: s2-static-this-interdit
+type: schoice
+title: this dans une méthode static
+points: 2
+section: Static
+
+```java
+class MaClasse {
+    int x = 10;
+    static void afficher() {
+        System.out.println(this.x);
+    }
+}
+```
+
+Que se passe-t-il ?
+
+:::answers
+- [ ] Affiche 10
+- [x] Erreur de compilation : this ne peut pas être utilisé dans un contexte static
+- [ ] Affiche null
+- [ ] NullPointerException
+
+:::solution
+**Erreur de compilation.** Dans une méthode `static`, il n'y a **pas d'objet courant** (pas de `this`). Une méthode static est appelée sur la classe, pas sur une instance.
+
+On ne peut accéder qu'à d'autres membres `static` depuis un contexte `static`.
+
+---
+
+:::question
+id: s2-static-compteur
+type: essay
+title: Compteur d'instances
+points: 3
+section: Static
+
+Écrivez une classe `Produit` avec un compteur statique qui attribue un ID unique auto-incrémenté à chaque instance créée.
+
+:::solution
+```java
+public class Produit {
+    private static int compteur = 0;
+    private final int id;
+    private String nom;
+
+    public Produit(String nom) {
+        compteur++;
+        this.id = compteur;
+        this.nom = nom;
+    }
+
+    public int getId() { return id; }
+    
+    public static int getNombreProduits() { return compteur; }
+}
+```
+
+Usage :
+```java
+Produit p1 = new Produit("Clavier");  // id=1
+Produit p2 = new Produit("Souris");   // id=2
+Produit.getNombreProduits();           // 2
+```
+
+---
+
+:::question
+id: s2-static-methode-utilitaire
+type: schoice
+title: Méthode utilitaire static
+points: 2
+section: Static
+
+Pour une méthode `double convertirEnKm(double miles)` qui ne dépend d'aucun attribut d'instance, faut-il la déclarer `static` ?
+
+:::answers
+- [x] Oui, car elle n'a pas besoin d'instance pour fonctionner
+- [ ] Non, les méthodes statiques sont déconseillées
+- [ ] Ça dépend du contexte
+- [ ] Non, il faut créer un objet pour l'utiliser
+
+:::solution
+**Oui.** Si une méthode n'accède à aucun attribut d'instance et ne dépend d'aucun état de l'objet, elle devrait être `static`.
+
+Avantages :
+- Pas besoin de créer un objet inutile pour l'appeler
+- Indique clairement que la méthode est "sans état"
+- `double km = Convertisseur.convertirEnKm(10.0);`
+
+C'est le principe des classes utilitaires comme `Math.sqrt()`, `Collections.sort()`.
+
+---
+
+:::question
+id: s2-static-access-instance
+type: schoice
+title: Accès static vers instance
+points: 2
+section: Static
+
+Depuis une méthode `static`, peut-on accéder à un attribut non-static ?
+
+:::answers
+- [ ] Oui, directement
+- [x] Non, sauf si on a une référence vers une instance
+- [ ] Oui, avec this
+- [ ] Non, jamais
+
+:::solution
+On ne peut **pas** accéder directement à un attribut d'instance depuis un contexte static (pas de `this`).
+
+Mais on **peut** y accéder si on dispose d'une référence :
+```java
+static void afficher(Produit p) {
+    System.out.println(p.nom);  // via la référence p
+}
+```
+
+---
+
+# Partie 8 : SOLID — Principes de conception
+
+---
+
+:::question
+id: s2-solid-srp-definition
+type: essay
+title: SRP — Single Responsibility Principle
+points: 2
+section: SOLID
+
+Expliquez le principe de responsabilité unique (SRP). Donnez un exemple de violation.
+
+:::solution
+**SRP** : Une classe ne doit avoir qu'**une seule raison de changer**, c'est-à-dire une seule responsabilité.
+
+**Violation** :
+```java
+class GestionEmploye {
+    void calculerSalaire() { ... }
+    void sauvegarderEnBDD() { ... }
+    void genererRapportPDF() { ... }
+}
+```
+
+Cette classe a **3 responsabilités** : calcul métier, persistance, et rapport. Si le format de rapport change, ça n'a rien à voir avec le calcul de salaire mais on modifie la même classe.
+
+**Solution** : `CalculSalaire`, `EmployeRepository`, `RapportEmploye` — trois classes séparées.
+
+---
+
+:::question
+id: s2-solid-srp-identification
+type: mchoice
+title: SRP — identifier les violations
+points: 3
+section: SOLID
+
+Quelles classes violent le SRP ?
+
+:::answers
+- [x] `class Commande { void calculerTotal(); void envoyerEmail(); void sauvegarder(); }`
+- [ ] `class Calculatrice { int additionner(int a, int b); int soustraire(int a, int b); }`
+- [x] `class Utilisateur { void seConnecter(); void genererFacture(); void envoyerSMS(); }`
+- [ ] `class Logger { void info(String msg); void warn(String msg); void error(String msg); }`
+
+:::solution
+- `Commande` : calcul + email + persistence = **3 responsabilités** → viole SRP ✅
+- `Calculatrice` : toutes les méthodes sont liées au calcul = **1 responsabilité** → OK ❌
+- `Utilisateur` : authentification + facturation + notification = **3 responsabilités** → viole SRP ✅
+- `Logger` : toutes les méthodes sont liées au logging = **1 responsabilité** → OK ❌
+
+---
+
+:::question
+id: s2-solid-ocp-definition
+type: essay
+title: OCP — Open/Closed Principle
+points: 3
+section: SOLID
+
+Expliquez le principe ouvert/fermé (OCP). Montrez comment un code qui utilise `if/else instanceof` le viole et comment le corriger.
+
+:::solution
+**OCP** : Le code doit être **ouvert à l'extension** mais **fermé à la modification**.
+
+**Violation** (il faut modifier la méthode pour ajouter un type) :
+```java
+double calculerSurface(Forme f) {
+    if (f instanceof Cercle c) {
+        return Math.PI * c.rayon * c.rayon;
+    } else if (f instanceof Rectangle r) {
+        return r.l * r.h;
+    }
+    // Ajouter un Triangle → modifier cette méthode !
+}
+```
+
+**Solution** (polymorphisme) :
+```java
+abstract class Forme {
+    abstract double surface();
+}
+class Triangle extends Forme {
+    @Override
+    double surface() { return base * hauteur / 2; }
+}
+// Pas besoin de modifier le code existant !
+```
+
+---
+
+:::question
+id: s2-solid-lsp-definition
+type: essay
+title: LSP — Liskov Substitution Principle
+points: 3
+section: SOLID
+
+Expliquez le principe de substitution de Liskov. Pourquoi `Carré extends Rectangle` est un exemple classique de violation ?
+
+:::solution
+**LSP** : Si `S` est un sous-type de `T`, alors tout objet de type `T` peut être remplacé par un objet de type `S` sans casser le programme.
+
+**Violation classique** : `Carré extends Rectangle`
+```java
+Rectangle r = new Carré(5);
+r.setLargeur(10);
+r.setHauteur(20);
+System.out.println(r.surface()); // On attend 200
+```
+
+Pour un `Rectangle`, on s'attend à ce que largeur et hauteur soient indépendantes. Mais un `Carré` doit garder ses côtés égaux → `setLargeur(10)` devrait aussi changer la hauteur → `surface()` retourne 200 ou 100 selon l'implémentation, ce qui est incohérent.
+
+Le `Carré` ne peut pas **se substituer** au `Rectangle` sans surprises → viole LSP.
+
+---
+
+:::question
+id: s2-solid-lsp-quiz
+type: schoice
+title: LSP — quiz
+points: 3
+section: SOLID
+
+```java
+class Oiseau {
+    void voler() { System.out.println("Je vole"); }
+}
+class Autruche extends Oiseau {
+    @Override
+    void voler() { throw new UnsupportedOperationException("Je ne vole pas"); }
+}
+
+void faireFaireTourDuParc(Oiseau o) {
+    o.voler();  // tous les oiseaux volent... non ?
+}
+```
+
+Quel principe SOLID est violé ?
+
+:::answers
+- [ ] SRP
+- [ ] OCP
+- [x] LSP (Liskov Substitution)
+- [ ] DIP
+
+:::solution
+**LSP** est violé. La méthode `faireFaireTourDuParc` s'attend à ce que tout `Oiseau` puisse `voler()`. L'`Autruche` lance une exception → elle ne se comporte pas comme un `Oiseau` normal → elle ne peut pas être substituée.
+
+Solution : séparer `interface Volant` de la classe `Oiseau`. Seuls les oiseaux qui volent implémentent `Volant`.
+
+---
+
+:::question
+id: s2-solid-isp-definition
+type: essay
+title: ISP — Interface Segregation Principle
+points: 3
+section: SOLID
+
+Expliquez le principe de ségrégation des interfaces (ISP) et montrez un exemple de violation.
+
+:::solution
+**ISP** : Les clients ne doivent pas être forcés de dépendre d'interfaces qu'ils n'utilisent pas. Préférer plusieurs petites interfaces spécialisées à une grosse interface "couteau suisse".
+
+**Violation** :
+```java
+interface Appareil {
+    void imprimer();
+    void scanner();
+    void faxer();
+    void photocopier();
+}
+
+class ImprimanteBasique implements Appareil {
+    void imprimer() { /* OK */ }
+    void scanner() { throw new UnsupportedOperationException(); }  // pas de scanner !
+    void faxer() { throw new UnsupportedOperationException(); }
+    void photocopier() { throw new UnsupportedOperationException(); }
+}
+```
+
+**Solution** :
+```java
+interface Imprimable { void imprimer(); }
+interface Scannable { void scanner(); }
+interface Faxable { void faxer(); }
+
+class ImprimanteBasique implements Imprimable {
+    void imprimer() { /* OK, c'est tout */ }
+}
+```
+
+---
+
+:::question
+id: s2-solid-dip-definition
+type: essay
+title: DIP — Dependency Inversion Principle
+points: 3
+section: SOLID
+
+Expliquez le principe d'inversion des dépendances (DIP). Pourquoi est-il mauvais que `NotificationService` dépende directement de `EmailSender` ?
+
+:::solution
+**DIP** : Les modules de haut niveau ne doivent pas dépendre de modules de bas niveau. Les deux doivent dépendre d'**abstractions** (interfaces).
+
+**Violation** :
+```java
+class NotificationService {
+    private EmailSender sender = new EmailSender();  // dépendance concrète
+    void notifier(String msg) { sender.envoyer(msg); }
+}
+```
+
+Problèmes : impossible de remplacer par SMS sans modifier la classe, impossible de tester unitairement sans envoyer de vrais emails.
+
+**Solution** (injection de dépendance) :
+```java
+interface Sender { void envoyer(String msg); }
+
+class NotificationService {
+    private final Sender sender;
+    NotificationService(Sender sender) { this.sender = sender; }  // injection
+    void notifier(String msg) { sender.envoyer(msg); }
+}
+```
+
+On peut injecter `EmailSender`, `SMSSender`, ou un mock pour les tests.
+
+---
+
+:::question
+id: s2-solid-identify-principle
+type: schoice
+title: Identifier le principe violé
+points: 3
+section: SOLID
+
+```java
+class RapportVente {
+    void calculerStatistiques() { ... }
+    void genererPDF() { ... }
+    void envoyerParEmail() { ... }
+    void sauvegarderEnBDD() { ... }
+}
+```
+
+Quel principe SOLID est principalement violé ?
+
+:::answers
+- [x] SRP (Single Responsibility)
+- [ ] OCP (Open/Closed)
+- [ ] LSP (Liskov)
+- [ ] DIP (Dependency Inversion)
+
+:::solution
+**SRP** : cette classe a **4 responsabilités** distinctes : statistiques, génération PDF, envoi email, persistance.
+
+Chacune de ces responsabilités peut changer pour une raison différente (nouveau format de rapport, changement de serveur email, etc.). Il faudrait 4 classes.
+
+---
+
+:::question
+id: s2-solid-injection-constructeur
+type: essay
+title: Injection par constructeur
+points: 3
+section: SOLID
+
+Refactorez ce code pour respecter DIP en utilisant l'injection par constructeur :
+
+```java
+class FactureService {
+    void generer(Commande c) {
+        // calcul...
+        MySQLDatabase db = new MySQLDatabase();
+        db.sauvegarder(facture);
+        GMailSender gmail = new GMailSender();
+        gmail.envoyer(facture, c.getEmail());
+    }
+}
+```
+
+:::solution
+```java
+interface Database {
+    void sauvegarder(Facture f);
+}
+
+interface EmailSender {
+    void envoyer(Facture f, String email);
+}
+
+class FactureService {
+    private final Database db;
+    private final EmailSender sender;
+
+    FactureService(Database db, EmailSender sender) {
+        this.db = db;
+        this.sender = sender;
+    }
+
+    void generer(Commande c) {
+        // calcul...
+        db.sauvegarder(facture);
+        sender.envoyer(facture, c.getEmail());
+    }
+}
+```
+
+Maintenant on peut :
+- Changer MySQL pour PostgreSQL sans toucher à `FactureService`
+- Changer Gmail pour SendGrid de la même façon
+- Tester avec des mocks : `new FactureService(mockDb, mockSender)`
+
+---
+
+:::question
+id: s2-solid-ocp-application
+type: schoice
+title: OCP — Quel pattern respecte OCP ?
+points: 2
+section: SOLID
+
+Pour calculer des réductions selon le type de client (Standard, Premium, VIP), quelle approche respecte OCP ?
+
+:::answers
+- [ ] Un `switch` sur le type de client dans la méthode `calculerReduction()`
+- [x] Une interface `Reduction` avec des implémentations `ReductionStandard`, `ReductionPremium`, `ReductionVIP`
+- [ ] Des `if/else` avec `instanceof`
+- [ ] Une seule classe avec un attribut `typeClient`
+
+:::solution
+L'interface `Reduction` avec des implémentations respecte OCP :
+- Pour ajouter un nouveau type (ex: `ReductionEmploye`), on crée une nouvelle classe
+- On ne modifie **aucun code existant**
+- Le code qui utilise `Reduction` fonctionne automatiquement avec le nouveau type (polymorphisme)
+
+Les `switch` et `if/else` nécessitent de modifier du code existant → violent OCP.
+
+---
+
+# Partie 9 : Refactoring et extraction de services
+
+---
+
+:::question
+id: s2-refact-god-class
+type: essay
+title: God Class
+points: 2
+section: Refactoring
+
+Qu'est-ce qu'une "God Class" ? Comment la reconnaître et la corriger ?
+
+:::solution
+Une **God Class** est une classe qui fait "tout" : elle centralise trop de responsabilités.
+
+**Signes** :
+- Plus de 500 lignes (voire des milliers)
+- Des dizaines de méthodes sur des sujets différents
+- Beaucoup d'attributs sans rapport les uns avec les autres
+- Difficile à nommer (souvent "Manager", "Handler", "Processor")
+
+**Correction** :
+1. Identifier les groupes de méthodes/attributs liés
+2. Extraire chaque groupe dans une classe dédiée (Extract Class)
+3. La God Class délègue à ces nouvelles classes
+
+---
+
+:::question
+id: s2-refact-extract-method
+type: essay
+title: Extract Method
+points: 3
+section: Refactoring
+
+Appliquez le refactoring "Extract Method" sur ce code pour isoler la validation et le calcul :
+
+```java
+void traiterCommande(Commande cmd) {
+    // Validation
+    if (cmd.getProduits().isEmpty()) {
+        throw new IllegalArgumentException("Pas de produits");
+    }
+    if (cmd.getClient() == null) {
+        throw new IllegalArgumentException("Pas de client");
+    }
+    // Calcul du total
+    double total = 0;
+    for (Produit p : cmd.getProduits()) {
+        total += p.getPrix() * p.getQuantite();
+    }
+    if (cmd.getClient().estPremium()) {
+        total *= 0.9;
+    }
+    // Envoi
+    System.out.println("Total: " + total);
+    cmd.getClient().notifier("Commande validée");
+}
+```
+
+:::solution
+```java
+void traiterCommande(Commande cmd) {
+    valider(cmd);
+    double total = calculerTotal(cmd);
+    finaliser(cmd, total);
+}
+
+private void valider(Commande cmd) {
+    if (cmd.getProduits().isEmpty()) {
+        throw new IllegalArgumentException("Pas de produits");
+    }
+    if (cmd.getClient() == null) {
+        throw new IllegalArgumentException("Pas de client");
+    }
+}
+
+private double calculerTotal(Commande cmd) {
+    double total = 0;
+    for (Produit p : cmd.getProduits()) {
+        total += p.getPrix() * p.getQuantite();
+    }
+    if (cmd.getClient().estPremium()) {
+        total *= 0.9;
+    }
+    return total;
+}
+
+private void finaliser(Commande cmd, double total) {
+    System.out.println("Total: " + total);
+    cmd.getClient().notifier("Commande validée");
+}
+```
+
+Chaque méthode fait **une seule chose**, et `traiterCommande` est lisible comme du pseudo-code.
+
+---
+
+:::question
+id: s2-refact-extract-class
+type: essay
+title: Extract Class — identifier les responsabilités
+points: 4
+section: Refactoring
+
+Identifiez les responsabilités de cette classe et proposez un découpage en classes :
+
+```java
+class GestionBibliotheque {
+    private List<Livre> livres;
+    private List<Emprunt> emprunts;
+
+    void ajouterLivre(Livre l) { livres.add(l); }
+    void supprimerLivre(Livre l) { livres.remove(l); }
+    List<Livre> rechercherParTitre(String titre) { ... }
+    List<Livre> rechercherParAuteur(String auteur) { ... }
+
+    void emprunter(Livre l, Adherent a) { ... }
+    void retourner(Emprunt e) { ... }
+    List<Emprunt> getEmpruntsEnRetard() { ... }
+
+    void envoyerRappel(Adherent a) { ... }
+    void envoyerConfirmationEmprunt(Adherent a, Livre l) { ... }
+
+    double calculerAmende(Emprunt e) { ... }
+    double getTotalAmendes(Adherent a) { ... }
+}
+```
+
+:::solution
+**4 responsabilités identifiées :**
+
+1. **Catalogue** : gestion du stock de livres
+```java
+class CatalogueService {
+    void ajouterLivre(Livre l) { ... }
+    void supprimerLivre(Livre l) { ... }
+    List<Livre> rechercherParTitre(String titre) { ... }
+    List<Livre> rechercherParAuteur(String auteur) { ... }
+}
+```
+
+2. **Emprunt** : logique d'emprunt et retour
+```java
+class EmpruntService {
+    void emprunter(Livre l, Adherent a) { ... }
+    void retourner(Emprunt e) { ... }
+    List<Emprunt> getEmpruntsEnRetard() { ... }
+}
+```
+
+3. **Notification** : envoi de messages
+```java
+class NotificationService {
+    void envoyerRappel(Adherent a) { ... }
+    void envoyerConfirmationEmprunt(Adherent a, Livre l) { ... }
+}
+```
+
+4. **Amendes** : calcul financier
+```java
+class AmendeService {
+    double calculerAmende(Emprunt e) { ... }
+    double getTotalAmendes(Adherent a) { ... }
+}
+```
+
+---
+
+:::question
+id: s2-refact-code-smells
+type: mchoice
+title: Code smells
+points: 2
+section: Refactoring
+
+Quels éléments sont des "code smells" (indicateurs de mauvaise conception) ?
+
+:::answers
+- [x] Une méthode de 200 lignes
+- [x] Une classe nommée "Manager" ou "Handler" avec 30 méthodes
+- [ ] Une classe avec 3 attributs private et des getters/setters
+- [x] Dupliquer le même bloc de code dans 5 méthodes
+- [x] Une méthode avec 10 paramètres
+
+:::solution
+Les code smells :
+- **Méthode longue** (200 lignes) → Extract Method ✅
+- **God Class** ("Manager" avec 30 méthodes) → Extract Class ✅
+- Classe avec 3 attributs : c'est **normal** ❌
+- **Code dupliqué** (5 copies) → Extract Method ou classe partagée ✅
+- **Trop de paramètres** (10) → regrouper dans un objet (Parameter Object) ✅
+
+---
+
+:::question
+id: s2-refact-extract-interface
+type: essay
+title: Extract Interface
+points: 3
+section: Refactoring
+
+Vous avez un `EmailNotifier` utilisé partout dans le code. Demain on veut aussi supporter SMS et push notifications. Quel refactoring appliquez-vous ? Montrez le résultat.
+
+:::solution
+**Extract Interface** : extraire une interface `Notifier` à partir de `EmailNotifier`.
+
+```java
+// Avant : dépendance directe
+class CommandeService {
+    private EmailNotifier notifier = new EmailNotifier();
+}
+
+// Après : interface + injection
+interface Notifier {
+    void envoyer(String destinataire, String message);
+}
+
+class EmailNotifier implements Notifier {
+    @Override
+    public void envoyer(String dest, String msg) { /* email */ }
+}
+
+class SMSNotifier implements Notifier {
+    @Override
+    public void envoyer(String dest, String msg) { /* SMS */ }
+}
+
+class CommandeService {
+    private final Notifier notifier;
+    CommandeService(Notifier notifier) { this.notifier = notifier; }
+}
+```
+
+On peut maintenant injecter n'importe quel type de notification. C'est aussi DIP en action.
+
+---
+
+# Partie 10 : Exercices de synthèse — Analyse de code
+
+---
+
+:::question
+id: s2-synth-compilation-1
+type: schoice
+title: Compilation — record et mutabilité
+points: 2
+section: Synthèse
+
+```java
+record Produit(String nom, double prix) {}
+
+Produit p = new Produit("Café", 2.50);
+p = new Produit("Thé", 1.80);
+```
+
+Ce code compile-t-il ?
+
+:::answers
+- [x] Oui, on crée un nouveau record (la variable p n'est pas final)
+- [ ] Non, les records sont immuables donc p ne peut pas changer
+- [ ] Non, on ne peut pas créer deux records
+- [ ] Oui, mais le premier objet est modifié
+
+:::solution
+**Oui, ça compile.** L'**immuabilité** d'un record signifie qu'on ne peut pas modifier ses **champs** une fois créé. Mais la **variable** `p` n'est pas `final`, donc on peut la faire pointer vers un **nouvel objet**.
+
+Le premier `Produit("Café", 2.50)` reste inchangé en mémoire (mais n'est plus référencé).
+
+---
+
+:::question
+id: s2-synth-compilation-2
+type: schoice
+title: Compilation — exception checked
+points: 3
+section: Synthèse
+
+```java
+class MonService {
+    void traiter() {
+        throw new IOException("Fichier manquant");
+    }
+}
+```
+
+Ce code compile-t-il ?
+
+:::answers
+- [ ] Oui
+- [x] Non, IOException est checked et doit être déclarée avec throws
+- [ ] Non, on ne peut pas instancier IOException
+- [ ] Oui, mais avec un warning
+
+:::solution
+**Erreur de compilation.** `IOException` est une **checked exception**. Le compilateur exige qu'elle soit soit attrapée (`try/catch`), soit déclarée dans la signature (`throws IOException`).
+
+Correction :
+```java
+void traiter() throws IOException {
+    throw new IOException("Fichier manquant");
+}
+```
+
+---
+
+:::question
+id: s2-synth-compilation-3
+type: schoice
+title: Compilation — static et instance
+points: 2
+section: Synthèse
+
+```java
+class Compteur {
+    int valeur = 0;
+    static void incrementer() {
+        valeur++;
+    }
+}
+```
+
+Ce code compile-t-il ?
+
+:::answers
+- [ ] Oui
+- [x] Non, une méthode static ne peut pas accéder à un attribut non-static
+- [ ] Oui, mais valeur ne sera pas incrémentée
+- [ ] Non, il manque le constructeur
+
+:::solution
+**Erreur de compilation.** `valeur` est un attribut d'**instance** (pas `static`). La méthode `incrementer()` est `static` et n'a pas de `this` → elle ne peut pas accéder à `valeur`.
+
+Solutions :
+- Rendre `valeur` static : `static int valeur = 0;`
+- Ou rendre `incrementer()` non-static : `void incrementer()`
+
+---
+
+:::question
+id: s2-synth-output-1
+type: essay
+title: Sortie de code — polymorphisme et casting
+points: 4
+section: Synthèse
+
+Donnez la sortie complète de ce programme :
+
+```java
+class Vehicule {
+    String type() { return "Véhicule"; }
+}
+class Voiture extends Vehicule {
+    @Override
+    String type() { return "Voiture"; }
+    String klaxonner() { return "Pouet!"; }
+}
+class Camion extends Vehicule {
+    @Override
+    String type() { return "Camion"; }
+    int charge() { return 5000; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vehicule v1 = new Voiture();
+        Vehicule v2 = new Camion();
+        
+        System.out.println(v1.type());
+        System.out.println(v2.type());
+        
+        if (v1 instanceof Voiture vo) {
+            System.out.println(vo.klaxonner());
+        }
+        
+        if (v2 instanceof Voiture vo) {
+            System.out.println(vo.klaxonner());
+        } else {
+            System.out.println("Pas une voiture");
+        }
+        
+        System.out.println(v1 instanceof Vehicule);
+    }
+}
+```
+
+:::solution
+Exécution ligne par ligne :
+1. `v1.type()` → type dynamique `Voiture` → `"Voiture"`
+2. `v2.type()` → type dynamique `Camion` → `"Camion"`
+3. `v1 instanceof Voiture` → true → pattern matching → `vo.klaxonner()` → `"Pouet!"`
+4. `v2 instanceof Voiture` → false (c'est un `Camion`) → branche else → `"Pas une voiture"`
+5. `v1 instanceof Vehicule` → true (une `Voiture` est un `Vehicule`)
+
+```
+Voiture
+Camion
+Pouet!
+Pas une voiture
+true
+```
+
+---
+
+:::question
+id: s2-synth-output-2
+type: essay
+title: Sortie de code — exceptions et finally
+points: 4
+section: Synthèse
+
+Donnez la sortie de ce code :
+
+```java
+public class Main {
+    static String process() {
+        StringBuilder sb = new StringBuilder();
+        try {
+            sb.append("A");
+            if (true) throw new RuntimeException("oops");
+            sb.append("B");
+        } catch (RuntimeException e) {
+            sb.append("C");
+            return sb.toString();
+        } finally {
+            sb.append("D");
+        }
+        sb.append("E");
+        return sb.toString();
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(process());
+    }
+}
+```
+
+:::solution
+Exécution :
+1. `sb = ""`
+2. try : `sb.append("A")` → sb = "A"
+3. Exception lancée → saute "B"
+4. catch : `sb.append("C")` → sb = "AC"
+5. `return sb.toString()` est **préparé** mais pas encore retourné
+6. finally s'exécute : `sb.append("D")` → sb = "ACD"
+7. Le return "prend effet" mais **attention** : le `return` avait capturé la référence au `StringBuilder`, et comme `StringBuilder` est mutable, `sb.toString()` après le finally donne **"ACD"**
+
+Sortie : **`ACD`**
+
+Note : le "E" n'est jamais atteint car le return dans le catch sort de la méthode (après le finally).
+
+---
+
+:::question
+id: s2-synth-output-3
+type: essay
+title: Sortie de code — static et constructeurs
+points: 3
+section: Synthèse
+
+Qu'affiche ce code et dans quel ordre ?
+
+```java
+class Animal {
+    static int count = 0;
+    String nom;
+    
+    Animal(String nom) {
+        count++;
+        this.nom = nom;
+        System.out.println(count + ": " + nom);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Animal("Rex");
+        Animal b = new Animal("Minou");
+        Animal c = a;
+        System.out.println(Animal.count);
+        System.out.println(c.nom);
+    }
+}
+```
+
+:::solution
+Exécution :
+1. `new Animal("Rex")` → `count = 1` → affiche `1: Rex`
+2. `new Animal("Minou")` → `count = 2` → affiche `2: Minou`
+3. `c = a` → pas de constructeur (simple copie de référence), `count` reste 2
+4. `Animal.count` → `2`
+5. `c.nom` → même objet que `a` → `"Rex"`
+
+```
+1: Rex
+2: Minou
+2
+Rex
+```
+
+---
+
+:::question
+id: s2-synth-output-4
+type: essay
+title: Sortie de code — autoboxing et cache
+points: 3
+section: Synthèse
+
+Qu'affiche ce code ?
+
+```java
+Integer a = 100;
+Integer b = 100;
+Integer c = 200;
+Integer d = 200;
+
+System.out.println(a == b);
+System.out.println(c == d);
+System.out.println(a.equals(b));
+System.out.println(c.equals(d));
+```
+
+:::solution
+```
+true
+false
+true
+true
+```
+
+- `a == b` avec 100 : **true** (dans le cache -128 à 127, même objet)
+- `c == d` avec 200 : **false** (hors cache, deux objets différents)
+- `a.equals(b)` : **true** (compare les valeurs : 100 == 100)
+- `c.equals(d)` : **true** (compare les valeurs : 200 == 200)
+
+Leçon : **toujours utiliser `.equals()`** pour comparer des wrappers !
+
+---
+
+:::question
+id: s2-synth-conception-1
+type: essay
+title: Conception — système de notification
+points: 5
+section: Synthèse
+
+Concevez un système de notification respectant SOLID. On veut pouvoir envoyer des notifications par Email, SMS et Push. Un `AlerteService` doit pouvoir utiliser n'importe quel canal.
+
+Écrivez :
+1. L'interface
+2. Les implémentations (signatures uniquement)
+3. La classe AlerteService avec injection
+
+:::solution
+```java
+// 1. Interface (ISP : interface minimale)
+public interface Notifier {
+    void envoyer(String destinataire, String message);
+}
+
+// 2. Implémentations (OCP : on peut en ajouter sans modifier l'existant)
+public class EmailNotifier implements Notifier {
+    @Override
+    public void envoyer(String dest, String msg) {
+        // Envoi par email...
+    }
+}
+
+public class SMSNotifier implements Notifier {
+    @Override
+    public void envoyer(String dest, String msg) {
+        // Envoi par SMS...
+    }
+}
+
+public class PushNotifier implements Notifier {
+    @Override
+    public void envoyer(String dest, String msg) {
+        // Envoi push...
+    }
+}
+
+// 3. AlerteService (DIP : dépend de l'abstraction Notifier)
+public class AlerteService {
+    private final Notifier notifier;
+
+    public AlerteService(Notifier notifier) {  // injection par constructeur
+        this.notifier = notifier;
+    }
+
+    public void alerter(String dest, String msg) {
+        notifier.envoyer(dest, "ALERTE: " + msg);
+    }
+}
+```
+
+Utilisation :
+```java
+AlerteService parEmail = new AlerteService(new EmailNotifier());
+AlerteService parSMS = new AlerteService(new SMSNotifier());
+parEmail.alerter("alice@mail.com", "Serveur down");
+```
+
+Principes respectés : SRP (chaque classe = 1 rôle), OCP (nouveau canal = nouvelle classe), DIP (injection d'abstraction).
+
+---
+
+:::question
+id: s2-synth-conception-2
+type: essay
+title: Conception — records et polymorphisme
+points: 4
+section: Synthèse
+
+Concevez un système de calcul de frais de livraison. On a une interface `Livraison` avec une méthode `double calculerFrais(double poids)`. Implémentez trois records : `LivraisonStandard` (5€/kg), `LivraisonExpress` (10€/kg + 3€ fixe), `LivraisonGratuite` (toujours 0€).
+
+:::solution
+```java
+public interface Livraison {
+    double calculerFrais(double poids);
+}
+
+public record LivraisonStandard() implements Livraison {
+    @Override
+    public double calculerFrais(double poids) {
+        return 5.0 * poids;
+    }
+}
+
+public record LivraisonExpress() implements Livraison {
+    @Override
+    public double calculerFrais(double poids) {
+        return 10.0 * poids + 3.0;
+    }
+}
+
+public record LivraisonGratuite() implements Livraison {
+    @Override
+    public double calculerFrais(double poids) {
+        return 0.0;
+    }
+}
+```
+
+Usage :
+```java
+List<Livraison> options = List.of(
+    new LivraisonStandard(),
+    new LivraisonExpress(),
+    new LivraisonGratuite()
+);
+
+for (Livraison l : options) {
+    System.out.println(l.calculerFrais(2.5));
+}
+// 12.5, 28.0, 0.0
+```
+
+Les records sans champs sont des "value objects" stateless — parfaits pour des stratégies.
+
+---
+
+:::question
+id: s2-synth-piege-1
+type: schoice
+title: Piège — record et toString
+points: 2
+section: Synthèse
+
+```java
+record Personne(String nom, int age) {}
+Personne p = new Personne("Alice", 20);
+System.out.println(p);
+```
+
+Qu'affiche ce code ?
+
+:::answers
+- [ ] `Personne@7a81197d`
+- [ ] `Alice, 20`
+- [x] `Personne[nom=Alice, age=20]`
+- [ ] Erreur de compilation
+
+:::solution
+Les records génèrent automatiquement un `toString()` lisible au format `NomRecord[champ1=valeur1, champ2=valeur2]`.
+
+Pas besoin de le redéfinir manuellement (contrairement aux classes classiques qui affichent l'adresse mémoire par défaut).
+
+---
+
+:::question
+id: s2-synth-piege-2
+type: schoice
+title: Piège — unboxing dans un calcul
+points: 3
+section: Synthèse
+
+```java
+Integer a = 1;
+Integer b = 2;
+Integer c = a + b;
+System.out.println(c == 3);
+```
+
+Qu'affiche ce code ?
+
+:::answers
+- [x] true
+- [ ] false
+- [ ] Erreur de compilation
+- [ ] NullPointerException
+
+:::solution
+**true.** Voici ce qui se passe :
+1. `a + b` : unboxing de `a` et `b` → `1 + 2 = 3` (primitif `int`)
+2. `c = 3` : autoboxing → `Integer.valueOf(3)`
+3. `c == 3` : comparaison Integer avec int primitif → unboxing de `c` → `3 == 3` → **true**
+
+3 est dans le cache (-128 à 127) mais ici c'est la comparaison avec un primitif qui compte.
+
+---
+
+:::question
+id: s2-synth-conception-3
+type: essay
+title: Exception personnalisée + validation record
+points: 4
+section: Synthèse
+
+Créez un record `Note(String matiere, double valeur)` qui :
+- Lève `NoteInvalideException` (checked) si la valeur est < 0 ou > 20
+- Lève `IllegalArgumentException` si la matière est null ou vide
+
+Écrivez le record, l'exception, et un exemple d'utilisation avec try/catch.
+
+:::solution
+```java
+public class NoteInvalideException extends Exception {
+    private final double valeur;
+    
+    public NoteInvalideException(double valeur) {
+        super("Note invalide : " + valeur + " (doit être entre 0 et 20)");
+        this.valeur = valeur;
+    }
+    
+    public double getValeur() { return valeur; }
+}
+
+public record Note(String matiere, double valeur) {
+    public Note {
+        if (matiere == null || matiere.isBlank()) {
+            throw new IllegalArgumentException("Matière obligatoire");
+        }
+        if (valeur < 0 || valeur > 20) {
+            throw new NoteInvalideException(valeur);  
+            // Attention : ceci ne compile pas dans un record car
+            // le constructeur compact ne peut pas déclarer throws
+        }
+    }
+}
+```
+
+**Piège** : un constructeur compact de record ne peut pas déclarer `throws`. Si on veut une checked exception, il faut soit :
+- Utiliser une unchecked exception (`IllegalArgumentException`) ✅
+- Utiliser un constructeur classique (pas compact)
+- Utiliser une factory method `static Note of(String m, double v) throws NoteInvalideException`
+
+Version corrigée avec unchecked :
+```java
+public record Note(String matiere, double valeur) {
+    public Note {
+        if (matiere == null || matiere.isBlank()) {
+            throw new IllegalArgumentException("Matière obligatoire");
+        }
+        if (valeur < 0 || valeur > 20) {
+            throw new IllegalArgumentException("Note invalide : " + valeur);
+        }
+    }
+}
+```
+
+---
+
+:::question
+id: s2-synth-solid-analyse
+type: essay
+title: Analyse SOLID complète
+points: 5
+section: Synthèse
+
+Analysez cette classe et identifiez **tous** les principes SOLID qu'elle viole. Proposez une correction.
+
+```java
+class GestionEtudiants {
+    private MySQLConnection conn = new MySQLConnection("localhost");
+    
+    void inscrire(Etudiant e) {
+        if (e.getAge() < 16) throw new RuntimeException("Trop jeune");
+        conn.execute("INSERT INTO etudiants ...");
+        EmailSender.envoyer(e.getEmail(), "Bienvenue !");
+        System.out.println("LOG: inscription de " + e.getNom());
+    }
+    
+    void calculerMoyenne(Etudiant e) {
+        double total = 0;
+        for (Note n : e.getNotes()) total += n.getValeur();
+        double moy = total / e.getNotes().size();
+        conn.execute("UPDATE etudiants SET moyenne = " + moy);
+        if (moy < 10) {
+            EmailSender.envoyer(e.getEmail(), "Attention, moyenne insuffisante");
+        }
+    }
+    
+    String genererBulletin(Etudiant e) {
+        // génère un PDF complet...
+        return "PDF content";
+    }
+}
+```
+
+:::solution
+**Violations SOLID :**
+
+1. **SRP** : la classe fait 4 choses — inscription, calcul de moyenne, envoi d'emails, génération de bulletins, persistance BDD, logging.
+
+2. **OCP** : si on veut ajouter un nouveau canal de notification (SMS), il faut modifier `inscrire()` et `calculerMoyenne()`.
+
+3. **DIP** : dépendances concrètes directes :
+   - `MySQLConnection` (et si on passe à PostgreSQL ?)
+   - `EmailSender` (statique, pas injectable)
+   - `System.out.println` pour le logging
+
+**Correction :**
+```java
+// Interfaces (DIP)
+interface EtudiantRepository {
+    void sauvegarder(Etudiant e);
+    void mettreAJourMoyenne(Etudiant e, double moy);
+}
+
+interface Notifier {
+    void envoyer(String dest, String msg);
+}
+
+interface Logger {
+    void info(String msg);
+}
+
+// SRP : une classe par responsabilité
+class InscriptionService {
+    private final EtudiantRepository repo;
+    private final Notifier notifier;
+    private final Logger logger;
+
+    InscriptionService(EtudiantRepository repo, Notifier notifier, Logger logger) {
+        this.repo = repo;
+        this.notifier = notifier;
+        this.logger = logger;
+    }
+
+    void inscrire(Etudiant e) {
+        if (e.getAge() < 16) throw new IllegalArgumentException("Trop jeune");
+        repo.sauvegarder(e);
+        notifier.envoyer(e.getEmail(), "Bienvenue !");
+        logger.info("inscription de " + e.getNom());
+    }
+}
+
+class MoyenneService {
+    private final EtudiantRepository repo;
+    private final Notifier notifier;
+
+    // ... injection par constructeur
+
+    double calculerMoyenne(Etudiant e) { ... }
+}
+
+class BulletinService {
+    String genererBulletin(Etudiant e) { ... }
+}
+```
+
+---
+
+:::question
+id: s2-synth-final-qcm-1
+type: schoice
+title: QCM final — polymorphisme et méthode
+points: 2
+section: Synthèse
+
+```java
+class A {
+    String m() { return "A"; }
+}
+class B extends A {
+    @Override
+    String m() { return "B"; }
+}
+class C extends B {
+    @Override
+    String m() { return "C"; }
+}
+
+A obj = new C();
+System.out.println(obj.m());
+```
+
+Qu'affiche ce code ?
+
+:::answers
+- [ ] A
+- [ ] B
+- [x] C
+- [ ] Erreur de compilation
+
+:::solution
+**C.** La liaison dynamique fait que `obj.m()` appelle la méthode du type réel (`C`), pas du type déclaré (`A`).
+
+La chaîne d'héritage A → B → C signifie que C a redéfini `m()` en dernier, c'est donc sa version qui s'exécute.
+
+---
+
+:::question
+id: s2-synth-final-qcm-2
+type: schoice
+title: QCM final — exception dans un constructeur
+points: 3
+section: Synthèse
+
+```java
+class Fichier {
+    Fichier(String path) throws IOException {
+        if (!new File(path).exists()) {
+            throw new IOException("Fichier introuvable : " + path);
+        }
+    }
+}
+
+// Dans main :
+Fichier f = new Fichier("data.txt");
+```
+
+Ce code dans `main` compile-t-il ?
+
+:::answers
+- [ ] Oui
+- [x] Non, main doit soit try/catch soit déclarer throws IOException
+- [ ] Non, un constructeur ne peut pas lancer d'exception
+- [ ] Oui, mais avec un warning
+
+:::solution
+**Non.** `IOException` est une checked exception. Le constructeur de `Fichier` la déclare avec `throws`. L'appelant (main) **doit** soit l'attraper, soit la propager :
+
+```java
+// Option 1 :
+try {
+    Fichier f = new Fichier("data.txt");
+} catch (IOException e) { ... }
+
+// Option 2 :
+public static void main(String[] args) throws IOException { ... }
+```
+
+Un constructeur **peut** tout à fait lancer des exceptions — c'est même courant pour la validation.
+
+---
+
+:::question
+id: s2-synth-final-qcm-3
+type: schoice
+title: QCM final — record accesseur
+points: 2
+section: Synthèse
+
+```java
+record Point(int x, int y) {}
+Point p = new Point(3, 4);
+System.out.println(p.getX());
+```
+
+Ce code compile-t-il ?
+
+:::answers
+- [ ] Oui, affiche 3
+- [x] Non, les accesseurs d'un record n'ont pas de préfixe get (c'est p.x())
+- [ ] Non, les records n'ont pas d'accesseurs
+- [ ] Oui, mais affiche null
+
+:::solution
+**Erreur de compilation.** Les records génèrent des accesseurs **sans préfixe get** :
+- `p.x()` au lieu de `p.getX()`
+- `p.y()` au lieu de `p.getY()`
+
+C'est une différence importante avec les classes traditionnelles JavaBeans.
+
+---
+
+:::question
+id: s2-synth-final-essay
+type: essay
+title: Synthèse finale — concepts clés
+points: 5
+section: Synthèse
+
+En 10-15 lignes, expliquez comment les concepts suivants interagissent dans une application bien conçue : polymorphisme, interfaces, exceptions, SOLID (DIP).
+
+Donnez un mini-exemple de code montrant ces 4 concepts ensemble.
+
+:::solution
+Le **polymorphisme** via les **interfaces** permet de programmer contre des abstractions plutôt que des implémentations concrètes. Le principe **DIP** (SOLID) formalise cette idée : les classes de haut niveau dépendent d'interfaces, pas de classes concrètes. Les **exceptions** gèrent les cas d'erreur de manière propre et typée.
+
+```java
+// Interface (abstraction)
+interface Repository {
+    Produit trouver(int id) throws ProduitInexistantException;
+}
+
+// Exception personnalisée
+class ProduitInexistantException extends Exception {
+    ProduitInexistantException(int id) { 
+        super("Produit " + id + " introuvable"); 
+    }
+}
+
+// Service de haut niveau (DIP : dépend de l'abstraction)
+class CommandeService {
+    private final Repository repo;  // interface, pas MySQLRepo !
+    
+    CommandeService(Repository repo) { this.repo = repo; }
+    
+    void commander(int produitId) {
+        try {
+            Produit p = repo.trouver(produitId);  // polymorphisme
+            // traitement...
+        } catch (ProduitInexistantException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+}
+```
+
+`CommandeService` ne sait pas quelle base de données est utilisée (polymorphisme via l'interface `Repository`). On peut injecter MySQL, MongoDB ou un mock (DIP). L'exception personnalisée rend l'erreur explicite et typée.
+
+---
+
+:::question
+id: s2-synth-heritage-polymorphisme-avance
+type: essay
+title: Exercice avancé — hiérarchie complète
+points: 5
+section: Synthèse
+
+Soit le code suivant. Tracez l'exécution et donnez la sortie complète :
+
+```java
+abstract class Employe {
+    String nom;
+    Employe(String nom) { this.nom = nom; }
+    abstract double salaire();
+    
+    @Override
+    public String toString() {
+        return nom + " : " + salaire() + "€";
+    }
+}
+
+class Developpeur extends Employe {
+    int experience;
+    Developpeur(String nom, int exp) { 
+        super(nom); 
+        this.experience = exp; 
+    }
+    @Override
+    double salaire() { return 3000 + experience * 200; }
+}
+
+class Manager extends Employe {
+    int tailleEquipe;
+    Manager(String nom, int equipe) { 
+        super(nom); 
+        this.tailleEquipe = equipe; 
+    }
+    @Override
+    double salaire() { return 4000 + tailleEquipe * 500; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Employe> equipe = List.of(
+            new Developpeur("Alice", 3),
+            new Manager("Bob", 5),
+            new Developpeur("Charlie", 0)
+        );
+        
+        double masseSalariale = 0;
+        for (Employe e : equipe) {
+            System.out.println(e);
+            masseSalariale += e.salaire();
+        }
+        System.out.println("Total : " + masseSalariale + "€");
+    }
+}
+```
+
+:::solution
+Calculs :
+1. `Developpeur("Alice", 3)` → salaire = 3000 + 3×200 = **3600**
+2. `Manager("Bob", 5)` → salaire = 4000 + 5×500 = **6500**
+3. `Developpeur("Charlie", 0)` → salaire = 3000 + 0×200 = **3000**
+
+`toString()` est défini dans `Employe` et appelle `salaire()` qui est **polymorphe** (liaison dynamique) :
+
+```
+Alice : 3600.0€
+Bob : 6500.0€
+Charlie : 3000.0€
+Total : 13100.0€
+```
+
+Points clés :
+- `toString()` dans `Employe` appelle `this.salaire()` → la liaison dynamique appelle la version de la sous-classe
+- Le `for (Employe e : equipe)` utilise le polymorphisme : même type statique, types dynamiques différents
+- `System.out.println(e)` appelle implicitement `e.toString()`
+
+---
+
+:::question
+id: s2-synth-record-avance
+type: essay
+title: Exercice avancé — record et interface fonctionnelle
+points: 3
+section: Synthèse
+
+Est-ce que ce code compile ? Si oui, qu'affiche-t-il ?
+
+```java
+interface Mesurable {
+    double mesure();
+}
+
+record Segment(double longueur) implements Mesurable {
+    @Override
+    public double mesure() { return longueur; }
+}
+
+record Poids(double kg) implements Mesurable {
+    @Override
+    public double mesure() { return kg; }
+}
+
+List<Mesurable> items = List.of(new Segment(5.0), new Poids(72.3));
+double total = 0;
+for (Mesurable m : items) {
+    total += m.mesure();
+}
+System.out.println(total);
+```
+
+:::solution
+**Oui, ça compile.** Les records peuvent implémenter des interfaces.
+
+Exécution :
+1. `Segment(5.0).mesure()` → `5.0`
+2. `Poids(72.3).mesure()` → `72.3`
+3. `total = 5.0 + 72.3 = 77.3`
+
+Affiche : **`77.3`**
+
+C'est un exemple de polymorphisme avec des records : deux types de données complètement différents (`Segment` et `Poids`) partageant une interface commune.
+
+---
+
+:::question
+id: s2-synth-exception-cascade
+type: essay
+title: Exercice avancé — cascade d'exceptions
+points: 4
+section: Synthèse
+
+Qu'affiche ce code ?
+
+```java
+class ServiceException extends Exception {
+    ServiceException(String msg, Throwable cause) { super(msg, cause); }
+}
+
+class Service {
+    void etape1() throws IOException {
+        throw new IOException("Fichier corrompu");
+    }
+    
+    void etape2() throws ServiceException {
+        try {
+            etape1();
+        } catch (IOException e) {
+            throw new ServiceException("Échec service", e);
+        }
+    }
+    
+    void executer() {
+        try {
+            etape2();
+        } catch (ServiceException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause().getMessage());
+        }
+    }
+}
+
+new Service().executer();
+```
+
+:::solution
+Exécution :
+1. `executer()` → appelle `etape2()`
+2. `etape2()` → appelle `etape1()` → lance `IOException("Fichier corrompu")`
+3. `etape2()` attrape l'`IOException` et lance `ServiceException("Échec service", cause=IOException)`
+4. `executer()` attrape la `ServiceException`
+5. `e.getMessage()` → `"Échec service"`
+6. `e.getCause().getMessage()` → `"Fichier corrompu"` (la cause originale)
+
+```
+Échec service
+Fichier corrompu
+```
+
+C'est le pattern "exception wrapping" : on encapsule une exception technique de bas niveau dans une exception métier de plus haut niveau, tout en conservant la cause originale.

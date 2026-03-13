@@ -1,0 +1,819 @@
+---
+title: "POO - Wooclap Séance 2"
+output: html_document
+produce:
+  wooclap: true
+---
+
+# Wooclap POO Séance 2 — Polymorphisme, Records, Exceptions, SOLID, Static
+
+---
+
+:::question
+id: s2-rev-heritage-compo
+type: matching
+title: Associez chaque relation au bon mécanisme :
+
+:::answers
+- Un Chien EST UN Animal --- Héritage
+- Une Voiture A UN Moteur --- Composition
+- Un Canard SAIT Nager --- Interface
+- Une Equipe CONTIENT des Joueurs --- Agrégation
+
+:::solution
+"est-un" → héritage, "a-un" → composition, "sait faire" → interface.
+
+---
+
+:::question
+id: s2-rev-abstract
+type: schoice
+title: Peut-on écrire : Animal a = new Animal(); si Animal est abstract ?
+
+:::answers
+- [ ] Oui, toujours
+- [x] Non, on ne peut pas instancier une classe abstraite
+- [ ] Oui, si Animal a un constructeur
+- [ ] Oui, si la méthode abstraite a un corps
+
+:::solution
+Une classe abstract ne peut jamais être instanciée avec new.
+
+---
+
+:::question
+id: s2-rev-fill-super
+type: cloze
+title: Complétez le constructeur enfant :
+
+:::answers
+public Voiture(String marque) { [super](marque); }
+
+:::solution
+super(...) appelle le constructeur de la classe parente.
+
+---
+
+:::question
+id: s2-poly-definition
+type: schoice
+title: Le polymorphisme permet de...
+
+:::answers
+- [ ] Créer plusieurs constructeurs pour une classe
+- [ ] Rendre tous les attributs privés
+- [x] Traiter différents objets via un type commun
+- [ ] Empêcher l'héritage
+
+:::solution
+Le polymorphisme permet de manipuler des objets de types différents à travers un même type parent.
+
+---
+
+:::question
+id: s2-poly-type-statique
+type: schoice
+title: Si on écrit : Animal a = new Chien(); — quel est le type statique de a ?
+
+:::answers
+- [x] Animal
+- [ ] Chien
+- [ ] Object
+- [ ] Le type est inconnu
+
+:::solution
+Le type statique (à gauche du =) est Animal. Le type dynamique (objet réel) est Chien.
+
+---
+
+:::question
+id: s2-poly-type-dynamique
+type: schoice
+title: Si on écrit : Animal a = new Chat(); — quel est le type dynamique de a ?
+
+:::answers
+- [ ] Animal
+- [x] Chat
+- [ ] Object
+- [ ] Aucun
+
+:::solution
+Le type dynamique est le type réel de l'objet créé avec new, ici Chat.
+
+---
+
+:::question
+id: s2-poly-surcharge-redef
+type: matching
+title: Associez chaque situation à son mécanisme :
+
+:::answers
+- Même nom, paramètres différents, même classe --- Surcharge (overload)
+- Même signature, classe enfant, @Override --- Redéfinition (override)
+- Résolu à la compilation --- Surcharge (overload)
+- Résolu à l'exécution --- Redéfinition (override)
+
+:::solution
+La surcharge est du polymorphisme statique, la redéfinition est du polymorphisme dynamique.
+
+---
+
+:::question
+id: s2-poly-liaison
+type: schoice
+title: Animal a = new Chien(); a.crier(); — Quelle version de crier() est appelée ?
+
+:::answers
+- [ ] Celle de Animal toujours
+- [x] Celle de Chien (liaison dynamique)
+- [ ] Aucune, erreur de compilation
+- [ ] Cela dépend du constructeur
+
+:::solution
+La liaison dynamique (late binding) appelle la méthode du type réel de l'objet, ici Chien.
+
+---
+
+:::question
+id: s2-poly-upcast
+type: schoice
+title: Convertir un Chien en Animal s'appelle...
+
+:::answers
+- [x] Upcasting (implicite et sûr)
+- [ ] Downcasting (explicite et risqué)
+- [ ] Autoboxing
+- [ ] Pattern matching
+
+:::solution
+L'upcasting (enfant → parent) est toujours implicite et sûr.
+
+---
+
+:::question
+id: s2-poly-downcast
+type: schoice
+title: Animal a = new Chien(); Que faut-il faire avant de caster a en Chien ?
+
+:::answers
+- [ ] Appeler super()
+- [ ] Utiliser equals()
+- [x] Vérifier avec instanceof
+- [ ] Rien, le cast est automatique
+
+:::solution
+Toujours vérifier avec instanceof avant un downcast pour éviter ClassCastException.
+
+---
+
+:::question
+id: s2-poly-fill-instanceof
+type: cloze
+title: Complétez la vérification :
+
+:::answers
+if (animal [instanceof] Chien c) { c.aboyer(); }
+
+:::solution
+Le pattern matching (Java 16+) teste et caste en une seule instruction.
+
+---
+
+:::question
+id: s2-poly-classcast
+type: schoice
+title: B et C héritent de A. On écrit : B b = new B(); C c = (C) b; — Que se passe-t-il ?
+
+:::answers
+- [ ] Ça compile et fonctionne
+- [ ] Erreur de compilation
+- [x] ClassCastException à l'exécution
+- [ ] c vaut null
+
+:::solution
+B et C sont des classes sœurs. Le cast échoue à l'exécution avec ClassCastException.
+
+---
+
+:::question
+id: s2-poly-signature
+type: schoice
+title: Selon le principe de Liskov, quel type de paramètre est préférable ?
+
+:::answers
+- [ ] Le type le plus concret possible
+- [x] Le type le plus générique possible
+- [ ] Toujours Object
+- [ ] Le type de la classe appelante
+
+:::solution
+Préférer les types génériques (interfaces/parents) dans les signatures pour plus de flexibilité.
+
+---
+
+:::question
+id: s2-autobox-wrapper
+type: matching
+title: Associez chaque type primitif à son wrapper :
+
+:::answers
+- int --- Integer
+- double --- Double
+- boolean --- Boolean
+- char --- Character
+
+:::solution
+Chaque type primitif a une classe wrapper correspondante.
+
+---
+
+:::question
+id: s2-autobox-def
+type: schoice
+title: L'autoboxing est la conversion automatique de...
+
+:::answers
+- [x] Primitif vers Wrapper (int → Integer)
+- [ ] Wrapper vers Primitif (Integer → int)
+- [ ] String vers int
+- [ ] Object vers String
+
+:::solution
+L'autoboxing convertit automatiquement un primitif en son wrapper. L'inverse s'appelle l'unboxing.
+
+---
+
+:::question
+id: s2-autobox-piege
+type: schoice
+title: Integer a = 200; Integer b = 200; a == b retourne...
+
+:::answers
+- [ ] true toujours
+- [x] false (car hors du cache -128 à 127)
+- [ ] Erreur de compilation
+- [ ] NullPointerException
+
+:::solution
+Le cache Integer ne couvre que -128 à 127. Au-delà, == compare des références différentes. Utiliser equals().
+
+---
+
+:::question
+id: s2-autobox-null
+type: schoice
+title: Integer x = null; int y = x; — Que se passe-t-il ?
+
+:::answers
+- [ ] y vaut 0
+- [ ] Erreur de compilation
+- [x] NullPointerException à l'exécution
+- [ ] y vaut null
+
+:::solution
+L'unboxing d'un wrapper null provoque un NullPointerException.
+
+---
+
+:::question
+id: s2-autobox-perf
+type: schoice
+title: Pour des calculs intensifs en boucle, que faut-il utiliser ?
+
+:::answers
+- [x] Les types primitifs (int, long, double)
+- [ ] Les wrappers (Integer, Long, Double)
+- [ ] C'est équivalent en performance
+- [ ] Toujours Object
+
+:::solution
+L'autoboxing en boucle crée des milliers d'objets inutiles. Les primitifs sont 5-10x plus rapides.
+
+---
+
+:::question
+id: s2-record-definition
+type: schoice
+title: Un record en Java est...
+
+:::answers
+- [ ] Un type de collection
+- [x] Une classe immutable avec constructeur, accesseurs, equals, hashCode, toString auto-générés
+- [ ] Un alias pour les classes abstraites
+- [ ] Un type de boucle
+
+:::solution
+Les records (Java 16) génèrent automatiquement le boilerplate pour les classes de données.
+
+---
+
+:::question
+id: s2-record-fill
+type: cloze
+title: Complétez la déclaration :
+
+:::answers
+public [record] Point(int x, int y) { }
+
+:::solution
+Le mot-clé record crée une classe immutable avec les composants donnés.
+
+---
+
+:::question
+id: s2-record-accesseur
+type: schoice
+title: Pour un record Point(int x, int y), comment accéder à x ?
+
+:::answers
+- [ ] point.getX()
+- [x] point.x()
+- [ ] point.x
+- [ ] Point.x()
+
+:::solution
+Les records utilisent le nom du champ comme accesseur : x() et non getX().
+
+---
+
+:::question
+id: s2-record-immutable
+type: schoice
+title: Peut-on modifier les champs d'un record après sa création ?
+
+:::answers
+- [ ] Oui avec un setter
+- [ ] Oui en accédant directement au champ
+- [x] Non, les champs sont final
+- [ ] Oui si on utilise this
+
+:::solution
+Les records sont immutables : tous les champs sont final, pas de setter possible.
+
+---
+
+:::question
+id: s2-record-heritage
+type: schoice
+title: Un record peut-il hériter d'une classe ?
+
+:::answers
+- [ ] Oui, avec extends
+- [x] Non, il hérite implicitement de java.lang.Record
+- [ ] Oui, seulement d'une classe abstraite
+- [ ] Oui, mais sans constructeur
+
+:::solution
+Un record ne peut pas étendre une classe. Il peut en revanche implémenter des interfaces.
+
+---
+
+:::question
+id: s2-record-usage
+type: matching
+title: Associez chaque situation au bon choix :
+
+:::answers
+- Objet de données immutable (DTO) --- Record
+- Objet avec état mutable --- Classe
+- Clé de Map avec equals auto --- Record
+- Entité JPA avec setters --- Classe
+
+:::solution
+Les records sont idéaux pour les données immutables. Les classes restent nécessaires pour l'état mutable.
+
+---
+
+:::question
+id: s2-except-definition
+type: schoice
+title: Une exception en Java représente...
+
+:::answers
+- [ ] Une erreur de syntaxe
+- [x] Une erreur survenant à l'exécution
+- [ ] Un warning du compilateur
+- [ ] Un type de classe abstraite
+
+:::solution
+Une exception est un événement anormal qui interrompt le flux normal d'exécution.
+
+---
+
+:::question
+id: s2-except-fill-trycatch
+type: cloze
+title: Complétez la gestion d'exception :
+
+:::answers
+[try] { operation(); } [catch] (Exception e) { traiter(e); }
+
+:::solution
+try encadre le code risqué, catch intercepte l'exception.
+
+---
+
+:::question
+id: s2-except-throw-throws
+type: matching
+title: Associez chaque mot-clé à son rôle :
+
+:::answers
+- throw --- Lancer une exception dans le code
+- throws --- Déclarer qu'une méthode peut lever une exception
+- try --- Encadrer du code risqué
+- finally --- Bloc exécuté dans tous les cas
+
+:::solution
+throw lance, throws déclare, try encadre, finally garantit l'exécution.
+
+---
+
+:::question
+id: s2-except-checked
+type: schoice
+title: Quelle exception est unchecked (non vérifiée à la compilation) ?
+
+:::answers
+- [ ] IOException
+- [ ] SQLException
+- [x] NullPointerException
+- [ ] FileNotFoundException
+
+:::solution
+Les exceptions unchecked héritent de RuntimeException. Le compilateur ne force pas leur gestion.
+
+---
+
+:::question
+id: s2-except-match-exceptions
+type: matching
+title: Associez chaque exception à sa cause :
+
+:::answers
+- NullPointerException --- Appel de méthode sur null
+- ArrayIndexOutOfBoundsException --- Index hors limites du tableau
+- ClassCastException --- Cast impossible entre types
+- ArithmeticException --- Division par zéro
+
+:::solution
+Les exceptions les plus fréquentes en Java.
+
+---
+
+:::question
+id: s2-except-custom
+type: schoice
+title: Pour créer une exception métier, on doit...
+
+:::answers
+- [ ] Utiliser le mot-clé exception
+- [x] Créer une classe qui hérite de Exception ou RuntimeException
+- [ ] Annoter une classe avec @Exception
+- [ ] Déclarer une interface Exception
+
+:::solution
+On crée une classe qui extends Exception (checked) ou RuntimeException (unchecked).
+
+---
+
+:::question
+id: s2-except-finally
+type: schoice
+title: Le bloc finally s'exécute...
+
+:::answers
+- [ ] Seulement si une exception est levée
+- [ ] Seulement si aucune exception n'est levée
+- [x] Dans tous les cas (exception ou pas)
+- [ ] Seulement après un return
+
+:::solution
+Le bloc finally s'exécute toujours, qu'il y ait exception ou non. Utile pour libérer les ressources.
+
+---
+
+:::question
+id: s2-except-twr
+type: schoice
+title: Le try-with-resources ferme automatiquement les ressources qui implémentent...
+
+:::answers
+- [ ] Closeable uniquement
+- [x] AutoCloseable
+- [ ] Serializable
+- [ ] Iterable
+
+:::solution
+try-with-resources ferme automatiquement les objets AutoCloseable à la fin du bloc.
+
+---
+
+:::question
+id: s2-except-fill-throw
+type: cloze
+title: Complétez pour lancer une exception :
+
+:::answers
+[throw] new IllegalArgumentException("valeur invalide");
+
+:::solution
+throw suivi de new crée et lance une exception.
+
+---
+
+:::question
+id: s2-except-bonnes-pratiques
+type: schoice
+title: Quelle est la bonne pratique quand on attrape une exception ?
+
+:::answers
+- [ ] Laisser le bloc catch vide
+- [ ] Toujours attraper Exception générique
+- [x] Attraper l'exception la plus spécifique et la traiter/loguer
+- [ ] Utiliser throws partout
+
+:::solution
+Toujours attraper l'exception la plus précise et ne jamais laisser un catch vide.
+
+---
+
+:::question
+id: s2-solid-match
+type: matching
+title: Associez chaque lettre à son principe :
+
+:::answers
+- S --- Une classe = une seule responsabilité
+- O --- Ouvert à l'extension, fermé à la modification
+- L --- Les sous-types doivent remplacer le type parent
+- D --- Dépendre des abstractions, pas des implémentations
+
+:::solution
+Les principes SOLID guident la conception orientée objet.
+
+---
+
+:::question
+id: s2-solid-srp
+type: schoice
+title: Une classe qui gère le calcul, l'envoi d'email ET la sauvegarde en base viole...
+
+:::answers
+- [x] Le principe de responsabilité unique (SRP)
+- [ ] Le principe ouvert/fermé (OCP)
+- [ ] Le principe de Liskov (LSP)
+- [ ] Le principe d'inversion de dépendances (DIP)
+
+:::solution
+SRP : une classe doit avoir une seule raison de changer. Ici il y en a trois.
+
+---
+
+:::question
+id: s2-solid-ocp
+type: schoice
+title: Comment ajouter un nouveau type de forme (Triangle) sans modifier le code existant ?
+
+:::answers
+- [ ] Ajouter un if/else dans la méthode calculerSurface()
+- [x] Créer une classe Triangle qui hérite de Forme et redéfinit surface()
+- [ ] Modifier la classe Forme pour ajouter Triangle
+- [ ] Utiliser un switch sur le type
+
+:::solution
+OCP : on étend le système en ajoutant de nouvelles classes, sans modifier les existantes. C'est le polymorphisme.
+
+---
+
+:::question
+id: s2-solid-lsp
+type: schoice
+title: Carre extends Rectangle pose problème car...
+
+:::answers
+- [ ] Un carré n'a pas de côtés
+- [x] Modifier largeur et hauteur indépendamment casse le contrat du carré
+- [ ] Rectangle ne peut pas être hérité
+- [ ] Il faut utiliser une interface
+
+:::solution
+LSP : un Carre ne peut pas être substitué à un Rectangle car setLargeur/setHauteur violent son invariant.
+
+---
+
+:::question
+id: s2-solid-isp
+type: schoice
+title: Une interface avec 10 méthodes dont une classe n'en utilise que 2 viole...
+
+:::answers
+- [ ] SRP
+- [ ] OCP
+- [x] ISP — Ségrégation des interfaces
+- [ ] DIP
+
+:::solution
+ISP : mieux vaut plusieurs petites interfaces qu'une grosse interface avec des méthodes inutiles.
+
+---
+
+:::question
+id: s2-solid-dip
+type: schoice
+title: Selon DIP, une classe NotificationService doit dépendre de...
+
+:::answers
+- [ ] EmailSender directement
+- [ ] SmsSender directement
+- [x] Une interface MessageSender
+- [ ] System.out.println()
+
+:::solution
+DIP : dépendre d'abstractions (interfaces), pas d'implémentations concrètes.
+
+---
+
+:::question
+id: s2-solid-fill-dip
+type: cloze
+title: Complétez le constructeur avec injection :
+
+:::answers
+public Service([MessageSender] sender) { this.sender = sender; }
+
+:::solution
+On injecte l'abstraction (interface) via le constructeur pour respecter DIP.
+
+---
+
+:::question
+id: s2-refactor-definition
+type: schoice
+title: Le refactoring consiste à...
+
+:::answers
+- [ ] Ajouter de nouvelles fonctionnalités
+- [x] Réorganiser le code sans changer son comportement
+- [ ] Corriger des bugs
+- [ ] Supprimer du code inutile
+
+:::solution
+Refactoring = restructurer le code en gardant le même comportement externe.
+
+---
+
+:::question
+id: s2-refactor-service
+type: schoice
+title: Quand une classe fait plus de 150 lignes avec des blocs séparés par des commentaires, il faut...
+
+:::answers
+- [ ] Ajouter plus de commentaires
+- [x] Extraire des services dédiés (une responsabilité chacun)
+- [ ] Tout mettre en static
+- [ ] Créer des sous-classes
+
+:::solution
+Les blocs séparés par des commentaires sont un code smell. Chaque bloc mérite sa propre classe service.
+
+---
+
+:::question
+id: s2-refactor-match
+type: matching
+title: Associez chaque problème à sa solution de refactoring :
+
+:::answers
+- Classe trop longue --- Extract Class (extraire en service)
+- Méthode trop longue --- Extract Method
+- Dépendance sur une implémentation --- Extract Interface
+- Code dupliqué --- Factoriser dans une méthode commune
+
+:::solution
+Les techniques de refactoring les plus courantes pour améliorer la qualité du code.
+
+---
+
+:::question
+id: s2-static-definition
+type: schoice
+title: Un attribut static appartient à...
+
+:::answers
+- [ ] Chaque instance séparément
+- [x] La classe elle-même (partagé par toutes les instances)
+- [ ] La méthode main uniquement
+- [ ] L'interface parente
+
+:::solution
+Un membre static est partagé par toutes les instances et appartient à la classe.
+
+---
+
+:::question
+id: s2-static-methode
+type: schoice
+title: Une méthode static peut-elle utiliser this ?
+
+:::answers
+- [ ] Oui toujours
+- [x] Non, car elle n'est liée à aucune instance
+- [ ] Oui, si l'attribut est public
+- [ ] Seulement dans le constructeur
+
+:::solution
+Les méthodes static n'ont pas de this car elles ne sont pas liées à une instance.
+
+---
+
+:::question
+id: s2-static-match
+type: matching
+title: Associez chaque caractéristique :
+
+:::answers
+- Partagé par toutes les instances --- static
+- Propre à chaque objet --- instance
+- Appelable sans créer d'objet --- static
+- Peut utiliser this --- instance
+
+:::solution
+Les membres static appartiennent à la classe, les membres d'instance à chaque objet.
+
+---
+
+:::question
+id: s2-static-fill
+type: cloze
+title: Complétez la déclaration d'un compteur partagé :
+
+:::answers
+private [static] int compteur = 0;
+
+:::solution
+Le mot-clé static rend l'attribut partagé par toutes les instances.
+
+---
+
+:::question
+id: s2-static-usage
+type: schoice
+title: Quel usage est approprié pour static ?
+
+:::answers
+- [x] Une méthode utilitaire sans état (ex: Math.abs())
+- [ ] Un attribut qui varie par instance
+- [ ] Le cœur de la logique métier
+- [ ] Toutes les méthodes d'une classe
+
+:::solution
+static convient pour les utilitaires, constantes, et compteurs. Trop de static = code procédural.
+
+---
+
+:::question
+id: s2-static-polymorphisme
+type: schoice
+title: Une méthode static peut-elle être redéfinie (@Override) dans une sous-classe ?
+
+:::answers
+- [ ] Oui, comme une méthode normale
+- [x] Non, les méthodes static ne supportent pas le polymorphisme
+- [ ] Oui, mais seulement avec super
+- [ ] Oui, si la classe parente est abstract
+
+:::solution
+Les méthodes static sont résolues à la compilation, pas à l'exécution. Pas de polymorphisme possible.
+
+---
+
+:::question
+id: s2-synth-match-keywords
+type: matching
+title: Associez chaque mot-clé à sa fonction :
+
+:::answers
+- record --- Classe immutable auto-générée
+- instanceof --- Vérifier le type d'un objet
+- throw --- Lancer une exception
+- static --- Membre partagé par toutes les instances
+
+:::solution
+Les nouveaux mots-clés vus en séance 2.
+
+---
+
+:::question
+id: s2-synth-principes
+type: schoice
+title: On ajoute un nouveau moyen de paiement sans toucher au code existant. Quel principe SOLID ?
+
+:::answers
+- [ ] SRP
+- [x] OCP — Ouvert/Fermé
+- [ ] LSP
+- [ ] ISP
+
+:::solution
+OCP : le système est ouvert à l'extension (nouveau paiement) et fermé à la modification.

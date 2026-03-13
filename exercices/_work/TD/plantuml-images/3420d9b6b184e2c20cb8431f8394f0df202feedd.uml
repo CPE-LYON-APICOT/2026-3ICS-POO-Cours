@@ -1,0 +1,39 @@
+@startuml
+' Définition de l'interface Volant
+interface Volant {
+    + void voler()
+}
+
+' Définition de la classe Animal
+class Animal {
+    + String nom
+    + void manger()
+}
+
+' Définition de la classe Oiseau qui hérite d'Animal et implémente Volant
+class Oiseau extends Animal implements Volant {
+    + String typeDePlumage
+    + void chanter()
+}
+
+' Définition de la classe Poisson qui hérite d'Animal
+class Poisson extends Animal {
+    + String typeDeNageoire
+    + void nager()
+}
+
+' Définition de la classe Habitat pour la composition
+class Habitat {
+    + String type
+    + void abriter()
+}
+
+' Définition de la classe Avion qui implémente Volant mais n'est pas un animal
+class Avion implements Volant {
+    + String modèle
+    + void décoller()
+}
+
+' Composition : un Animal a un Habitat
+Animal *-- Habitat : has
+@enduml
